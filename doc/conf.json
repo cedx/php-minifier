@@ -1,0 +1,22 @@
+{
+  "opts": {
+    "destination": "doc",
+    "private": true,
+    "recurse": true
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "source": {
+    "include": ["lib", "package.json", "README.md"],
+    "includePattern": ".+\\.js$"
+  },
+  "tags": {
+    "dictionaries": ["jsdoc"]
+  },
+  "templates": {
+    "default": {
+      "outputSourceFiles": false
+    }
+  }
+}
