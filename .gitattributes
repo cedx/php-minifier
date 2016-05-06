@@ -1,0 +1,11 @@
+* text=auto
+
+.editorconfig text
+.gitattributes text
+.gitignore text
+
+*.js text
+*.json text
+*.md text
+*.properties text
+*.txt text

@@ -1,0 +1,7 @@
+/.idea/
+/.sonar/
+/*.iml
+/**/.DS_Store
+/doc/api/
+/node_modules/
+/npm-debug.log
