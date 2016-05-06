@@ -1,0 +1,48 @@
+{
+  "description": "Gulp.js plugin minifying PHP source code by removing comments and whitespace.",
+  "homepage": "https://github.com/aquafadas-com/php-minify.gulp",
+  "name": "gulp-phpminify",
+
+  "author": "Aquafadas <opensource@aquafadas.com>",
+  "bugs": "https://github.com/aquafadas-com/php-minify.gulp/issues",
+  "license": "Apache-2.0",
+  "main": "./lib/index",
+  "repository": "aquafadas-com/php-minify.gulp",
+  "version": "0.1.0",
+
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-david": "^0.4.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-load-plugins": "^1.2.2",
+    "jsdoc": "^3.4.0",
+    "jshint": "^2.9.2"
+  },
+  "engines": {
+    "node": ">=4.4.0"
+  },
+  "jshintConfig": {
+    "esnext": true,
+    "freeze": true,
+    "futurehostile": true,
+    "latedef": "nofunc",
+    "loopfunc": true,
+    "mocha": true,
+    "nocomma": true,
+    "node": true,
+    "nonbsp": true,
+    "nonew": true,
+    "strict": true,
+    "trailing": true,
+    "undef": true,
+    "unused": true,
+    "varstmt": true
+  },
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "minify",
+    "php"
+  ]
+}
