@@ -75,6 +75,13 @@ gulp.task('lint', () => gulp.src(['*.js', 'lib/*.js'])
 );
 
 /**
+ * Runs the unit tests.
+ */
+gulp.task('test', () => gulp.src(['test/*.js'], {read: false})
+  .pipe(plugins.mocha())
+);
+
+/**
  * Runs a command and prints its output.
  * @param {string} command The command to run, with space-separated arguments.
  * @return {Promise} Completes when the command is finally terminated.

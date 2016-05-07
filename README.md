@@ -20,11 +20,13 @@ The plugin takes a list of [PHP](http://php.net) scripts as input, and removes t
 const gulp = require('gulp');
 const phpMinify = require('gulp-php-minify');
 
-gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php')
+gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', { read: false })
   .pipe(phpMinify())
   .pipe(gulp.dest('path/to/out'))
 );
 ```
+
+The plugin needs the file paths, so you should specify the `read` option to `false` when providing the file list, and you should not have any other plugin before it.
 
 ## Options
 The plugin relies on the availability of the [PHP](http://php.net) executable on the target system. By default, the plugin will use the `php` binary found on the system path.
@@ -32,7 +34,7 @@ The plugin relies on the availability of the [PHP](http://php.net) executable on
 If the plugin cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable using the `binary` option:
 
 ```javascript
-gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php')
+gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', { read: false })
   .pipe(phpMinify({ binary: 'C:\\Program Files\\PHP\\php.exe' }))
   .pipe(gulp.dest('path/to/out'))
 );
