@@ -29,6 +29,23 @@ gulp.task('check', () => gulp.src('package.json')
 );
 
 /**
+ * Generates the code coverage.
+ */
+gulp.task('cover', ['cover:instrument'], () => {
+  process.env.npm_package_config_mocha_sonar_reporter_outputfile = 'var/TEST-results.xml';
+  process.env.npm_package_config_mocha_sonar_reporter_testdir = 'test';
+
+  return gulp.src(['test/*.js'], {read: false})
+    .pipe(plugins.mocha({reporter: 'mocha-sonar-reporter'}))
+    .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}));
+});
+
+gulp.task('cover:instrument', () => gulp.src(['lib/*.js'])
+  .pipe(plugins.istanbul())
+  .pipe(plugins.istanbul.hookRequire())
+);
+
+/**
  * Builds the documentation.
  */
 gulp.task('doc', ['doc:assets']);
