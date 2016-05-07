@@ -14,7 +14,7 @@ $ npm install gulp-php-minify --save-dev
 Once the plugin has been installed, it may be enabled inside your `gulpfile.js`.
 
 ## Usage
-The plugin takes a list of PHP scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](http://php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
+The plugin takes a list of [PHP](http://php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](http://php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
 
 ```javascript
 const gulp = require('gulp');
@@ -27,9 +27,16 @@ gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php')
 ```
 
 ## Options
-The plugin can be customized using these settings:
+The plugin relies on the availability of the [PHP](http://php.net) executable on the target system. By default, the plugin will use the `php` binary found on the system path.
 
-- `binary: String = "php"` : The path to the PHP executable. Defaults to the `php` binary found on the system path.
+If the plugin cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable using the `binary` option:
+
+```javascript
+gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php')
+  .pipe(phpMinify({ binary: 'C:\\Program Files\\PHP\\php.exe' }))
+  .pipe(gulp.dest('path/to/out'))
+);
+```
 
 ## See Also
 - [API Reference](http://aquafadas-com.github.io/php-minify.gulp/api)
