@@ -1,5 +1,5 @@
 # PHP-Minify.gulp
-![Release](http://img.shields.io/npm/v/gulp-phpminify.svg) ![License](http://img.shields.io/npm/l/gulp-phpminify.svg) ![Downloads](http://img.shields.io/npm/dm/gulp-phpminify.svg) ![Dependencies](http://img.shields.io/david/aquafadas-com/smartling.gulp.svg)
+![Release](http://img.shields.io/npm/v/gulp-php-minify.svg) ![License](http://img.shields.io/npm/l/gulp-php-minify.svg) ![Downloads](http://img.shields.io/npm/dm/gulp-php-minify.svg) ![Dependencies](http://img.shields.io/david/aquafadas-com/smartling.gulp.svg)
 
 [Gulp.js](http://gulpjs.com) plugin minifying [PHP](http://php.net) source code by removing comments and whitespace.
 
@@ -8,7 +8,7 @@ If you haven't used [Gulp.js](http://gulpjs.com) before, be sure to check out th
 Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-$ npm install gulp-phpminify --save-dev
+$ npm install gulp-php-minify --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your `gulpfile.js`.
@@ -18,7 +18,7 @@ The plugin takes a list of PHP scripts as input, and removes the comments and wh
 
 ```javascript
 const gulp = require('gulp');
-const phpMinify = require('gulp-phpminify');
+const phpMinify = require('gulp-php-minify');
 
 gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php')
   .pipe(phpMinify())
@@ -30,6 +30,9 @@ gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php')
 The plugin can be customized using these settings:
 
 - `binary: String = "php"` : The path to the PHP executable. Defaults to the `php` binary found on the system path.
+
+## See Also
+- [API Reference](http://aquafadas-com.github.io/php-minify.gulp/api)
 
 ## License
 [PHP-Minify.gulp](https://github.com/aquafadas-com/php-minify.gulp) is distributed under a proprietary license.
