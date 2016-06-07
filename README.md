@@ -41,7 +41,7 @@ gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', { read: false })
 ```
 
 ## See Also
-- [API Reference](http://aquafadas-com.github.io/php-minify.gulp/api)
+- [API Reference](http://aquafadas-com.github.io/php-minify.gulp)
 
 ## License
 [PHP-Minify.gulp](https://github.com/aquafadas-com/php-minify.gulp) is distributed under the Apache License, version 2.0.
