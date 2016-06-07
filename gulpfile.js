@@ -62,7 +62,7 @@ gulp.task('doc:build', () => {
 gulp.task('doc:rename', ['doc:build'], () => new Promise((resolve, reject) =>
   fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', err => {
     if(err) reject(err);
-    else del(`doc/${pkg.name}`, err => err ? reject(err) : resolve());
+    else del(`doc/${pkg.name}`).then(resolve, reject);
   })
 ));
 
@@ -88,7 +88,7 @@ gulp.task('test', () => gulp.src(['test/*.js'], {read: false})
  * @private
  */
 function _exec(command) {
-  return new Promise((resolve, reject) => child.exec(command, {maxBuffer: 2 * 1024 * 1024}, (err, stdout) => {
+  return new Promise((resolve, reject) => child.exec(command, {maxBuffer: 5 * 1024 * 1024}, (err, stdout) => {
     if(err) reject(err);
     else resolve(stdout.trim());
   }));
