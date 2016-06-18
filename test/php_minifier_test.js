@@ -44,7 +44,7 @@ class PHPMinifierTest {
       let file = new File({path: path.join(__dirname, 'sample.php')});
       new PHPMinifier()._transform(file, 'utf8', (err, result) => {
         if(err) throw err;
-        assert(result.contents.toString().indexOf("<?= 'Hello World!' ?>") > 0);
+        assert(result.contents.toString().indexOf('<?= \'Hello World!\' ?>') > 0);
         done();
       });
     });
