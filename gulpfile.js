@@ -14,6 +14,16 @@ const plugins = require('gulp-load-plugins')();
 const pkg = require('./package.json');
 
 /**
+ * The task settings.
+ * @var {object}
+ */
+const config = {
+  coverage: '76d8ebf6b08d430092518a61bbbe0cbd',
+  output: `${pkg.name}-${pkg.version}.zip`,
+  sources: ['*.json', '*.md', '*.txt', 'lib/*.js']
+};
+
+/**
  * Runs the default tasks.
  */
 gulp.task('default', ['lint']);
@@ -29,20 +39,37 @@ gulp.task('check', () => gulp.src('package.json')
 );
 
 /**
+ * Deletes all generated files and reset any saved state.
+ */
+gulp.task('clean', () =>
+  del([`var/${config.output}`, 'var/*.info'])
+);
+
+/**
  * Generates the code coverage.
  */
-gulp.task('cover', ['cover:instrument'], () => {
-  process.env.npm_package_config_mocha_sonar_reporter_outputfile = 'var/TEST-results.xml';
-  process.env.npm_package_config_mocha_sonar_reporter_testdir = 'test';
-
-  return gulp.src(['test/*.js'], {read: false})
-    .pipe(plugins.mocha({reporter: 'mocha-sonar-reporter'}))
-    .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}));
+gulp.task('cover', ['cover:test'], () => {
+  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'codacy-coverage.cmd' : 'codacy-coverage');
+  return _exec(`${command} < var/lcov.info`, {env: {CODACY_PROJECT_TOKEN: config.coverage}});
 });
 
 gulp.task('cover:instrument', () => gulp.src(['lib/*.js'])
   .pipe(plugins.istanbul())
   .pipe(plugins.istanbul.hookRequire())
+);
+
+gulp.task('cover:test', ['cover:instrument'], () => {
+  return gulp.src(['test/*.js'], {read: false})
+    .pipe(plugins.mocha())
+    .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}));
+});
+
+/**
+ * Creates a distribution file for this program.
+ */
+gulp.task('dist', () => gulp.src(config.sources, {base: '.'})
+  .pipe(plugins.zip(config.output))
+  .pipe(gulp.dest('var'))
 );
 
 /**
@@ -69,7 +96,7 @@ gulp.task('doc:rename', ['doc:build'], () => new Promise((resolve, reject) =>
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'lib/*.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'lib/*.js', 'test/*.js'])
   .pipe(plugins.jshint(pkg.jshintConfig))
   .pipe(plugins.jshint.reporter('default', {verbose: true}))
 );
@@ -84,11 +111,12 @@ gulp.task('test', () => gulp.src(['test/*.js'], {read: false})
 /**
  * Runs a command and prints its output.
  * @param {string} command The command to run, with space-separated arguments.
+ * @param {object} [options] The settings to customize how the process is spawned.
  * @return {Promise.<string>} The command output when it is finally terminated.
  * @private
  */
-function _exec(command) {
-  return new Promise((resolve, reject) => child.exec(command, {maxBuffer: 5 * 1024 * 1024}, (err, stdout) => {
+function _exec(command, options) {
+  return new Promise((resolve, reject) => child.exec(command, options, (err, stdout) => {
     if(err) reject(err);
     else resolve(stdout.trim());
   }));

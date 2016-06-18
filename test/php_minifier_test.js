@@ -9,7 +9,6 @@ const assert = require('assert');
 const File = require('vinyl');
 const path = require('path');
 const PHPMinifier = require('../lib/php_minifier');
-const stream = require('stream');
 
 /**
  * Tests the features of the `PHPMinifier` class.
@@ -41,36 +40,38 @@ class PHPMinifierTest {
    * Tests the `_transform` method.
    */
   testTransform() {
-    let file = new File({path: path.join(__dirname, 'sample.php')});
-
     it('should remove the inline comments', done => {
-      new PHPMinifier()._transform(file, 'utf8', (err, file) => {
+      let file = new File({path: path.join(__dirname, 'sample.php')});
+      new PHPMinifier()._transform(file, 'utf8', (err, result) => {
         if(err) throw err;
-        assert(file.contents.toString().indexOf("<?= 'Hello World!' ?>") > 0);
+        assert(result.contents.toString().indexOf("<?= 'Hello World!' ?>") > 0);
         done();
       });
     });
 
     it('should remove the multi-line comments', done => {
-      new PHPMinifier()._transform(file, 'utf8', (err, file) => {
+      let file = new File({path: path.join(__dirname, 'sample.php')});
+      new PHPMinifier()._transform(file, 'utf8', (err, result) => {
         if(err) throw err;
-        assert(file.contents.toString().indexOf('namespace dummy; class Dummy') > 0);
+        assert(result.contents.toString().indexOf('namespace dummy; class Dummy') > 0);
         done();
       });
     });
 
     it('should remove the single-line comments', done => {
-      new PHPMinifier()._transform(file, 'utf8', (err, file) => {
+      let file = new File({path: path.join(__dirname, 'sample.php')});
+      new PHPMinifier()._transform(file, 'utf8', (err, result) => {
         if(err) throw err;
-        assert(file.contents.toString().indexOf('$className = get_class($this); return $className;') > 0);
+        assert(result.contents.toString().indexOf('$className = get_class($this); return $className;') > 0);
         done();
       });
     });
 
     it('should remove the whitespace', done => {
-      new PHPMinifier()._transform(file, 'utf8', (err, file) => {
+      let file = new File({path: path.join(__dirname, 'sample.php')});
+      new PHPMinifier()._transform(file, 'utf8', (err, result) => {
         if(err) throw err;
-        assert(file.contents.toString().indexOf('__construct() { }') > 0);
+        assert(result.contents.toString().indexOf('__construct() { }') > 0);
         done();
       });
     });
