@@ -18,7 +18,7 @@ const pkg = require('./package.json');
  * @var {object}
  */
 const config = {
-  coverage: '76d8ebf6b08d430092518a61bbbe0cbd',
+  coverage: 'dcadb4f053ca41e0bfae8670fb898018',
   output: `${pkg.name}-${pkg.version}.zip`,
   sources: ['*.json', '*.md', '*.txt', 'lib/*.js']
 };
