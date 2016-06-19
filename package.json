@@ -51,6 +51,7 @@
     "php"
   ],
   "scripts": {
+    "coverage": "codacy-coverage < var/lcov.info",
     "test": "gulp test"
   }
 }

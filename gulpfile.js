@@ -18,7 +18,6 @@ const pkg = require('./package.json');
  * @var {object}
  */
 const config = {
-  coverage: 'dcadb4f053ca41e0bfae8670fb898018',
   output: `${pkg.name}-${pkg.version}.zip`,
   sources: ['*.json', '*.md', '*.txt', 'lib/*.js']
 };
@@ -46,22 +45,11 @@ gulp.task('clean', () =>
 );
 
 /**
- * Generates the code coverage.
+ * Sends the results of the code coverage.
  */
-gulp.task('cover', ['cover:test'], () => {
+gulp.task('coverage', ['test'], () => {
   let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'codacy-coverage.cmd' : 'codacy-coverage');
-  return _exec(`${command} < var/lcov.info`, {env: {CODACY_PROJECT_TOKEN: config.coverage}});
-});
-
-gulp.task('cover:instrument', () => gulp.src(['lib/*.js'])
-  .pipe(plugins.istanbul())
-  .pipe(plugins.istanbul.hookRequire())
-);
-
-gulp.task('cover:test', ['cover:instrument'], () => {
-  return gulp.src(['test/*.js'], {read: false})
-    .pipe(plugins.mocha())
-    .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}));
+  return _exec(`${command} < var/lcov.info`);
 });
 
 /**
@@ -104,8 +92,15 @@ gulp.task('lint', () => gulp.src(['*.js', 'lib/*.js', 'test/*.js'])
 /**
  * Runs the unit tests.
  */
-gulp.task('test', () => gulp.src(['test/*.js'], {read: false})
-  .pipe(plugins.mocha())
+gulp.task('test', ['test:coverage'], () => {
+  return gulp.src(['test/*.js'], {read: false})
+    .pipe(plugins.mocha())
+    .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}));
+});
+
+gulp.task('test:coverage', () => gulp.src(['lib/*.js'])
+  .pipe(plugins.istanbul())
+  .pipe(plugins.istanbul.hookRequire())
 );
 
 /**
