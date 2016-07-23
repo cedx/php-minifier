@@ -1,7 +1,7 @@
 {
   "description": "Gulp.js plugin minifying PHP source code by removing comments and whitespace.",
   "homepage": "https://github.com/aquafadas-com/gulp-php-minify",
-  "name": "gulp-php-minify",
+  "name": "@aquafadas/gulp-php-minify",
 
   "author": "Aquafadas <opensource@aquafadas.com>",
   "bugs": "https://github.com/aquafadas-com/gulp-php-minify/issues",
