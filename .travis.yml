@@ -2,9 +2,7 @@ language: node_js
 sudo: false
 
 env: NODE_ENV="test"
-node_js:
-- '4.4'
-- '6.2'
+node_js: '6.3'
 
 script: npm test
 after_script: npm run coverage
