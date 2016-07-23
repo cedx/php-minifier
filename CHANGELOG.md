@@ -1,6 +1,11 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) package.
 
+#### Version 0.2.0
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: using more ES6 features, like default parameters and destructuring assignment.
+- Turned the package into a [scoped one](https://docs.npmjs.com/getting-started/scoped-packages).
+
 #### Version 0.1.2
 - Added support for [Codacy](https://www.codacy.com) code analyzer.
 - Renamed the project according to its [npm](https://www.npmjs.com) package name.

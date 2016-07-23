@@ -2,9 +2,6 @@
  * Unit tests of the `php_minifier` module.
  * @module test/php_minifier_test
  */
-'use strict';
-
-// Module dependencies.
 const assert = require('assert');
 const File = require('vinyl');
 const path = require('path');

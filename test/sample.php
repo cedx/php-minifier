@@ -19,7 +19,7 @@ class Dummy {
 
   /**
    * A dummy method.
-   * @return string The class name.
+   * @returns string The class name.
    */
   public function __toString() {
     // A comment.
