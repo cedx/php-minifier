@@ -1,6 +1,5 @@
 <?php
 /**
- * @file
  * Implementation of the `Dummy` class.
  */
 namespace dummy;
