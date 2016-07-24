@@ -39,7 +39,6 @@
     "nonbsp": true,
     "nonew": true,
     "singleGroups": true,
-    "strict": "implied",
     "trailing": true,
     "typed": true,
     "undef": true,
