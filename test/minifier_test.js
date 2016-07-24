@@ -37,41 +37,39 @@ class MinifierTest {
    * Tests the `_transform` method.
    */
   testTransform() {
-    it('should remove the inline comments', done => {
-      let file = new File({path: path.join(__dirname, 'sample.php')});
+    let file = new File({path: path.join(__dirname, 'sample.php')});
+
+    it('should remove the inline comments', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
-        if(err) throw err;
+        assert.ifError(err);
         assert(result.contents.toString().indexOf('<?= \'Hello World!\' ?>') > 0);
         done();
-      });
-    });
+      })
+    );
 
-    it('should remove the multi-line comments', done => {
-      let file = new File({path: path.join(__dirname, 'sample.php')});
+    it('should remove the multi-line comments', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
-        if(err) throw err;
+        assert.ifError(err);
         assert(result.contents.toString().indexOf('namespace dummy; class Dummy') > 0);
         done();
-      });
-    });
+      })
+    );
 
-    it('should remove the single-line comments', done => {
-      let file = new File({path: path.join(__dirname, 'sample.php')});
+    it('should remove the single-line comments', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
-        if(err) throw err;
+        assert.ifError(err);
         assert(result.contents.toString().indexOf('$className = get_class($this); return $className;') > 0);
         done();
-      });
-    });
+      })
+    );
 
-    it('should remove the whitespace', done => {
-      let file = new File({path: path.join(__dirname, 'sample.php')});
+    it('should remove the whitespace', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
-        if(err) throw err;
+        assert.ifError(err);
         assert(result.contents.toString().indexOf('__construct() { }') > 0);
         done();
-      });
-    });
+      })
+    );
   }
 }
 
