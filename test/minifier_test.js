@@ -42,7 +42,7 @@ class MinifierTest {
     it('should remove the inline comments', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().indexOf('<?= \'Hello World!\' ?>') > 0);
+        assert(result.contents.toString().includes('<?= \'Hello World!\' ?>'));
         done();
       })
     );
@@ -50,7 +50,7 @@ class MinifierTest {
     it('should remove the multi-line comments', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().indexOf('namespace dummy; class Dummy') > 0);
+        assert(result.contents.toString().includes('namespace dummy; class Dummy'));
         done();
       })
     );
@@ -58,7 +58,7 @@ class MinifierTest {
     it('should remove the single-line comments', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().indexOf('$className = get_class($this); return $className;') > 0);
+        assert(result.contents.toString().includes('$className = get_class($this); return $className;'));
         done();
       })
     );
@@ -66,7 +66,7 @@ class MinifierTest {
     it('should remove the whitespace', done =>
       new Minifier()._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().indexOf('__construct() { }') > 0);
+        assert(result.contents.toString().includes('__construct() { }'));
         done();
       })
     );
