@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) package.
+This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://www.npmjs.com/package/@aquafadas/gulp-php-minify) package.
 
 #### Version 0.2.0
 - Breaking change: renamed the `PHPMinifier` class to `Minifier`.

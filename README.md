@@ -44,4 +44,4 @@ gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
 - [Code Quality](https://www.codacy.com/app/aquafadas/gulp-php-minify)
 
 ## License
-[Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) is distributed under the Apache License, version 2.0.
+[Gulp-PHP-Minify](https://www.npmjs.com/package/@aquafadas/gulp-php-minify) is distributed under the Apache License, version 2.0.
