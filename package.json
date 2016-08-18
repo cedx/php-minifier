@@ -8,14 +8,17 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "repository": "aquafadas-com/gulp-php-minify",
-  "version": "0.2.0",
+  "version": "0.3.0",
 
+  "dependencies": {
+    "superagent": "^2.2.0"
+  },
   "devDependencies": {
-    "@cedx/gulp-david": "^2.0.2",
+    "@cedx/gulp-david": "^2.0.3",
     "codacy-coverage": "^2.0.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
-    "gulp-istanbul": "^1.0.0",
+    "gulp-istanbul": "^1.1.0",
     "gulp-jshint": "^2.0.1",
     "gulp-load-plugins": "^1.2.4",
     "gulp-mocha": "^3.0.1",
@@ -25,7 +28,7 @@
     "vinyl": "^1.2.0"
   },
   "engines": {
-    "node": ">=6.3.0"
+    "node": ">=6.4.0"
   },
   "jshintConfig": {
     "esversion": 6,
