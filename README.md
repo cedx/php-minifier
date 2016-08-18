@@ -29,15 +29,25 @@ gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
 The plugin only needs the file paths, so you should specify the `read` option to `false` when providing the file list, and you should not have any other plugin before it.
 
 ## Options
+
+#### binary
 The plugin relies on the availability of the [PHP](http://php.net) executable on the target system: it requires a version **5.5 or later**. By default, the plugin will use the `php` binary found on the system path.
 
-If the plugin cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable using the `binary` option:
+If the plugin cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable by using the `binary` option:
 
 ```javascript
-gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
+return gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(phpMinify({binary: 'C:\\Program Files\\PHP\\php.exe'}))
-  .pipe(gulp.dest('path/to/out'))
-);
+  .pipe(gulp.dest('path/to/out'));
+```
+
+#### silent
+By default, the plugin prints to the standard output the list of minified scripts. You can disable this output by setting the `silent` option to `true`.
+
+```javascript
+return gulp.src('path/to/lib/**/*.php', {read: false})
+  .pipe(phpMinify({silent: true}))
+  .pipe(gulp.dest('path/to/out'));
 ```
 
 ## See Also
