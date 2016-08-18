@@ -56,10 +56,10 @@ class Application {
   public function sendResponse($body, $status = 200) {
     http_response_code($status);
     header('Content-Length: ' . strlen($body));
-    header('Content-Type: ' . ($status >= 400 ? 'text/plain' : 'application/x-httpd-php'));
+    header('Content-Type: text/plain');
     echo $body;
   }
 }
 
 // Start the application.
-(new Application())->run($_POST);
+(new Application())->run($_GET);
