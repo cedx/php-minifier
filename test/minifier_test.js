@@ -18,7 +18,7 @@ class MinifierTest {
   run() {
     let self = this;
     describe('Minifier', function() {
-      this.timeout(30000);
+      this.timeout(60000);
       describe('constructor()', self.testConstructor);
       describe('_transform()', self.testTransform);
     });
@@ -41,35 +41,35 @@ class MinifierTest {
     let file = new File({path: path.join(__dirname, 'sample.php')});
     let minifier = new Minifier({silent: true});
 
-    it('should remove the inline comments', done =>
+    it('should remove the inline comments', () =>
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('<?= \'Hello World!\' ?>'));
-        minifier.close().then(done);
+        return minifier.close();
       })
     );
 
-    it('should remove the multi-line comments', done =>
+    it('should remove the multi-line comments', () =>
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('namespace dummy; class Dummy'));
-        minifier.close().then(done);
+        return minifier.close();
       })
     );
 
-    it('should remove the single-line comments', done =>
+    it('should remove the single-line comments', () =>
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('$className = get_class($this); return $className;'));
-        minifier.close().then(done);
+        return minifier.close();
       })
     );
 
-    it('should remove the whitespace', done =>
+    it('should remove the whitespace', () =>
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('__construct() { }'));
-        minifier.close().then(done);
+        return minifier.close();
       })
     );
   }
