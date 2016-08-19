@@ -1,15 +1,13 @@
 language: php
 sudo: false
 
-env: NODE_ENV="test" NPM_BIN="./node-v6.4.0-linux-x64/bin/npm"
+env: NODE_BIN="./node-v6.4.0-linux-x64/bin/node" NODE_ENV="test" NPM_CLI="./node-v6.4.0-linux-x64/lib/node_modules/npm/bin/npm-cli.js"
 php: '7.0'
 
 install:
 - wget https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.xz
 - tar xf node-v6.4.0-linux-x64.tar.xz
-- $NPM_BIN --version
-- ./node-v6.4.0-linux-x64/bin/node --version
-- $NPM_BIN install
+- $NODE_BIN $NPM_CLI install
 
-script: $NPM_BIN test
-after_script: $NPM_BIN run coverage
+script: $NODE_BIN $NPM_CLI test
+after_script: $NODE_BIN $NPM_CLI run coverage
