@@ -1,12 +1,8 @@
-language: php
+language: node_js
 sudo: false
 
 env: NODE_ENV="test"
-php: '7.0'
-
-install:
-- nvm install 6.4
-- npm install
+node_js: '6.4'
 
 script: npm test
 after_script: npm run coverage
