@@ -42,7 +42,7 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 ```
 
 #### silent
-By default, the plugin prints to the standard output the list of minified scripts. You can disable this output by setting the `silent` option to `true`.
+By default, the plugin prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` option to `true`.
 
 ```javascript
 return gulp.src('path/to/lib/**/*.php', {read: false})

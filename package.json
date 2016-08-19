@@ -11,6 +11,7 @@
   "version": "0.3.0",
 
   "dependencies": {
+    "portfinder": "^1.0.7",
     "superagent": "^2.2.0"
   },
   "devDependencies": {
