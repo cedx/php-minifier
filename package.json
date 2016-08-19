@@ -25,7 +25,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-zip": "^3.2.0",
     "jsdoc": "^3.4.0",
-    "jshint": "^2.9.2",
+    "jshint": "^2.9.3",
     "vinyl": "^1.2.0"
   },
   "engines": {

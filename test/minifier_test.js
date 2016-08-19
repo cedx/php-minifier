@@ -28,9 +28,10 @@ class MinifierTest {
    * Tests the constructor.
    */
   testConstructor() {
-    it('should properly handle the options', () =>
-      assert.equal(new Minifier({binary: 'FooBar'})._options.binary, 'FooBar')
-    );
+    it('should properly handle the options', () => {
+      assert.equal(new Minifier({binary: 'FooBar'})._options.binary, 'FooBar');
+      assert.equal(new Minifier({silent: true})._options.silent, true);
+    });
   }
 
   /**
@@ -38,36 +39,37 @@ class MinifierTest {
    */
   testTransform() {
     let file = new File({path: path.join(__dirname, 'sample.php')});
+    let minifier = new Minifier({silent: true});
 
     it('should remove the inline comments', done =>
-      new Minifier()._transform(file, 'utf8', (err, result) => {
+      minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('<?= \'Hello World!\' ?>'));
-        done();
+        minifier.close().then(done);
       })
     );
 
     it('should remove the multi-line comments', done =>
-      new Minifier()._transform(file, 'utf8', (err, result) => {
+      minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('namespace dummy; class Dummy'));
-        done();
+        minifier.close().then(done);
       })
     );
 
     it('should remove the single-line comments', done =>
-      new Minifier()._transform(file, 'utf8', (err, result) => {
+      minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('$className = get_class($this); return $className;'));
-        done();
+        minifier.close().then(done);
       })
     );
 
     it('should remove the whitespace', done =>
-      new Minifier()._transform(file, 'utf8', (err, result) => {
+      minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('__construct() { }'));
-        done();
+        minifier.close().then(done);
       })
     );
   }
