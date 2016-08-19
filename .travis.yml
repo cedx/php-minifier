@@ -1,13 +1,12 @@
 language: php
 sudo: false
 
-env: NODE_BIN="./node-v6.4.0-linux-x64/bin/node" NODE_ENV="test" NODE_PATH="./node-v6.4.0-linux-x64/lib/node_modules"
+env: NODE_ENV="test"
 php: '7.0'
 
 install:
-- wget https://nodejs.org/dist/v6.4.0/node-v6.4.0-linux-x64.tar.xz
-- tar xf node-v6.4.0-linux-x64.tar.xz
-- $NODE_BIN $NODE_PATH/npm/bin/npm-cli.js install
+- nvm install 6.4
+- npm install
 
-script: $NODE_BIN $NODE_PATH/npm/bin/npm-cli.js test
-after_script: $NODE_BIN $NODE_PATH/codacy-coverage/bin/codacy-coverage.js < var/lcov.info
+script: npm test
+after_script: npm run coverage
