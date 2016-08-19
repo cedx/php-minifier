@@ -20,6 +20,8 @@ class MinifierTest {
     describe('Minifier', function() {
       this.timeout(60000);
       describe('constructor()', self.testConstructor);
+      describe('close()', self.testClose);
+      describe('listen()', self.testListen);
       describe('_transform()', self.testTransform);
     });
   }
@@ -31,6 +33,34 @@ class MinifierTest {
     it('should properly handle the options', () => {
       assert.equal(new Minifier({binary: 'FooBar'})._options.binary, 'FooBar');
       assert.equal(new Minifier({silent: true})._options.silent, true);
+    });
+  }
+
+  /**
+   * Tests the `close` method.
+   */
+  testClose() {
+    it('should reject the promise if the PHP process is not started or already terminated', () => {
+      let minifier = new Minifier();
+      minifier._phpServer = null;
+      minifier.close().then(
+        () => { throw new Error('This promise should not be resolved.'); },
+        () => assert(true)
+      );
+    });
+  }
+
+  /**
+   * Tests the `listen` method.
+   */
+  testListen() {
+    it('should reject the promise if the PHP process is already started', () => {
+      let minifier = new Minifier();
+      minifier._phpServer = {host: '127.0.0.1:8000'};
+      minifier.listen().then(
+        () => { throw new Error('This promise should not be resolved.'); },
+        () => assert(true)
+      );
     });
   }
 
