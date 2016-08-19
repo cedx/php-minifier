@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "main": "./lib/index.js",
   "repository": "aquafadas-com/gulp-php-minify",
-  "version": "0.3.0",
+  "version": "0.3.1",
 
   "dependencies": {
     "portfinder": "^1.0.7",
