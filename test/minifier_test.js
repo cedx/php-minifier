@@ -18,7 +18,7 @@ class MinifierTest {
   run() {
     let self = this;
     describe('Minifier', function() {
-      this.timeout(15000);
+      this.timeout(30000);
       describe('constructor()', self.testConstructor);
       describe('_transform()', self.testTransform);
     });

@@ -1,10 +1,14 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://www.npmjs.com/package/@aquafadas/gulp-php-minify) package.
 
+#### Version 0.3.1
+- Added support for code coverage.
+- Added support for [Travis CI](https://travis-ci.org) continuous integration.
+
 #### Version 0.3.0
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Added the `silent` option: conditionally displaying the path of the minified scripts to the standard output.
-- Drastically improved the performance (up to 30x factor!).
+- Drastically improved the performance (up to a 30x factor).
 - Upgraded the package dependencies.
 
 #### Version 0.2.0
