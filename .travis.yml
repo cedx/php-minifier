@@ -1,8 +1,8 @@
 language: node_js
-sudo: false
+node_js: '6.5'
 
 env: NODE_ENV="test"
-node_js: '6.5'
+sudo: false
 
 script: npm test
 after_script: npm run coverage
