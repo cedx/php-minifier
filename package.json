@@ -15,7 +15,7 @@
     "superagent": "^2.2.0"
   },
   "devDependencies": {
-    "@cedx/gulp-david": "^2.0.3",
+    "@cedx/gulp-david": "^2.0.4",
     "codacy-coverage": "^2.0.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
@@ -29,7 +29,7 @@
     "vinyl": "^1.2.0"
   },
   "engines": {
-    "node": ">=6.4.0"
+    "node": ">=6.5.0"
   },
   "jshintConfig": {
     "esversion": 6,
