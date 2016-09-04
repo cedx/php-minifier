@@ -1,5 +1,5 @@
 # Gulp-PHP-Minify
-![Release](http://img.shields.io/npm/v/@aquafadas/gulp-php-minify.svg) ![License](http://img.shields.io/npm/l/@aquafadas/gulp-php-minify.svg) ![Downloads](http://img.shields.io/npm/dt/@aquafadas/gulp-php-minify.svg) ![Dependencies](http://img.shields.io/david/aquafadas-com/gulp-php-minify.svg) ![Code quality](https://img.shields.io/codacy/grade/7a9f7db5e0174d139641bcc3905cbfed.svg)
+![Release](https://img.shields.io/npm/v/@aquafadas/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@aquafadas/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@aquafadas/gulp-php-minify.svg) ![Dependencies](https://img.shields.io/david/aquafadas-com/gulp-php-minify.svg) ![Code quality](https://img.shields.io/codacy/grade/7a9f7db5e0174d139641bcc3905cbfed.svg)
 
 [Gulp.js](http://gulpjs.com) plugin minifying [PHP](http://php.net) source code by removing comments and whitespace.
 
