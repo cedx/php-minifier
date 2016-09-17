@@ -6,7 +6,7 @@
   "author": "Aquafadas <opensource@aquafadas.com>",
   "bugs": "https://github.com/aquafadas-com/gulp-php-minify/issues",
   "license": "Apache-2.0",
-  "main": "./lib/index.js",
+  "main": "./lib",
   "repository": "aquafadas-com/gulp-php-minify",
   "version": "0.4.0",
 
@@ -29,7 +29,7 @@
     "vinyl": "^1.2.0"
   },
   "engines": {
-    "node": ">=6.5.0"
+    "node": ">=6.6.0"
   },
   "jshintConfig": {
     "esversion": 6,

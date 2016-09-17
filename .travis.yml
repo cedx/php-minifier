@@ -1,5 +1,5 @@
 language: node_js
-node_js: '6.5'
+node_js: '6.6'
 
 env: NODE_ENV="test"
 sudo: false
