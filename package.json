@@ -12,7 +12,7 @@
 
   "dependencies": {
     "portfinder": "^1.0.7",
-    "superagent": "^2.2.0"
+    "superagent": "^2.3.0"
   },
   "devDependencies": {
     "@cedx/gulp-david": "^2.0.4",
