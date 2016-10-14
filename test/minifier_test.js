@@ -1,5 +1,5 @@
 /**
- * Unit tests of the `minifier` module.
+ * Implementation of the `MinifierTest` class.
  * @module test/minifier_test
  */
 const assert = require('assert');
