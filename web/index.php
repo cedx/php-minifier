@@ -19,7 +19,7 @@ class Application {
    * @throws \ErrorException When an error occurred.
    */
   public function handleError($severity, $message, $file = __FILE__, $line = __LINE__) {
-    if(error_reporting() & $severity) throw new \ErrorException($message, 0, $severity, $file, $line);
+    if (error_reporting() & $severity) throw new \ErrorException($message, 0, $severity, $file, $line);
     return false;
   }
 
@@ -40,11 +40,11 @@ class Application {
    * @throws \Exception The requirements are not met, or an error occurred.
    */
   public function processRequest(array $args) {
-    if(!isset($args['file']) || !mb_strlen($args['file'])) throw new \LogicException('Bad Request', 400);
-    if(!is_file($args['file'])) throw new \RuntimeException('Not Found', 404);
+    if (!isset($args['file']) || !mb_strlen($args['file'])) throw new \LogicException('Bad Request', 400);
+    if (!is_file($args['file'])) throw new \RuntimeException('Not Found', 404);
 
     $output = php_strip_whitespace($args['file']);
-    if(!mb_strlen($output)) throw new \RuntimeException('Internal Server Error', 500);
+    if (!mb_strlen($output)) throw new \RuntimeException('Internal Server Error', 500);
     return $output;
   }
 

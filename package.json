@@ -25,7 +25,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-zip": "^3.2.0",
     "jsdoc": "^3.4.2",
-    "vinyl": "^1.2.0"
+    "vinyl": "^2.0.0"
   },
   "engines": {
     "node": ">=6.8.0"
