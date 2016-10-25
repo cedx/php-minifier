@@ -1,0 +1,10 @@
+{
+  "title": "Aquafadas Translation Console",
+
+  "source": "lib/client",
+  "destination": "doc/api/client",
+
+  "manual": {
+    "changelog": ["CHANGELOG.md"]
+  }
+}
