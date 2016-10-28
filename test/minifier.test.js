@@ -1,45 +1,32 @@
-/**
- * Implementation of the `MinifierTest` class.
- * @module test/minifier_test
- */
-const assert = require('assert');
-const File = require('vinyl');
-const Minifier = require('../lib/minifier');
-const path = require('path');
+import assert from 'assert';
+import File from 'vinyl';
+import {Minifier} from '../src';
+import path from 'path';
 
 /**
- * Tests the features of the `Minifier` class.
+ * @test {Minifier}
  */
-class MinifierTest {
+describe('Minifier', function() {
+  this.timeout(60000);
 
   /**
-   * Runs the unit tests.
+   * @test {Minifier#constructor}
    */
-  run() {
-    let self = this;
-    describe('Minifier', function() {
-      this.timeout(60000);
-      describe('constructor()', self.testConstructor);
-      describe('close()', self.testClose);
-      describe('listen()', self.testListen);
-      describe('_transform()', self.testTransform);
-    });
-  }
-
-  /**
-   * Tests the constructor.
-   */
-  testConstructor() {
-    it('should properly handle the options', () => {
+  describe('#constructor()', () => {
+    it('should initialize the existing properties', () => {
       assert.equal(new Minifier({binary: 'FooBar'})._options.binary, 'FooBar');
       assert.equal(new Minifier({silent: true})._options.silent, true);
     });
-  }
+
+    it('should not create new properties', () =>
+      assert(!('foo' in new Minifier({foo: 'bar'})))
+    );
+  });
 
   /**
-   * Tests the `close` method.
+   * @test {Minifier#close}
    */
-  testClose() {
+  describe('#close()', () => {
     it('should reject the promise if the PHP process is not started or already terminated', () => {
       let minifier = new Minifier();
       minifier._phpServer = null;
@@ -48,12 +35,12 @@ class MinifierTest {
         () => assert(true)
       );
     });
-  }
+  });
 
   /**
-   * Tests the `listen` method.
+   * @test {Minifier#listen}
    */
-  testListen() {
+  describe('#listen()', () => {
     it('should reject the promise if the PHP process is already started', () => {
       let minifier = new Minifier();
       minifier._phpServer = {host: '127.0.0.1:8000'};
@@ -62,12 +49,12 @@ class MinifierTest {
         () => assert(true)
       );
     });
-  }
+  });
 
   /**
-   * Tests the `_transform` method.
+   * @test {Minifier#_transform}
    */
-  testTransform() {
+  describe('#_transform()', () => {
     let file = new File({path: path.join(__dirname, 'sample.php')});
     let minifier = new Minifier({silent: true});
 
@@ -102,8 +89,5 @@ class MinifierTest {
         return minifier.close();
       })
     );
-  }
-}
-
-// Run all tests.
-new MinifierTest().run();
+  });
+});
