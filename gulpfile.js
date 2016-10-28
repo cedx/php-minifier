@@ -1,7 +1,3 @@
-/**
- * Provides tasks for [Gulp.js](http://gulpjs.com) build system.
- * @module gulpfile
- */
 'use strict';
 
 const childProcess = require('child_process');
@@ -14,7 +10,7 @@ const pkg = require('./package.json');
 
 /**
  * The task settings.
- * @constant {object}
+ * @type {object}
  */
 const config = {
   output: `${pkg.name}-${pkg.version}.zip`,
@@ -23,7 +19,7 @@ const config = {
 
 /**
  * The task plugins.
- * @constant {object}
+ * @type {object}
  */
 const plugins = loadPlugins({
   pattern: ['gulp-*', '@*/gulp-*'],
@@ -33,17 +29,26 @@ const plugins = loadPlugins({
 /**
  * Runs the default tasks.
  */
-gulp.task('default', ['lint']);
+gulp.task('default', ['build']);
+
+/**
+ * Builds the sources.
+ */
+gulp.task('build', () => gulp.src('src/**/*.js')
+  .pipe(plugins.babel())
+  .pipe(gulp.dest('lib'))
+);
 
 /**
  * Checks the package dependencies.
  */
-gulp.task('check', () => gulp.src('package.json')
-  .pipe(plugins.cedx.david()).on('error', function(err) {
+gulp.task('check', () => {
+  const {david} = plugins.cedx.david;
+  return gulp.src('package.json').pipe(david()).on('error', function(err) {
     console.error(err);
     this.emit('end');
-  })
-);
+  });
+});
 
 /**
  * Deletes all generated files and reset any saved state.
@@ -71,22 +76,15 @@ gulp.task('dist', () => gulp.src(config.sources, {base: '.'})
 /**
  * Builds the documentation.
  */
-gulp.task('doc', ['doc:build'], () => new Promise((resolve, reject) =>
-  fs.rename(`doc/${pkg.name}/${pkg.version}`, 'doc/api', err => {
-    if (err) reject(err);
-    else del('doc/@aquafadas').then(resolve, reject);
-  })
-));
-
-gulp.task('doc:build', () => {
-  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'jsdoc.cmd' : 'jsdoc');
-  return del('doc/api').then(() => _exec(`${command} --configure doc/jsdoc.json`));
+gulp.task('doc', () => {
+  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'esdoc.cmd' : 'esdoc');
+  return del('doc/api').then(() => _exec(`${command} -c doc/esdoc.json`));
 });
 
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'], {base: '.'})
+gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: '.'})
   .pipe(plugins.eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
@@ -94,7 +92,7 @@ gulp.task('fix', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'], {base: 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
   .pipe(plugins.eslint())
   .pipe(plugins.eslint.format())
   .pipe(plugins.eslint.failAfterError())
@@ -103,22 +101,27 @@ gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
 /**
  * Runs the unit tests.
  */
-gulp.task('test', ['test:coverage'], () => gulp.src(['test/*.js'], {read: false})
+gulp.task('test', ['test:instrument'], () => gulp.src('test/**/*.js', {read: false})
   .pipe(plugins.mocha())
   .pipe(plugins.istanbul.writeReports({dir: 'var', reporters: ['lcovonly']}))
 );
 
-gulp.task('test:coverage', () => gulp.src(['lib/*.js'])
-  .pipe(plugins.istanbul())
+gulp.task('test:instrument', ['test:setup'], () => gulp.src('src/**/*.js')
+  .pipe(plugins.istanbul({instrumenter: require('isparta').Instrumenter}))
   .pipe(plugins.istanbul.hookRequire())
 );
+
+gulp.task('test:setup', () => new Promise(resolve => {
+  process.env.BABEL_DISABLE_CACHE = process.platform == 'win32' ? '1' : '0';
+  require('babel-register');
+  resolve();
+}));
 
 /**
  * Runs a command and prints its output.
  * @param {string} command The command to run, with space-separated arguments.
  * @param {object} [options] The settings to customize how the process is spawned.
- * @returns {Promise.<string>} The command output when it is finally terminated.
- * @private
+ * @returns {Promise<string>} The command output when it is finally terminated.
  */
 function _exec(command, options = {}) {
   return new Promise((resolve, reject) => childProcess.exec(command, options, (err, stdout) => {
