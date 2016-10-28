@@ -1,9 +1,14 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://www.npmjs.com/package/@aquafadas/gulp-php-minify) package.
+This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) package.
 
 #### Version 0.4.0
+- Breaking change: the plug-in is not anymore a default export. The use of destructuring assignment is advised to access it.
+- Breaking change: ported the [CommonJS](https://nodejs.org/api/modules.html) modules to ES2015 format.
+- Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: replaced the test classes by plain tests.
 - Added a build task for fixing the coding standards issues.
+- Replaced [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
 - Replaced [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
 - Updated the package dependencies.
 

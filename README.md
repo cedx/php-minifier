@@ -18,7 +18,7 @@ The plugin takes a list of [PHP](http://php.net) scripts as input, and removes t
 
 ```javascript
 const gulp = require('gulp');
-const phpMinify = require('@aquafadas/gulp-php-minify');
+const {phpMinify} = require('@aquafadas/gulp-php-minify');
 
 gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(phpMinify())
@@ -51,8 +51,9 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 ```
 
 ## See Also
+- [API Reference](https://aquafadas-com.github.io/gulp-smartling)
 - [Code Quality](https://www.codacy.com/app/aquafadas/gulp-php-minify)
 - [Continuous Integration](https://travis-ci.org/aquafadas-com/gulp-php-minify)
 
 ## License
-[Gulp-PHP-Minify](https://www.npmjs.com/package/@aquafadas/gulp-php-minify) is distributed under the Apache License, version 2.0.
+[Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) is distributed under the Apache License, version 2.0.
