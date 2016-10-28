@@ -2,6 +2,7 @@
 /*.iml
 /**/.DS_Store
 /doc/api/
+/lib/
 /node_modules/
 /npm-debug.log
 /var/

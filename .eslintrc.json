@@ -12,20 +12,20 @@
     "sourceType": "module"
   },
   "rules": {
-
-    // Possible errors.
     "no-console": "off",
     "no-empty": ["error", {"allowEmptyCatch": true}],
     "no-extra-parens": "error",
     "no-template-curly-in-string": "error",
     "no-unsafe-negation": "error",
     "valid-jsdoc": ["error", {
-      "prefer": {"constructor": "class", "const": "constant", "exception": "throws", "extends": "augments", "return": "returns", "virtual": "abstract"},
-      "preferType": {"Boolean": "boolean", "Number": "number", "Object": "object", "String": "string"},
+      "prefer": {
+        "arg": "param", "argument": "param", "augments": "extends", "description": "desc", "exception": "throws",
+        "fires": "emits", "host": "external", "prop": "property", "returns": "return", "virtual": "abstract"
+      },
+      "preferType": {"Boolean": "boolean", "Function": "function", "Number": "number", "Object": "object", "String": "string", "Symbol": "symbol"},
       "requireReturn": false
     }],
 
-    // Best practices.
     "array-callback-return": "error",
     "block-scoped-var": "error",
     "consistent-return": "error",
@@ -69,19 +69,16 @@
     "wrap-iife": ["error", "inside"],
     "yoda": ["error", "never"],
 
-    // Variables.
     "no-catch-shadow": "error",
     "no-undefined": "error",
     "no-use-before-define": ["error", {"functions": false}],
 
-    // Node.js and CommonJS.
     "handle-callback-err": "error",
     "no-mixed-requires": "error",
     "no-new-require": "error",
     "no-path-concat": "error",
     "no-sync": "warn",
 
-    // Stylistic issues.
     "brace-style": ["error", "stroustrup", {"allowSingleLine": true}],
     "camelcase": "error",
     "consistent-this": ["error", "self"],
@@ -120,7 +117,6 @@
     "spaced-comment": "error",
     "unicode-bom": "error",
 
-    // ECMAScript 6.
     "arrow-body-style": "error",
     "arrow-parens": ["error", "as-needed"],
     "arrow-spacing": "error",
