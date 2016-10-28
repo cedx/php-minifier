@@ -1,10 +1,14 @@
 {
-  "title": "Aquafadas Translation Console",
+  "title": "Gulp-PHP-Minify",
 
-  "source": "lib/client",
-  "destination": "doc/api/client",
+  "source": "src",
+  "destination": "doc/api",
 
   "manual": {
     "changelog": ["CHANGELOG.md"]
+  },
+  "test": {
+    "source": "test",
+    "type": "mocha"
   }
 }
