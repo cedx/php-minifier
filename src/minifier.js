@@ -58,12 +58,15 @@ export class Minifier extends Transform {
   listen() {
     if (this._phpServer) return Observable.throw(new Error('The PHP process is already started.'));
 
-    return Observable.bindNodeCallback(portFinder.getPort).map(port => {
+    let getPort = Observable.bindNodeCallback(portFinder.getPort);
+    return getPort().map(port => {
       let host = `127.0.0.1:${port}`;
       let args = ['-S', host, '-t', path.join(__dirname, '../web')];
 
       this._phpServer = {host, process: child.spawn(this.binary, args)};
       this.once('end', () => this.close().subscribe());
+      this.once('end', () => this.close().subscribe()); // TODO: maybe 'finish' is a better event.
+      return null; // TODO: is it really required?
     });
   }
 
@@ -78,10 +81,11 @@ export class Minifier extends Transform {
 
     let request = superagent
       .get(`http://${this._phpServer.host}/index.php`)
-      .query({file: file.path})
-      .bind(superagent);
+      .query({file: file.path});
 
-    Observable.bindNodeCallback(request)
+    // let promise = this._phpServer ? Promise.resolve() : this.listen();
+    let fetch = Observable.bindNodeCallback(request.end.bind(request));
+    fetch()
       .map(res => {
         file.contents = Buffer.from(res.text, encoding);
         return file;
