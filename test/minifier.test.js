@@ -1,6 +1,6 @@
 import assert from 'assert';
 import File from 'vinyl';
-import {Minifier} from '../src';
+import {Minifier} from '../src/index';
 import path from 'path';
 
 /**
@@ -14,7 +14,7 @@ describe('Minifier', function() {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      assert.equal(new Minifier({binary: 'FooBar'})._options.binary, 'FooBar');
+      assert.equal(new Minifier({binary: './FooBar.exe'})._options.binary, 'FooBar.exe');
       assert.equal(new Minifier({silent: true})._options.silent, true);
     });
 
@@ -27,13 +27,13 @@ describe('Minifier', function() {
    * @test {Minifier#close}
    */
   describe('#close()', () => {
-    it('should reject the promise if the PHP process is not started or already terminated', () => {
+    it('should error the observable if the PHP process is not started or already terminated', done => {
       let minifier = new Minifier();
       minifier._phpServer = null;
-      minifier.close().then(
-        () => { throw new Error('This promise should not be resolved.'); },
-        () => assert(true)
-      );
+      minifier.close().subscribe({
+        complete: () => done(new Error('This observable should not be completed.')),
+        error: () => { assert(true); done(); }
+      });
     });
   });
 
@@ -41,13 +41,13 @@ describe('Minifier', function() {
    * @test {Minifier#listen}
    */
   describe('#listen()', () => {
-    it('should reject the promise if the PHP process is already started', () => {
+    it('should error the observable if the PHP process is already started', done => {
       let minifier = new Minifier();
       minifier._phpServer = {host: '127.0.0.1:8000'};
-      minifier.listen().then(
-        () => { throw new Error('This promise should not be resolved.'); },
-        () => assert(true)
-      );
+      minifier.listen().subscribe({
+        complete: () => done(new Error('This observable should not be completed.')),
+        error: () => { assert(true); done(); }
+      });
     });
   });
 
@@ -62,7 +62,7 @@ describe('Minifier', function() {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('<?= \'Hello World!\' ?>'));
-        return minifier.close();
+        minifier.close().subscribe();
       })
     );
 
@@ -70,7 +70,7 @@ describe('Minifier', function() {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('namespace dummy; class Dummy'));
-        return minifier.close();
+        minifier.close().subscribe();
       })
     );
 
@@ -78,7 +78,7 @@ describe('Minifier', function() {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('$className = get_class($this); return $className;'));
-        return minifier.close();
+        minifier.close().subscribe();
       })
     );
 
@@ -86,7 +86,7 @@ describe('Minifier', function() {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
         assert(result.contents.toString().includes('__construct() { }'));
-        return minifier.close();
+        minifier.close().subscribe();
       })
     );
   });
