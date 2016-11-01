@@ -1,8 +1,8 @@
 <?php
 /**
- * Implementation of the `gulp\smartling\Application` class.
+ * Implementation of the `gulp\php_minify\Application` class.
  */
-namespace gulp\smartling;
+namespace gulp\php_minify;
 
 /**
  * An HTTP server that strip comments and whitespace from the files specified in client requests.
@@ -51,7 +51,7 @@ class Application {
   /**
    * Sends the specified response body.
    * @param string $body The response body to send to the client.
-   * @param int $status
+   * @param int $status The status code of the response.
    */
   public function sendResponse($body, $status = 200) {
     http_response_code($status);
