@@ -17,7 +17,7 @@ const config = {
 };
 
 /**
- * The task plugins.
+ * The task plug-ins.
  * @type {object}
  */
 const plugins = loadPlugins({
