@@ -53,20 +53,18 @@ export class Minifier extends Transform {
 
   /**
    * Starts the underlying PHP process: begins accepting connections.
-   * @return {Observable} Completes when the PHP process has been started.
+   * @return {Observable<number>} The port used by the PHP process.
    */
   listen() {
     if (this._phpServer) return Observable.throw(new Error('The PHP process is already started.'));
 
     let getPort = Observable.bindNodeCallback(portFinder.getPort);
-    return getPort().map(port => {
+    return getPort().do(port => {
       let host = `127.0.0.1:${port}`;
       let args = ['-S', host, '-t', path.join(__dirname, '../web')];
 
       this._phpServer = {host, process: child.spawn(this.binary, args)};
       this.once('end', () => this.close().subscribe());
-      this.once('end', () => this.close().subscribe()); // TODO: maybe 'finish' is a better event.
-      return null; // TODO: is it really required?
     });
   }
 
