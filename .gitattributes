@@ -5,6 +5,7 @@
 .eslintrc.json text
 .gitattributes text
 .gitignore text
+.npmignore text
 .travis.yml text
 
 *.js text
