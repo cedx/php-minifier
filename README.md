@@ -1,5 +1,5 @@
 # Gulp-PHP-Minify
-![Release](https://img.shields.io/npm/v/@aquafadas/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@aquafadas/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@aquafadas/gulp-php-minify.svg) ![Dependencies](https://img.shields.io/david/aquafadas-com/gulp-php-minify.svg) ![Code quality](https://img.shields.io/codacy/grade/7a9f7db5e0174d139641bcc3905cbfed.svg)
+![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@cedx/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/gulp-php-minify.svg) ![Dependencies](https://img.shields.io/david/cedx/gulp-php-minify.svg) ![Code quality](https://img.shields.io/codacy/grade/042f875438fe4ea383fabea5dad8e353.svg)
 
 [Gulp.js](http://gulpjs.com) plug-in minifying [PHP](https://secure.php.net) source code by removing comments and whitespace.
 
@@ -8,7 +8,7 @@ If you haven't used [Gulp.js](http://gulpjs.com) before, be sure to check out th
 Once you're familiar with that process, you may install this plug-in with this command:
 
 ```shell
-$ npm install --save-dev @aquafadas/gulp-php-minify
+$ npm install --save-dev @cedx/gulp-php-minify
 ```
 
 Once the plug-in has been installed, it may be enabled inside your `gulpfile.js`.
@@ -18,7 +18,7 @@ The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and 
 
 ```javascript
 const gulp = require('gulp');
-const {phpMinify} = require('@aquafadas/gulp-php-minify');
+const {phpMinify} = require('@cedx/gulp-php-minify');
 
 gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(phpMinify())
@@ -51,9 +51,9 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 ```
 
 ## See Also
-- [API Reference](https://aquafadas-com.github.io/gulp-php-minify)
-- [Code Quality](https://www.codacy.com/app/aquafadas/gulp-php-minify)
-- [Continuous Integration](https://travis-ci.org/aquafadas-com/gulp-php-minify)
+- [API Reference](https://cedx.github.io/gulp-php-minify)
+- [Code Quality](https://www.codacy.com/app/cedx/gulp-php-minify)
+- [Continuous Integration](https://travis-ci.org/cedx/gulp-php-minify)
 
 ## License
-[Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) is distributed under the Apache License, version 2.0.
+[Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) is distributed under the Apache License, version 2.0.

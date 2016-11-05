@@ -1,5 +1,5 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/aquafadas-com/gulp-php-minify) package.
+This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 #### Version 0.4.0
 - Breaking change: the plug-in is not anymore a default export. The use of destructuring assignment is advised to access it.

@@ -1,12 +1,12 @@
 {
   "description": "Gulp.js plug-in minifying PHP source code by removing comments and whitespace.",
-  "homepage": "https://github.com/aquafadas-com/gulp-php-minify",
-  "name": "@aquafadas/gulp-php-minify",
+  "homepage": "https://github.com/cedx/gulp-php-minify",
+  "name": "@cedx/gulp-php-minify",
 
-  "author": "Aquafadas <opensource@aquafadas.com>",
-  "bugs": "https://github.com/aquafadas-com/gulp-php-minify/issues",
+  "author": "Cédric Belin <cedric@belin.io>",
+  "bugs": "https://github.com/cedx/gulp-php-minify/issues",
   "license": "Apache-2.0",
-  "repository": "aquafadas-com/gulp-php-minify",
+  "repository": "cedx/gulp-php-minify",
   "version": "0.4.0",
 
   "jsnext:main": "./src/index",
