@@ -18,9 +18,9 @@ describe('Minifier', function() {
       assert.equal(new Minifier({silent: true}).silent, true);
     });
 
-    it('should not create new properties', () =>
-      assert(!('foo' in new Minifier({foo: 'bar'})))
-    );
+    it('should not create new properties', () => {
+      assert.ok(!('foo' in new Minifier({foo: 'bar'})));
+    });
   });
 
   /**
@@ -32,7 +32,7 @@ describe('Minifier', function() {
       minifier._phpServer = null;
       minifier.close().subscribe({
         complete: () => done(new Error('This observable should not be completed.')),
-        error: () => { assert(true); done(); }
+        error: () => { assert.ok(true); done(); }
       });
     });
   });
@@ -46,7 +46,7 @@ describe('Minifier', function() {
       minifier._phpServer = {host: '127.0.0.1:8000'};
       minifier.listen().subscribe({
         complete: () => done(new Error('This observable should not be completed.')),
-        error: () => { assert(true); done(); }
+        error: () => { assert.ok(true); done(); }
       });
     });
   });
@@ -58,36 +58,36 @@ describe('Minifier', function() {
     let file = new File({path: path.join(__dirname, 'sample.php')});
     let minifier = new Minifier({silent: true});
 
-    it('should remove the inline comments', () =>
+    it('should remove the inline comments', () => {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().includes('<?= \'Hello World!\' ?>'));
+        assert.ok(result.contents.toString().includes('<?= \'Hello World!\' ?>'));
         minifier.close().subscribe();
-      })
-    );
+      });
+    });
 
-    it('should remove the multi-line comments', () =>
+    it('should remove the multi-line comments', () => {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().includes('namespace dummy; class Dummy'));
+        assert.ok(result.contents.toString().includes('namespace dummy; class Dummy'));
         minifier.close().subscribe();
-      })
-    );
+      });
+    });
 
-    it('should remove the single-line comments', () =>
+    it('should remove the single-line comments', () => {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().includes('$className = get_class($this); return $className;'));
+        assert.ok(result.contents.toString().includes('$className = get_class($this); return $className;'));
         minifier.close().subscribe();
-      })
-    );
+      });
+    });
 
-    it('should remove the whitespace', () =>
+    it('should remove the whitespace', () => {
       minifier._transform(file, 'utf8', (err, result) => {
         assert.ifError(err);
-        assert(result.contents.toString().includes('__construct() { }'));
+        assert.ok(result.contents.toString().includes('__construct() { }'));
         minifier.close().subscribe();
-      })
-    );
+      });
+    });
   });
 });
