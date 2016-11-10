@@ -32,7 +32,7 @@ describe('Minifier', function() {
       minifier._phpServer = null;
       minifier.close().subscribe({
         complete: () => done(new Error('This observable should not be completed.')),
-        error: () => { assert.ok(true); done(); }
+        error: () => done()
       });
     });
   });
@@ -46,7 +46,7 @@ describe('Minifier', function() {
       minifier._phpServer = {host: '127.0.0.1:8000'};
       minifier.listen().subscribe({
         complete: () => done(new Error('This observable should not be completed.')),
-        error: () => { assert.ok(true); done(); }
+        error: () => done()
       });
     });
   });
