@@ -77,7 +77,7 @@ gulp.task('dist', () => gulp.src(config.sources, {base: '.'})
  */
 gulp.task('doc', () => {
   let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'esdoc.cmd' : 'esdoc');
-  return del('doc/api').then(() => _exec(`${command} -c doc/esdoc.json`));
+  return del('doc/api').then(() => _exec(`${command} -c esdoc.json`));
 });
 
 /**
