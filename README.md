@@ -51,7 +51,7 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 ```
 
 ## See Also
-- [API Reference](http://dev.belin.io/gulp-php-minify)
+- [API Reference](https://cedx.github.io/gulp-php-minify)
 - [Code Quality](https://www.codacy.com/app/cedx/gulp-php-minify)
 - [Continuous Integration](https://travis-ci.org/cedx/gulp-php-minify)
 
