@@ -1,3 +1,5 @@
+'use strict';
+
 import assert from 'assert';
 import File from 'vinyl';
 import {Minifier} from '../src/index';
