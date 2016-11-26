@@ -32,7 +32,7 @@
     "gulp-mocha": "^3.0.1",
     "gulp-zip": "^3.2.0",
     "isparta": "^4.0.0",
-    "vinyl": "^1.2.0"
+    "vinyl": "^2.0.1"
   },
   "engines": {
     "node": ">=6.9.0"
