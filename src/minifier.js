@@ -84,17 +84,15 @@ export class Minifier extends Transform {
   _transform(file, encoding, callback) {
     if (!this.silent) console.log(`Minifying: ${file.path}`);
 
-    this.listen().subscribe(() => {
-      superagent
-        .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
-        .query({file: file.path})
-        .end((err, res) => {
-          if (err) callback(new Error(`[${pkg.name}] ${err}`));
-          else {
-            file.contents = Buffer.from(res.text, encoding);
-            callback(null, file);
-          }
-        });
-    });
+    this.listen().subscribe(() => superagent
+      .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
+      .query({file: file.path})
+      .end((err, res) => {
+        if (err) callback(new Error(`[${pkg.name}] ${err}`));
+        else {
+          file.contents = Buffer.from(res.text, encoding);
+          callback(null, file);
+        }
+      }));
   }
 }
