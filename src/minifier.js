@@ -38,32 +38,31 @@ export class Minifier extends Transform {
   }
 
   /**
-   * Terminates the underlying PHP process: stops the server from accepting new connections.
+   * Terminates the underlying PHP process: stops the server from accepting new connections. It does nothing if the server is already closed.
    * @return {Observable} Completes when the PHP process is finally terminated.
    */
   close() {
-    if (!this._phpServer) return Observable.throw(new Error('The PHP process is not started.'));
-
-    return new Observable(observer => {
+    return !this._phpServer ? Observable.of(null) : new Observable(observer => {
       this._phpServer.process.kill();
       this._phpServer = null;
+      observer.next();
       observer.complete();
     });
   }
 
   /**
-   * Starts the underlying PHP process: begins accepting connections.
+   * Starts the underlying PHP process: begins accepting connections. It does nothing if the server is already started.
    * @return {Observable<number>} The port used by the PHP process.
    */
   listen() {
-    if (this._phpServer) return Observable.throw(new Error('The PHP process is already started.'));
+    if (this._phpServer) return Observable.of(this._phpServer.port);
 
     let getPort = Observable.bindNodeCallback(portFinder.getPort);
     return getPort().do(port => {
-      let host = `127.0.0.1:${port}`;
-      let args = ['-S', host, '-t', path.join(__dirname, '../web')];
+      let address = '127.0.0.1';
+      let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
 
-      this._phpServer = {host, process: child.spawn(this.binary, args)};
+      this._phpServer = {address, port, process: child.spawn(this.binary, args)};
       this.once('end', () => this.close().subscribe());
     });
   }
@@ -77,20 +76,17 @@ export class Minifier extends Transform {
   _transform(file, encoding, callback) {
     if (!this.silent) console.log(`Minifying: ${file.path}`);
 
-    let request = superagent
-      .get(`http://${this._phpServer.host}/index.php`)
-      .query({file: file.path});
-
-    // let promise = this._phpServer ? Promise.resolve() : this.listen();
-    let fetch = Observable.bindNodeCallback(request.end.bind(request));
-    fetch()
-      .map(res => {
-        file.contents = Buffer.from(res.text, encoding);
-        return file;
-      })
-      .subscribe(
-        file => callback(null, file),
-        err => callback(new Error(`[${pkg.name}] ${err}`))
-      );
+    this.listen().subscribe(() => {
+      superagent
+        .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
+        .query({file: file.path})
+        .end((err, res) => {
+          if (err) callback(new Error(`[${pkg.name}] ${err}`));
+          else {
+            file.contents = Buffer.from(res.text, encoding);
+            callback(null, file);
+          }
+        });
+    });
   }
 }
