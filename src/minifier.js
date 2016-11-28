@@ -50,7 +50,7 @@ export class Minifier extends Transform {
    * @return {Observable} Completes when the PHP process is finally terminated.
    */
   close() {
-    return !this._phpServer ? Observable.of(null) : new Observable(observer => {
+    return !this.listening ? Observable.of(null) : new Observable(observer => {
       this._phpServer.process.kill();
       this._phpServer = null;
       observer.next();
@@ -63,7 +63,7 @@ export class Minifier extends Transform {
    * @return {Observable<number>} The port used by the PHP process.
    */
   listen() {
-    if (this._phpServer) return Observable.of(this._phpServer.port);
+    if (this.listening) return Observable.of(this._phpServer.port);
 
     let getPort = Observable.bindNodeCallback(portFinder.getPort);
     return getPort().do(port => {
