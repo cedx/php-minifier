@@ -26,30 +26,25 @@ describe('Minifier', function() {
   });
 
   /**
-   * @test {Minifier#close}
+   * @test {Minifier#listening}
    */
-  describe('#close()', () => {
-    it('should error the observable if the PHP process is not started or already terminated', done => {
-      let minifier = new Minifier();
-      minifier._phpServer = null;
-      minifier.close().subscribe({
-        complete: () => done(new Error('This observable should not be completed.')),
-        error: () => done()
-      });
-    });
-  });
+  describe('#listening', () => {
+    let minifier = new Minifier();
 
-  /**
-   * @test {Minifier#listen}
-   */
-  describe('#listen()', () => {
-    it('should error the observable if the PHP process is already started', done => {
-      let minifier = new Minifier();
-      minifier._phpServer = {host: '127.0.0.1:8000'};
-      minifier.listen().subscribe({
-        complete: () => done(new Error('This observable should not be completed.')),
-        error: () => done()
-      });
+    it('should return `true` when the server is listening', done => {
+      assert.ok(!minifier.listening);
+      minifier.listen().subscribe(
+        () => assert.ok(minifier.listening),
+        done, done
+      );
+    });
+
+    it('should return `false` when the server is not listening', done => {
+      assert.ok(minifier.listening);
+      minifier.close().subscribe(
+        () => assert.ok(!minifier.listening),
+        done, done
+      );
     });
   });
 

@@ -38,6 +38,14 @@ export class Minifier extends Transform {
   }
 
   /**
+   * Value indicating whether the server is currently listening.
+   * @type {boolean}
+   */
+  get listening() {
+    return typeof this._phpServer == 'object' && this._phpServer;
+  }
+
+  /**
    * Terminates the underlying PHP process: stops the server from accepting new connections. It does nothing if the server is already closed.
    * @return {Observable} Completes when the PHP process is finally terminated.
    */
