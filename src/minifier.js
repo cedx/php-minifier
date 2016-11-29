@@ -38,7 +38,7 @@ export class Minifier extends Transform {
   }
 
   /**
-   * Value indicating whether the server is currently listening.
+   * Value indicating whether the PHP process is currently listening.
    * @type {boolean}
    */
   get listening() {
@@ -53,6 +53,10 @@ export class Minifier extends Transform {
     return !this.listening ? Observable.of(null) : new Observable(observer => {
       this._phpServer.process.kill();
       this._phpServer = null;
+
+      this.removeAllListeners('end');
+      this.removeAllListeners('error');
+
       observer.next();
       observer.complete();
     });
@@ -69,9 +73,10 @@ export class Minifier extends Transform {
     return getPort().do(port => {
       let address = '127.0.0.1';
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-
       this._phpServer = {address, port, process: child.spawn(this.binary, args)};
+
       this.once('end', () => this.close().subscribe());
+      this.once('error', () => this.close().subscribe());
     });
   }
 

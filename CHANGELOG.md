@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+#### Version 1.1.0
+- Properly handle the stream events: added support for the `error` event.
+
 #### Version 1.0.1
 - Fixed [GitHub issue #1](https://github.com/cedx/gulp-php-minify/issues/1).
 
