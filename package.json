@@ -14,8 +14,8 @@
 
   "dependencies": {
     "portfinder": "^1.0.10",
-    "rxjs": "^5.0.0-rc.4",
-    "superagent": "^3.1.0"
+    "rxjs": "^5.0.1",
+    "superagent": "^3.2.1"
   },
   "devDependencies": {
     "@cedx/gulp-david": "^3.0.2",
