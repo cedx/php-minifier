@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '6.9'
-- '7.2'
+- '7.3'
 
 env: NODE_ENV="test"
 sudo: false
