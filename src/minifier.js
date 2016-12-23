@@ -1,4 +1,4 @@
-import child from 'child_process';
+import childProcess from 'child_process';
 import path from 'path';
 import {Observable} from 'rxjs';
 import * as pkg from '../package.json';
@@ -73,7 +73,7 @@ export class Minifier extends Transform {
     return getPort().do(port => {
       let address = '127.0.0.1';
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child.spawn(this.binary, args)};
+      this._phpServer = {address, port, process: childProcess.spawn(this.binary, args)};
 
       this.once('end', () => this.close().subscribe());
       this.once('error', () => this.close().subscribe());

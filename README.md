@@ -1,9 +1,9 @@
 # Gulp-PHP-Minify
-![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@cedx/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/gulp-php-minify.svg) ![Dependencies](https://img.shields.io/david/cedx/gulp-php-minify.svg) ![Code quality](https://img.shields.io/codacy/grade/042f875438fe4ea383fabea5dad8e353.svg)
+![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Dependencies](https://david-dm.org/cedx/gulp-php-minify.svg) ![Coverage](https://coveralls.io/repos/github/cedx/gulp-php-minify/badge.svg)
 
 [Gulp.js](http://gulpjs.com) plug-in minifying [PHP](https://secure.php.net) source code by removing comments and whitespace.
 
-## Getting Started
+## Getting started
 If you haven't used [Gulp.js](http://gulpjs.com) before, be sure to check out the [related documentation](https://github.com/gulpjs/gulp/blob/master/docs/README.md), as it explains how to create a `gulpfile.js` as well as install and use plug-ins.
 Once you're familiar with that process, you may install this plug-in with this command:
 
@@ -50,10 +50,10 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(gulp.dest('path/to/out'));
 ```
 
-## See Also
-- [API Reference](https://cedx.github.io/gulp-php-minify)
-- [Code Quality](https://www.codacy.com/app/cedx/gulp-php-minify)
-- [Continuous Integration](https://travis-ci.org/cedx/gulp-php-minify)
+## See also
+- [API reference](https://cedx.github.io/gulp-php-minify)
+- [Code coverage](https://coveralls.io/github/cedx/gulp-php-minify)
+- [Continuous integration](https://travis-ci.org/cedx/gulp-php-minify)
 
 ## License
 [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) is distributed under the Apache License, version 2.0.

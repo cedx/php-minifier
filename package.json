@@ -14,7 +14,7 @@
 
   "dependencies": {
     "portfinder": "^1.0.10",
-    "rxjs": "^5.0.1",
+    "rxjs": "^5.0.2",
     "superagent": "^3.3.1"
   },
   "devDependencies": {

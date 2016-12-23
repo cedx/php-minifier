@@ -1,6 +1,6 @@
 'use strict';
 
-const child = require('child_process');
+const childProcess = require('child_process');
 const del = require('del');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
@@ -77,8 +77,8 @@ gulp.task('dist', () => gulp.src(config.sources, {base: '.'})
  * Builds the documentation.
  */
 gulp.task('doc', () => {
-  let command = path.join('node_modules/.bin', process.platform == 'win32' ? 'esdoc.cmd' : 'esdoc');
-  return del('doc/api').then(() => _exec(`${command} -c esdoc.json`));
+  let executable = path.join('node_modules/.bin', process.platform == 'win32' ? 'esdoc.cmd' : 'esdoc');
+  return del('doc/api').then(() => _exec(`${executable} -c esdoc.json`));
 });
 
 /**
@@ -124,7 +124,7 @@ gulp.task('test:setup', () => new Promise(resolve => {
  * @return {Promise<string>} The command output when it is finally terminated.
  */
 function _exec(command, options = {}) {
-  return new Promise((resolve, reject) => child.exec(command, options, (err, stdout) => {
+  return new Promise((resolve, reject) => childProcess.exec(command, options, (err, stdout) => {
     if (err) reject(err);
     else resolve(stdout.trim());
   }));
