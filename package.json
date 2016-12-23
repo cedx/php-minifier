@@ -21,7 +21,7 @@
     "@cedx/gulp-david": "^3.0.2",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
-    "codacy-coverage": "^2.0.0",
+    "coveralls": "^2.11.15",
     "del": "^2.2.2",
     "esdoc": "^0.4.8",
     "gulp": "^3.9.1",
@@ -47,7 +47,7 @@
     "rxjs"
   ],
   "scripts": {
-    "coverage": "codacy-coverage < var/lcov.info",
+    "coverage": "cat var/lcov.info | coveralls",
     "prepublish": "gulp build",
     "test": "gulp test"
   }
