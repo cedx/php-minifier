@@ -54,9 +54,6 @@ export class Minifier extends Transform {
       this._phpServer.process.kill();
       this._phpServer = null;
 
-      this.removeAllListeners('end');
-      this.removeAllListeners('error');
-
       observer.next();
       observer.complete();
     });
@@ -75,8 +72,12 @@ export class Minifier extends Transform {
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
       this._phpServer = {address, port, process: childProcess.spawn(this.binary, args)};
 
-      this.once('end', () => this.close().subscribe());
-      this.once('error', () => this.close().subscribe());
+      let listener = () => {
+        this.removeListener('end', listener).removeListener('error', listener);
+        this.close().subscribe();
+      };
+
+      this.once('end', listener).once('error', listener);
     });
   }
 
