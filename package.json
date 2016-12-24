@@ -18,7 +18,7 @@
     "superagent": "^3.3.1"
   },
   "devDependencies": {
-    "@cedx/gulp-david": "^3.0.2",
+    "@cedx/gulp-david": "^3.1.0",
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
     "coveralls": "^2.11.15",
