@@ -2,7 +2,9 @@
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 #### Version 1.1.0
-- Properly handle the stream events: added support for the `error` event.
+- Properly handle the stream events: added support for the `error` event, remove the registered listeners on stream close.
+- Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
+- Updated the package dependencies.
 
 #### Version 1.0.1
 - Fixed [GitHub issue #1](https://github.com/cedx/gulp-php-minify/issues/1).
