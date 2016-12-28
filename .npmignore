@@ -6,9 +6,10 @@
 
 /.babelrc
 /.editorconfig
-/.eslintrc.json
+/.esdoc.json
+/.eslintrc.yaml
 /.gitattributes
+/.gitignore
 /.travis.yml
 /*.iml
 /*.js
-/esdoc.json
