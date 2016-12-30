@@ -50,7 +50,7 @@ export class Minifier extends Transform {
    * @return {Observable} Completes when the PHP process is finally terminated.
    */
   close() {
-    return !this.listening ? Observable.of(null) : new Observable(observer => {
+    return !this.listening ? Observable.of(null) : Observable.create(observer => {
       this._phpServer.process.kill();
       this._phpServer = null;
 
