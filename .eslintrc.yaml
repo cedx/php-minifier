@@ -13,9 +13,7 @@ parserOptions:
 rules:
   # Possible errors.
   no-console: 'off'
-  no-empty:
-  - error
-  - allowEmptyCatch: true
+  no-empty: [error, {allowEmptyCatch: true}]
   no-extra-parens: error
   no-template-curly-in-string: error
   no-unsafe-negation: error
@@ -45,9 +43,7 @@ rules:
   array-callback-return: error
   block-scoped-var: error
   consistent-return: error
-  curly:
-  - error
-  - multi
+  curly: [error, multi]
   dot-notation: error
   no-alert: error
   no-caller: error
@@ -71,9 +67,7 @@ rules:
   no-new-wrappers: error
   no-octal-escape: error
   no-proto: error
-  no-redeclare:
-  - error
-  - builtinGlobals: true
+  no-redeclare: [error, {builtinGlobals: true}]
   no-script-url: error
   no-self-compare: error
   no-sequences: error
@@ -86,19 +80,13 @@ rules:
   no-void: error
   no-warning-comments: warn
   no-with: error
-  wrap-iife:
-  - error
-  - inside
-  yoda:
-  - error
-  - never
+  wrap-iife: [error, inside]
+  yoda: [error, never]
 
   # Variables.
   no-catch-shadow: error
   no-undefined: error
-  no-use-before-define:
-  - error
-  - functions: false
+  no-use-before-define: [error, {functions: false}]
 
   # Node.js and CommonJS.
   handle-callback-err: error
@@ -108,18 +96,10 @@ rules:
   no-sync: warn
 
   # Stylistic issues.
-  brace-style:
-  - error
-  - stroustrup
-  - allowSingleLine: true
+  brace-style: [error, stroustrup, {allowSingleLine: true}]
   camelcase: 'off'
-  consistent-this:
-  - error
-  - self
-  indent:
-  - error
-  - 2
-  - SwitchCase: 1
+  consistent-this: [error, self]
+  indent: [error, 2, {SwitchCase: 1}]
   keyword-spacing: error
   linebreak-style: 'off'
   line-comment-position: error
@@ -135,48 +115,28 @@ rules:
   no-unneeded-ternary: error
   no-whitespace-before-property: error
   object-curly-spacing: error
-  one-var:
-  - error
-  - never
+  one-var: [error, never]
   operator-assignment: error
-  quote-props:
-  - error
-  - as-needed
-  quotes:
-  - error
-  - single
-  require-jsdoc:
-  - error
-  - require:
-      ClassDeclaration: true
-      FunctionDeclaration: true
-      MethodDefinition: true
+  quote-props: [error, as-needed]
+  quotes: [error, single]
+  require-jsdoc: [error, {require: {ClassDeclaration: true, FunctionDeclaration: true, MethodDefinition: true}}]
   semi: error
   semi-spacing: error
   sort-keys: error
   sort-vars: error
   space-before-blocks: error
-  space-before-function-paren:
-  - error
-  - never
+  space-before-function-paren: [error, never]
   space-in-parens: error
   space-infix-ops: error
-  space-unary-ops:
-  - error
-  - nonwords: false
-    words: true
+  space-unary-ops: [error, {nonwords: false, words: true}]
   spaced-comment: error
   unicode-bom: error
 
   # ECMAScript 6.
   arrow-body-style: error
-  arrow-parens:
-  - error
-  - as-needed
+  arrow-parens: [error, as-needed]
   arrow-spacing: error
-  generator-star-spacing:
-  - error
-  - before
+  generator-star-spacing: [error, before]
   no-duplicate-imports: error
   no-useless-computed-key: error
   no-useless-constructor: error
@@ -191,6 +151,4 @@ rules:
   rest-spread-spacing: error
   symbol-description: error
   template-curly-spacing: error
-  yield-star-spacing:
-  - error
-  - before
+  yield-star-spacing: [error, before]
