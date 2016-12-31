@@ -30,7 +30,6 @@
     "gulp-eslint": "^3.0.1",
     "gulp-load-plugins": "^1.4.0",
     "gulp-mocha": "^3.0.1",
-    "gulp-zip": "^3.2.0",
     "isparta": "^4.0.0",
     "vinyl": "^2.0.1"
   },

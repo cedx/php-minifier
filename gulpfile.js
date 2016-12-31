@@ -5,16 +5,6 @@ const del = require('del');
 const gulp = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
 const path = require('path');
-const pkg = require('./package.json');
-
-/**
- * The task settings.
- * @type {object}
- */
-const config = {
-  output: `${pkg.name}-${pkg.version}.zip`,
-  sources: ['*.json', '*.md', '*.txt', 'lib/**/*.js']
-};
 
 /**
  * The task plug-ins.
@@ -52,9 +42,7 @@ gulp.task('check', () => {
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () =>
-  del([`var/${config.output}`, 'var/*.info'])
-);
+gulp.task('clean', () => del('var/**/*'));
 
 /**
  * Sends the results of the code coverage.
@@ -64,14 +52,6 @@ gulp.task('coverage', ['test'], () => {
   let executable = path.join('node_modules/.bin', process.platform == 'win32' ? 'coveralls.cmd' : 'coveralls');
   return _exec(`${command} var/lcov.info | ${executable}`);
 });
-
-/**
- * Creates a distribution file for this program.
- */
-gulp.task('dist', () => gulp.src(config.sources, {base: '.'})
-  .pipe(plugins.zip(config.output))
-  .pipe(gulp.dest('var'))
-);
 
 /**
  * Builds the documentation.
