@@ -48,9 +48,8 @@ gulp.task('clean', () => del('var/**/*'));
  * Sends the results of the code coverage.
  */
 gulp.task('coverage', ['test'], () => {
-  let command = process.platform == 'win32' ? 'type' : 'cat';
   let executable = path.join('node_modules/.bin', process.platform == 'win32' ? 'coveralls.cmd' : 'coveralls');
-  return _exec(`${command} var/lcov.info | ${executable}`);
+  return _exec(`${executable} --file=var/lcov.info`);
 });
 
 /**
