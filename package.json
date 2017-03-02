@@ -18,19 +18,17 @@
     "superagent": "^3.4.2"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^0.2.0",
-    "@cedx/gulp-david": "^3.1.0",
+    "@cedx/coveralls": "^0.3.0",
+    "@cedx/gulp-david": "^5.0.0",
     "babel-preset-latest": "^6.22.0",
     "babel-register": "^6.23.0",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-istanbul": "^1.1.1",
     "gulp-eslint": "^3.0.1",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-mocha": "^3.0.1",
-    "isparta": "^4.0.0",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
     "vinyl": "^2.0.1"
   },
   "engines": {
@@ -41,13 +39,11 @@
     "gulp",
     "gulpplugin",
     "minify",
-    "observable",
-    "php",
-    "rxjs"
+    "php"
   ],
   "scripts": {
     "coverage": "coveralls --file=var/lcov.info",
     "prepublish": "gulp build",
-    "test": "gulp test"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register"
   }
 }
