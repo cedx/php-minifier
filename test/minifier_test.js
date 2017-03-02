@@ -44,30 +44,33 @@ describe('Minifier', function() {
    */
   describe('#_transform()', () => {
     let file = new File({path: path.join(__dirname, 'sample.php')});
-    let minifier = new Minifier({silent: true});
 
     it('should remove the inline comments', async () => {
+      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('<?= \'Hello World!\' ?>');
-      await minifier.close();
+      return minifier.close();
     });
 
     it('should remove the multi-line comments', async () => {
+      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('namespace dummy; class Dummy');
-      await minifier.close();
+      return minifier.close();
     });
 
     it('should remove the single-line comments', async () => {
+      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('$className = get_class($this); return $className;');
-      await minifier.close();
+      return minifier.close();
     });
 
     it('should remove the whitespace', async () => {
+      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('__construct() { }');
-      await minifier.close();
+      return minifier.close();
     });
   });
 });
