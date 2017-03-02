@@ -7,7 +7,7 @@ env:
   node: true
 
 parserOptions:
-  ecmaVersion: 2015
+  ecmaVersion: 2017
   sourceType: module
 
 rules:
@@ -73,7 +73,7 @@ rules:
   no-sequences: error
   no-throw-literal: error
   no-unmodified-loop-condition: error
-  no-unused-expressions: error
+  no-unused-expressions: 'off'
   no-useless-call: error
   no-useless-concat: error
   no-useless-escape: error

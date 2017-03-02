@@ -1,6 +1,5 @@
-import childProcess from 'child_process';
+import child_process from 'child_process';
 import path from 'path';
-import {Observable} from 'rxjs';
 import * as pkg from '../package.json';
 import portFinder from 'portfinder';
 import superagent from 'superagent';
@@ -42,43 +41,50 @@ export class Minifier extends Transform {
    * @type {boolean}
    */
   get listening() {
-    return typeof this._phpServer == 'object' && this._phpServer;
+    return this._phpServer && typeof this._phpServer == 'object';
   }
 
   /**
    * Terminates the underlying PHP process: stops the server from accepting new connections. It does nothing if the server is already closed.
-   * @return {Observable} Completes when the PHP process is finally terminated.
+   * @return {Promise} Completes when the PHP process is finally terminated.
    */
-  close() {
-    return !this.listening ? Observable.of(null) : Observable.create(observer => {
+  async close() {
+    if (this.listening) {
       this._phpServer.process.kill();
       this._phpServer = null;
+    }
 
-      observer.next();
-      observer.complete();
-    });
+    return null;
   }
 
   /**
    * Starts the underlying PHP process: begins accepting connections. It does nothing if the server is already started.
-   * @return {Observable<number>} The port used by the PHP process.
+   * @return {Promise<number>} The port used by the PHP process.
    */
-  listen() {
-    if (this.listening) return Observable.of(this._phpServer.port);
+  async listen() {
+    if (!this.listening) {
+      let getPort = new Promise((resolve, reject) => {
+        portFinder.getPort((err, port) => {
+          if (err) reject(err);
+          else resolve(port);
+        });
+      });
 
-    let getPort = Observable.bindNodeCallback(portFinder.getPort);
-    return getPort().do(port => {
       let address = '127.0.0.1';
-      let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: childProcess.spawn(this.binary, args)};
+      let port = await getPort;
 
-      let listener = () => {
+      let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
+      this._phpServer = {address, port, process: child_process.spawn(this.binary, args, {stdio: 'inherit'})}; // TODO: remove inherit
+
+      let listener = async () => {
         this.removeListener('end', listener).removeListener('error', listener);
-        this.close().subscribe();
+        await this.close();
       };
 
       this.once('end', listener).once('error', listener);
-    });
+    }
+
+    return this._phpServer.port;
   }
 
   /**
@@ -86,19 +92,26 @@ export class Minifier extends Transform {
    * @param {File} file The chunk to be transformed.
    * @param {string} encoding The encoding type if the chunk is a string.
    * @param {function} callback The function to invoke when the supplied chunk has been processed.
+   * @return {Promise} Completes when the chunk has been transformed.
    */
-  _transform(file, encoding, callback) {
+  async _transform(file, encoding, callback) {
     if (!this.silent) console.log(`Minifying: ${file.path}`);
 
-    this.listen().subscribe(() => superagent
-      .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
-      .query({file: file.path})
-      .end((err, res) => {
-        if (err) callback(new Error(`[${pkg.name}] ${err}`));
-        else {
-          file.contents = Buffer.from(res.text, encoding);
-          callback(null, file);
-        }
-      }));
+    try {
+      await this.listen();
+
+      let response = await superagent
+        .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
+        .query({file: file.path});
+
+      file.contents = Buffer.from(response.text, encoding);
+      callback(null, file);
+    }
+
+    catch (err) {
+      callback(new Error(`[${pkg.name}] ${err}`));
+    }
+
+    return null;
   }
 }

@@ -2,7 +2,9 @@
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 ## Version 2.0.0
+- Breaking change: dropped the dependency on [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: using ES2017 features, like async/await functions.
 - Improved the build system.
 - Updated the package dependencies.
 
