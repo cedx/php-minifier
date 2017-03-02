@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 
 ## Version 2.0.0
 - Improved the build system.
+- Updated the package dependencies.
 
 ## Version 1.1.0
 - Properly handle the stream events: added support for the `error` event, remove the registered listeners on stream close.
