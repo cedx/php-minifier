@@ -2,6 +2,7 @@
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 ## Version 2.0.0
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Improved the build system.
 - Updated the package dependencies.
 
