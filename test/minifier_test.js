@@ -29,7 +29,7 @@ describe('Minifier', function() {
    * @test {Minifier#listening}
    */
   describe('#listening', () => {
-    it('should return `true` when the server is listening, otherwise `false`', async () => {
+    it('should return whether the server is listening', async () => {
       let minifier = new Minifier();
       expect(minifier.listening).to.be.false;
       await minifier.listen();
