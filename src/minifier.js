@@ -41,7 +41,7 @@ export class Minifier extends Transform {
    * @type {boolean}
    */
   get listening() {
-    return this._phpServer && typeof this._phpServer == 'object';
+    return Boolean(this._phpServer && typeof this._phpServer == 'object');
   }
 
   /**
@@ -74,7 +74,7 @@ export class Minifier extends Transform {
       let port = await getPort;
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child_process.spawn(this.binary, args, {stdio: 'inherit'})}; // TODO: remove inherit
+      this._phpServer = {address, port, process: child_process.spawn(this.binary, args)};
 
       let listener = async () => {
         this.removeListener('end', listener).removeListener('error', listener);
