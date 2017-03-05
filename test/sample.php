@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `Dummy` class.
+ * Implementation of the `dummy\Dummy` class.
  */
 namespace dummy;
 
@@ -20,7 +20,7 @@ class Dummy {
    * A dummy method.
    * @return string The class name.
    */
-  public function __toString() {
+  public function __toString(): string {
     // A comment.
     $className = get_class($this);
 

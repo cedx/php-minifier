@@ -18,7 +18,7 @@ class Application {
    * @return bool Whether the error was handled.
    * @throws \ErrorException When an error occurred.
    */
-  public function handleError($severity, $message, $file = __FILE__, $line = __LINE__) {
+  public function handleError(int $severity, string $message, string $file = __FILE__, int $line = __LINE__): bool {
     if (error_reporting() & $severity) throw new \ErrorException($message, 0, $severity, $file, $line);
     return false;
   }
@@ -39,7 +39,7 @@ class Application {
    * @return string The stripped source code corresponding to the provided file.
    * @throws \Exception The requirements are not met, or an error occurred.
    */
-  public function processRequest(array $args) {
+  public function processRequest(array $args): string {
     if (!isset($args['file']) || !mb_strlen($args['file'])) throw new \LogicException('Bad Request', 400);
     if (!is_file($args['file'])) throw new \RuntimeException('Not Found', 404);
 
@@ -53,9 +53,9 @@ class Application {
    * @param string $body The response body to send to the client.
    * @param int $status The status code of the response.
    */
-  public function sendResponse($body, $status = 200) {
+  public function sendResponse(string $body, int $status = 200) {
     http_response_code($status);
-    header('Content-Length: ' . strlen($body));
+    header('Content-Length: '.strlen($body));
     header('Content-Type: text/plain');
     echo $body;
   }

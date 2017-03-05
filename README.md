@@ -31,7 +31,7 @@ The plug-in only needs the file paths, so you should specify the `read` option t
 ## Options
 
 ### `binary`
-The plug-in relies on the availability of the [PHP](https://secure.php.net) executable on the target system: it requires a version **5.5 or later**. By default, the plug-in will use the `php` binary found on the system path.
+The plug-in relies on the availability of the [PHP](https://secure.php.net) executable on the target system: it requires a version **7.0 or later**. By default, the plug-in will use the `php` binary found on the system path.
 
 If the plug-in cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable by using the `binary` option:
 

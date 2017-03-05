@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@cedx/coveralls": "^0.3.0",
-    "@cedx/gulp-david": "^5.0.0",
+    "@cedx/gulp-david": "^6.0.0",
     "babel-preset-latest": "^6.22.0",
     "babel-register": "^6.23.0",
     "chai": "^3.5.0",
