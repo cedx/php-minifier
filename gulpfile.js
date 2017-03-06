@@ -29,7 +29,7 @@ gulp.task('clean', () => del('var/**/*'));
 /**
  * Sends the results of the code coverage.
  */
-gulp.task('coverage', ['test'], () => _exec('node', ['bin/cli.js', '--file=var/lcov.info']));
+gulp.task('coverage', ['test'], () => _exec('node_modules/.bin/coveralls', ['--file=var/lcov.info']));
 
 /**
  * Builds the documentation.
