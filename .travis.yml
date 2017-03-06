@@ -4,5 +4,8 @@ node_js: 7
 env: NODE_ENV="test"
 sudo: false
 
+notifications:
+  email: false
+
 script: npm test
 after_script: npm run coverage
