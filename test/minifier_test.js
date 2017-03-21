@@ -21,7 +21,7 @@ describe('Minifier', function() {
     });
 
     it('should not create new properties', () => {
-      expect(new Minifier({foo: 'bar'})).to.not.contain.keys('foo');
+      expect(new Minifier({foo: 'bar'})).to.not.have.property('foo');
     });
   });
 
@@ -29,8 +29,9 @@ describe('Minifier', function() {
    * @test {Minifier#listening}
    */
   describe('#listening', () => {
+    let minifier = new Minifier({silent: true});
+
     it('should return whether the server is listening', async () => {
-      let minifier = new Minifier();
       expect(minifier.listening).to.be.false;
       await minifier.listen();
       expect(minifier.listening).to.be.true;
@@ -44,33 +45,28 @@ describe('Minifier', function() {
    */
   describe('#_transform()', () => {
     let file = new File({path: path.join(__dirname, 'sample.php')});
+    let minifier = new Minifier({silent: true});
 
     it('should remove the inline comments', async () => {
-      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('<?= \'Hello World!\' ?>');
-      return minifier.close();
     });
 
     it('should remove the multi-line comments', async () => {
-      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('namespace dummy; class Dummy');
-      return minifier.close();
     });
 
     it('should remove the single-line comments', async () => {
-      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('$className = get_class($this); return $className;');
-      return minifier.close();
     });
 
     it('should remove the whitespace', async () => {
-      let minifier = new Minifier({silent: true});
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('__construct() { }');
-      return minifier.close();
     });
+
+    return minifier.close();
   });
 });
