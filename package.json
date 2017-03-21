@@ -15,13 +15,13 @@
   "dependencies": {
     "portfinder": "^1.0.13",
     "rxjs": "^5.2.0",
-    "superagent": "^3.5.0"
+    "superagent": "^3.5.1"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^0.3.0",
-    "@cedx/gulp-david": "^6.0.0",
-    "babel-preset-env": "^1.2.0",
-    "babel-register": "^6.23.0",
+    "@cedx/coveralls": "^0.4.0",
+    "@cedx/gulp-david": "^6.1.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-register": "^6.24.0",
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
@@ -45,6 +45,6 @@
   "scripts": {
     "coverage": "coveralls --file=var/lcov.info",
     "prepublish": "gulp build",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register"
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register --recursive"
   }
 }

@@ -63,12 +63,10 @@ export class Minifier extends Transform {
    */
   async listen() {
     if (!this.listening) {
-      let getPort = new Promise((resolve, reject) => {
-        portFinder.getPort((err, port) => {
-          if (err) reject(err);
-          else resolve(port);
-        });
-      });
+      let getPort = new Promise((resolve, reject) => portFinder.getPort((err, port) => {
+        if (err) reject(err);
+        else resolve(port);
+      }));
 
       let address = '127.0.0.1';
       let port = await getPort;

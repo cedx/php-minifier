@@ -93,7 +93,7 @@ rules:
   no-mixed-requires: error
   no-new-require: error
   no-path-concat: error
-  no-sync: warn
+  no-sync: error
 
   # Stylistic issues.
   brace-style: [error, stroustrup, {allowSingleLine: true}]

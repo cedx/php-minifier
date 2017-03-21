@@ -68,7 +68,8 @@ gulp.task('test', () => _exec('node_modules/.bin/nyc', [
   '--report-dir=var',
   '--reporter=lcovonly',
   path.normalize('node_modules/.bin/mocha'),
-  '--compilers=js:babel-register'
+  '--compilers=js:babel-register',
+  '--recursive'
 ]));
 
 /**
