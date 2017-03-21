@@ -72,7 +72,7 @@ export class Minifier extends Transform {
       let port = await getPort;
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child_process.spawn(this.binary, args)};
+      this._phpServer = {address, port, process: child_process.spawn(this.binary, args, {shell: true})};
 
       let listener = async () => {
         this.removeListener('end', listener).removeListener('error', listener);
