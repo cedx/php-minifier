@@ -1,5 +1,7 @@
-language: node_js
-node_js: 7
+language: php
+php:
+- '7.0'
+- '7.1'
 
 env: NODE_ENV="test"
 sudo: false
@@ -7,6 +9,10 @@ sudo: false
 notifications:
   email: false
 
-before_script: php --version
+before_script:
+- nvm install 7
+- node --version
+- npm install
+
 script: npm test
 after_script: npm run coverage
