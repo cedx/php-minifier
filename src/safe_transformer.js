@@ -24,8 +24,9 @@ export class SafeTransformer {
    * @return {Promise<string>} The transformed script.
    */
   async transform(script) {
-    let command = `"${this._minifier.binary}" -w "${script}"`;
-    return new Promise((resolve, reject) => child_process.exec(command, {maxBuffer: 10 * 1024 * 1024}, (error, stdout) => {
+    let args = ['-w', script];
+    let options = {maxBuffer: 10 * 1024 * 1024};
+    return new Promise((resolve, reject) => child_process.execFile(this._minifier.binary, args, options, (error, stdout) => {
       if (error) reject(error);
       else resolve(stdout);
     }));

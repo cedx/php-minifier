@@ -63,7 +63,7 @@ export class FastTransformer {
       let port = await getPort;
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args, {shell: true})};
+      this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args, {stdio: 'ignore'})};
 
       let handler = async () => await this.close();
       this._minifier.once('end', handler).once('error', handler);

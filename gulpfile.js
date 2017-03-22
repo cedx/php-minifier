@@ -53,7 +53,6 @@ gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: 
 gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
   .pipe(eslint())
   .pipe(eslint.format())
-  .pipe(eslint.failAfterError())
 );
 
 /**
@@ -61,8 +60,8 @@ gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
  */
 gulp.task('minify', ['build'], () => {
   const {phpMinify} = require('./lib');
-  return gulp.src('/repo/lcov.php/**/*.php', {read: false})
-    .pipe(phpMinify({mode: 'safe'}))
+  return gulp.src(['/repo/lcov.php/**/*.php', '!/repo/lcov.php/vendor/**/*'], {read: false})
+    .pipe(phpMinify({mode: 'fast'}))
     .pipe(gulp.dest('var/build'));
 });
 

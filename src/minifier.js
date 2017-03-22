@@ -1,5 +1,6 @@
 import path from 'path';
 import {Transform} from 'stream';
+import which from 'which';
 
 import * as pkg from '../package.json';
 import {FastTransformer} from './fast_transformer';
@@ -21,7 +22,7 @@ export class Minifier extends Transform {
      * The path to the PHP executable.
      * @type {string}
      */
-    this.binary = typeof options.binary == 'string' ? path.normalize(options.binary) : 'php';
+    this.binary = typeof options.binary == 'string' ? path.normalize(options.binary) : which.sync('php');
 
     /**
      * The transformation type.
