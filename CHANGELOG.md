@@ -6,8 +6,10 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: raised the required [PHP](https://secure.php.net) version.
 - Breaking change: using ES2017 features, like async/await functions.
+- Added a `mode` option allowing to select the underlying transformer.
 - Improved the build system.
 - Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
+- Restored the legacy transformer from version 0.2.0. 
 - Updated the package dependencies.
 
 ## Version 1.1.0

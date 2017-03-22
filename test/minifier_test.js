@@ -28,7 +28,6 @@ describe('Minifier', function() {
   /**
    * @test {Minifier#_transform}
    */
-  /*
   describe('#_transform()', () => {
     let file = new File({path: path.join(__dirname, 'sample.php')});
     let minifier = new Minifier({silent: true});
@@ -53,7 +52,6 @@ describe('Minifier', function() {
       expect(result.contents.toString()).to.contain('__construct() { }');
     });
 
-    return minifier.close();
+    minifier.emit('end');
   });
-  */
 });
