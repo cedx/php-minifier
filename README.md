@@ -41,6 +41,12 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(gulp.dest('path/to/out'));
 ```
 
+### `mode`
+TODO: safe/fast
+
+- `safe` mode: TODO
+- `fast` mode: TODO
+
 ### `silent`
 By default, the plug-in prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` option to `true`.
 

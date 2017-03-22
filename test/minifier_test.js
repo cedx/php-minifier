@@ -26,23 +26,9 @@ describe('Minifier', function() {
   });
 
   /**
-   * @test {Minifier#listening}
-   */
-  describe('#listening', () => {
-    let minifier = new Minifier({silent: true});
-
-    it('should return whether the server is listening', async () => {
-      expect(minifier.listening).to.be.false;
-      await minifier.listen();
-      expect(minifier.listening).to.be.true;
-      await minifier.close();
-      expect(minifier.listening).to.be.false;
-    });
-  });
-
-  /**
    * @test {Minifier#_transform}
    */
+  /*
   describe('#_transform()', () => {
     let file = new File({path: path.join(__dirname, 'sample.php')});
     let minifier = new Minifier({silent: true});
@@ -69,4 +55,5 @@ describe('Minifier', function() {
 
     return minifier.close();
   });
+  */
 });

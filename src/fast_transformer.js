@@ -1,24 +1,25 @@
 import child_process from 'child_process';
 import path from 'path';
 import portFinder from 'portfinder';
+import {quote} from 'shell-quote';
 import superagent from 'superagent';
 
 /**
- * TODO
+ * Removes comments and whitespace from a PHP script, by calling a Web service.
  */
-export class UnsafeTransformer {
+export class FastTransformer {
 
   /**
    * Initializes a new instance of the class.
-   * @param {string} binary The path to the PHP executable.
+   * @param {Minifier} minifier The instance providing access to the minifier settings.
    */
-  constructor(binary) {
+  constructor(minifier) {
 
     /**
-     * The path to the PHP executable.
-     * @type {string}
+     * The instance providing access to the minifier settings.
+     * @type {Minifier}
      */
-    this._binary = binary;
+    this._minifier = minifier;
 
     /**
      * The underlying PHP process.
@@ -63,21 +64,21 @@ export class UnsafeTransformer {
       let port = await getPort;
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child_process.spawn(this._binary, args, {shell: true})};
+      this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args, {shell: true})};
 
       let listener = async () => {
-        this.removeListener('end', listener).removeListener('error', listener);
+        this._minifier.removeListener('end', listener).removeListener('error', listener);
         await this.close();
       };
 
-      this.once('end', listener).once('error', listener);
+      this._minifier.once('end', listener).once('error', listener);
     }
 
     return this._phpServer.port;
   }
 
   /**
-   * Transforms a PHP script.
+   * Processes a PHP script.
    * @param {string} script The path to the PHP script.
    * @return {Promise<string>} The transformed script.
    */
