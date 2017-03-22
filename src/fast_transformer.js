@@ -1,7 +1,6 @@
 import child_process from 'child_process';
 import path from 'path';
 import portFinder from 'portfinder';
-import {quote} from 'shell-quote';
 import superagent from 'superagent';
 
 /**
