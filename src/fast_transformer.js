@@ -9,6 +9,14 @@ import superagent from 'superagent';
 export class FastTransformer {
 
   /**
+   * The default address that the server is listening on.
+   * @type {string}
+   */
+  static get DEFAULT_ADDRESS() {
+    return '127.0.0.1';
+  }
+
+  /**
    * Initializes a new instance of the class.
    * @param {Minifier} minifier The instance providing access to the minifier settings.
    */
@@ -59,7 +67,7 @@ export class FastTransformer {
         else resolve(port);
       }));
 
-      let address = '127.0.0.1';
+      let address = FastTransformer.DEFAULT_ADDRESS;
       let port = await getPort;
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
