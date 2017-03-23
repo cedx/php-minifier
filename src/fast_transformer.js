@@ -77,7 +77,7 @@ export class FastTransformer {
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
       this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args)};
-      setTimeout(() => resolve(port), 500);
+      setTimeout(() => resolve(port), 1000);
     });
   }
 

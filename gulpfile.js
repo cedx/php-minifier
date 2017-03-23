@@ -56,17 +56,6 @@ gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
 );
 
 /**
- * TODO
- */
-gulp.task('minify', ['build'], () => {
-  const {phpMinify} = require('./lib');
-  return gulp.src(['/repo/lcov.php/**/*.php', '!/repo/lcov.php/vendor/**/*'], {read: false})
-    .pipe(phpMinify({mode: 'fast'}))
-    .on('error', err => console.log(err))
-    .pipe(gulp.dest('var/build'));
-});
-
-/**
  * Checks the package dependencies.
  */
 gulp.task('outdated', () => gulp.src('package.json').pipe(david()));
