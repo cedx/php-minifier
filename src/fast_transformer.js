@@ -61,23 +61,24 @@ export class FastTransformer {
    * @return {Promise<number>} The port used by the PHP process.
    */
   async listen() {
-    if (!this.listening) {
-      const getPort = () => new Promise((resolve, reject) => portFinder.getPort((err, port) => {
-        if (err) reject(err);
-        else resolve(port);
-      }));
+    if (this.listening) return this._phpServer.port;
 
-      let address = FastTransformer.DEFAULT_ADDRESS;
-      let port = await getPort();
+    const getPort = () => new Promise((resolve, reject) => portFinder.getPort((err, port) => {
+      if (err) reject(err);
+      else resolve(port);
+    }));
 
-      let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args, {stdio: 'ignore'})};
+    let address = FastTransformer.DEFAULT_ADDRESS;
+    let port = await getPort();
 
+    return new Promise(resolve => {
       let handler = async () => await this.close();
       this._minifier.once('end', handler).once('error', handler);
-    }
 
-    return this._phpServer.port;
+      let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
+      this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args)};
+      setTimeout(() => resolve(port), 1000);
+    });
   }
 
   /**
