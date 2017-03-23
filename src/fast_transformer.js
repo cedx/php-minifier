@@ -62,13 +62,13 @@ export class FastTransformer {
    */
   async listen() {
     if (!this.listening) {
-      let getPort = new Promise((resolve, reject) => portFinder.getPort((err, port) => {
+      const getPort = () => new Promise((resolve, reject) => portFinder.getPort((err, port) => {
         if (err) reject(err);
         else resolve(port);
       }));
 
       let address = FastTransformer.DEFAULT_ADDRESS;
-      let port = await getPort;
+      let port = await getPort();
 
       let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
       this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args, {stdio: 'ignore'})};

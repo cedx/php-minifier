@@ -62,6 +62,7 @@ gulp.task('minify', ['build'], () => {
   const {phpMinify} = require('./lib');
   return gulp.src(['/repo/lcov.php/**/*.php', '!/repo/lcov.php/vendor/**/*'], {read: false})
     .pipe(phpMinify({mode: 'fast'}))
+    .on('error', err => console.log(err))
     .pipe(gulp.dest('var/build'));
 });
 
