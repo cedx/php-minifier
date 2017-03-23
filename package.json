@@ -15,10 +15,10 @@
   "dependencies": {
     "portfinder": "^1.0.13",
     "superagent": "^3.5.2",
-    "which": "^1.2.12"
+    "which": "^1.2.14"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^0.4.0",
+    "@cedx/coveralls": "^0.5.0",
     "@cedx/gulp-david": "^6.1.0",
     "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0",
