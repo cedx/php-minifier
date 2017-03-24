@@ -42,10 +42,16 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 ```
 
 ### `mode`
-TODO: safe/fast
+The plug-in can work in two manners, which can be selected using the `mode` option:
 
-- `safe` mode: TODO
-- `fast` mode: TODO This mode requires a [PHP](https://secure.php.net) runtime version **7.0 or later**.
+- the `safe` mode: as its name implies, this mode is very reliable. But it is also very slow as it spawns a new PHP process for every file to be processed. This is the default mode.
+- the `fast` mode: as its name implies, this mode is very fast, but it is not very reliable. It spawns a PHP web server that processes the input files, but on some systems this fails. This mode requires a [PHP](https://secure.php.net) runtime version **7.0 or later**.
+
+```javascript
+return gulp.src('path/to/lib/**/*.php', {read: false})
+  .pipe(phpMinify({mode: 'fast'}))
+  .pipe(gulp.dest('path/to/out'));
+```
 
 ### `silent`
 By default, the plug-in prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` option to `true`.
