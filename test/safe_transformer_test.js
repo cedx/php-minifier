@@ -1,6 +1,7 @@
 'use strict';
 
 import {expect} from 'chai';
+import {describe, it} from 'mocha';
 import path from 'path';
 import {Minifier, SafeTransformer} from '../src/index';
 
