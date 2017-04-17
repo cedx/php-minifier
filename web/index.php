@@ -30,7 +30,7 @@ class Application {
   public function run(array $args = []) {
     set_error_handler([$this, 'handleError']);
     try { $this->sendResponse($this->processRequest($args)); }
-    catch(\Exception $e) { $this->sendResponse($e->getMessage(), $e->getCode()); }
+    catch (\Exception $e) { $this->sendResponse($e->getMessage(), $e->getCode()); }
   }
 
   /**
