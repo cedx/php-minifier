@@ -29,7 +29,7 @@ describe('FastTransformer', function() {
    * @test {FastTransformer#transform}
    */
   describe('#transform()', () => {
-    let script = path.join(__dirname, 'sample.php');
+    let script = path.join(__dirname, 'fixtures/sample.php');
     let transformer = new FastTransformer(new Minifier());
 
     it('should remove the inline comments', async () => {

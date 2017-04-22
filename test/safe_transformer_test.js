@@ -15,7 +15,7 @@ describe('SafeTransformer', function() {
    * @test {SafeTransformer#transform}
    */
   describe('#transform()', () => {
-    let script = path.join(__dirname, 'sample.php');
+    let script = path.join(__dirname, 'fixtures/sample.php');
     let transformer = new SafeTransformer(new Minifier());
 
     it('should remove the inline comments', async () => {

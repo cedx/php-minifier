@@ -30,7 +30,7 @@ describe('Minifier', function() {
    * @test {Minifier#_transform}
    */
   describe('#_transform()', () => {
-    let file = new File({path: path.join(__dirname, 'sample.php')});
+    let file = new File({path: path.join(__dirname, 'fixtures/sample.php')});
     let minifier = new Minifier({silent: true});
 
     it('should remove the inline comments', async () => {
