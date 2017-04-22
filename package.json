@@ -20,8 +20,8 @@
   "devDependencies": {
     "@cedx/coveralls": "^0.5.0",
     "@cedx/gulp-david": "^6.1.0",
-    "babel-preset-env": "^1.2.2",
-    "babel-register": "^6.24.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
     "chai": "^3.5.0",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
@@ -29,8 +29,8 @@
     "gulp-babel": "^6.1.2",
     "gulp-eslint": "^3.0.1",
     "mocha": "^3.2.0",
-    "nyc": "^10.1.2",
-    "vinyl": "^2.0.1"
+    "nyc": "^10.2.2",
+    "vinyl": "^2.0.2"
   },
   "engines": {
     "node": ">=7.6.0"
