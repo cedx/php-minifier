@@ -17,8 +17,8 @@ describe('Minifier', function() {
    */
   describe('#constructor()', () => {
     it('should initialize the existing properties', () => {
-      expect(new Minifier({binary: './FooBar.exe'}).binary).to.equal('FooBar.exe');
-      expect(new Minifier({silent: true}).silent).to.be.true;
+      expect(new Minifier({binary: './FooBar.exe'})).to.have.property('binary').that.equal('FooBar.exe');
+      expect(new Minifier({silent: true})).to.have.property('silent').that.is.true;
     });
 
     it('should not create new properties', () => {
