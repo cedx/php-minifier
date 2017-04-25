@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+## Version 3.0.0
+- Breaking change: changed the signature of the `Minifier` constructor.
+- Updated the package dependencies.
+
 ## Version 2.0.0
 - Breaking change: dropped the dependency on [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
