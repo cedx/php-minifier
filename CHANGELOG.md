@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 
 ## Version 3.0.0
 - Breaking change: changed the signature of the `Minifier` constructor.
+- Added new unit tests.
 - Updated the package dependencies.
 
 ## Version 2.0.0
