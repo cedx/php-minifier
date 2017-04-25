@@ -13,7 +13,7 @@ export class Minifier extends Transform {
    * Initializes a new instance of the class.
    * @param {string} [binary] The path to the PHP executable.
    */
-  constructor(binary = '') {
+  constructor(binary = 'php') {
     super({objectMode: true});
 
     /**

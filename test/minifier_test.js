@@ -13,25 +13,12 @@ describe('Minifier', function() {
   this.timeout(60000);
 
   /**
-   * @test {Minifier#constructor}
-   */
-  describe('#constructor()', () => {
-    it('should initialize the existing properties', () => {
-      expect(new Minifier({binary: './FooBar.exe'})).to.have.property('binary').that.equal('FooBar.exe');
-      expect(new Minifier({silent: true})).to.have.property('silent').that.is.true;
-    });
-
-    it('should not create new properties', () => {
-      expect(new Minifier({foo: 'bar'})).to.not.have.property('foo');
-    });
-  });
-
-  /**
    * @test {Minifier#_transform}
    */
   describe('#_transform()', () => {
     let file = new File({path: path.join(__dirname, 'fixtures/sample.php')});
-    let minifier = new Minifier({silent: true});
+    let minifier = new Minifier();
+    minifier.silent = true;
 
     it('should remove the inline comments', async () => {
       let result = await minifier._transform(file, 'utf8');
