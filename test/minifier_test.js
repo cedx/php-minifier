@@ -4,13 +4,40 @@ import {expect} from 'chai';
 import {describe, it} from 'mocha';
 import path from 'path';
 import File from 'vinyl';
-import {Minifier} from '../src/index';
+import {FastTransformer, Minifier, SafeTransformer} from '../src/index';
 
 /**
  * @test {Minifier}
  */
 describe('Minifier', function() {
   this.timeout(60000);
+
+  /**
+   * @test {Minifier#mode}
+   */
+  describe('#mode', () => {
+    it('should be `safe` if the underlying transformer is a `SafeTransformer` one', () => {
+      let minifier = new Minifier();
+      minifier._transformer = new SafeTransformer(minifier);
+      expect(minifier.mode).to.equal('safe');
+    });
+
+    it('should be `fast` if the underlying transformer is a `FastTransformer` one', () => {
+      let minifier = new Minifier();
+      minifier._transformer = new FastTransformer(minifier);
+      expect(minifier.mode).to.equal('fast');
+    });
+
+    it('should change the underlying transformer on value update', () => {
+      let minifier = new Minifier();
+
+      minifier.mode = 'fast';
+      expect(minifier._transformer).to.be.instanceOf(FastTransformer);
+
+      minifier.mode = 'safe';
+      expect(minifier._transformer).to.be.instanceOf(SafeTransformer);
+    });
+  });
 
   /**
    * @test {Minifier#_transform}
