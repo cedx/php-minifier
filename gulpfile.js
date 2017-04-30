@@ -32,6 +32,13 @@ gulp.task('clean', () => del('var/**/*'));
 gulp.task('coverage', ['test'], () => _exec('node_modules/.bin/coveralls', ['--file=var/lcov.info']));
 
 /**
+ * Checks the package dependencies.
+ */
+gulp.task('deps', ['deps:outdated', 'deps:security']);
+gulp.task('deps:outdated', () => gulp.src('package.json').pipe(david()));
+gulp.task('deps:security', () => _exec('node_modules/.bin/nsp', ['check']));
+
+/**
  * Builds the documentation.
  */
 gulp.task('doc', async () => {
@@ -54,11 +61,6 @@ gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
   .pipe(eslint())
   .pipe(eslint.format())
 );
-
-/**
- * Checks the package dependencies.
- */
-gulp.task('outdated', () => gulp.src('package.json').pipe(david()));
 
 /**
  * Runs the unit tests.
