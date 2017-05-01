@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+## Version 3.1.0
+- Added support for the [Node Security Platform](https://nodesecurity.io) reports.
+- Updated the package dependencies.
+
 ## Version 3.0.0
 - Breaking change: changed the signature of the `Minifier` constructor.
 - Added new unit tests.
