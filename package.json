@@ -18,8 +18,8 @@
     "which": "^1.2.14"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^0.6.0",
-    "@cedx/gulp-david": "^6.2.0",
+    "@cedx/coveralls": "^0.7.0",
+    "@cedx/gulp-david": "^6.3.0",
     "babel-preset-env": "^1.4.0",
     "babel-register": "^6.24.1",
     "chai": "^3.5.0",
