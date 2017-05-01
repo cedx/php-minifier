@@ -1,6 +1,6 @@
 import {Transform} from 'stream';
 
-import * as pkg from '../package.json';
+import {name as pkgName} from '../package.json';
 import {FastTransformer} from './fast_transformer';
 import {SafeTransformer} from './safe_transformer';
 
@@ -75,7 +75,7 @@ export class Minifier extends Transform {
     }
 
     catch (err) {
-      if (typeof callback == 'function') callback(new Error(`[${pkg.name}] ${err.message}`));
+      if (typeof callback == 'function') callback(new Error(`[${pkgName}] ${err.message}`));
     }
 
     return file;

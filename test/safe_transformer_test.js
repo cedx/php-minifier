@@ -2,7 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import path from 'path';
+import {join} from 'path';
 import {Minifier, SafeTransformer} from '../src/index';
 
 /**
@@ -15,7 +15,7 @@ describe('SafeTransformer', function() {
    * @test {SafeTransformer#transform}
    */
   describe('#transform()', () => {
-    let script = path.join(__dirname, 'fixtures/sample.php');
+    let script = join(__dirname, 'fixtures/sample.php');
     let transformer = new SafeTransformer(new Minifier());
 
     it('should remove the inline comments', async () => {

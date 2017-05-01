@@ -2,7 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import path from 'path';
+import {join} from 'path';
 import {FastTransformer, Minifier} from '../src/index';
 
 /**
@@ -29,7 +29,7 @@ describe('FastTransformer', function() {
    * @test {FastTransformer#transform}
    */
   describe('#transform()', () => {
-    let script = path.join(__dirname, 'fixtures/sample.php');
+    let script = join(__dirname, 'fixtures/sample.php');
     let transformer = new FastTransformer(new Minifier());
 
     it('should remove the inline comments', async () => {

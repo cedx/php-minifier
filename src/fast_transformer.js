@@ -1,6 +1,6 @@
-import child_process from 'child_process';
-import path from 'path';
-import portFinder from 'portfinder';
+import {spawn} from 'child_process';
+import {join} from 'path';
+import {getPortPromise as getPort} from 'portfinder';
 import superagent from 'superagent';
 
 /**
@@ -63,22 +63,15 @@ export class FastTransformer {
   async listen() {
     if (this.listening) return this._phpServer.port;
 
-    const getPort = () => new Promise((resolve, reject) => portFinder.getPort((err, port) => {
-      if (err) reject(err);
-      else resolve(port);
-    }));
+    let handler = async () => await this.close();
+    this._minifier.once('end', handler).once('error', handler);
 
     let address = FastTransformer.DEFAULT_ADDRESS;
     let port = await getPort();
+    let args = ['-S', `${address}:${port}`, '-t', join(__dirname, '../web')];
 
-    return new Promise(resolve => {
-      let handler = async () => await this.close();
-      this._minifier.once('end', handler).once('error', handler);
-
-      let args = ['-S', `${address}:${port}`, '-t', path.join(__dirname, '../web')];
-      this._phpServer = {address, port, process: child_process.spawn(this._minifier.binary, args)};
-      setTimeout(() => resolve(port), 1000);
-    });
+    this._phpServer = {address, port, process: spawn(this._minifier.binary, args)};
+    return new Promise(resolve => setTimeout(() => resolve(port), 1000));
   }
 
   /**

@@ -2,7 +2,7 @@
 
 import {expect} from 'chai';
 import {describe, it} from 'mocha';
-import path from 'path';
+import {join} from 'path';
 import File from 'vinyl';
 import {FastTransformer, Minifier, SafeTransformer} from '../src/index';
 
@@ -43,7 +43,7 @@ describe('Minifier', function() {
    * @test {Minifier#_transform}
    */
   describe('#_transform()', () => {
-    let file = new File({path: path.join(__dirname, 'fixtures/sample.php')});
+    let file = new File({path: join(__dirname, 'fixtures/sample.php')});
     let minifier = new Minifier();
     minifier.silent = true;
 
