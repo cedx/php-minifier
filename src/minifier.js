@@ -54,7 +54,7 @@ export class Minifier extends Transform {
    * @param {string} value The new transformation type.
    */
   set mode(value) {
-    this._transformer = value == 'fast' ? new FastTransformer(this) : new SafeTransformer(this);
+    this._transformer = String(value) == 'fast' ? new FastTransformer(this) : new SafeTransformer(this);
   }
 
   /**
