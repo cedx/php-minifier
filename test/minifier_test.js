@@ -17,19 +17,19 @@ describe('Minifier', function() {
    */
   describe('#mode', () => {
     it('should be `safe` if the underlying transformer is a `SafeTransformer` one', () => {
-      let minifier = new Minifier();
+      let minifier = new Minifier;
       minifier._transformer = new SafeTransformer(minifier);
       expect(minifier.mode).to.equal('safe');
     });
 
     it('should be `fast` if the underlying transformer is a `FastTransformer` one', () => {
-      let minifier = new Minifier();
+      let minifier = new Minifier;
       minifier._transformer = new FastTransformer(minifier);
       expect(minifier.mode).to.equal('fast');
     });
 
     it('should change the underlying transformer on value update', () => {
-      let minifier = new Minifier();
+      let minifier = new Minifier;
 
       minifier.mode = 'fast';
       expect(minifier._transformer).to.be.instanceOf(FastTransformer);
@@ -44,7 +44,7 @@ describe('Minifier', function() {
    */
   describe('#_transform()', () => {
     let file = new File({path: join(__dirname, 'fixtures/sample.php')});
-    let minifier = new Minifier();
+    let minifier = new Minifier;
     minifier.silent = true;
 
     it('should remove the inline comments', async () => {

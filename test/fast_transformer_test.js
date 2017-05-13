@@ -16,7 +16,7 @@ describe('FastTransformer', function() {
    */
   describe('#listening', () => {
     it('should return whether the server is listening', async () => {
-      let transformer = new FastTransformer(new Minifier());
+      let transformer = new FastTransformer(new Minifier);
       expect(transformer.listening).to.be.false;
       await transformer.listen();
       expect(transformer.listening).to.be.true;
@@ -30,7 +30,7 @@ describe('FastTransformer', function() {
    */
   describe('#transform()', () => {
     let script = join(__dirname, 'fixtures/sample.php');
-    let transformer = new FastTransformer(new Minifier());
+    let transformer = new FastTransformer(new Minifier);
 
     it('should remove the inline comments', async () => {
       let output = await transformer.transform(script);

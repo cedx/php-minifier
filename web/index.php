@@ -62,4 +62,4 @@ class Application {
 }
 
 // Start the application.
-(new Application())->run($_GET);
+(new Application)->run($_GET);
