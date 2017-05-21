@@ -16,7 +16,7 @@ gulp.task('default', ['build']);
 /**
  * Builds the sources.
  */
-gulp.task('build', () => gulp.src('src/**/*.js')
+gulp.task('build', () => gulp.src('src/**.js')
   .pipe(babel())
   .pipe(gulp.dest('lib'))
 );
@@ -49,7 +49,7 @@ gulp.task('doc', async () => {
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: '.'})
+gulp.task('fix', () => gulp.src(['*.js', 'src/**.js', 'test/**.js'], {base: '.'})
   .pipe(eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
@@ -57,7 +57,7 @@ gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'src/**.js', 'test/**.js'])
   .pipe(eslint())
   .pipe(eslint.format())
 );
