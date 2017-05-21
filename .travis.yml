@@ -9,7 +9,7 @@ sudo: false
 notifications:
   email: false
 
-before_script:
+install:
 - nvm install 7
 - npm install
 
