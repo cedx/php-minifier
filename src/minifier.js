@@ -29,12 +29,6 @@ export class Minifier extends Transform {
     this.silent = false;
 
     /**
-     * The underlying PHP process.
-     * @type {object}
-     */
-    this._phpServer = null;
-
-    /**
      * The instance used to process the PHP code.
      * @type {object}
      */
@@ -54,7 +48,7 @@ export class Minifier extends Transform {
    * @param {string} value The new transformation type.
    */
   set mode(value) {
-    this._transformer = String(value) == 'fast' ? new FastTransformer(this) : new SafeTransformer(this);
+    this._transformer = value == 'fast' ? new FastTransformer(this) : new SafeTransformer(this);
   }
 
   /**
