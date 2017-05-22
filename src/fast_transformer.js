@@ -1,6 +1,6 @@
 import {spawn} from 'child_process';
+import {createServer} from 'net';
 import {join} from 'path';
-import {getPortPromise as getPort} from 'portfinder';
 import superagent from 'superagent';
 
 /**
@@ -67,7 +67,7 @@ export class FastTransformer {
     this._minifier.once('end', handler).once('error', handler);
 
     let address = FastTransformer.DEFAULT_ADDRESS;
-    let port = await getPort();
+    let port = await this._getPort();
     let args = ['-S', `${address}:${port}`, '-t', join(__dirname, '../web')];
 
     this._phpServer = {address, port, process: spawn(this._minifier.binary, args)};
@@ -87,5 +87,22 @@ export class FastTransformer {
       .query({file: script});
 
     return response.text;
+  }
+
+  /**
+   * Gets an ephemeral port chosen by the system.
+   * @return {Promise<number>} A port that the server can listen on.
+   */
+  async _getPort() {
+    return new Promise((resolve, reject) => {
+      let server = createServer();
+      server.unref();
+      server.on('error', reject);
+
+      server.listen(0, FastTransformer.DEFAULT_ADDRESS, () => {
+        let port = server.address().port;
+        server.close(() => resolve(port));
+      });
+    });
   }
 }
