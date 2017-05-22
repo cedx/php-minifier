@@ -18,26 +18,22 @@ describe('SafeTransformer', function() {
     let script = join(__dirname, 'fixtures/sample.php');
     let transformer = new SafeTransformer(new Minifier);
 
-    it('should remove the inline comments', async () => {
+    it('should remove the inline comments', async () =>
       /* eslint-disable quotes */
-      let output = await transformer.transform(script);
-      expect(output).to.contain("<?= 'Hello World!' ?>");
+      expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>")
       /* eslint-enable quotes */
-    });
+    );
 
-    it('should remove the multi-line comments', async () => {
-      let output = await transformer.transform(script);
-      expect(output).to.contain('namespace dummy; class Dummy');
-    });
+    it('should remove the multi-line comments', async () =>
+      expect(await transformer.transform(script)).to.contain('namespace dummy; class Dummy')
+    );
 
-    it('should remove the single-line comments', async () => {
-      let output = await transformer.transform(script);
-      expect(output).to.contain('$className = get_class($this); return $className;');
-    });
+    it('should remove the single-line comments', async () =>
+      expect(await transformer.transform(script)).to.contain('$className = get_class($this); return $className;')
+    );
 
-    it('should remove the whitespace', async () => {
-      let output = await transformer.transform(script);
-      expect(output).to.contain('__construct() { }');
-    });
+    it('should remove the whitespace', async () =>
+      expect(await transformer.transform(script)).to.contain('__construct() { }')
+    );
   });
 });
