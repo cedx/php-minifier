@@ -19,8 +19,10 @@ describe('SafeTransformer', function() {
     let transformer = new SafeTransformer(new Minifier);
 
     it('should remove the inline comments', async () => {
+      /* eslint-disable quotes */
       let output = await transformer.transform(script);
-      expect(output).to.contain('<?= \'Hello World!\' ?>');
+      expect(output).to.contain("<?= 'Hello World!' ?>");
+      /* eslint-enable quotes */
     });
 
     it('should remove the multi-line comments', async () => {
