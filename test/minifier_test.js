@@ -48,8 +48,10 @@ describe('Minifier', function() {
     minifier.silent = true;
 
     it('should remove the inline comments', async () => {
+      /* eslint-disable quotes */
       let result = await minifier._transform(file, 'utf8');
-      expect(result.contents.toString()).to.contain('<?= \'Hello World!\' ?>');
+      expect(result.contents.toString()).to.contain("<?= 'Hello World!' ?>");
+      /* eslint-enable quotes */
     });
 
     it('should remove the multi-line comments', async () => {
