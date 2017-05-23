@@ -50,6 +50,6 @@ describe('FastTransformer', function() {
       expect(await transformer.transform(script)).to.contain('__construct() { }')
     );
 
-    return transformer.close();
+    transformer.close();
   });
 });
