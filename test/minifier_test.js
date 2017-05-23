@@ -44,8 +44,10 @@ describe('Minifier', function() {
    */
   describe('#_transform()', () => {
     let file = new File({path: join(__dirname, 'fixtures/sample.php')});
+
     let minifier = new Minifier;
     minifier.silent = true;
+    after(() => minifier.emit('end'));
 
     it('should remove the inline comments', async () => {
       /* eslint-disable quotes */
@@ -68,7 +70,5 @@ describe('Minifier', function() {
       let result = await minifier._transform(file, 'utf8');
       expect(result.contents.toString()).to.contain('__construct() { }');
     });
-
-    minifier.emit('end');
   });
 });

@@ -11,7 +11,7 @@ Once you're familiar with that process, you may install this plug-in with this c
 $ npm install --save-dev @cedx/gulp-php-minify
 ```
 
-Once the plug-in has been installed, it may be enabled inside your `gulpfile.js`.
+Once the plug-in has been installed, it may be enabled inside your `gulpfile.js` file.
 
 ## Usage
 The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](https://secure.php.net/manual/en/function.php-strip-whitespace.php) function on their contents:

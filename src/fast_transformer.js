@@ -63,7 +63,7 @@ export class FastTransformer {
   async listen() {
     if (this.listening) return this._phpServer.port;
 
-    let handler = async () => await this.close();
+    let handler = () => this.close();
     this._minifier.once('end', handler).once('error', handler);
 
     let address = FastTransformer.DEFAULT_ADDRESS;

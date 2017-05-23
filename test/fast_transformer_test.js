@@ -31,6 +31,7 @@ describe('FastTransformer', function() {
   describe('#transform()', () => {
     let script = join(__dirname, 'fixtures/sample.php');
     let transformer = new FastTransformer(new Minifier);
+    after(() => transformer.close());
 
     it('should remove the inline comments', async () =>
       /* eslint-disable quotes */
@@ -49,7 +50,5 @@ describe('FastTransformer', function() {
     it('should remove the whitespace', async () =>
       expect(await transformer.transform(script)).to.contain('__construct() { }')
     );
-
-    transformer.close();
   });
 });
