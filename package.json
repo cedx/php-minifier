@@ -21,7 +21,7 @@
     "@cedx/gulp-david": "^7.0.1",
     "babel-preset-env": "^1.5.1",
     "babel-register": "^6.24.1",
-    "chai": "^3.5.0",
+    "chai": "^4.0.0",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
     "gulp": "^3.9.1",
