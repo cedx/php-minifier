@@ -10,7 +10,7 @@ notifications:
   email: false
 
 install:
-- nvm install 7
+- nvm install 8
 - npm install
 
 script: npm test

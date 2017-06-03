@@ -21,7 +21,7 @@
     "@cedx/gulp-david": "^7.0.1",
     "babel-preset-env": "^1.5.1",
     "babel-register": "^6.24.1",
-    "chai": "^4.0.0",
+    "chai": "^4.0.1",
     "del": "^2.2.2",
     "esdoc": "^0.5.2",
     "gulp": "^3.9.1",
@@ -29,7 +29,7 @@
     "gulp-eslint": "^3.0.1",
     "mocha": "^3.4.2",
     "nsp": "^2.6.3",
-    "nyc": "^10.3.2",
+    "nyc": "^11.0.2",
     "vinyl": "^2.0.2"
   },
   "engines": {
