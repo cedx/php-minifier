@@ -17,7 +17,7 @@
     "which": "^1.2.14"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^1.0.1",
+    "@cedx/coveralls": "^1.0.2",
     "@cedx/gulp-david": "^7.0.1",
     "babel-preset-env": "^1.5.1",
     "babel-register": "^6.24.1",
