@@ -1,4 +1,5 @@
 import {execFile} from 'child_process';
+import {promisify} from 'util';
 
 /**
  * Removes comments and whitespace from a PHP script, by calling a PHP process.
@@ -24,11 +25,7 @@ export class SafeTransformer {
    * @return {Promise<string>} The transformed script.
    */
   async transform(script) {
-    let args = ['-w', script];
-    let options = {maxBuffer: 10 * 1024 * 1024};
-    return new Promise((resolve, reject) => execFile(this._minifier.binary, args, options, (error, stdout) => {
-      if (error) reject(error);
-      else resolve(stdout);
-    }));
+    const exec = promisify(execFile);
+    return exec(this._minifier.binary, ['-w', script], {maxBuffer: 10 * 1024 * 1024});
   }
 }
