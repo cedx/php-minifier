@@ -26,6 +26,6 @@ export class SafeTransformer {
    */
   async transform(script) {
     const exec = promisify(execFile);
-    return exec(this._minifier.binary, ['-w', script], {maxBuffer: 10 * 1024 * 1024});
+    return (await exec(this._minifier.binary, ['-w', script], {maxBuffer: 10 * 1024 * 1024})).stdout;
   }
 }
