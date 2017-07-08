@@ -16,9 +16,9 @@
   "devDependencies": {
     "@cedx/coveralls": "^1.0.2",
     "@cedx/gulp-david": "^7.0.1",
-    "babel-preset-env": "^1.5.2",
+    "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
-    "chai": "^4.0.1",
+    "chai": "^4.0.2",
     "del": "^3.0.0",
     "esdoc": "^0.5.2",
     "estraverse": "^4.2.0",
