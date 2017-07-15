@@ -22,12 +22,14 @@ export class FastTransformer {
    * @param {Minifier} minifier The instance providing access to the minifier settings.
    */
   constructor(minifier) {
+    let handler = () => this.close().subscribe();
 
     /**
      * The instance providing access to the minifier settings.
      * @type {Minifier}
      */
     this._minifier = minifier;
+    this._minifier.on('end', handler).on('error', handler);
 
     /**
      * The underlying PHP process.
@@ -64,13 +66,9 @@ export class FastTransformer {
   listen() {
     if (this.listening) return Observable.of(this._phpServer.port);
 
-    let handler = () => this.close().subscribe();
-    this._minifier.once('end', handler).once('error', handler);
-
     return this._getPort().map(port => {
       let address = FastTransformer.DEFAULT_ADDRESS;
       let args = ['-S', `${address}:${port}`, '-t', join(__dirname, '../web')];
-
       this._phpServer = {address, port, process: spawn(this._minifier.binary, args)};
       return port;
     }).delay(1000);
