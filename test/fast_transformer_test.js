@@ -1,8 +1,7 @@
 'use strict';
 
 import {expect} from 'chai';
-import {describe, it} from 'mocha';
-import {join} from 'path';
+import {after, describe, it} from 'mocha';
 import {FastTransformer, Minifier} from '../src/index';
 
 /**
@@ -15,13 +14,15 @@ describe('FastTransformer', function() {
    * @test {FastTransformer#listening}
    */
   describe('#listening', () => {
-    it('should return whether the server is listening', async () => {
+    it('should return whether the server is listening', done => {
       let transformer = new FastTransformer(new Minifier);
       expect(transformer.listening).to.be.false;
-      await transformer.listen();
-      expect(transformer.listening).to.be.true;
-      await transformer.close();
-      expect(transformer.listening).to.be.false;
+
+      transformer.listen()
+        .do(() => expect(transformer.listening).to.be.true)
+        .mergeMap(() => transformer.close())
+        .do(() => expect(transformer.listening).to.be.false)
+        .subscribe(null, done, done);
     });
   });
 
@@ -29,26 +30,34 @@ describe('FastTransformer', function() {
    * @test {FastTransformer#transform}
    */
   describe('#transform()', () => {
-    let script = join(__dirname, 'fixtures/sample.php');
+    let script = 'test/fixtures/sample.php';
     let transformer = new FastTransformer(new Minifier);
-    after(() => transformer.close());
+    after(() => transformer.close().subscribe());
 
-    it('should remove the inline comments', async () =>
-      /* eslint-disable quotes */
-      expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>")
-      /* eslint-enable quotes */
-    );
+    it('should remove the inline comments', done => {
+      transformer.transform(script).subscribe(output => {
+        /* eslint-disable quotes */
+        expect(output).to.contain("<?= 'Hello World!' ?>");
+        /* eslint-enable quotes */
+      }, done, done);
+    });
 
-    it('should remove the multi-line comments', async () =>
-      expect(await transformer.transform(script)).to.contain('namespace dummy; class Dummy')
-    );
+    it('should remove the multi-line comments', done => {
+      transformer.transform(script).subscribe(output => {
+        expect(output).to.contain('namespace dummy; class Dummy');
+      }, done, done);
+    });
 
-    it('should remove the single-line comments', async () =>
-      expect(await transformer.transform(script)).to.contain('$className = get_class($this); return $className;')
-    );
+    it('should remove the single-line comments', done => {
+      transformer.transform(script).subscribe(output => {
+        expect(output).to.contain('$className = get_class($this); return $className;');
+      }, done, done);
+    });
 
-    it('should remove the whitespace', async () =>
-      expect(await transformer.transform(script)).to.contain('__construct() { }')
-    );
+    it('should remove the whitespace', done => {
+      transformer.transform(script).subscribe(output => {
+        expect(output).to.contain('__construct() { }');
+      }, done, done);
+    });
   });
 });
