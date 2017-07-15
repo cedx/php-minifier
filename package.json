@@ -10,15 +10,16 @@
   "repository": "cedx/gulp-php-minify",
   "version": "3.1.1",
   "dependencies": {
+    "rxjs": "^5.4.2",
     "superagent": "^3.5.2",
     "which": "^1.2.14"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^1.0.2",
-    "@cedx/gulp-david": "^7.0.1",
+    "@cedx/coveralls": "^2.0.0",
+    "@cedx/gulp-david": "^8.0.0",
     "babel-preset-env": "^1.6.0",
     "babel-register": "^6.24.1",
-    "chai": "^4.0.2",
+    "chai": "^4.1.0",
     "del": "^3.0.0",
     "esdoc": "^0.5.2",
     "estraverse": "^4.2.0",
@@ -31,14 +32,16 @@
     "vinyl": "^2.1.0"
   },
   "engines": {
-    "node": ">=8.1.0"
+    "node": ">=8.0.0"
   },
   "keywords": [
     "compress",
     "gulp",
     "gulpplugin",
     "minify",
-    "php"
+    "observable",
+    "php",
+    "rxjs"
   ],
   "scripts": {
     "coverage": "coveralls --file=var/lcov.info",
