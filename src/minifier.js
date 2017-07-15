@@ -55,23 +55,17 @@ export class Minifier extends Transform {
    * Transforms input and produces output.
    * @param {File} file The chunk to transform.
    * @param {string} encoding The encoding type if the chunk is a string.
-   * @param {function} [callback] The function to invoke when the supplied chunk has been processed.
-   * @return {Promise<File>} The transformed chunk.
+   * @param {function} callback The function to invoke when the supplied chunk has been processed.
    */
-  async _transform(file, encoding, callback) {
-    try {
-      if (!this.silent) console.log(`Minifying: ${file.path}`);
+  _transform(file, encoding, callback) {
+    if (!this.silent) console.log(`Minifying: ${file.path}`);
 
-      let data = await this._transformer.transform(file.path);
-      file.contents = Buffer.from(data, encoding);
-
-      if (typeof callback == 'function') callback(null, file);
-    }
-
-    catch (err) {
-      if (typeof callback == 'function') callback(new Error(`[${pkgName}] ${err.message}`));
-    }
-
-    return file;
+    this._transformer.transform(file.path).subscribe({
+      error: err => callback(new Error(`[${pkgName}] ${err.message}`)),
+      next: data => {
+        file.contents = Buffer.from(data, encoding);
+        callback(null, file);
+      }
+    });
   }
 }
