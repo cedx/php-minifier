@@ -1,5 +1,5 @@
 # Gulp-PHP-Minify
-![Runtime](https://img.shields.io/badge/node-%3E%3D8.1.0-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@cedx/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/gulp-php-minify.svg) ![Dependencies](https://david-dm.org/cedx/gulp-php-minify.svg) ![Coverage](https://coveralls.io/repos/github/cedx/gulp-php-minify/badge.svg) ![Build](https://travis-ci.org/cedx/gulp-php-minify.svg)
+![Runtime](https://img.shields.io/badge/node-%3E%3D8.0-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@cedx/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/gulp-php-minify.svg) ![Dependencies](https://david-dm.org/cedx/gulp-php-minify.svg) ![Coverage](https://coveralls.io/repos/github/cedx/gulp-php-minify/badge.svg) ![Build](https://travis-ci.org/cedx/gulp-php-minify.svg)
 
 [Gulp.js](http://gulpjs.com) plug-in minifying [PHP](https://secure.php.net) source code by removing comments and whitespace.
 
@@ -17,8 +17,8 @@ Once the plug-in has been installed, it may be enabled inside your `gulpfile.js`
 The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](https://secure.php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
 
 ```javascript
-const gulp = require('gulp');
-const {phpMinify} = require('@cedx/gulp-php-minify');
+import {phpMinify} from '@cedx/gulp-php-minify';
+import gulp from 'gulp';
 
 gulp.task('minify:php', () => gulp.src('path/to/lib/**.php', {read: false})
   .pipe(phpMinify())
