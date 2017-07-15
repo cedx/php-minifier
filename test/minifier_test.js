@@ -1,8 +1,7 @@
 'use strict';
 
 import {expect} from 'chai';
-import {describe, it} from 'mocha';
-import {join} from 'path';
+import {after, describe, it} from 'mocha';
 import File from 'vinyl';
 import {FastTransformer, Minifier, SafeTransformer} from '../src/index';
 
@@ -43,32 +42,52 @@ describe('Minifier', function() {
    * @test {Minifier#_transform}
    */
   describe('#_transform()', () => {
-    let file = new File({path: join(__dirname, 'fixtures/sample.php')});
+    let file = new File({path: 'test/fixtures/sample.php'});
 
     let minifier = new Minifier;
     minifier.silent = true;
     after(() => minifier.emit('end'));
 
-    it('should remove the inline comments', async () => {
-      /* eslint-disable quotes */
-      let result = await minifier._transform(file, 'utf8');
-      expect(result.contents.toString()).to.contain("<?= 'Hello World!' ?>");
-      /* eslint-enable quotes */
+    it('should remove the inline comments', done => {
+      minifier._transform(file, 'utf8', (err, file) => {
+        if (err) done(err);
+        else {
+          /* eslint-disable quotes */
+          expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>");
+          done();
+          /* eslint-enable quotes */
+        }
+      });
     });
 
-    it('should remove the multi-line comments', async () => {
-      let result = await minifier._transform(file, 'utf8');
-      expect(result.contents.toString()).to.contain('namespace dummy; class Dummy');
+    it('should remove the multi-line comments', done => {
+      minifier._transform(file, 'utf8', (err, file) => {
+        if (err) done(err);
+        else {
+          expect(file.contents.toString()).to.contain('namespace dummy; class Dummy');
+          done();
+        }
+      });
     });
 
-    it('should remove the single-line comments', async () => {
-      let result = await minifier._transform(file, 'utf8');
-      expect(result.contents.toString()).to.contain('$className = get_class($this); return $className;');
+    it('should remove the single-line comments', done => {
+      minifier._transform(file, 'utf8', (err, file) => {
+        if (err) done(err);
+        else {
+          expect(file.contents.toString()).to.contain('$className = get_class($this); return $className;');
+          done();
+        }
+      });
     });
 
-    it('should remove the whitespace', async () => {
-      let result = await minifier._transform(file, 'utf8');
-      expect(result.contents.toString()).to.contain('__construct() { }');
+    it('should remove the whitespace', done => {
+      minifier._transform(file, 'utf8', (err, file) => {
+        if (err) done(err);
+        else {
+          expect(file.contents.toString()).to.contain('__construct() { }');
+          done();
+        }
+      });
     });
   });
 });
