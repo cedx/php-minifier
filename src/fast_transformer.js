@@ -80,12 +80,10 @@ export class FastTransformer {
    * @return {Observable<string>} The transformed script.
    */
   transform(script) {
-    let req = superagent
-      .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
-      .query({file: script});
-
     return this.listen()
-      .mergeMap(() => Observable.from(req))
+      .mergeMap(() => Observable.from(superagent
+        .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
+        .query({file: script})))
       .map(res => res.text);
   }
 
