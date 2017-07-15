@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+## Version 4.0.0
+- Breaking change: restored the [Observable](http://reactivex.io/intro.html) APIs.
+- Updated the package dependencies.
+
 ## Version 3.1.1
 - Fixed a code generation bug.
 - Updated the package dependencies.
