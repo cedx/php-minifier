@@ -1,6 +1,7 @@
 import {spawn} from 'child_process';
 import {createServer} from 'net';
 import {join} from 'path';
+import {Observable} from 'rxjs';
 import superagent from 'superagent';
 
 /**
@@ -45,63 +46,64 @@ export class FastTransformer {
 
   /**
    * Terminates the underlying PHP process: stops the server from accepting new connections. It does nothing if the server is already closed.
-   * @return {Promise} Completes when the PHP process is finally terminated.
+   * @return {Observable} Completes when the PHP process is finally terminated.
    */
-  async close() {
-    if (this.listening) {
+  close() {
+    return !this.listening ? Observable.of(null) : new Observable(observer => {
       this._phpServer.process.kill();
       this._phpServer = null;
-    }
-
-    return null;
+      observer.next();
+      observer.complete();
+    });
   }
 
   /**
    * Starts the underlying PHP process: begins accepting connections. It does nothing if the server is already started.
-   * @return {Promise<number>} The port used by the PHP process.
+   * @return {Observable<number>} The port used by the PHP process.
    */
-  async listen() {
-    if (this.listening) return this._phpServer.port;
+  listen() {
+    if (this.listening) return Observable.of(this._phpServer.port);
 
-    let handler = () => this.close();
+    let handler = () => this.close().subscribe();
     this._minifier.once('end', handler).once('error', handler);
 
-    let address = FastTransformer.DEFAULT_ADDRESS;
-    let port = await this._getPort();
-    let args = ['-S', `${address}:${port}`, '-t', join(__dirname, '../web')];
+    return this._getPort().map(port => {
+      let address = FastTransformer.DEFAULT_ADDRESS;
+      let args = ['-S', `${address}:${port}`, '-t', join(__dirname, '../web')];
 
-    this._phpServer = {address, port, process: spawn(this._minifier.binary, args)};
-    return new Promise(resolve => setTimeout(() => resolve(port), 1000));
+      this._phpServer = {address, port, process: spawn(this._minifier.binary, args)};
+      return port;
+    }).delay(1000);
   }
 
   /**
    * Processes a PHP script.
    * @param {string} script The path to the PHP script.
-   * @return {Promise<string>} The transformed script.
+   * @return {Observable<string>} The transformed script.
    */
-  async transform(script) {
-    await this.listen();
-
-    let response = await superagent
+  transform(script) {
+    let req = superagent
       .get(`http://${this._phpServer.address}:${this._phpServer.port}/index.php`)
       .query({file: script});
 
-    return response.text;
+    return this.listen()
+      .map(() => Observable.of(req))
+      .mergeMap(res => res.text);
   }
 
   /**
    * Gets an ephemeral port chosen by the system.
-   * @return {Promise<number>} A port that the server can listen on.
+   * @return {Observable<number>} A port that the server can listen on.
    */
-  async _getPort() {
-    return new Promise((resolve, reject) => {
+  _getPort() {
+    return new Observable(observer => {
       let server = createServer();
       server.unref();
-      server.on('error', reject);
+      server.on('error', err => observer.error(err));
 
       server.listen(0, FastTransformer.DEFAULT_ADDRESS, () => {
-        let port = server.address().port;
-        server.close(() => resolve(port));
+        observer.next(server.address().port);
+        server.close(() => observer.complete());
       });
     });
   }
