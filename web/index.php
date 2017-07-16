@@ -1,7 +1,5 @@
 <?php
-/**
- * Implementation of the `gulp\php_minify\Application` class.
- */
+declare(strict_types = 1);
 namespace gulp\php_minify;
 
 /**
