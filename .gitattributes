@@ -1,6 +1,5 @@
 * text=auto
 
-.babelrc text
 .editorconfig text
 .esdoc.json text
 .eslintrc.yaml text

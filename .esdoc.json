@@ -1,12 +1,13 @@
 {
   "title": "Gulp-PHP-Minify",
 
-  "source": "src",
+  "source": "lib",
   "destination": "doc/api",
 
-  "manual": {
-    "changelog": ["CHANGELOG.md"]
-  },
+  "excludes": ["index\\.js$"],
+  "manual": {"changelog": ["CHANGELOG.md"]},
+  "plugins": [{"name": "esdoc-node"}],
+
   "test": {
     "source": "test",
     "type": "mocha"

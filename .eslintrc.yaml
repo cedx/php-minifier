@@ -3,11 +3,12 @@ extends: eslint:recommended
 
 env:
   es6: true
+  mocha: true
   node: true
 
 parserOptions:
   ecmaVersion: 2017
-  sourceType: module
+  sourceType: script
 
 rules:
   # Possible errors.

@@ -1,13 +1,13 @@
+dist: trusty
+sudo: false
+notifications:
+  email: false
+
+env: NODE_ENV="test"
 language: php
 php:
 - '7.0'
 - '7.1'
-
-env: NODE_ENV="test"
-sudo: false
-
-notifications:
-  email: false
 
 install:
 - nvm install 8

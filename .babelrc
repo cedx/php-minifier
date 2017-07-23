@@ -1,6 +1,0 @@
-{
-  "comments": false,
-  "presets": [
-    ["env", {"targets": {"node": "8.0"}}]
-  ]
-}
