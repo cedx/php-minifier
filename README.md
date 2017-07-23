@@ -17,8 +17,8 @@ Once the plug-in has been installed, it may be enabled inside your `gulpfile.js`
 The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](https://secure.php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
 
 ```javascript
-import {phpMinify} from '@cedx/gulp-php-minify';
-import gulp from 'gulp';
+const {phpMinify} = require('@cedx/gulp-php-minify');
+const gulp = require('gulp');
 
 gulp.task('minify:php', () => gulp.src('path/to/lib/**.php', {read: false})
   .pipe(phpMinify())
