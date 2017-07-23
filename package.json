@@ -5,30 +5,27 @@
   "homepage": "https://github.com/cedx/gulp-php-minify",
   "license": "Apache-2.0",
   "main": "./lib/index",
-  "module": "./src/index",
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "dependencies": {
     "rxjs": "^5.4.2",
     "superagent": "^3.5.2",
     "which": "^1.2.14"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^2.0.0",
-    "@cedx/gulp-david": "^8.0.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.24.1",
+    "@cedx/coveralls": "^2.1.0",
+    "@cedx/gulp-david": "^8.1.0",
     "chai": "^4.1.0",
     "del": "^3.0.0",
     "esdoc": "^0.5.2",
+    "esdoc-node": "^1.0.2",
     "estraverse": "^4.2.0",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
     "gulp-eslint": "^4.0.0",
     "mocha": "^3.4.2",
     "nsp": "^2.6.3",
-    "nyc": "^11.0.3",
+    "nyc": "^11.1.0",
     "vinyl": "^2.1.0"
   },
   "engines": {
@@ -44,8 +41,7 @@
     "rxjs"
   ],
   "scripts": {
-    "coverage": "coveralls --file=var/lcov.info",
-    "prepare": "gulp build",
-    "test": "nyc --report-dir=var --reporter=lcovonly mocha --compilers=js:babel-register --recursive"
+    "coverage": "coveralls var/lcov.info",
+    "test": "nyc --report-dir=var --reporter=lcovonly mocha --recursive"
   }
 }

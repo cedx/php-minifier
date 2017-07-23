@@ -4,22 +4,13 @@ const {david} = require('@cedx/gulp-david');
 const {spawn} = require('child_process');
 const del = require('del');
 const gulp = require('gulp');
-const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
 const {normalize} = require('path');
 
 /**
  * Runs the default tasks.
  */
-gulp.task('default', ['build']);
-
-/**
- * Builds the sources.
- */
-gulp.task('build', () => gulp.src('src/**/*.js')
-  .pipe(babel())
-  .pipe(gulp.dest('lib'))
-);
+gulp.task('default', ['test']);
 
 /**
  * Deletes all generated files and reset any saved state.
@@ -29,7 +20,7 @@ gulp.task('clean', () => del('var/**/*'));
 /**
  * Sends the results of the code coverage.
  */
-gulp.task('coverage', ['test'], () => _exec('node_modules/.bin/coveralls', ['--file=var/lcov.info']));
+gulp.task('coverage', ['test'], () => _exec('node_modules/.bin/coveralls', ['var/lcov.info']));
 
 /**
  * Checks the package dependencies.
@@ -49,7 +40,7 @@ gulp.task('doc', async () => {
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: '.'})
+gulp.task('fix', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'], {base: '.'})
   .pipe(eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
@@ -57,7 +48,7 @@ gulp.task('fix', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'], {base: 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'src/**/*.js', 'test/**/*.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
   .pipe(eslint())
   .pipe(eslint.format())
 );
@@ -69,7 +60,6 @@ gulp.task('test', () => _exec('node_modules/.bin/nyc', [
   '--report-dir=var',
   '--reporter=lcovonly',
   normalize('node_modules/.bin/mocha'),
-  '--compilers=js:babel-register',
   '--recursive'
 ]));
 

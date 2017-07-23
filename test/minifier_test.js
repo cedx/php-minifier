@@ -1,9 +1,8 @@
 'use strict';
 
-import {expect} from 'chai';
-import {after, describe, it} from 'mocha';
-import File from 'vinyl';
-import {FastTransformer, Minifier, SafeTransformer} from '../src/index';
+const {expect} = require('chai');
+const File = require('vinyl');
+const {FastTransformer, Minifier, SafeTransformer} = require('../lib');
 
 /**
  * @test {Minifier}
