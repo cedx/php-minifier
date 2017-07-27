@@ -14,7 +14,7 @@
     "which": "^1.2.14"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^2.1.0",
+    "@cedx/coveralls": "^2.2.0",
     "@cedx/gulp-david": "^8.1.0",
     "chai": "^4.1.0",
     "del": "^3.0.0",
