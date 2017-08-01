@@ -1,15 +1,18 @@
 {
-  "title": "Gulp-PHP-Minify",
-
   "source": "lib",
   "destination": "doc/api",
-
   "excludes": ["index\\.js$"],
-  "manual": {"changelog": ["CHANGELOG.md"]},
-  "plugins": [{"name": "esdoc-node"}],
-
-  "test": {
-    "source": "test",
-    "type": "mocha"
-  }
+  "plugins": [
+    {"name": "esdoc-node"},
+    {"name": "esdoc-standard-plugin", "option": {
+      "accessor": {"access": ["public", "protected"]},
+      "manual": {"files": ["CHANGELOG.md"]},
+      "test": {"source": "test"},
+      "brand": {
+        "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
+        "logo": "web/favicon.ico",
+        "title": "Gulp-PHP-Minify"
+      }
+    }}
+  ]
 }
