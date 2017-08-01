@@ -2,6 +2,8 @@
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 ## Version 4.2.0
+- Replaced the `which` module by an `Observable`-based one.
+- Updated the package dependencies.
 
 ## Version 4.1.0
 - Removed the dependency on [Babel](https://babeljs.io) compiler.

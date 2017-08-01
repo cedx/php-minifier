@@ -14,7 +14,7 @@ describe('SafeTransformer', function() {
    */
   describe('#transform()', () => {
     let script = 'test/fixtures/sample.php';
-    let transformer = new SafeTransformer(new Minifier);
+    let transformer = new SafeTransformer(new Minifier('php'));
 
     it('should remove the inline comments', done => {
       transformer.transform(script).subscribe(output => {

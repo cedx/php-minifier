@@ -14,7 +14,7 @@ describe('FastTransformer', function() {
    */
   describe('#listening', () => {
     it('should return whether the server is listening', done => {
-      let transformer = new FastTransformer(new Minifier);
+      let transformer = new FastTransformer(new Minifier('php'));
       expect(transformer.listening).to.be.false;
 
       transformer.listen()
@@ -30,7 +30,7 @@ describe('FastTransformer', function() {
    */
   describe('#transform()', () => {
     let script = 'test/fixtures/sample.php';
-    let transformer = new FastTransformer(new Minifier);
+    let transformer = new FastTransformer(new Minifier('php'));
     after(() => transformer.close().subscribe());
 
     it('should remove the inline comments', done => {
