@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@cedx/coveralls": "^3.0.0",
-    "@cedx/gulp-david": "^8.1.0",
+    "@cedx/gulp-david": "^9.0.0",
     "chai": "^4.1.0",
     "del": "^3.0.0",
     "esdoc": "^1.0.1",
