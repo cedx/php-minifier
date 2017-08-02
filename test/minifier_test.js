@@ -11,6 +11,27 @@ describe('Minifier', function() {
   this.timeout(60000);
 
   /**
+   * @test {Minifier.factory}
+   */
+  describe('.factory()', () => {
+    it('should return a `Minifier` instance', () => {
+      expect(Minifier.factory()).to.be.instanceof(Minifier);
+    });
+
+    it('should properly initialize the instance properties', () => {
+      let minifier = Minifier.factory({
+        binary: '/usr/local/bin/php',
+        mode: 'fast',
+        silent: true
+      });
+
+      expect(minifier.binary).to.equal(process.platform == 'win32' ? '\\usr\\local\\bin\\php' : '/usr/local/bin/php');
+      expect(minifier.mode).to.equal('fast');
+      expect(minifier.silent).to.be.true;
+    });
+  });
+
+  /**
    * @test {Minifier#mode}
    */
   describe('#mode', () => {
