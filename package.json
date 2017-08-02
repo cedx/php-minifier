@@ -7,7 +7,7 @@
   "main": "./lib/index",
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "dependencies": {
     "@cedx/which": "^1.0.0",
     "rxjs": "^5.4.2",
