@@ -39,6 +39,7 @@
     "minify",
     "observable",
     "php",
+    "reactivex",
     "rxjs"
   ],
   "scripts": {
