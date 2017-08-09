@@ -30,7 +30,7 @@ The plug-in only needs the file paths, so you should specify the `read` option t
 
 ## Options
 
-### `binary`
+### `binary: string = "php"`
 The plug-in relies on the availability of the [PHP](https://secure.php.net) executable on the target system. By default, the plug-in will use the `php` binary found on the system path.
 
 If the plug-in cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable by using the `binary` option:
@@ -41,7 +41,7 @@ return gulp.src('path/to/lib/**.php', {read: false})
   .pipe(gulp.dest('path/to/out'));
 ```
 
-### `mode`
+### `mode: string = "safe"`
 The plug-in can work in two manners, which can be selected using the `mode` option:
 
 - the `safe` mode: as its name implies, this mode is very reliable. But it is also very slow as it spawns a new PHP process for every file to be processed. This is the default mode.
@@ -53,7 +53,7 @@ return gulp.src('path/to/lib/**.php', {read: false})
   .pipe(gulp.dest('path/to/out'));
 ```
 
-### `silent`
+### `silent: boolean = false`
 By default, the plug-in prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` option to `true`.
 
 ```javascript
