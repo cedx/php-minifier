@@ -1,6 +1,8 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+## Version 5.1.0
+
 # Version 5.0.0
 - Breaking change: changed the `factory()` function to the `Minifier.factory` method.
 - Updated the package dependencies.
