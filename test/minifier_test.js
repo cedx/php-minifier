@@ -8,6 +8,7 @@ const {FastTransformer, Minifier, SafeTransformer} = require('../lib');
  * @test {Minifier}
  */
 describe('Minifier', function() {
+  this.retries(3);
   this.timeout(60000);
 
   /**
