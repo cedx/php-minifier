@@ -118,7 +118,7 @@ rules:
   one-var: [error, never]
   operator-assignment: error
   quote-props: [error, as-needed]
-  quotes: [error, single]
+  quotes: [error, single, {avoidEscape: true}]
   require-jsdoc: [error, {require: {ClassDeclaration: true, FunctionDeclaration: true, MethodDefinition: true}}]
   semi: error
   semi-spacing: error
