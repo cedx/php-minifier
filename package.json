@@ -41,6 +41,9 @@
     "reactivex",
     "rxjs"
   ],
+  "peerDependencies": {
+    "gulp": ">=3.9.0"
+  },
   "scripts": {
     "coverage": "coveralls var/lcov.info",
     "test": "nyc --report-dir=var --reporter=lcovonly mocha --recursive"
