@@ -69,46 +69,24 @@ describe('Minifier', function() {
     minifier.silent = true;
     after(() => minifier.emit('end'));
 
-    it('should remove the inline comments', done => {
-      minifier._transform(file, 'utf8', (err, file) => {
-        if (err) done(err);
-        else {
-          /* eslint-disable quotes */
-          expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>");
-          done();
-          /* eslint-enable quotes */
-        }
-      });
+    it('should remove the inline comments', async () => {
+      await minifier._transform(file);
+      expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>");
     });
 
-    it('should remove the multi-line comments', done => {
-      minifier._transform(file, 'utf8', (err, file) => {
-        if (err) done(err);
-        else {
-          expect(file.contents.toString()).to.contain('namespace dummy; class Dummy');
-          done();
-        }
-      });
+    it('should remove the multi-line comments', async () => {
+      await minifier._transform(file);
+      expect(file.contents.toString()).to.contain('namespace dummy; class Dummy');
     });
 
-    it('should remove the single-line comments', done => {
-      minifier._transform(file, 'utf8', (err, file) => {
-        if (err) done(err);
-        else {
-          expect(file.contents.toString()).to.contain('$className = get_class($this); return $className;');
-          done();
-        }
-      });
+    it('should remove the single-line comments', async () => {
+      await minifier._transform(file);
+      expect(file.contents.toString()).to.contain('$className = get_class($this); return $className;');
     });
 
-    it('should remove the whitespace', done => {
-      minifier._transform(file, 'utf8', (err, file) => {
-        if (err) done(err);
-        else {
-          expect(file.contents.toString()).to.contain('__construct() { }');
-          done();
-        }
-      });
+    it('should remove the whitespace', async () => {
+      await minifier._transform(file);
+      expect(file.contents.toString()).to.contain('__construct() { }');
     });
   });
 });
