@@ -9,37 +9,33 @@
   "repository": "cedx/gulp-php-minify",
   "version": "6.0.0",
   "dependencies": {
-    "@cedx/which": "^1.1.0",
-    "node-fetch": "^1.7.2",
-    "rxjs": "^5.4.3"
+    "@cedx/which": "^2.0.0",
+    "node-fetch": "^1.7.2"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^3.1.0",
-    "@cedx/gulp-david": "^9.0.0",
-    "chai": "^4.1.1",
+    "@cedx/coveralls": "^4.0.0",
+    "@cedx/gulp-david": "^10.0.0",
+    "chai": "^4.1.2",
     "del": "^3.0.0",
-    "esdoc": "^1.0.1",
+    "esdoc": "^1.0.2",
     "esdoc-node": "^1.0.2",
     "esdoc-standard-plugin": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
     "mocha": "^3.5.0",
-    "nsp": "^2.7.0",
-    "nyc": "^11.1.0",
+    "nsp": "^2.8.0",
+    "nyc": "^11.2.1",
     "vinyl": "^2.1.0"
   },
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=8.4.0"
   },
   "keywords": [
     "compress",
     "gulp",
     "gulpplugin",
     "minify",
-    "observable",
-    "php",
-    "reactivex",
-    "rxjs"
+    "php"
   ],
   "peerDependencies": {
     "gulp": ">=3.9.0"
