@@ -10,7 +10,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 - Replaced the [SuperAgent](https://visionmedia.github.io/superagent) HTTP client by `node-fetch`.
 - Updated the package dependencies.
 
-# Version 5.0.0
+## Version 5.0.0
 - Breaking change: changed the `factory()` function to the `Minifier.factory` method.
 - Updated the package dependencies.
 
