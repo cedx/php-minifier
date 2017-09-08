@@ -26,7 +26,7 @@ gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
 );
 ```
 
-The plug-in only needs the file paths, so you should specify the `read` option to `false` when providing the file list, and you should not have any other plug-in before it.
+> The plug-in only needs the file paths, so you should specify the `read` option to `false` when providing the file list, and you should not have any other plug-in before it.
 
 ## Options
 
