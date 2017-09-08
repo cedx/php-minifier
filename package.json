@@ -3,11 +3,11 @@
   "bugs": "https://github.com/cedx/gulp-php-minify/issues",
   "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
   "homepage": "https://github.com/cedx/gulp-php-minify",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "main": "./lib/index",
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "dependencies": {
     "@cedx/which": "^1.1.0",
     "node-fetch": "^1.7.2",

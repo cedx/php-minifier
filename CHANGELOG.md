@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+## Version 6.0.0
+- Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
+
 ## Version 5.1.0
 - Replaced the [SuperAgent](https://visionmedia.github.io/superagent) HTTP client by `node-fetch`.
 - Updated the package dependencies.

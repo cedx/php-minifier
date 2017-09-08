@@ -68,4 +68,4 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 - [Continuous integration](https://travis-ci.org/cedx/gulp-php-minify)
 
 ## License
-[Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) is distributed under the Apache License, version 2.0.
+[Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) is distributed under the MIT License.
