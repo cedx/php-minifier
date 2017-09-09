@@ -9,7 +9,7 @@
   "repository": "cedx/gulp-php-minify",
   "version": "6.0.0",
   "dependencies": {
-    "@cedx/which": "^2.0.0",
+    "@cedx/which": "^2.0.1",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
