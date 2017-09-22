@@ -1,15 +1,15 @@
 dist: trusty
+language: php
 sudo: false
-notifications:
-  email: false
 
 env: NODE_ENV="test"
-language: php
 php: '7.1'
+notifications:
+  email: false
 
 install:
 - nvm install 8
 - npm install
 
 script: npm test
-after_script: npm run coverage
+after_success: npm run coverage

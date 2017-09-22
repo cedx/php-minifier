@@ -1,0 +1,7 @@
+{
+  "all": true,
+  "cache": true,
+  "include": ["lib/**/*.js"],
+  "report-dir": "var",
+  "reporter": ["lcovonly"]
+}

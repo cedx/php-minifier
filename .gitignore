@@ -1,6 +1,4 @@
-/.c9/
-/.idea/
-/.nyc_output/
+/.*/
 /doc/api/
 /node_modules/
 /var/
