@@ -1,45 +1,45 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
-## Version 6.0.0
+## Version [6.0.0](https://github.com/cedx/gulp-php-minify/compare/v5.1.0...v6.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.
 - Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
-## Version 5.1.0
+## Version [5.1.0](https://github.com/cedx/gulp-php-minify/compare/v5.0.0...v5.1.0)
 - Replaced the [SuperAgent](https://visionmedia.github.io/superagent) HTTP client by `node-fetch`.
 - Updated the package dependencies.
 
-## Version 5.0.0
+## Version [5.0.0](https://github.com/cedx/gulp-php-minify/compare/v4.2.0...v5.0.0)
 - Breaking change: changed the `factory()` function to the `Minifier.factory` method.
 - Updated the package dependencies.
 
-## Version 4.2.0
+## Version [4.2.0](https://github.com/cedx/gulp-php-minify/compare/v4.1.0...v4.2.0)
 - Replaced the `which` module by an `Observable`-based one.
 - Updated the package dependencies.
 
-## Version 4.1.0
+## Version [4.1.0](https://github.com/cedx/gulp-php-minify/compare/v4.0.0...v4.1.0)
 - Removed the dependency on [Babel](https://babeljs.io) compiler.
 - Updated the package dependencies.
 
-## Version 4.0.0
+## Version [4.0.0](https://github.com/cedx/gulp-php-minify/compare/v3.1.1...v4.0.0)
 - Breaking change: restored the [Observable](http://reactivex.io/intro.html) APIs.
 - Updated the package dependencies.
 
-## Version 3.1.1
+## Version [3.1.1](https://github.com/cedx/gulp-php-minify/compare/v3.1.0...v3.1.1)
 - Fixed a code generation bug.
 - Updated the package dependencies.
 
-## Version 3.1.0
+## Version [3.1.0](https://github.com/cedx/gulp-php-minify/compare/v3.0.0...v3.1.0)
 - Added support for the [Node Security Platform](https://nodesecurity.io) reports.
 - Updated the package dependencies.
 
-## Version 3.0.0
+## Version [3.0.0](https://github.com/cedx/gulp-php-minify/compare/v2.0.0...v3.0.0)
 - Breaking change: changed the signature of the `Minifier` constructor.
 - Added new unit tests.
 - Updated the package dependencies.
 
-## Version 2.0.0
+## Version [2.0.0](https://github.com/cedx/gulp-php-minify/compare/v1.1.0...v2.0.0)
 - Breaking change: dropped the dependency on [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: raised the required [PHP](https://secure.php.net) version.
@@ -47,18 +47,18 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 - Added a `mode` option allowing to select the underlying transformer.
 - Improved the build system.
 - Ported the unit test assertions from [TDD](https://en.wikipedia.org/wiki/Test-driven_development) to [BDD](https://en.wikipedia.org/wiki/Behavior-driven_development).
-- Restored the legacy transformer from version 0.2.0. 
+- Restored the legacy transformer from version 0.2.0.
 - Updated the package dependencies.
 
-## Version 1.1.0
+## Version [1.1.0](https://github.com/cedx/gulp-php-minify/compare/v1.0.1...v1.1.0)
 - Properly handle the stream events: added support for the `error` event, remove the registered listeners on stream close.
 - Replaced the [Codacy](https://www.codacy.com) code coverage service by the [Coveralls](https://coveralls.io) one.
 - Updated the package dependencies.
 
-## Version 1.0.1
+## Version [1.0.1](https://github.com/cedx/gulp-php-minify/compare/v1.0.0...v1.0.1)
 - Fixed [GitHub issue #1](https://github.com/cedx/gulp-php-minify/issues/1).
 
-## Version 1.0.0
+## Version [1.0.0](https://github.com/cedx/gulp-php-minify/compare/v0.3.1...v1.0.0)
 - Breaking change: the plug-in is not anymore a default export. The use of destructuring assignment is advised to access it.
 - Breaking change: ported the [CommonJS](https://nodejs.org/api/modules.html) modules to ES2015 format.
 - Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
@@ -70,28 +70,28 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 - Replaced [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
 - Updated the package dependencies.
 
-## Version 0.3.1
+## Version [0.3.1](https://github.com/cedx/gulp-php-minify/compare/v0.3.0...v0.3.1)
 - Added support for code coverage.
 - Added support for [Travis CI](https://travis-ci.org) continuous integration.
 
-## Version 0.3.0
+## Version [0.3.0](https://github.com/cedx/gulp-php-minify/compare/v0.2.0...v0.3.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Added the `silent` option: conditionally displaying the path of the minified scripts to the standard output.
 - Drastically improved the performance (up to a 30x factor).
 - Updated the package dependencies.
 
-## Version 0.2.0
+## Version [0.2.0](https://github.com/cedx/gulp-php-minify/compare/v0.1.2...v0.2.0)
 - Breaking change: renamed the `PHPMinifier` class to `Minifier`.
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: using ES2015 features, like default parameters and destructuring assignment.
 - Turned the package into a [scoped one](https://docs.npmjs.com/getting-started/scoped-packages).
 
-## Version 0.1.2
+## Version [0.1.2](https://github.com/cedx/gulp-php-minify/compare/v0.1.1...v0.1.2)
 - Added support for [Codacy](https://www.codacy.com) code analyzer.
 - Renamed the project according to its [npm](https://www.npmjs.com) package name.
 - Updated the package dependencies.
 
-## Version 0.1.1
+## Version [0.1.1](https://github.com/cedx/gulp-php-minify/compare/v0.1.0...v0.1.1)
 - Fixed some bugs.
 - Updated the package dependencies.
 
