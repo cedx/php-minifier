@@ -11,6 +11,43 @@ describe('FastTransformer', function() {
   this.timeout(30000);
 
   /**
+   * @test {FastTransformer#close}
+   */
+  describe('#close()', () => {
+    let transformer = new FastTransformer;
+
+    it('should complete without any error', async () => {
+      await transformer.close();
+      expect(true).to.be.ok;
+    });
+
+    it('should be callable multiple times', async () => {
+      await transformer.close();
+      await transformer.close();
+      expect(true).to.be.ok;
+    });
+  });
+
+  /**
+   * @test {FastTransformer#listen}
+   */
+  describe('#listen()', () => {
+    let transformer = new FastTransformer;
+    after(async () => await transformer.close());
+
+    it('should complete without any error', async () => {
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+
+    it('should be callable multiple times', async () => {
+      await transformer.listen();
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+  });
+
+  /**
    * @test {FastTransformer#listening}
    */
   describe('#listening', () => {

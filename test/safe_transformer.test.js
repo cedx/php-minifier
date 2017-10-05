@@ -11,6 +11,24 @@ describe('SafeTransformer', function() {
   this.timeout(30000);
 
   /**
+   * @test {SafeTransformer#close}
+   */
+  describe('#close()', () => {
+    let transformer = new SafeTransformer;
+
+    it('should complete without any error', async () => {
+      await transformer.close();
+      expect(true).to.be.ok;
+    });
+
+    it('should be callable multiple times', async () => {
+      await transformer.close();
+      await transformer.close();
+      expect(true).to.be.ok;
+    });
+  });
+
+  /**
    * @test {SafeTransformer#transform}
    */
   describe('#transform()', () => {

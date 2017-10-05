@@ -6,6 +6,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `binary` and `mode` properties from the `Minifier` class.
 - Breaking change: renamed the `FastTransformer.DEFAULT_ADDRESS` constant to `defaultAddress`.
+- Added new unit tests.
 - Added the `Transformer` abstract class.
 - Updated the package dependencies.
 
