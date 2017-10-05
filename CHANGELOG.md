@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 
 ## Version [7.0.0](https://github.com/cedx/gulp-php-minify/compare/v6.0.0...v7.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: removed the `binary` and `mode` properties from the `Minifier` class.
 - Breaking change: renamed the `FastTransformer.DEFAULT_ADDRESS` constant to `defaultAddress`.
 - Added the `Transformer` abstract class.
 - Updated the package dependencies.
