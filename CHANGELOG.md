@@ -2,6 +2,7 @@
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 ## Version [7.0.0](https://github.com/cedx/gulp-php-minify/compare/v6.0.0...v7.0.0)
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Added the `Transformer` abstract class.
 - Updated the package dependencies.
 
