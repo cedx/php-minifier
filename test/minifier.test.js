@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 const File = require('vinyl');
-const {FastTransformer, Minifier, SafeTransformer} = require('../lib');
+const {Minifier} = require('../lib');
 
 /**
  * @test {Minifier}
@@ -26,36 +26,9 @@ describe('Minifier', function() {
         silent: true
       });
 
-      expect(minifier.binary).to.equal(process.platform == 'win32' ? '\\usr\\local\\bin\\php' : '/usr/local/bin/php');
-      expect(minifier.mode).to.equal('fast');
+      let executable = process.platform == 'win32' ? '\\usr\\local\\bin\\php' : '/usr/local/bin/php';
       expect(minifier.silent).to.be.true;
-    });
-  });
-
-  /**
-   * @test {Minifier#mode}
-   */
-  describe('#mode', () => {
-    it('should be `safe` if the underlying transformer is a `SafeTransformer` one', () => {
-      let minifier = new Minifier;
-      minifier._transformer = new SafeTransformer(minifier);
-      expect(minifier.mode).to.equal('safe');
-    });
-
-    it('should be `fast` if the underlying transformer is a `FastTransformer` one', () => {
-      let minifier = new Minifier;
-      minifier._transformer = new FastTransformer(minifier);
-      expect(minifier.mode).to.equal('fast');
-    });
-
-    it('should change the underlying transformer on value update', () => {
-      let minifier = new Minifier;
-
-      minifier.mode = 'fast';
-      expect(minifier._transformer).to.be.instanceOf(FastTransformer);
-
-      minifier.mode = 'safe';
-      expect(minifier._transformer).to.be.instanceOf(SafeTransformer);
+      expect(minifier._transformer).to.equal(`fast:${executable}`);
     });
   });
 
@@ -63,30 +36,16 @@ describe('Minifier', function() {
    * @test {Minifier#_transform}
    */
   describe('#_transform()', () => {
-    let file = new File({path: 'test/fixtures/sample.php'});
-
-    let minifier = new Minifier;
-    minifier.silent = true;
+    let minifier = new Minifier({silent: true});
     after(() => minifier.emit('end'));
 
-    it('should remove the inline comments', async () => {
+    it('should remove the comments and whitespace', async () => {
+      let file = new File({path: 'test/fixtures/sample.php'});
       await minifier._transform(file);
-      expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>");
-    });
-
-    it('should remove the multi-line comments', async () => {
-      await minifier._transform(file);
-      expect(file.contents.toString()).to.contain('namespace dummy; class Dummy');
-    });
-
-    it('should remove the single-line comments', async () => {
-      await minifier._transform(file);
-      expect(file.contents.toString()).to.contain('$className = get_class($this); return $className;');
-    });
-
-    it('should remove the whitespace', async () => {
-      await minifier._transform(file);
-      expect(file.contents.toString()).to.contain('__construct() { }');
+      expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>")
+        .and.contain('namespace dummy; class Dummy')
+        .and.contain('$className = get_class($this); return $className;')
+        .and.contain('__construct() { }');
     });
   });
 });

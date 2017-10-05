@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {Minifier, SafeTransformer} = require('../lib');
+const {SafeTransformer} = require('../lib');
 
 /**
  * @test {SafeTransformer}
@@ -15,7 +15,8 @@ describe('SafeTransformer', function() {
    */
   describe('#transform()', () => {
     let script = 'test/fixtures/sample.php';
-    let transformer = new SafeTransformer(new Minifier('php'));
+    let transformer = new SafeTransformer;
+    after(async () => await transformer.close());
 
     it('should remove the inline comments', async () => {
       expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");

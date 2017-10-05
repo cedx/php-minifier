@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {FastTransformer, Minifier} = require('../lib');
+const {FastTransformer} = require('../lib');
 
 /**
  * @test {FastTransformer}
@@ -14,8 +14,9 @@ describe('FastTransformer', function() {
    * @test {FastTransformer#listening}
    */
   describe('#listening', () => {
+    let transformer = new FastTransformer;
+
     it('should return whether the server is listening', async () => {
-      let transformer = new FastTransformer(new Minifier('php'));
       expect(transformer.listening).to.be.false;
 
       await transformer.listen();
@@ -31,7 +32,7 @@ describe('FastTransformer', function() {
    */
   describe('#transform()', () => {
     let script = 'test/fixtures/sample.php';
-    let transformer = new FastTransformer(new Minifier('php'));
+    let transformer = new FastTransformer;
     after(async () => await transformer.close());
 
     it('should remove the inline comments', async () => {
