@@ -1,9 +1,10 @@
 dist: trusty
-language: php
 sudo: false
 
-env: NODE_ENV="test"
+language: php
 php: '7.1'
+
+env: NODE_ENV="test"
 notifications:
   email: false
 
