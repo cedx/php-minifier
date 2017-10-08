@@ -4,12 +4,12 @@
   "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
   "homepage": "https://github.com/cedx/gulp-php-minify",
   "license": "MIT",
-  "main": "./lib/index",
+  "main": "./lib/index.js",
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
   "version": "7.0.0",
   "dependencies": {
-    "@cedx/which": "^3.0.0",
+    "@cedx/which": "^3.1.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "esdoc-standard-plugin": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
-    "mocha": "^4.0.0",
+    "mocha": "^4.0.1",
     "nsp": "^2.8.1",
     "nyc": "^11.2.1",
     "vinyl": "^2.1.0"
