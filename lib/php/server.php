@@ -5,7 +5,7 @@ namespace Gulp\PhpMinify;
 /**
  * An HTTP server that strip comments and whitespace from the files specified in client requests.
  */
-class Application {
+class Server {
 
   /**
    * Handles the PHP execution errors such as warnings and notices.
@@ -26,7 +26,6 @@ class Application {
    * @param array $args The request parameters.
    */
   public function run(array $args = []) {
-    chdir(dirname(__DIR__));
     set_error_handler([$this, 'handleError']);
     try { $this->sendResponse($this->processRequest($args)); }
     catch (\Throwable $e) { $this->sendResponse($e->getMessage(), $e->getCode()); }
@@ -61,4 +60,4 @@ class Application {
 }
 
 // Start the application.
-(new Application)->run($_GET);
+(new Server)->run($_GET);
