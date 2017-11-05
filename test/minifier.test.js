@@ -2,7 +2,7 @@
 
 const {expect} = require('chai');
 const File = require('vinyl');
-const {Minifier} = require('../lib');
+const {Minifier, TransformMode} = require('../lib');
 
 /**
  * @test {Minifier}
@@ -22,7 +22,7 @@ describe('Minifier', function() {
     it('should properly initialize the instance properties', () => {
       let minifier = Minifier.factory({
         binary: '/usr/local/bin/php',
-        mode: 'fast',
+        mode: TransformMode.fast,
         silent: true
       });
 
