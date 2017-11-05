@@ -41,15 +41,17 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(gulp.dest('path/to/out'));
 ```
 
-### `mode: string = "safe"`
+### `mode: string = TransformMode.safe`
 The plug-in can work in two manners, which can be selected using the `mode` option:
 
 - the `safe` mode: as its name implies, this mode is very reliable. But it is also very slow as it spawns a new PHP process for every file to be processed. This is the default mode.
 - the `fast` mode: as its name implies, this mode is very fast, but it is not very reliable. It spawns a PHP web server that processes the input files, but on some systems this fails. This mode requires a [PHP](https://secure.php.net) runtime version **7.0 or later**.
 
 ```javascript
+const {TransformMode} = require('@cedx/gulp-php-minify');
+
 return gulp.src('path/to/lib/**/*.php', {read: false})
-  .pipe(phpMinify({mode: 'fast'}))
+  .pipe(phpMinify({mode: TransformMode.fast}))
   .pipe(gulp.dest('path/to/out'));
 ```
 
