@@ -7,7 +7,7 @@
   "main": "./lib/index.js",
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
-  "version": "7.0.1",
+  "version": "7.1.0",
   "dependencies": {
     "@cedx/which": "^3.1.0",
     "node-fetch": "^1.7.3"
