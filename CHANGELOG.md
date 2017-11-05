@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 
 ## Version [7.1.0](https://github.com/cedx/gulp-php-minify/compare/v7.0.1...v7.1.0)
 - Added the `TransformMode` enumeration.
+- Updated the package dependencies.
 
 ## Version [7.0.1](https://github.com/cedx/gulp-php-minify/compare/v7.0.0...v7.0.1)
 - Fixed a bug with relative file paths.
