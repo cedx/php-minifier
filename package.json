@@ -7,14 +7,14 @@
   "main": "./lib/index.js",
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "dependencies": {
+    "@cedx/enum": "^3.2.0",
     "@cedx/which": "^3.1.0",
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
     "@cedx/coveralls": "^5.0.0",
-    "@cedx/enum": "^3.2.0",
     "@cedx/gulp-david": "^11.0.0",
     "chai": "^4.1.2",
     "del": "^3.0.0",

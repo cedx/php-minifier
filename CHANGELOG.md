@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
+## Version [7.1.1](https://github.com/cedx/gulp-php-minify/compare/v7.1.0...v7.1.1)
+- Fixed the [issue #6](https://github.com/cedx/gulp-php-minify/issues/6): a required dependency was declared in the wrong section of the `package.json` file.
+
 ## Version [7.1.0](https://github.com/cedx/gulp-php-minify/compare/v7.0.1...v7.1.0)
 - Added the `TransformMode` enumeration.
 - Updated the package dependencies.
