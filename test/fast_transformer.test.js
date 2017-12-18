@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {FastTransformer} = require('../lib');
+const {FastTransformer} = require('../lib/index.js');
 
 /**
  * @test {FastTransformer}

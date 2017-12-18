@@ -1,7 +1,7 @@
 'use strict';
 
 const {expect} = require('chai');
-const {SafeTransformer} = require('../lib');
+const {SafeTransformer} = require('../lib/index.js');
 
 /**
  * @test {SafeTransformer}
