@@ -14,7 +14,7 @@
     "node-fetch": "^1.7.3"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^5.0.0",
+    "@cedx/coveralls": "^5.1.0",
     "@cedx/gulp-david": "^11.0.0",
     "chai": "^4.1.2",
     "del": "^3.0.0",
@@ -25,7 +25,7 @@
     "gulp-eslint": "^4.0.0",
     "mocha": "^4.0.1",
     "nsp": "^3.1.0",
-    "nyc": "^11.4.0",
+    "nyc": "^11.4.1",
     "vinyl": "^2.1.0"
   },
   "engines": {
