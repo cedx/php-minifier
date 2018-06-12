@@ -1,5 +1,5 @@
 # Gulp-PHP-Minify
-![Runtime](https://img.shields.io/badge/node-%3E%3D8.9-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@cedx/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/gulp-php-minify.svg) ![Dependencies](https://david-dm.org/cedx/gulp-php-minify.svg) ![Coverage](https://coveralls.io/repos/github/cedx/gulp-php-minify/badge.svg) ![Build](https://travis-ci.org/cedx/gulp-php-minify.svg)
+![Runtime](https://img.shields.io/badge/node-%3E%3D8.9-brightgreen.svg) ![Release](https://img.shields.io/npm/v/@cedx/gulp-php-minify.svg) ![License](https://img.shields.io/npm/l/@cedx/gulp-php-minify.svg) ![Downloads](https://img.shields.io/npm/dt/@cedx/gulp-php-minify.svg) ![Dependencies](https://david-dm.org/cedx/gulp-php-minify.svg) ![Coverage](https://coveralls.io/repos/github/cedx/gulp-php-minify/badge.svg) ![Build](https://travis-ci.com/cedx/gulp-php-minify.svg)
 
 [Gulp](http://gulpjs.com) plug-in minifying [PHP](https://secure.php.net) source code by removing comments and whitespace.
 
@@ -65,9 +65,9 @@ return gulp.src('path/to/lib/**/*.php', {read: false})
 ```
 
 ## See also
-- [API reference](https://cedx.github.io/gulp-php-minify)
+- [API reference](https://dev.belin.io/gulp-php-minify)
 - [Code coverage](https://coveralls.io/github/cedx/gulp-php-minify)
-- [Continuous integration](https://travis-ci.org/cedx/gulp-php-minify)
+- [Continuous integration](https://travis-ci.com/cedx/gulp-php-minify)
 
 ## License
 [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) is distributed under the MIT License.

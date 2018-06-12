@@ -1,5 +1,4 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) package.
 
 ## Version [7.1.1](https://github.com/cedx/gulp-php-minify/compare/v7.1.0...v7.1.1)
 - Fixed the [issue #6](https://github.com/cedx/gulp-php-minify/issues/6): a required dependency was declared in the wrong section of the `package.json` file.
@@ -91,7 +90,7 @@ This file contains highlights of what changes on each version of the [Gulp-PHP-M
 
 ## Version [0.3.1](https://github.com/cedx/gulp-php-minify/compare/v0.3.0...v0.3.1)
 - Added support for code coverage.
-- Added support for [Travis CI](https://travis-ci.org) continuous integration.
+- Added support for [Travis CI](https://travis-ci.com) continuous integration.
 
 ## Version [0.3.0](https://github.com/cedx/gulp-php-minify/compare/v0.2.0...v0.3.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
