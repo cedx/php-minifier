@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 namespace Gulp\PhpMinify;
 
 /**
@@ -51,7 +51,7 @@ class Server {
    * @param string $body The response body to send to the client.
    * @param int $status The status code of the response.
    */
-  public function sendResponse(string $body, int $status = 200) {
+  public function sendResponse(string $body, int $status = 200): void {
     http_response_code($status);
     header('Content-Length: '.strlen($body));
     header('Content-Type: text/plain; charset='.mb_internal_encoding());

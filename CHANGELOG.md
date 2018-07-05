@@ -3,6 +3,7 @@
 ## Version [8.0.0](https://github.com/cedx/gulp-php-minify/compare/v7.1.1...v8.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Using PHP 7.1 features, like void functions.
 - Updated the build system to [Gulp](https://gulpjs.com) version 4.
 - Updated the package dependencies.
 
