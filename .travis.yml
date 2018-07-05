@@ -1,18 +1,12 @@
 dist: trusty
+language: php
+notifications: {email: false}
+php: '7.2'
 sudo: false
 
-language: php
-php:
-- '7.0'
-- '7.1'
-- '7.2'
-
-notifications:
-  email: false
-
 install:
-- nvm install 8
-- nvm use 8
+- nvm install 10
+- nvm use 10
 - npm install
 
 script: npm test

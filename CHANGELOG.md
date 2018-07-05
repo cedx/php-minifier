@@ -1,7 +1,10 @@
 # Changelog
 
 ## Version [8.0.0](https://github.com/cedx/gulp-php-minify/compare/v7.1.1...v8.0.0)
-- TODO
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Updated the build system to [Gulp](https://gulpjs.com) version 4.
+- Updated the package dependencies.
 
 ## Version [7.1.1](https://github.com/cedx/gulp-php-minify/compare/v7.1.0...v7.1.1)
 - Fixed the [issue #6](https://github.com/cedx/gulp-php-minify/issues/6): a required dependency was declared in the wrong section of the `package.json` file.
