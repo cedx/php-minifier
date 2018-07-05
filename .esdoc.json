@@ -10,7 +10,7 @@
       "test": {"source": "test"},
       "brand": {
         "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
-        "logo": "www/favicon.ico",
+        "logo": "doc/img/favicon.ico",
         "title": "Gulp-PHP-Minify"
       }
     }}
