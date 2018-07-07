@@ -10,4 +10,4 @@
 - [GitHub repository](https://github.com/cedx/gulp-php-minify)
 
 ## License
-[Gulp-PHP-Minify](https://github.com/cedx/gulp-php-minify) is distributed under the MIT License.
+[Gulp-PHP-Minify](https://dev.belin.io/gulp-php-minify) is distributed under the MIT License.
