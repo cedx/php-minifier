@@ -2,7 +2,7 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/gulp-php-minify/issues",
   "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
-  "homepage": "https://github.com/cedx/gulp-php-minify",
+  "homepage": "https://dev.belin.io/gulp-php-minify",
   "license": "MIT",
   "main": "./lib/index.js",
   "name": "@cedx/gulp-php-minify",
