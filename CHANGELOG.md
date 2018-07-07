@@ -5,6 +5,7 @@
 - Breaking change: raised the required [PHP](https://secure.php.net) version.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Using PHP 7.1 features, like void functions.
+- Using the global `URL` class.
 - Updated the build system to [Gulp](https://gulpjs.com) version 4.
 - Updated the package dependencies.
 
