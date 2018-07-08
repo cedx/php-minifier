@@ -34,7 +34,7 @@ gulp.task('doc', gulp.series('doc:api', 'doc:web'));
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'], {base: '.'})
+gulp.task('fix', () => gulp.src(['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'], {base: '.'})
   .pipe(eslint({fix: true}))
   .pipe(gulp.dest('.'))
 );
@@ -42,7 +42,7 @@ gulp.task('fix', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'], {base: 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'lib/**/*.js', 'test/**/*.js'])
+gulp.task('lint', () => gulp.src(['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'])
   .pipe(eslint())
   .pipe(eslint.format())
 );

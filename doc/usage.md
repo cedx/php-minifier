@@ -9,7 +9,7 @@ The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and 
 const {phpMinify} = require('@cedx/gulp-php-minify');
 const gulp = require('gulp');
 
-gulp.task('minify:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
+gulp.task('compress:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
   .pipe(phpMinify())
   .pipe(gulp.dest('path/to/out'))
 );
