@@ -83,7 +83,7 @@ gulp.task('default', gulp.task('test'));
  * @param {Object} [options] The settings to customize how the process is spawned.
  * @return {Promise} Completes when the command is finally terminated.
  */
-async function _exec(command, args = [], options = {shell: true, stdio: 'inherit'}) {
+function _exec(command, args = [], options = {shell: true, stdio: 'inherit'}) {
   return new Promise((resolve, reject) => spawn(normalize(command), args, options)
     .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : resolve())
   );

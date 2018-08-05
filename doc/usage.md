@@ -1,5 +1,5 @@
 # Usage
-If you haven't used [Gulp](http://gulpjs.com) before, be sure to check out the [related documentation](https://github.com/gulpjs/gulp/blob/master/docs/README.md), as it explains how to create a `gulpfile.js` as well as install and use plug-ins.
+If you haven't used [Gulp](https://gulpjs.com) before, be sure to check out the [related documentation](https://github.com/gulpjs/gulp/blob/master/docs/README.md), as it explains how to create a `gulpfile.js` as well as install and use plug-ins.
 Once you're familiar with that process, you may install the plug-in.
 
 ## Programming interface
