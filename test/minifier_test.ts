@@ -1,5 +1,3 @@
-'use strict';
-
 const {expect} = require('chai');
 const File = require('vinyl');
 const {Minifier, TransformMode} = require('../lib/index.js');
