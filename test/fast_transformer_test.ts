@@ -1,20 +1,18 @@
-'use strict';
-
 const {expect} = require('chai');
-const {SafeTransformer} = require('../lib/index.js');
+const {FastTransformer} = require('../lib/index.js');
 
 /**
- * @test {SafeTransformer}
+ * @test {FastTransformer}
  */
-describe('SafeTransformer', function() {
+describe('FastTransformer', function() {
   this.retries(2);
   this.timeout(30000);
 
   /**
-   * @test {SafeTransformer#close}
+   * @test {FastTransformer#close}
    */
   describe('#close()', () => {
-    let transformer = new SafeTransformer;
+    let transformer = new FastTransformer;
 
     it('should complete without any error', async () => {
       await transformer.close();
@@ -29,11 +27,47 @@ describe('SafeTransformer', function() {
   });
 
   /**
-   * @test {SafeTransformer#transform}
+   * @test {FastTransformer#listen}
+   */
+  describe('#listen()', () => {
+    let transformer = new FastTransformer;
+    after(async () => await transformer.close());
+
+    it('should complete without any error', async () => {
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+
+    it('should be callable multiple times', async () => {
+      await transformer.listen();
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+  });
+
+  /**
+   * @test {FastTransformer#listening}
+   */
+  describe('#listening', () => {
+    let transformer = new FastTransformer;
+
+    it('should return whether the server is listening', async () => {
+      expect(transformer.listening).to.be.false;
+
+      await transformer.listen();
+      expect(transformer.listening).to.be.true;
+
+      await transformer.close();
+      expect(transformer.listening).to.be.false;
+    });
+  });
+
+  /**
+   * @test {FastTransformer#transform}
    */
   describe('#transform()', () => {
     let script = 'test/fixtures/sample.php';
-    let transformer = new SafeTransformer;
+    let transformer = new FastTransformer;
     after(async () => await transformer.close());
 
     it('should remove the inline comments', async () => {
