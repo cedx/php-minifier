@@ -6,6 +6,12 @@ const gulp = require('gulp');
 const {normalize} = require('path');
 
 /**
+ * The file patterns providing the list of source files.
+ * @type {string[]}
+ */
+const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+
+/**
  * Builds the project.
  */
 gulp.task('build', () => _exec('node_modules/.bin/tsc'));
@@ -13,7 +19,7 @@ gulp.task('build', () => _exec('node_modules/.bin/tsc'));
 /**
  * Deletes all generated files and reset any saved state.
  */
-gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'var/**/*', 'web']));
+gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
 
 /**
  * Sends the results of the code coverage.
@@ -35,10 +41,7 @@ gulp.task('fix', () => _exec('node_modules/.bin/tslint', ['--fix', ...sources]))
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => gulp.src(['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'])
-  .pipe(eslint())
-  .pipe(eslint.format())
-);
+gulp.task('lint', () => _exec('node_modules/.bin/tslint', sources));
 
 /**
  * Runs the unit tests.
