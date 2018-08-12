@@ -2,10 +2,11 @@
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "declaration": true,
+    "experimentalDecorators": true,
     "module": "commonjs",
     "outDir": "lib",
-    "removeComments": true,
     "sourceMap": true,
+    "strict": true,
     "target": "es2017"
   }
 }
