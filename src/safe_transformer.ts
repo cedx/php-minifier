@@ -1,6 +1,6 @@
-const {execFile} = require('child_process');
-const {resolve} = require('path');
-const {promisify} = require('util');
+const {execFile} from 'child_process');
+const {resolve} from 'path');
+const {promisify} from 'util');
 
 /**
  * Removes comments and whitespace from a PHP script, by calling a PHP process.
@@ -25,7 +25,7 @@ class SafeTransformer {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'SafeTransformer';
   }
 
@@ -48,6 +48,3 @@ class SafeTransformer {
     return stdout;
   }
 }
-
-// Module exports.
-exports.SafeTransformer = SafeTransformer;
