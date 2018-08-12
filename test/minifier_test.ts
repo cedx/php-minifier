@@ -1,6 +1,6 @@
-const {expect} = require('chai');
-const File = require('vinyl');
-const {Minifier, TransformMode} = require('../lib/index.js');
+import {expect} from 'chai';
+const File from 'vinyl');
+const {Minifier, TransformMode} from '../lib';
 
 /**
  * @test {Minifier}

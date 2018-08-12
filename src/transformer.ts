@@ -1,6 +1,6 @@
-const {FastTransformer} = require('./fast_transformer.js');
-const {TransformMode} = require('./transform_mode.js');
-const {SafeTransformer} = require('./safe_transformer.js');
+const {FastTransformer} from './fast_transformer.js');
+const {TransformMode} from './transform_mode.js');
+const {SafeTransformer} from './safe_transformer.js');
 
 /**
  * Interface providing a mechanism for transforming input and producing output.
@@ -43,6 +43,3 @@ class Transformer {
     throw new Error('Not implemented.');
   }
 }
-
-// Module exports.
-exports.Transformer = Transformer;

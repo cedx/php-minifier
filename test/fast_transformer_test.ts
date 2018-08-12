@@ -1,5 +1,5 @@
-const {expect} = require('chai');
-const {FastTransformer} = require('../lib/index.js');
+import {expect} from 'chai';
+const {FastTransformer} from '../lib';
 
 /**
  * @test {FastTransformer}

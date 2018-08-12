@@ -1,4 +1,4 @@
-const {Enum} = require('@cedx/enum');
+const {Enum} from '@cedx/enum');
 
 /**
  * Defines the type of transformation applied by a minifier.
@@ -11,6 +11,3 @@ const TransformMode = Enum.create({
   fast: 'fast',
   safe: 'safe'
 });
-
-// Module exports.
-exports.TransformMode = TransformMode;

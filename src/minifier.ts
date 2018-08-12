@@ -1,9 +1,9 @@
-const {which} = require('@cedx/which');
-const {normalize} = require('path');
-const {Transform} = require('stream');
-const pkg = require('../package.json');
-const {TransformMode} = require('./transform_mode.js');
-const {Transformer} = require('./transformer.js');
+const {which} from '@cedx/which');
+const {normalize} from 'path');
+const {Transform} from 'stream');
+const pkg from '../package.json');
+const {TransformMode} from './transform_mode.js');
+const {Transformer} from './transformer.js');
 
 /**
  * Removes PHP comments and whitespace by applying the [`php_strip_whitespace()`](https://secure.php.net/manual/en/function.php-strip-whitespace.php) function.
@@ -41,7 +41,7 @@ class Minifier extends Transform {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'Minifier';
   }
 
@@ -85,6 +85,3 @@ class Minifier extends Transform {
     return file;
   }
 }
-
-// Module exports.
-exports.Minifier = Minifier;

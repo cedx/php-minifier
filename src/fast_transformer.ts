@@ -1,7 +1,7 @@
-const {ChildProcess, spawn} = require('child_process');
-const {createServer} = require('net');
-const fetch = require('node-fetch');
-const {join, resolve} = require('path');
+const {ChildProcess, spawn} from 'child_process');
+const {createServer} from 'net');
+const fetch from 'node-fetch');
+const {join, resolve} from 'path');
 
 /**
  * Removes comments and whitespace from a PHP script, by calling a Web service.
@@ -46,7 +46,7 @@ class FastTransformer {
    * The class name.
    * @type {string}
    */
-  get [Symbol.toStringTag]() {
+  get [Symbol.toStringTag](): string {
     return 'FastTransformer';
   }
 
@@ -112,6 +112,3 @@ class FastTransformer {
     });
   }
 }
-
-// Module exports.
-exports.FastTransformer = FastTransformer;
