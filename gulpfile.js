@@ -29,7 +29,7 @@ gulp.task('coverage', () => _exec('node_modules/.bin/coveralls', ['var/lcov.info
 /**
  * Builds the documentation.
  */
-gulp.task('doc:api', () => _exec('node_modules/.bin/esdoc'));
+gulp.task('doc:api', () => _exec('node_modules/.bin/typedoc'));
 gulp.task('doc:web', () => _exec('mkdocs', ['build']));
 gulp.task('doc', gulp.series('doc:api', 'doc:web'));
 

@@ -14,7 +14,7 @@ node --version
 # v10.8.0
 
 npm --version
-# 6.1.0
+# 6.2.0
 ```
 
 !!! info
@@ -31,8 +31,8 @@ npm install @cedx/gulp-php-minify
 ```
 
 ### 2. Import it
-Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) code, you can use:
+Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) or [TypeScript](https://www.typescriptlang.org) code, you can use:
 
-```js
-const phpMinify = require('@cedx/gulp-php-minify');
+```ts
+const phpMinify from '@cedx/gulp-php-minify');
 ```
