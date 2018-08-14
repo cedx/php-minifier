@@ -8,6 +8,7 @@
 *.opts text
 *.txt text
 *.yaml text
+*.yml text
 
 *.ico binary
 *.png binary
