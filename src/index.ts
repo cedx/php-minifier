@@ -6,7 +6,11 @@ export * from './safe_transformer';
 export * from './transform_mode';
 export * from './transformer';
 
-/// TODO
+/**
+ * Creates a new minifier.
+ * @param options The minifier options.
+ * @return The newly created instance.
+ */
 export function phpMinify(options: Partial<MinifierOptions> = {}): Minifier {
   return new Minifier(options);
 }

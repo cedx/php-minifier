@@ -86,7 +86,7 @@ export interface MinifierOptions {
   binary: string;
 
   /**
-   * TODO
+   * The operation mode of the minifier.
    */
   mode: TransformMode;
 
