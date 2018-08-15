@@ -1,7 +1,10 @@
 import {which} from '@cedx/which';
 import {Transform, TransformCallback} from 'stream';
 import * as File from 'vinyl';
+// @ts-ignore: disable processing of the imported JSON file.
 import * as pkg from '../package.json';
+import {FastTransformer} from './fast_transformer';
+import {SafeTransformer} from './safe_transformer';
 import {TransformMode} from './transform_mode';
 import {Transformer} from './transformer';
 
@@ -31,11 +34,7 @@ export class Minifier extends Transform {
     this.silent = silent;
     this._transformer = `${mode}:${binary}`;
 
-    // Register the event handlers.
-    const handler = async () => {
-      if (typeof this._transformer != 'string') await this._transformer.close();
-    };
-
+    const handler = async () => { if (typeof this._transformer != 'string') await this._transformer.close(); };
     this.on('end', handler).on('error', handler);
   }
 
@@ -56,8 +55,10 @@ export class Minifier extends Transform {
   public async _transform(file: File, encoding: string = 'utf8', callback?: TransformCallback): Promise<File> {
     try {
       if (typeof this._transformer == 'string') {
-        const parts = this._transformer.split(':', 2);
-        this._transformer = Transformer.factory(parts[0], parts[1].length ? parts[1] : await which('php') as string);
+        // tslint:disable-next-line: prefer-const
+        let [mode, executable] = this._transformer.split(':', 2);
+        if (!executable.length) executable = await which('php') as string;
+        this._transformer = mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
       }
 
       // tslint:disable-next-line: no-console
