@@ -1,29 +1,21 @@
-const {execFile} from 'child_process');
-const {resolve} from 'path');
-const {promisify} from 'util');
+import {execFile} from 'child_process';
+import {resolve} from 'path';
+import {promisify} from 'util';
+import {Transformer} from './transformer';
 
 /**
  * Removes comments and whitespace from a PHP script, by calling a PHP process.
- * @implements {Transformer}
  */
-class SafeTransformer {
+export class SafeTransformer implements Transformer {
 
   /**
-   * Initializes a new instance of the class.
-   * @param {string} [executable] The path to the PHP executable.
+   * Creates a new safe transformer.
+   * @param _executable The path to the PHP executable.
    */
-  constructor(executable = 'php') {
-
-    /**
-     * The path to the PHP executable.
-     * @type {string}
-     */
-    this._executable = executable;
-  }
+  constructor(private readonly _executable: string = 'php') {}
 
   /**
    * The class name.
-   * @type {string}
    */
   get [Symbol.toStringTag](): string {
     return 'SafeTransformer';
@@ -31,20 +23,20 @@ class SafeTransformer {
 
   /**
    * Closes this transformer and releases any resources associated with it.
-   * @return {Promise} Completes when the transformer is finally disposed.
-  */
-  async close() {
-    return null;
+   * @return Completes when the transformer is finally disposed.
+   */
+  public async close(): Promise<void> {
+    return undefined;
   }
 
   /**
    * Processes a PHP script.
-   * @param {string} script The path to the PHP script.
-   * @return {Promise<string>} The transformed script.
+   * @param script The path to the PHP script.
+   * @return The transformed script.
    */
-  async transform(script) {
+  public async transform(script: string): Promise<string> {
     const exec = promisify(execFile);
-    let {stdout} = await exec(this._executable, ['-w', resolve(script)], {maxBuffer: 10 * 1024 * 1024});
+    const {stdout} = await exec(this._executable, ['-w', resolve(script)], {maxBuffer: 10 * 1024 * 1024});
     return stdout;
   }
 }

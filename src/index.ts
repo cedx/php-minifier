@@ -1,14 +1,12 @@
-const {FastTransformer} from './fast_transformer.js');
-const {Minifier} from './minifier.js');
-const {SafeTransformer} from './safe_transformer.js');
-const {TransformMode} from './transform_mode.js');
-const {Transformer} from './transformer.js');
+import {Minifier, MinifierOptions} from './minifier';
 
-module.exports = {
-  phpMinify: Minifier.factory,
-  FastTransformer,
-  Minifier,
-  SafeTransformer,
-  TransformMode,
-  Transformer
-};
+export * from './fast_transformer';
+export * from './minifier';
+export * from './safe_transformer';
+export * from './transform_mode';
+export * from './transformer';
+
+/// TODO
+export function phpMinify(options: Partial<MinifierOptions> = {}): Minifier {
+  return new Minifier(options);
+}
