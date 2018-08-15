@@ -1,45 +1,36 @@
-const {FastTransformer} from './fast_transformer.js');
-const {TransformMode} from './transform_mode.js');
-const {SafeTransformer} from './safe_transformer.js');
+import {FastTransformer} from './fast_transformer';
+import {SafeTransformer} from './safe_transformer';
+import {TransformMode} from './transform_mode';
 
 /**
  * Interface providing a mechanism for transforming input and producing output.
- * @interface
  */
-class Transformer {
+export abstract class Transformer {
 
   /**
    * Creates a new transformer.
-   * @param {string} mode The transformation type.
-   * @param {string} [executable] The path to the PHP executable.
-   * @return {Transformer} The newly created instance.
+   * @param mode The transformation type.
+   * @param executable The path to the PHP executable.
+   * @return The newly created instance.
    */
-  static factory(mode, executable = 'php') {
+  public static factory(mode: string, executable: string = 'php'): Transformer {
     return mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
   }
 
   /**
-   * Initializes a new instance of the class.
-   * @throws {TypeError} This class is not instantiable.
-   */
-  constructor() {
-    throw new TypeError('This type is not instantiable.');
-  }
-
-  /**
    * Closes this transformer and releases any resources associated with it.
-   * @return {Promise} Completes when the transformer is finally disposed.
+   * @return Completes when the transformer is finally disposed.
    */
-  async close() {
+  public async close(): Promise<void> {
     throw new Error('Not implemented.');
   }
 
   /**
    * Processes a PHP script.
-   * @param {string} script The path to the PHP script.
-   * @return {Promise<string>} The transformed script.
+   * @param script The path to the PHP script.
+   * @return The transformed script.
    */
-  async transform(script) {
+  public async transform(script: string): Promise<string> {
     throw new Error('Not implemented.');
   }
 }

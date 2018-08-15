@@ -5,6 +5,7 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "outDir": "lib",
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "target": "es2017"
