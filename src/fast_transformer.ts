@@ -60,8 +60,9 @@ export class FastTransformer implements Transformer {
    */
   public async listen(): Promise<number> {
     if (this.listening) return this._port;
-
     this._port = await this._getPort();
+
+    // tslint:disable-next-line: no-shadowed-variable
     return new Promise<number>((resolve, reject) => {
       this._process = spawn(this._executable, ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')]);
       this._process.on('error', err => reject(err));
@@ -88,7 +89,8 @@ export class FastTransformer implements Transformer {
    * Gets an ephemeral port chosen by the system.
    * @return A port that the server can listen on.
    */
-  private async _getPort(): Promise<number> {
+  private _getPort(): Promise<number> {
+    // tslint:disable-next-line: no-shadowed-variable
     return new Promise<number>((resolve, reject) => {
       const server = createServer().unref();
       server.on('error', err => reject(err));
