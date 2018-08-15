@@ -1,5 +1,14 @@
 # Changelog
 
+## Version [9.0.0](https://github.com/cedx/gulp-php-minify/compare/v8.0.0...v9.0.0)
+- Breaking change: ported the source code to [TypeScript](https://www.typescriptlang.org).
+- Breaking change: removed the `Minifier.factory()` method.
+- Breaking change: reshaped the `Transformer` abstract class into an interface.
+- Ported the unit tests to classes with experimental decorators.
+- Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
+- Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
+- Updated the package dependencies.
+
 ## Version [8.0.0](https://github.com/cedx/gulp-php-minify/compare/v7.1.1...v8.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: raised the required [PHP](https://secure.php.net) version.
