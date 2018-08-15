@@ -25,7 +25,7 @@ class Server {
    * Runs the application.
    * @param array $args The request parameters.
    */
-  public function run(array $args = []) {
+  public function run(array $args = []): void {
     set_error_handler([$this, 'handleError']);
     try { $this->sendResponse($this->processRequest($args)); }
     catch (\Throwable $e) { $this->sendResponse($e->getMessage(), $e->getCode()); }
