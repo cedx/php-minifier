@@ -6,6 +6,7 @@
 *.md text
 *.php text diff=php
 *.opts text
+*.ts text
 *.txt text
 *.yaml text
 *.yml text
