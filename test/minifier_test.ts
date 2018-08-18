@@ -13,7 +13,7 @@ class MinifierTest {
   /**
    * @test {Minifier#_transform}
    */
-  @test public async testTransform(): Promise<void> {
+  @test async testTransform(): Promise<void> {
     const minifier = new Minifier({silent: true});
     after(() => minifier.emit('end'));
 

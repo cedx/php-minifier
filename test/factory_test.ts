@@ -11,7 +11,7 @@ import {Minifier, phpMinify, TransformMode} from '../src';
   /**
    * @test {phpMinify}
    */
-  @test public testPhpMinify(): void {
+  @test testPhpMinify(): void {
     // It should return a `Minifier` instance.
     expect(phpMinify()).to.be.instanceof(Minifier);
 

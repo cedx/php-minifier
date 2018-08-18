@@ -12,7 +12,7 @@ class SafeTransformerTest {
   /**
    * @test {SafeTransformer#close}
    */
-  @test public async testClose(): Promise<void> {
+  @test async testClose(): Promise<void> {
     const transformer = new SafeTransformer;
 
     // It should complete without any error.
@@ -28,7 +28,7 @@ class SafeTransformerTest {
   /**
    * @test {SafeTransformer#transform}
    */
-  @test public async testTransform(): Promise<void> {
+  @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
     const transformer = new SafeTransformer;
     after(async () => await transformer.close());

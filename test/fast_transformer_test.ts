@@ -12,7 +12,7 @@ class FastTransformerTest {
   /**
    * @test {FastTransformer#close}
    */
-  @test public async testClose(): Promise<void> {
+  @test async testClose(): Promise<void> {
     const transformer = new FastTransformer;
 
     // It should complete without any error.
@@ -28,7 +28,7 @@ class FastTransformerTest {
   /**
    * @test {FastTransformer#listen}
    */
-  @test public async testListen(): Promise<void> {
+  @test async testListen(): Promise<void> {
     const transformer = new FastTransformer;
     after(async () => await transformer.close());
 
@@ -45,7 +45,7 @@ class FastTransformerTest {
   /**
    * @test {FastTransformer#listening}
    */
-  @test public async testListening(): Promise<void> {
+  @test async testListening(): Promise<void> {
     const transformer = new FastTransformer;
 
     // It should return whether the server is listening.
@@ -61,7 +61,7 @@ class FastTransformerTest {
   /**
    * @test {FastTransformer#transform}
    */
-  @test public async testTransform(): Promise<void> {
+  @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
     const transformer = new FastTransformer;
     after(async () => await transformer.close());

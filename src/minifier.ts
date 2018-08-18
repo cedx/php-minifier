@@ -16,7 +16,7 @@ export class Minifier extends Transform {
   /**
    * Value indicating whether to silent the minifier output.
    */
-  public silent: boolean;
+  silent: boolean;
 
   /**
    * The instance used to process the PHP code.
@@ -52,7 +52,7 @@ export class Minifier extends Transform {
    * @param callback The function to invoke when the supplied chunk has been processed.
    * @return The transformed chunk.
    */
-  public async _transform(file: File, encoding: string = 'utf8', callback?: TransformCallback): Promise<File> {
+  async _transform(file: File, encoding: string = 'utf8', callback?: TransformCallback): Promise<File> {
     try {
       if (typeof this._transformer == 'string') {
         // tslint:disable-next-line: prefer-const

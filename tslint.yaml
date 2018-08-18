@@ -18,6 +18,7 @@ rules:
   interface-name: [true, never-prefix]
   max-classes-per-file: false
   max-line-length: {options: [200]}
+  member-access: [true, no-public]
   member-ordering: [true, {order: fields-first}]
   new-parens: false
   no-bitwise: false

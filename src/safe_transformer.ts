@@ -25,7 +25,7 @@ export class SafeTransformer implements Transformer {
    * Closes this transformer and releases any resources associated with it.
    * @return Completes when the transformer is finally disposed.
    */
-  public async close(): Promise<void> {
+  async close(): Promise<void> {
     return undefined;
   }
 
@@ -34,7 +34,7 @@ export class SafeTransformer implements Transformer {
    * @param script The path to the PHP script.
    * @return The transformed script.
    */
-  public async transform(script: string): Promise<string> {
+  async transform(script: string): Promise<string> {
     const exec = promisify(execFile);
     const {stdout} = await exec(this._executable, ['-w', resolve(script)], {maxBuffer: 10 * 1024 * 1024});
     return stdout;

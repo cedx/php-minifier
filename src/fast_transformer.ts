@@ -12,7 +12,7 @@ export class FastTransformer implements Transformer {
   /**
    * The default address that the server is listening on.
    */
-  public static defaultAddress: string = '127.0.0.1';
+  static defaultAddress: string = '127.0.0.1';
 
   /**
    * The port that the PHP process is listening on.
@@ -48,7 +48,7 @@ export class FastTransformer implements Transformer {
    * Closes this transformer and releases any resources associated with it.
    * @return Completes when the transformer is finally disposed.
    */
-  public async close(): Promise<void> {
+  async close(): Promise<void> {
     if (!this.listening) return;
     this._process!.kill();
     this._process = null;
@@ -58,7 +58,7 @@ export class FastTransformer implements Transformer {
    * Starts the underlying PHP process: begins accepting connections. It does nothing if the server is already started.
    * @return The port used by the PHP process.
    */
-  public async listen(): Promise<number> {
+  async listen(): Promise<number> {
     if (this.listening) return this._port;
     this._port = await this._getPort();
 
@@ -75,7 +75,7 @@ export class FastTransformer implements Transformer {
    * @param script The path to the PHP script.
    * @return The transformed script.
    */
-  public async transform(script: string): Promise<string> {
+  async transform(script: string): Promise<string> {
     const port = await this.listen();
     const endPoint = new URL(`http://${FastTransformer.defaultAddress}:${port}/server.php`);
     endPoint.searchParams.set('file', resolve(script));
