@@ -15,7 +15,7 @@
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^7.1.0",
+    "@cedx/coveralls": "^8.0.0",
     "@types/chai": "^4.1.4",
     "@types/node": "^10.7.1",
     "@types/node-fetch": "^2.1.2",
