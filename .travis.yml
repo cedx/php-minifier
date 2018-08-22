@@ -1,6 +1,6 @@
-dart: [stable]
 dist: trusty
-language: dart
+language: node_js
+node_js: 10
 notifications: {email: false}
 sudo: false
 
