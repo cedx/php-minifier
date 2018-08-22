@@ -1,13 +1,15 @@
+dart: [stable]
 dist: trusty
-language: php
+language: dart
 notifications: {email: false}
-php: '7.2'
 sudo: false
 
-install:
-- nvm install 10
-- nvm use 10
-- npm install
+before_install:
+- curl --output archive.tar.bz2 https://s3.amazonaws.com/travis-php-archives/binaries/ubuntu/14.04/x86_64/php-7.2.tar.bz2
+- tar --directory=/ --extract --file=archive.tar.bz2
+- phpenv global 7.2
+- php --version
 
+install: npm install
 script: npm test
 after_success: npm run coverage

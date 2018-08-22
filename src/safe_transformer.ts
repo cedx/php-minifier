@@ -1,5 +1,5 @@
 import {execFile} from 'child_process';
-import {resolve} from 'path';
+import {normalize, resolve} from 'path';
 import {promisify} from 'util';
 import {Transformer} from './transformer';
 
@@ -36,7 +36,7 @@ export class SafeTransformer implements Transformer {
    */
   async transform(script: string): Promise<string> {
     const exec = promisify(execFile);
-    const {stdout} = await exec(this._executable, ['-w', resolve(script)], {maxBuffer: 10 * 1024 * 1024});
+    const {stdout} = await exec(normalize(this._executable), ['-w', resolve(script)], {maxBuffer: 10 * 1024 * 1024});
     return stdout;
   }
 }

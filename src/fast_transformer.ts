@@ -1,7 +1,7 @@
 import {ChildProcess, spawn} from 'child_process';
 import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
-import {join, resolve} from 'path';
+import {join, normalize, resolve} from 'path';
 import {Transformer} from './transformer';
 
 /**
@@ -64,7 +64,7 @@ export class FastTransformer implements Transformer {
 
     // tslint:disable-next-line: no-shadowed-variable
     return new Promise<number>((resolve, reject) => {
-      this._process = spawn(this._executable, ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')], {shell: true});
+      this._process = spawn(normalize(this._executable), ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')], {shell: true});
       this._process.on('error', err => reject(err));
       setTimeout(() => resolve(this._port), 1000);
     });
