@@ -1,4 +1,5 @@
 import {which} from '@cedx/which';
+import {normalize} from 'path';
 import {Transform, TransformCallback} from 'stream';
 import * as File from 'vinyl';
 // @ts-ignore: disable processing of the imported JSON file.
@@ -32,7 +33,7 @@ export class Minifier extends Transform {
 
     const {binary = '', mode = TransformMode.safe, silent = false} = options;
     this.silent = silent;
-    this._transformer = `${mode}:${binary}`;
+    this._transformer = `${mode}:${normalize(binary)}`;
 
     const handler = async () => { if (typeof this._transformer != 'string') await this._transformer.close(); };
     this.on('end', handler).on('error', handler);

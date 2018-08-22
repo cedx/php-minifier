@@ -9,7 +9,7 @@ import {Minifier, phpMinify, TransformMode} from '../src';
 @suite class FactoryTest {
 
   /**
-   * Tests the `phpMinify}
+   * Tests the `phpMinify()` function.
    */
   @test testPhpMinify(): void {
     // It should return a `Minifier` instance.
