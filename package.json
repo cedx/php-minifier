@@ -8,7 +8,7 @@
   "name": "@cedx/gulp-php-minify",
   "repository": "cedx/gulp-php-minify",
   "types": "./lib/index.d.ts",
-  "version": "9.1.0",
+  "version": "9.0.1",
   "dependencies": {
     "@cedx/which": "^5.0.0",
     "node-fetch": "^2.2.0",

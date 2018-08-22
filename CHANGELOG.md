@@ -1,6 +1,7 @@
 # Changelog
 
-## Version [9.1.0](https://github.com/cedx/gulp-php-minify/compare/v9.0.0...v9.1.0)
+## Version [9.0.1](https://github.com/cedx/gulp-php-minify/compare/v9.0.0...v9.0.1)
+- Fixed the [issue #8](https://github.com/cedx/gulp-php-minify/issues/8): unable to spawn the [PHP](https://secure.php.net) executable.
 - Updated the package dependencies.
 
 ## Version [9.0.0](https://github.com/cedx/gulp-php-minify/compare/v8.0.0...v9.0.0)

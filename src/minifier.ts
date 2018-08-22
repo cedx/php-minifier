@@ -58,7 +58,7 @@ export class Minifier extends Transform {
       if (typeof this._transformer == 'string') {
         // tslint:disable-next-line: prefer-const
         let [mode, executable] = this._transformer.split(':', 2);
-        if (!executable.length) executable = await which('php') as string;
+        if (!executable.length) executable = await which('php', {onError: () => 'php'}) as string;
         this._transformer = mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
       }
 
