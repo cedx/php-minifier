@@ -11,7 +11,7 @@ import {Minifier} from '../src';
 class MinifierTest {
 
   /**
-   * Tests the `Minifier#_transform}
+   * Tests the `Minifier#_transform()` method.
    */
   @test async testTransform(): Promise<void> {
     const minifier = new Minifier({silent: true});

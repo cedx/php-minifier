@@ -10,7 +10,7 @@ import {FastTransformer} from '../src';
 class FastTransformerTest {
 
   /**
-   * Tests the `FastTransformer#close}
+   * Tests the `FastTransformer#close()` method.
    */
   @test async testClose(): Promise<void> {
     const transformer = new FastTransformer;
@@ -26,7 +26,7 @@ class FastTransformerTest {
   }
 
   /**
-   * Tests the `FastTransformer#listen}
+   * Tests the `FastTransformer#listen()` method.
    */
   @test async testListen(): Promise<void> {
     const transformer = new FastTransformer;
@@ -43,7 +43,7 @@ class FastTransformerTest {
   }
 
   /**
-   * Tests the `FastTransformer#listening}
+   * Tests the `FastTransformer#listening` property.
    */
   @test async testListening(): Promise<void> {
     const transformer = new FastTransformer;
@@ -59,7 +59,7 @@ class FastTransformerTest {
   }
 
   /**
-   * Tests the `FastTransformer#transform}
+   * Tests the `FastTransformer#transform()` method.
    */
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';

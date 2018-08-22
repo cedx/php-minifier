@@ -10,7 +10,7 @@ import {SafeTransformer} from '../src';
 class SafeTransformerTest {
 
   /**
-   * Tests the `SafeTransformer#close}
+   * Tests the `SafeTransformer#close()` method.
    */
   @test async testClose(): Promise<void> {
     const transformer = new SafeTransformer;
@@ -26,7 +26,7 @@ class SafeTransformerTest {
   }
 
   /**
-   * Tests the `SafeTransformer#transform}
+   * Tests the `SafeTransformer#transform()` method.
    */
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
