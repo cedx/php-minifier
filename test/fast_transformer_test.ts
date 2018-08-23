@@ -64,7 +64,7 @@ class FastTransformerTest {
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
     const transformer = new FastTransformer;
-    after(async () => await transformer.close());
+    after(() => transformer.close());
 
     // It should remove the inline comments.
     expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
