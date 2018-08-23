@@ -14,9 +14,9 @@ const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 /**
  * Builds the project.
  */
+gulp.task('build:js', () => _exec('node_modules/.bin/tsc'));
 gulp.task('build:php', () => gulp.src('src/php/server.php').pipe(gulp.dest('lib/php')));
-gulp.task('build:ts', () => _exec('node_modules/.bin/tsc'));
-gulp.task('build', gulp.series('build:php', 'build:ts'));
+gulp.task('build', gulp.series('build:js', 'build:php'));
 
 /**
  * Deletes all generated files and reset any saved state.
