@@ -1,6 +1,6 @@
 /* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {context, retries, suite, test, timeout} from 'mocha-typescript';
+import {retries, suite, test, timeout} from 'mocha-typescript';
 import {FastTransformer} from '../src';
 
 /**
