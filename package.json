@@ -17,7 +17,7 @@
   "devDependencies": {
     "@cedx/coveralls": "^8.0.0",
     "@types/chai": "^4.1.4",
-    "@types/node": "^10.7.1",
+    "@types/node": "^10.9.2",
     "@types/node-fetch": "^2.1.2",
     "@types/vinyl": "^2.0.2",
     "chai": "^4.1.2",
@@ -47,8 +47,9 @@
     "gulp": ">=4.0.0"
   },
   "scripts": {
-    "coverage": "coveralls var/lcov.info",
-    "prepare": "tsc",
-    "test": "nyc mocha"
+    "coverage": "gulp coverage",
+    "prepare": "gulp build",
+    "start": "gulp watch",
+    "test": "gulp test"
   }
 }

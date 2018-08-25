@@ -3,7 +3,7 @@
 const {spawn} = require('child_process');
 const del = require('del');
 const gulp = require('gulp');
-const {normalize} = require('path');
+const {delimiter, normalize, resolve} = require('path');
 
 /**
  * The file patterns providing the list of source files.
@@ -14,7 +14,7 @@ const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 /**
  * Builds the project.
  */
-gulp.task('build:js', () => _exec('node_modules/.bin/tsc'));
+gulp.task('build:js', () => _exec('tsc'));
 gulp.task('build:php', () => gulp.src('src/php/server.php').pipe(gulp.dest('lib/php')));
 gulp.task('build', gulp.series('build:js', 'build:php'));
 
@@ -26,29 +26,29 @@ gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web'
 /**
  * Sends the results of the code coverage.
  */
-gulp.task('coverage', () => _exec('node_modules/.bin/coveralls', ['var/lcov.info']));
+gulp.task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 
 /**
  * Builds the documentation.
  */
-gulp.task('doc:api', () => _exec('node_modules/.bin/typedoc'));
+gulp.task('doc:api', () => _exec('typedoc'));
 gulp.task('doc:web', () => _exec('mkdocs', ['build']));
 gulp.task('doc', gulp.series('doc:api', 'doc:web'));
 
 /**
  * Fixes the coding standards issues.
  */
-gulp.task('fix', () => _exec('node_modules/.bin/tslint', ['--fix', ...sources]));
+gulp.task('fix', () => _exec('tslint', ['--fix', ...sources]));
 
 /**
  * Performs static analysis of source code.
  */
-gulp.task('lint', () => _exec('node_modules/.bin/tslint', sources));
+gulp.task('lint', () => _exec('tslint', sources));
 
 /**
  * Runs the unit tests.
  */
-gulp.task('test', () => _exec('node_modules/.bin/nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
 
 /**
  * Upgrades the project to the latest revision.
@@ -82,7 +82,8 @@ gulp.task('default', gulp.task('build'));
  * @return {Promise} Completes when the command is finally terminated.
  */
 function _exec(command, args = [], options = {shell: true, stdio: 'inherit'}) {
-  return new Promise((resolve, reject) => spawn(normalize(command), args, options)
-    .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : resolve())
+  if (!process.env.PATH.includes(normalize('node_modules/.bin'))) process.env.PATH = `${resolve('node_modules/.bin')}${delimiter}${process.env.PATH}`;
+  return new Promise((fulfill, reject) => spawn(normalize(command), args, options)
+    .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : fulfill())
   );
 }
