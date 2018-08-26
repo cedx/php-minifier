@@ -11,48 +11,32 @@ const {delimiter, normalize, resolve} = require('path');
  */
 const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
-/**
- * Builds the project.
- */
+// Build the project.
 gulp.task('build:js', () => _exec('tsc'));
 gulp.task('build:php', () => gulp.src('src/php/server.php').pipe(gulp.dest('lib/php')));
 gulp.task('build', gulp.series('build:js', 'build:php'));
 
-/**
- * Deletes all generated files and reset any saved state.
- */
+// Delete all generated files and reset any saved state.
 gulp.task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
 
-/**
- * Sends the results of the code coverage.
- */
+// Send the results of the code coverage.
 gulp.task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 
-/**
- * Builds the documentation.
- */
+// Build the documentation.
 gulp.task('doc:api', () => _exec('typedoc'));
 gulp.task('doc:web', () => _exec('mkdocs', ['build']));
 gulp.task('doc', gulp.series('doc:api', 'doc:web'));
 
-/**
- * Fixes the coding standards issues.
- */
+// Fix the coding standards issues.
 gulp.task('fix', () => _exec('tslint', ['--fix', ...sources]));
 
-/**
- * Performs static analysis of source code.
- */
+// Perform static analysis of source code.
 gulp.task('lint', () => _exec('tslint', sources));
 
-/**
- * Runs the unit tests.
- */
+// Run the unit tests.
 gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
 
-/**
- * Upgrades the project to the latest revision.
- */
+// Upgrade the project to the latest revision.
 gulp.task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
@@ -61,17 +45,13 @@ gulp.task('upgrade', async () => {
   return _exec('npm', ['update', '--dev']);
 });
 
-/**
- * Watches for file changes.
- */
+// Watch for file changes.
 gulp.task('watch', () => {
   gulp.watch('src/**/*.ts', {ignoreInitial: false}, gulp.task('build'));
   gulp.watch('test/**/*.ts', gulp.task('test'));
 });
 
-/**
- * Runs the default tasks.
- */
+// Run the default tasks.
 gulp.task('default', gulp.task('build'));
 
 /**
