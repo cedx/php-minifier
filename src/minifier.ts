@@ -1,6 +1,7 @@
 import {which} from '@cedx/which';
 import {Transform, TransformCallback} from 'stream';
 import * as File from 'vinyl';
+
 // @ts-ignore: disable processing of the imported JSON file.
 import * as pkg from '../package.json';
 import {FastTransformer} from './fast_transformer';
