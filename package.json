@@ -17,6 +17,8 @@
   "devDependencies": {
     "@cedx/coveralls": "^8.0.0",
     "@types/chai": "^4.1.4",
+    "@types/del": "^3.0.1",
+    "@types/gulp": "^4.0.5",
     "@types/node": "^10.9.4",
     "@types/node-fetch": "^2.1.2",
     "@types/vinyl": "^2.0.2",
