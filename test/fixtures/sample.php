@@ -12,7 +12,7 @@ namespace dummy;
 class Dummy {
 
   /**
-   * Initializes a new instance of the class.
+   * Creates a new instance.
    */
   public function __construct() {
 
@@ -44,4 +44,3 @@ class Dummy {
     </h1>
   </body>
 </html>
-
