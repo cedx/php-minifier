@@ -1,6 +1,5 @@
-// @ts-ignore
-import {phpMinify, TransformMode} from '@cedx/gulp-php-minify';
-import * as gulp from 'gulp';
+const {phpMinify, TransformMode} = require('@cedx/gulp-php-minify');
+const gulp = require('gulp');
 
 /**
  * Compresses a given set of PHP scripts.

@@ -3,7 +3,6 @@
   "compilerOptions": {
     "declaration": true,
     "experimentalDecorators": true,
-    "lib": ["dom", "es2018", "esnext.asynciterable"],
     "module": "commonjs",
     "outDir": "lib",
     "sourceMap": true,

@@ -1,18 +1,19 @@
-import {spawn, SpawnOptions} from 'child_process';
-import * as del from 'del';
-import {promises} from 'fs';
-import * as gulp from 'gulp';
-import {delimiter, normalize, resolve} from 'path';
+const {spawn} = require('child_process');
+const del = require('del');
+const {promises} = require('fs');
+const gulp = require('gulp');
+const {delimiter, normalize, resolve} = require('path');
 
 // Initialize the build system.
-const _path = 'PATH' in process.env ? process.env.PATH! : '';
+const _path = 'PATH' in process.env ? process.env.PATH : '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
 /**
  * The file patterns providing the list of source files.
+ * @type {string[]}
  */
-const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 /**
  * Builds the project.
@@ -82,12 +83,12 @@ gulp.task('default', gulp.task('build'));
 
 /**
  * Spawns a new process using the specified command.
- * @param command The command to run.
- * @param args The command arguments.
- * @param options The settings to customize how the process is spawned.
- * @return Completes when the command is finally terminated.
+ * @param {string} command The command to run.
+ * @param {string[]} [args] The command arguments.
+ * @param {Partial<SpawnOptions>} [options] The settings to customize how the process is spawned.
+ * @return {Promise<void>} Completes when the command is finally terminated.
  */
-function _exec(command: string, args: string[] = [], options: SpawnOptions = {}): Promise<void> {
+function _exec(command, args = [], options = {}) {
   return new Promise((fulfill, reject) => spawn(normalize(command), args, Object.assign({shell: true, stdio: 'inherit'}, options))
     .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : fulfill())
   );
