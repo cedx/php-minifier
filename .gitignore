@@ -9,6 +9,7 @@
 /var/
 /web/
 
+/*.code-workspace
 /*.iml
 /**/.DS_Store
 /npm-debug.log
