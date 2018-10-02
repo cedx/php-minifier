@@ -35,14 +35,12 @@ gulp.task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 /**
  * Builds the documentation.
  */
-gulp.task('doc:web', async () => {
+gulp.task('doc', async () => {
   await promises.copyFile('CHANGELOG.md', 'doc/about/changelog.md');
   await promises.copyFile('LICENSE.md', 'doc/about/license.md');
+  await _exec('typedoc');
   return _exec('mkdocs', ['build']);
 });
-
-gulp.task('doc:api', () => _exec('typedoc'));
-gulp.task('doc', gulp.series('doc:api', 'doc:web'));
 
 /**
  * Fixes the coding standards issues.
@@ -62,18 +60,13 @@ gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
 /**
  * Upgrades the project to the latest revision.
  */
-gulp.task('upgrade:git', async () => {
+gulp.task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
-  return _exec('git', ['pull', '--rebase']);
-});
-
-gulp.task('upgrade:npm', async () => {
+  await _exec('git', ['pull', '--rebase']);
   await _exec('npm', ['install', '--ignore-scripts']);
   return _exec('npm', ['update', '--dev']);
 });
-
-gulp.task('upgrade', gulp.series('upgrade:git', 'upgrade:npm'));
 
 /**
  * Watches for file changes.
