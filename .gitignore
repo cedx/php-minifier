@@ -1,8 +1,6 @@
 /.*/
 !/.vscode/
 
-/doc/about/changelog.md
-/doc/about/license.md
 /doc/api/
 /lib/
 /node_modules/
@@ -14,3 +12,5 @@
 /**/.DS_Store
 /npm-debug.log
 /package-lock.json
+/doc/about/changelog.md
+/doc/about/license.md
