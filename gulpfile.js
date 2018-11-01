@@ -1,3 +1,5 @@
+'use strict';
+
 const {spawn} = require('child_process');
 const del = require('del');
 const {promises} = require('fs');
