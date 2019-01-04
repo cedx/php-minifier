@@ -4,11 +4,7 @@ language: php
 notifications: {email: false}
 php: ['7.2', '7.3']
 
-before_install:
-  - nvm install $NODEJS
-  - node --version
-  - npm --version
-
+before_install: nvm install $NODEJS
 install: npm install
 script: npm test
 after_success: npm run coverage
