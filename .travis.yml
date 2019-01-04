@@ -1,14 +1,13 @@
-dist: trusty
-language: node_js
-node_js: [10, 11]
+dist: xenial
+env: [NODEJS=10, NODEJS=11]
+language: php
 notifications: {email: false}
-sudo: false
+php: ['7.2', '7.3']
 
 before_install:
-- curl --output archive.tar.bz2 https://s3.amazonaws.com/travis-php-archives/binaries/ubuntu/14.04/x86_64/php-7.2.tar.bz2
-- tar --directory=/ --extract --file=archive.tar.bz2
-- phpenv global 7.2
-- php --version
+  - nvm install $NODEJS
+  - node --version
+  - npm --version
 
 install: npm install
 script: npm test
