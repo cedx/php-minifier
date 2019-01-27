@@ -1,20 +1,25 @@
 {
-  "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/gulp-php-minify/issues",
   "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
   "homepage": "https://dev.belin.io/gulp-php-minify",
   "license": "MIT",
   "main": "lib/index",
   "name": "@cedx/gulp-php-minify",
-  "types": "./lib/index.d.ts",
+  "repository": "github:cedx/gulp-php-minify",
+  "types": "lib/index.d.ts",
   "version": "9.0.1",
+  "author": {
+    "email": "cedric@belin.io",
+    "name": "Cédric Belin",
+    "url": "https://belin.io"
+  },
   "dependencies": {
     "@cedx/which": "^5.2.0",
     "node-fetch": "^2.3.0",
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^8.3.0",
+    "@cedx/coveralls": "^8.4.0",
     "@types/chai": "^4.1.7",
     "@types/node": "^10.12.18",
     "@types/node-fetch": "^2.1.4",
@@ -22,11 +27,12 @@
     "chai": "^4.2.0",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
+    "gulp-rename": "^1.4.0",
     "mocha": "^5.2.0",
     "mocha-typescript": "^1.1.17",
     "nyc": "^13.1.0",
     "source-map-support": "^0.5.10",
-    "ts-node": "^7.0.1",
+    "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
     "typedoc": "^0.14.2",
     "typescript": "^3.2.4"
@@ -44,10 +50,6 @@
   ],
   "peerDependencies": {
     "gulp": ">=4.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://git.belin.io/cedx/gulp-php-minify.git"
   },
   "scripts": {
     "coverage": "gulp coverage",
