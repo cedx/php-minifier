@@ -9,17 +9,15 @@ import {Transformer} from './transformer';
 export class SafeTransformer implements Transformer {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'SafeTransformer';
+
+  /**
    * Creates a new safe transformer.
    * @param _executable The path to the PHP executable.
    */
   constructor(private readonly _executable: string = 'php') {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'SafeTransformer';
-  }
 
   /**
    * Closes this transformer and releases any resources associated with it.

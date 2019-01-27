@@ -15,6 +15,11 @@ import {Transformer} from './transformer';
 export class Minifier extends Transform {
 
   /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'Minifier';
+
+  /**
    * Value indicating whether to silent the minifier output.
    */
   silent: boolean;
@@ -37,13 +42,6 @@ export class Minifier extends Transform {
 
     const handler = async () => { if (typeof this._transformer != 'string') await this._transformer.close(); };
     this.on('end', handler).on('error', handler);
-  }
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'Minifier';
   }
 
   /**

@@ -1,7 +1,8 @@
 import {ChildProcess, spawn} from 'child_process';
 import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
-import {join, normalize, resolve} from 'path';
+import {dirname, join, normalize, resolve} from 'path';
+import {fileURLToPath} from 'url';
 import {Transformer} from './transformer';
 
 /**
@@ -13,6 +14,11 @@ export class FastTransformer implements Transformer {
    * The default address that the server is listening on.
    */
   static defaultAddress: string = '127.0.0.1';
+
+  /**
+   * The class name.
+   */
+  readonly [Symbol.toStringTag]: string = 'FastTransformer';
 
   /**
    * The port that the PHP process is listening on.
@@ -29,13 +35,6 @@ export class FastTransformer implements Transformer {
    * @param _executable The path to the PHP executable.
    */
   constructor(private readonly _executable: string = 'php') {}
-
-  /**
-   * The class name.
-   */
-  get [Symbol.toStringTag](): string {
-    return 'FastTransformer';
-  }
 
   /**
    * Value indicating whether the PHP process is currently listening.
@@ -62,8 +61,11 @@ export class FastTransformer implements Transformer {
     if (this.listening) return this._port;
     this._port = await this._getPort();
 
+    // @ts-ignore: CJS/ESM module.
+    // tslint:disable-next-line: whitespace
+    const baseDir = typeof __dirname == 'string' ? __dirname : dirname(fileURLToPath(import.meta.url));
     return new Promise<number>((fulfill, reject) => {
-      this._process = spawn(normalize(this._executable), ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')], {shell: true});
+      this._process = spawn(normalize(this._executable), ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(baseDir, 'php')], {shell: true});
       this._process.on('error', err => reject(err));
       setTimeout(() => fulfill(this._port), 1000);
     });

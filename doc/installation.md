@@ -5,16 +5,16 @@ Before installing **Gulp-PHP-Minify**, you need to make sure you have [Node.js](
 and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 !!! warning
-    Gulp-PHP-Minify requires Node.js >= **10.13.0**.
+    Gulp-PHP-Minify requires Node.js >= **10.15.0**.
     
 You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v10.13.0
+# v10.15.0
 
 npm --version
-# 6.4.1
+# 6.5.0
 ```
 
 !!! info
@@ -36,3 +36,7 @@ Now in your [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript
 ```js
 const {phpMinify} = require('@cedx/gulp-php-minify');
 ```
+
+!!! info
+    This library is packaged as [CommonJS modules](https://nodejs.org/api/modules.html) (`.js` files)
+    and [ECMAScript modules](https://nodejs.org/api/esm.html) (`.mjs` files).

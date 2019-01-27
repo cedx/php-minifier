@@ -3,11 +3,10 @@
   "compilerOptions": {
     "declaration": true,
     "experimentalDecorators": true,
-    "lib": ["dom", "es2018", "esnext.asynciterable"],
     "module": "commonjs",
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2018"
+    "target": "esnext"
   }
 }
