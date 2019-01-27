@@ -61,11 +61,9 @@ export class FastTransformer implements Transformer {
     if (this.listening) return this._port;
     this._port = await this._getPort();
 
-    // @ts-ignore: CJS/ESM module.
-    // tslint:disable-next-line: whitespace
-    const webDir = join(typeof __dirname == 'string' ? __dirname : dirname(fileURLToPath(import.meta.url)), 'php');
+    const args = ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')];
     return new Promise<number>((fulfill, reject) => {
-      this._process = spawn(normalize(this._executable), ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', webDir], {shell: true});
+      this._process = spawn(normalize(this._executable), args, {shell: true});
       this._process.on('error', err => reject(err));
       setTimeout(() => fulfill(this._port), 1000);
     });
