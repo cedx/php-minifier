@@ -58,6 +58,11 @@ gulp.task('fix', () => _exec('tslint', ['--fix', ...sources]));
 gulp.task('lint', () => _exec('tslint', sources));
 
 /**
+ * Starts the development server.
+ */
+gulp.task('serve', () => _exec('php', ['-S', 'localhost:8080', '-t', 'src/php']));
+
+/**
  * Runs the test suites.
  */
 gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
