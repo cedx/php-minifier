@@ -1,10 +1,8 @@
 'use strict';
-
 const {spawn} = require('child_process');
 const del = require('del');
 const {promises} = require('fs');
 const gulp = require('gulp');
-const rename = require('gulp-rename');
 const {delimiter, normalize, resolve} = require('path');
 
 // Initialize the build system.

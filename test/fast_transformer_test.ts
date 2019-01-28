@@ -10,18 +10,34 @@ import {FastTransformer} from '../src';
 class FastTransformerTest {
 
   /**
+   * The transformer to be tested.
+   */
+  private _transformer: FastTransformer = new FastTransformer;
+
+  /**
+   * This method is called after each test.
+   */
+  async after(): Promise<void> {
+    await this._transformer.close();
+  }
+
+  /**
+   * This method is called before each test.
+   */
+  before(): void {
+    this._transformer = new FastTransformer;
+  }
+
+  /**
    * Tests the `FastTransformer#close()` method.
    */
   @test async testClose(): Promise<void> {
-    const transformer = new FastTransformer;
-
     // It should complete without any error.
-    await transformer.close();
+    await this._transformer.close();
     expect(true).to.be.ok;
 
     // It should be callable multiple times.
-    await transformer.close();
-    await transformer.close();
+    await this._transformer.close();
     expect(true).to.be.ok;
   }
 
@@ -29,16 +45,12 @@ class FastTransformerTest {
    * Tests the `FastTransformer#listen()` method.
    */
   @test async testListen(): Promise<void> {
-    const transformer = new FastTransformer;
-    after(async () => await transformer.close());
-
     // It should complete without any error.
-    await transformer.listen();
+    await this._transformer.listen();
     expect(true).to.be.ok;
 
     // It should be callable multiple times.
-    await transformer.listen();
-    await transformer.listen();
+    await this._transformer.listen();
     expect(true).to.be.ok;
   }
 
@@ -46,16 +58,14 @@ class FastTransformerTest {
    * Tests the `FastTransformer#listening` property.
    */
   @test async testListening(): Promise<void> {
-    const transformer = new FastTransformer;
-
     // It should return whether the server is listening.
-    expect(transformer.listening).to.be.false;
+    expect(this._transformer.listening).to.be.false;
 
-    await transformer.listen();
-    expect(transformer.listening).to.be.true;
+    await this._transformer.listen();
+    expect(this._transformer.listening).to.be.true;
 
-    await transformer.close();
-    expect(transformer.listening).to.be.false;
+    await this._transformer.close();
+    expect(this._transformer.listening).to.be.false;
   }
 
   /**
@@ -63,19 +73,17 @@ class FastTransformerTest {
    */
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
-    const transformer = new FastTransformer;
-    after(() => transformer.close());
 
     // It should remove the inline comments.
-    expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
+    expect(await this._transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
 
     // It should remove the multi-line comments.
-    expect(await transformer.transform(script)).to.contain('namespace dummy; class Dummy');
+    expect(await this._transformer.transform(script)).to.contain('namespace dummy; class Dummy');
 
     // It should remove the single-line comments.
-    expect(await transformer.transform(script)).to.contain('$className = get_class($this); return $className;');
+    expect(await this._transformer.transform(script)).to.contain('$className = get_class($this); return $className;');
 
     // It should remove the whitespace.
-    expect(await transformer.transform(script)).to.contain('__construct() { }');
+    expect(await this._transformer.transform(script)).to.contain('__construct() { }');
   }
 }

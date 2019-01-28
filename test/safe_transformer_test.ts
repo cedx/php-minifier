@@ -10,18 +10,34 @@ import {SafeTransformer} from '../src';
 class SafeTransformerTest {
 
   /**
+   * The transformer to be tested.
+   */
+  private _transformer: SafeTransformer = new SafeTransformer;
+
+  /**
+   * This method is called after each test.
+   */
+  async after(): Promise<void> {
+    await this._transformer.close();
+  }
+
+  /**
+   * This method is called before each test.
+   */
+  before(): void {
+    this._transformer = new SafeTransformer;
+  }
+
+  /**
    * Tests the `SafeTransformer#close()` method.
    */
   @test async testClose(): Promise<void> {
-    const transformer = new SafeTransformer;
-
     // It should complete without any error.
-    await transformer.close();
+    await this._transformer.close();
     expect(true).to.be.ok;
 
     // It should be callable multiple times.
-    await transformer.close();
-    await transformer.close();
+    await this._transformer.close();
     expect(true).to.be.ok;
   }
 
@@ -30,19 +46,17 @@ class SafeTransformerTest {
    */
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
-    const transformer = new SafeTransformer;
-    after(() => transformer.close());
 
     // It should remove the inline comments.
-    expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
+    expect(await this._transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
 
     // It should remove the multi-line comments.
-    expect(await transformer.transform(script)).to.contain('namespace dummy; class Dummy');
+    expect(await this._transformer.transform(script)).to.contain('namespace dummy; class Dummy');
 
     // It should remove the single-line comments.
-    expect(await transformer.transform(script)).to.contain('$className = get_class($this); return $className;');
+    expect(await this._transformer.transform(script)).to.contain('$className = get_class($this); return $className;');
 
     // It should remove the whitespace.
-    expect(await transformer.transform(script)).to.contain('__construct() { }');
+    expect(await this._transformer.transform(script)).to.contain('__construct() { }');
   }
 }

@@ -1,8 +1,7 @@
 import {ChildProcess, spawn} from 'child_process';
 import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
-import {dirname, join, normalize, resolve} from 'path';
-import {fileURLToPath} from 'url';
+import {join, normalize, resolve} from 'path';
 import {Transformer} from './transformer';
 
 /**
