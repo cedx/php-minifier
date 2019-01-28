@@ -3,11 +3,14 @@
 
 [Gulp](https://gulpjs.com) plug-in minifying [PHP](https://secure.php.net) source code by removing comments and whitespace.
 
-## Resources
-- [Documentation](https://dev.belin.io/gulp-php-minify)
+## Documentation
+- [User guide](https://dev.belin.io/gulp-php-minify)
 - [API reference](https://dev.belin.io/gulp-php-minify/api)
+
+## Development
+- [Git repository](https://github.com/cedx/gulp-php-minify)
 - [npm package](https://www.npmjs.com/package/@cedx/gulp-php-minify)
-- [GitHub repository](https://github.com/cedx/gulp-php-minify)
+- [Submit an issue](https://github.com/cedx/gulp-php-minify/issues)
 
 ## License
 [Gulp-PHP-Minify](https://dev.belin.io/gulp-php-minify) is distributed under the MIT License.
