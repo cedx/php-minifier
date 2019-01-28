@@ -58,7 +58,7 @@ gulp.task('lint', () => _exec('tslint', sources));
 /**
  * Starts the development server.
  */
-gulp.task('serve', () => _exec('php', ['-S', 'localhost:8000', '-t', 'src/php']));
+gulp.task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
 
 /**
  * Runs the test suites.
