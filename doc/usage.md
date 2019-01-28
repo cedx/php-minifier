@@ -1,5 +1,5 @@
 # Usage
-If you haven't used [Gulp](https://gulpjs.com) before, be sure to check out the [related documentation](https://github.com/gulpjs/gulp/blob/master/docs/README.md), as it explains how to create a `gulpfile.js` as well as install and use plug-ins.
+If you haven't used [Gulp](https://gulpjs.com) before, be sure to check out the [related documentation](https://github.com/gulpjs/gulp/tree/master/docs/getting-started), as it explains how to create a `gulpfile.js` as well as install and use plug-ins.
 Once you're familiar with that process, you may install the plug-in.
 
 ## Programming interface
@@ -9,7 +9,7 @@ The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and 
 const {phpMinify} = require('@cedx/gulp-php-minify');
 const gulp = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
+gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify())
   .pipe(gulp.dest('path/to/out'))
 );
@@ -31,7 +31,7 @@ If the plug-in cannot find the default `php` binary, or if you want to use a dif
 const {phpMinify} = require('@cedx/gulp-php-minify');
 const gulp = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
+gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({binary: 'C:\\Program Files\\PHP\\php.exe'}))
   .pipe(gulp.dest('path/to/out'))
 );
@@ -47,7 +47,7 @@ The plug-in can work in two manners, which can be selected using the `mode` opti
 const {phpMinify, TransformMode} = require('@cedx/gulp-php-minify');
 const gulp = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
+gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({mode: TransformMode.fast}))
   .pipe(gulp.dest('path/to/out'))
 );
@@ -60,7 +60,7 @@ By default, the plug-in prints to the standard output the paths of the minified 
 const {phpMinify} = require('@cedx/gulp-php-minify');
 const gulp = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/lib/**/*.php', {read: false})
+gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({silent: true}))
   .pipe(gulp.dest('path/to/out'))
 );

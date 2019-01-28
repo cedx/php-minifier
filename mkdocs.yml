@@ -10,7 +10,7 @@ repo_name: GitHub
 repo_url: https://github.com/cedx/gulp-php-minify
 edit_uri: ''
 
-copyright: Copyright &copy; 2016 - 2018 Cédric Belin
+copyright: Copyright &copy; 2016 - 2019 Cédric Belin
 google_analytics:
 - !!python/object/apply:os.getenv [GOOGLE_ANALYTICS_ID]
 - auto
@@ -26,7 +26,7 @@ markdown_extensions:
 - admonition
 - codehilite
 
-pages:
+nav:
 - Overview: index.md
 - Installation: installation.md
 - Usage: usage.md

@@ -19,7 +19,7 @@ npm --version
 
 !!! info
     If you plan to play with the package sources, you will also need
-    [Gulp](https://gulpjs.com) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
+    [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
 
 ## Installing with npm package manager
 

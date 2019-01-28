@@ -3,7 +3,7 @@
   "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
   "homepage": "https://dev.belin.io/gulp-php-minify",
   "license": "MIT",
-  "main": "lib/index",
+  "main": "lib/index.js",
   "name": "@cedx/gulp-php-minify",
   "repository": "github:cedx/gulp-php-minify",
   "types": "lib/index.d.ts",
