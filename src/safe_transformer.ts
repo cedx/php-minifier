@@ -38,8 +38,8 @@ export class SafeTransformer implements Transformer {
    * @return The transformed script.
    */
   async transform(script: string): Promise<string> {
-    const exec = promisify(execFile);
-    const {stdout} = await exec(normalize(this._executable), ['-w', resolve(script)], {maxBuffer: SafeTransformer.bufferSize});
+    const spawn = promisify(execFile);
+    const {stdout} = await spawn(normalize(this._executable), ['-w', resolve(script)], {maxBuffer: SafeTransformer.bufferSize});
     return stdout;
   }
 }

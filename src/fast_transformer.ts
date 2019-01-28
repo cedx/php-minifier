@@ -62,7 +62,7 @@ export class FastTransformer implements Transformer {
 
     const args = ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')];
     return new Promise<number>((fulfill, reject) => {
-      this._process = spawn(normalize(this._executable), args, {shell: true});
+      this._process = spawn(normalize(this._executable), args);
       this._process.on('error', err => reject(err));
       setTimeout(() => fulfill(this._port), 1000);
     });
