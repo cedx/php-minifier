@@ -21,7 +21,7 @@
   "devDependencies": {
     "@cedx/coveralls": "^8.4.0",
     "@types/chai": "^4.1.7",
-    "@types/node": "^10.12.18",
+    "@types/node": "^10.12.19",
     "@types/node-fetch": "^2.1.4",
     "@types/vinyl": "^2.0.2",
     "chai": "^4.2.0",
