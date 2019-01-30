@@ -28,8 +28,8 @@ export class SafeTransformer implements Transformer {
    * Closes this transformer and releases any resources associated with it.
    * @return Completes when the transformer is finally disposed.
    */
-  async close(): Promise<void> {
-    return undefined;
+  close(): Promise<void> {
+    return Promise.resolve();
   }
 
   /**
