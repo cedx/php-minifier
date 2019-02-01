@@ -1,4 +1,5 @@
 import {which} from '@cedx/which';
+import * as log from 'fancy-log';
 import {Transform, TransformCallback} from 'stream';
 import * as File from 'vinyl';
 
@@ -61,7 +62,7 @@ export class Minifier extends Transform {
       }
 
       // tslint:disable-next-line: no-console
-      if (!this.silent) console.log(`Minifying: ${file.path}`);
+      if (!this.silent) log(`Minifying: ${file.path}`);
       file.contents = Buffer.from(await this._transformer.transform(file.path), encoding);
       if (callback) callback(undefined, file);
     }
