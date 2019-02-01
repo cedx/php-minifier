@@ -21,6 +21,16 @@ export class Minifier extends Transform {
   readonly [Symbol.toStringTag]: string = 'Minifier';
 
   /**
+   * The path to the PHP executable.
+   */
+  readonly binary: string;
+
+  /**
+   * The operational mode.
+   */
+  readonly mode: TransformMode;
+
+  /**
    * Value indicating whether to silent the minifier output.
    */
   silent: boolean;
