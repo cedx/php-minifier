@@ -13,7 +13,7 @@ class MinifierTest {
   /**
    * The minifier to be tested.
    */
-  private _minifier: Minifier = new Minifier({silent: true});
+  private _minifier: Minifier = new Minifier;
 
   /**
    * This method is called after each test.
