@@ -38,7 +38,7 @@ export class Minifier extends Transform {
 
     const {binary = '', mode = TransformMode.safe, silent = false} = options;
     this.silent = silent;
-    this._transformer = `${mode}:${binary}`;
+    this._transformer = `${mode}@${binary}`;
 
     const handler = async () => { if (typeof this._transformer != 'string') await this._transformer.close(); };
     this.on('end', handler).on('error', handler);
@@ -54,8 +54,8 @@ export class Minifier extends Transform {
   async _transform(file: File, encoding: string = 'utf8', callback?: TransformCallback): Promise<File> {
     try {
       if (typeof this._transformer == 'string') {
-        // tslint:disable-next-line: prefer-const
-        let [mode, executable] = this._transformer.split(':', 2);
+        const [mode, ...rest] = this._transformer.split('@');
+        let executable = rest.join('@').trim();
         if (!executable.length) executable = await which('php', {onError: () => 'php'}) as string;
         this._transformer = mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
       }

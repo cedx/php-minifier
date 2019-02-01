@@ -11,15 +11,31 @@ import {Minifier} from '../src';
 class MinifierTest {
 
   /**
+   * The minifier to be tested.
+   */
+  private _minifier: Minifier = new Minifier({silent: true});
+
+  /**
+   * This method is called after each test.
+   */
+  after(): void {
+    this._minifier.emit('end');
+  }
+
+  /**
+   * This method is called before each test.
+   */
+  before(): void {
+    this._minifier = new Minifier({silent: true});
+  }
+
+  /**
    * Tests the `Minifier#_transform()` method.
    */
   @test async testTransform(): Promise<void> {
-    const minifier = new Minifier({silent: true});
-    after(() => minifier.emit('end'));
-
     // It should remove the comments and whitespace.
     const file = new File({path: 'test/fixtures/sample.php'});
-    await minifier._transform(file);
+    await this._minifier._transform(file);
     expect(file.contents!.toString()).to.contain("<?= 'Hello World!' ?>")
       .and.contain('namespace dummy; class Dummy')
       .and.contain('$className = get_class($this); return $className;')

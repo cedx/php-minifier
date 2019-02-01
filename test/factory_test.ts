@@ -23,7 +23,7 @@ import {Minifier, phpMinify, TransformMode} from '../src';
     });
 
     // @ts-ignore: `_transformer` is a private property.
-    expect(minifier._transformer).to.equal('fast:/usr/local/bin/php');
+    expect(minifier._transformer).to.equal('fast@/usr/local/bin/php');
     expect(minifier.silent).to.be.true;
   }
 }
