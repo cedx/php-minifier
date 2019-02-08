@@ -5,6 +5,7 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "outDir": "lib",
+    "removeComments": true,
     "sourceMap": true,
     "strict": true,
     "target": "esnext"
