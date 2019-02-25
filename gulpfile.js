@@ -61,7 +61,7 @@ gulp.task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php'])
 /**
  * Runs the test suites.
  */
-gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha')]));
+gulp.task('test', () => _exec('nyc', [normalize('node_modules/.bin/mocha'), 'test/**/*.ts']));
 
 /**
  * Upgrades the project to the latest revision.
