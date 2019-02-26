@@ -7,11 +7,11 @@ The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and 
 
 ```js
 const {phpMinify} = require('@cedx/gulp-php-minify');
-const gulp = require('gulp');
+const {dest, src, task} = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+task('compress:php', () => src('path/to/**/*.php', {read: false})
   .pipe(phpMinify())
-  .pipe(gulp.dest('path/to/out'))
+  .pipe(dest('path/to/out'))
 );
 ```
 
@@ -29,11 +29,11 @@ If the plug-in cannot find the default `php` binary, or if you want to use a dif
 
 ```js
 const {phpMinify} = require('@cedx/gulp-php-minify');
-const gulp = require('gulp');
+const {dest, src, task} = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+task('compress:php', () => src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({binary: 'C:\\Program Files\\PHP\\php.exe'}))
-  .pipe(gulp.dest('path/to/out'))
+  .pipe(dest('path/to/out'))
 );
 ```
 
@@ -45,11 +45,11 @@ The plug-in can work in two manners, which can be selected using the `mode` opti
 
 ```js
 const {phpMinify, TransformMode} = require('@cedx/gulp-php-minify');
-const gulp = require('gulp');
+const {dest, src, task} = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+task('compress:php', () => src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({mode: TransformMode.fast}))
-  .pipe(gulp.dest('path/to/out'))
+  .pipe(dest('path/to/out'))
 );
 ```
 
@@ -58,10 +58,10 @@ By default, the plug-in prints to the standard output the paths of the minified 
 
 ```js
 const {phpMinify} = require('@cedx/gulp-php-minify');
-const gulp = require('gulp');
+const {dest, src, task} = require('gulp');
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+task('compress:php', () => src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({silent: true}))
-  .pipe(gulp.dest('path/to/out'))
+  .pipe(dest('path/to/out'))
 );
 ```
