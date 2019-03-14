@@ -10,6 +10,6 @@
 /*.js
 /*.yaml
 /*.yml
+/**/*.tsconfig.json
 /lib/**/*.map
 /share/
-/tsconfig.json
