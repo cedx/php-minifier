@@ -1,5 +1,9 @@
 /.*
 
+/build/
+/coverage/
+/doc/api/
+/share/
 /src/
 /test/
 /var/
@@ -12,4 +16,3 @@
 /*.yml
 /**/*.tsconfig.json
 /lib/**/*.map
-/share/
