@@ -37,7 +37,7 @@ task('compress:php', () => src('path/to/**/*.php', {read: false})
 );
 ```
 
-### **mode**: string = `TransformMode.safe`
+### **mode**: TransformMode = `TransformMode.safe`
 The plug-in can work in two manners, which can be selected using the `mode` option:
 
 - the `safe` mode: as its name implies, this mode is very reliable. But it is also very slow as it spawns a new PHP process for every file to be processed. This is the default mode.
