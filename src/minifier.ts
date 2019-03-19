@@ -16,11 +16,6 @@ import {Transformer} from './transformer';
 export class Minifier extends Transform {
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'Minifier';
-
-  /**
    * The path to the PHP executable.
    */
   readonly binary: string;

@@ -14,11 +14,6 @@ export class SafeTransformer implements Transformer {
   static bufferSize: number = 8 * 1024 * 1024;
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'SafeTransformer';
-
-  /**
    * Creates a new safe transformer.
    * @param _executable The path to the PHP executable.
    */

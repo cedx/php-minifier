@@ -15,11 +15,6 @@ export class FastTransformer implements Transformer {
   static defaultAddress: string = '127.0.0.1';
 
   /**
-   * The class name.
-   */
-  readonly [Symbol.toStringTag]: string = 'FastTransformer';
-
-  /**
    * The port that the PHP process is listening on.
    */
   private _port: number = -1;
