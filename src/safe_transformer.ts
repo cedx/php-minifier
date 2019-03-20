@@ -17,7 +17,7 @@ export class SafeTransformer implements Transformer {
    * Creates a new safe transformer.
    * @param _executable The path to the PHP executable.
    */
-  constructor(private readonly _executable: string = 'php') {}
+  constructor(private _executable: string = 'php') {}
 
   /**
    * Closes this transformer and releases any resources associated with it.

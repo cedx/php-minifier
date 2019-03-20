@@ -28,7 +28,7 @@ export class FastTransformer implements Transformer {
    * Creates a new fast transformer.
    * @param _executable The path to the PHP executable.
    */
-  constructor(private readonly _executable: string = 'php') {}
+  constructor(private _executable: string = 'php') {}
 
   /**
    * Value indicating whether the PHP process is currently listening.
