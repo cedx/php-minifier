@@ -81,7 +81,7 @@ export class Minifier extends Transform {
 }
 
 /**
- * Defines the options of a `Minifier` instance.
+ * Defines the options of a [[Minifier]] instance.
  */
 export interface MinifierOptions {
 
