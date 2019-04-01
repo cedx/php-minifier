@@ -27,7 +27,7 @@
     "@types/node-fetch": "^2.1.7",
     "@types/vinyl": "^2.0.2",
     "chai": "^4.2.0",
-    "del": "^4.0.0",
+    "del": "^4.1.0",
     "gulp": "^4.0.0",
     "mocha": "^6.0.2",
     "mocha-typescript": "^1.1.17",
