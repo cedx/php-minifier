@@ -104,7 +104,7 @@
 
 ## Version [1.0.0](https://github.com/cedx/gulp-php-minify/compare/v0.3.1...v1.0.0)
 - Breaking change: the plug-in is not anymore a default export. The use of destructuring assignment is advised to access it.
-- Breaking change: ported the [CommonJS](https://nodejs.org/api/modules.html) modules to ES2015 format.
+- Breaking change: ported the [CommonJS modules](https://nodejs.org/api/modules.html) to ES2015 format.
 - Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: replaced the test classes by plain tests.
