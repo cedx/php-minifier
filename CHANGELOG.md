@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [9.2.0](https://github.com/cedx/gulp-php-minify/compare/v9.1.1...v9.2.0)
+- Added the `binary` and `mode` properties to the `Minifier` class.
+- Updated the package dependencies.
+
 ## Version [9.1.1](https://github.com/cedx/gulp-php-minify/compare/v9.1.0...v9.1.1)
 - Fixed the [issue #8](https://github.com/cedx/gulp-php-minify/issues/8): unable to spawn a custom [PHP](https://secure.php.net) executable.
 
