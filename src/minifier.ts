@@ -65,7 +65,6 @@ export class Minifier extends Transform {
         this._transformer = this.mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
       }
 
-      // tslint:disable-next-line: no-console
       if (!this.silent) log(`Minifying: ${file.path}`);
       file.contents = Buffer.from(await this._transformer.transform(file.path), encoding);
       if (callback) callback(undefined, file);
