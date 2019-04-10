@@ -66,7 +66,7 @@ export class Minifier extends Transform {
       }
 
       if (!this.silent) log(`Minifying: ${file.path}`);
-      file.contents = Buffer.from(await this._transformer.transform(file.path), encoding);
+      file.contents = Buffer.from(await this._transformer.transform(file.path), encoding as BufferEncoding);
       if (callback) callback(undefined, file);
     }
 
