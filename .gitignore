@@ -12,6 +12,4 @@
 /**/.DS_Store
 /npm-debug.log
 /package-lock.json
-/doc/about/changelog.md
-/doc/about/license.md
 /share/**/*.private.env.json

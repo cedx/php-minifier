@@ -3,8 +3,8 @@ site_description: Gulp plug-in minifying PHP source code by removing comments an
 site_author: Cédric Belin - cedric@belin.io
 site_url: https://dev.belin.io/gulp-php-minify
 
-docs_dir: doc
-site_dir: web
+docs_dir: .
+site_dir: ../web
 
 repo_name: GitHub
 repo_url: https://github.com/cedx/gulp-php-minify
