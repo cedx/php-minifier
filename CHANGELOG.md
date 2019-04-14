@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [9.3.0](https://github.com/cedx/gulp-php-minify/compare/v9.2.0...v9.3.0)
+- Modified the package layout.
+- Updated the package dependencies.
+
 ## Version [9.2.0](https://github.com/cedx/gulp-php-minify/compare/v9.1.1...v9.2.0)
 - Added the `binary` and `mode` properties to the `Minifier` class.
 - Updated the package dependencies.
