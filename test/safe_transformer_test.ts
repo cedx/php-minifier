@@ -4,7 +4,7 @@ import {retries, suite, test, timeout} from 'mocha-typescript';
 import {SafeTransformer} from '../src';
 
 /**
- * Tests the features of the `SafeTransformer` class.
+ * Tests the features of the [[SafeTransformer]] class.
  */
 @suite(retries(2), timeout(30000))
 class SafeTransformerTest {

@@ -5,7 +5,7 @@ import * as File from 'vinyl';
 import {Minifier} from '../src';
 
 /**
- * Tests the features of the `Minifier` class.
+ * Tests the features of the [[Minifier]] class.
  */
 @suite(retries(3), timeout(60000))
 class MinifierTest {

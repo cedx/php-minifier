@@ -4,7 +4,7 @@ import {retries, suite, test, timeout} from 'mocha-typescript';
 import {FastTransformer} from '../src';
 
 /**
- * Tests the features of the `FastTransformer` class.
+ * Tests the features of the [[FastTransformer]] class.
  */
 @suite(retries(2), timeout(30000))
 class FastTransformerTest {
