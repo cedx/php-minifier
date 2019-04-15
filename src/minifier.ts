@@ -10,29 +10,19 @@ import {SafeTransformer} from './safe_transformer';
 import {TransformMode} from './transform_mode';
 import {Transformer} from './transformer';
 
-/**
- * Removes PHP comments and whitespace by applying the `php_strip_whitespace()` function.
- */
+/** Removes PHP comments and whitespace by applying the `php_strip_whitespace()` function. */
 export class Minifier extends Transform {
 
-  /**
-   * The path to the PHP executable.
-   */
+  /** The path to the PHP executable. */
   readonly binary: string;
 
-  /**
-   * The operational mode.
-   */
+  /** The operational mode. */
   readonly mode: TransformMode;
 
-  /**
-   * Value indicating whether to silent the minifier output.
-   */
+  /** Value indicating whether to silent the minifier output. */
   silent: boolean;
 
-  /**
-   * The instance used to process the PHP code.
-   */
+  /** The instance used to process the PHP code. */
   private _transformer: Transformer | null = null;
 
   /**
@@ -79,23 +69,15 @@ export class Minifier extends Transform {
   }
 }
 
-/**
- * Defines the options of a [[Minifier]] instance.
- */
+/** Defines the options of a [[Minifier]] instance. */
 export interface MinifierOptions {
 
-  /**
-   * The path to the PHP executable.
-   */
+  /** The path to the PHP executable. */
   binary: string;
 
-  /**
-   * The operation mode of the minifier.
-   */
+  /** The operation mode of the minifier. */
   mode: TransformMode;
 
-  /**
-   * Value indicating whether to silent the minifier output.
-   */
+  /** Value indicating whether to silent the minifier output. */
   silent: boolean;
 }

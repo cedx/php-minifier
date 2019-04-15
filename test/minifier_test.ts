@@ -4,34 +4,24 @@ import {retries, suite, test, timeout} from 'mocha-typescript';
 import * as File from 'vinyl';
 import {Minifier} from '../src';
 
-/**
- * Tests the features of the [[Minifier]] class.
- */
+/** Tests the features of the [[Minifier]] class. */
 @suite(retries(3), timeout(60000))
 class MinifierTest {
 
-  /**
-   * The minifier to be tested.
-   */
+  /** The minifier to be tested. */
   private _minifier: Minifier = new Minifier;
 
-  /**
-   * This method is called after each test.
-   */
+  /** This method is called after each test. */
   after(): void {
     this._minifier.emit('end');
   }
 
-  /**
-   * This method is called before each test.
-   */
+  /** This method is called before each test. */
   before(): void {
     this._minifier = new Minifier({silent: true});
   }
 
-  /**
-   * Tests the `Minifier#_transform()` method.
-   */
+  /** Tests the `Minifier#_transform()` method. */
   @test async testTransform(): Promise<void> {
     // It should remove the comments and whitespace.
     const file = new File({path: 'test/fixtures/sample.php'});

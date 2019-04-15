@@ -1,9 +1,7 @@
 <?php declare(strict_types=1);
 namespace Gulp\PhpMinify;
 
-/**
- * An HTTP server that strip comments and whitespace from the files specified in client requests.
- */
+/** An HTTP server that strip comments and whitespace from the files specified in client requests. */
 class Server {
 
   /**

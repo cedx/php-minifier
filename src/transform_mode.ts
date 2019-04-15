@@ -1,15 +1,9 @@
-/**
- * Defines the type of transformation applied by a minifier.
- */
+/** Defines the type of transformation applied by a minifier. */
 export enum TransformMode {
 
-  /**
-   * Applies a fast transformation.
-   */
+  /** Applies a fast transformation. */
   fast = 'fast',
 
-  /**
-   * Applies a safe transformation.
-   */
+  /** Applies a safe transformation. */
   safe = 'safe'
 }

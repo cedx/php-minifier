@@ -3,14 +3,10 @@ import {normalize, resolve} from 'path';
 import {promisify} from 'util';
 import {Transformer} from './transformer';
 
-/**
- * Removes comments and whitespace from a PHP script, by calling a PHP process.
- */
+/** Removes comments and whitespace from a PHP script, by calling a PHP process. */
 export class SafeTransformer implements Transformer {
 
-  /**
-   * The largest amount of data in bytes allowed on `stdout` or `stderr`.
-   */
+  /** The largest amount of data in bytes allowed on `stdout` or `stderr`. */
   static bufferSize: number = 8 * 1024 * 1024;
 
   /**

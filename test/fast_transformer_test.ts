@@ -3,34 +3,24 @@ import {expect} from 'chai';
 import {retries, suite, test, timeout} from 'mocha-typescript';
 import {FastTransformer} from '../src';
 
-/**
- * Tests the features of the [[FastTransformer]] class.
- */
+/** Tests the features of the [[FastTransformer]] class. */
 @suite(retries(2), timeout(30000))
 class FastTransformerTest {
 
-  /**
-   * The transformer to be tested.
-   */
+  /** The transformer to be tested. */
   private _transformer: FastTransformer = new FastTransformer;
 
-  /**
-   * This method is called after each test.
-   */
+  /** This method is called after each test. */
   async after(): Promise<void> {
     await this._transformer.close();
   }
 
-  /**
-   * This method is called before each test.
-   */
+  /** This method is called before each test. */
   before(): void {
     this._transformer = new FastTransformer;
   }
 
-  /**
-   * Tests the `FastTransformer#close()` method.
-   */
+  /** Tests the `FastTransformer#close()` method. */
   @test async testClose(): Promise<void> {
     // It should complete without any error.
     await this._transformer.close();
@@ -41,9 +31,7 @@ class FastTransformerTest {
     expect(true).to.be.ok;
   }
 
-  /**
-   * Tests the `FastTransformer#listen()` method.
-   */
+  /** Tests the `FastTransformer#listen()` method. */
   @test async testListen(): Promise<void> {
     // It should complete without any error.
     await this._transformer.listen();
@@ -54,9 +42,7 @@ class FastTransformerTest {
     expect(true).to.be.ok;
   }
 
-  /**
-   * Tests the `FastTransformer#listening` property.
-   */
+  /** Tests the `FastTransformer#listening` property. */
   @test async testListening(): Promise<void> {
     // It should return whether the server is listening.
     expect(this._transformer.listening).to.be.false;
@@ -68,9 +54,7 @@ class FastTransformerTest {
     expect(this._transformer.listening).to.be.false;
   }
 
-  /**
-   * Tests the `FastTransformer#transform()` method.
-   */
+  /** Tests the `FastTransformer#transform()` method. */
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
 

@@ -1,6 +1,4 @@
-/**
- * Interface providing a mechanism for transforming input and producing output.
- */
+/** Interface providing a mechanism for transforming input and producing output. */
 export interface Transformer {
 
   /**

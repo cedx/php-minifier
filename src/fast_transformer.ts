@@ -4,24 +4,16 @@ import fetch from 'node-fetch';
 import {join, normalize, resolve} from 'path';
 import {Transformer} from './transformer';
 
-/**
- * Removes comments and whitespace from a PHP script, by calling a Web service.
- */
+/** Removes comments and whitespace from a PHP script, by calling a Web service. */
 export class FastTransformer implements Transformer {
 
-  /**
-   * The default address that the server is listening on.
-   */
+  /** The default address that the server is listening on. */
   static defaultAddress: string = '127.0.0.1';
 
-  /**
-   * The port that the PHP process is listening on.
-   */
+  /** The port that the PHP process is listening on. */
   private _port: number = -1;
 
-  /**
-   * The underlying PHP process.
-   */
+  /** The underlying PHP process. */
   private _process: ChildProcess | null = null;
 
   /**
@@ -30,9 +22,7 @@ export class FastTransformer implements Transformer {
    */
   constructor(private _executable: string = 'php') {}
 
-  /**
-   * Value indicating whether the PHP process is currently listening.
-   */
+  /** Value indicating whether the PHP process is currently listening. */
   get listening(): boolean {
     return this._process != null;
   }

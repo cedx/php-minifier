@@ -3,34 +3,24 @@ import {expect} from 'chai';
 import {retries, suite, test, timeout} from 'mocha-typescript';
 import {SafeTransformer} from '../src';
 
-/**
- * Tests the features of the [[SafeTransformer]] class.
- */
+/** Tests the features of the [[SafeTransformer]] class. */
 @suite(retries(2), timeout(30000))
 class SafeTransformerTest {
 
-  /**
-   * The transformer to be tested.
-   */
+  /** The transformer to be tested. */
   private _transformer: SafeTransformer = new SafeTransformer;
 
-  /**
-   * This method is called after each test.
-   */
+  /** This method is called after each test. */
   async after(): Promise<void> {
     await this._transformer.close();
   }
 
-  /**
-   * This method is called before each test.
-   */
+  /** This method is called before each test. */
   before(): void {
     this._transformer = new SafeTransformer;
   }
 
-  /**
-   * Tests the `SafeTransformer#close()` method.
-   */
+  /** Tests the `SafeTransformer#close()` method. */
   @test async testClose(): Promise<void> {
     // It should complete without any error.
     await this._transformer.close();
@@ -41,9 +31,7 @@ class SafeTransformerTest {
     expect(true).to.be.ok;
   }
 
-  /**
-   * Tests the `SafeTransformer#transform()` method.
-   */
+  /** Tests the `SafeTransformer#transform()` method. */
   @test async testTransform(): Promise<void> {
     const script = 'test/fixtures/sample.php';
 
