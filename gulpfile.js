@@ -65,7 +65,7 @@ task('test', () => _exec('nyc', [
   '--nycrc-path=test/nycrc.json',
   normalize('node_modules/.bin/mocha'),
   '--config=test/mocharc.json',
-  '"test/**/*.ts"'
+  '"test/**/*_test.ts"'
 ]));
 
 /**
