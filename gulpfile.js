@@ -5,13 +5,16 @@ const {promises} = require('fs');
 const {dest, parallel, src, task, watch} = require('gulp');
 const {delimiter, normalize, resolve} = require('path');
 
+/**
+ * The file patterns providing the list of source files.
+ * @type {string[]}
+ */
+const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH : '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
-
-/** @type {string[]} The file patterns providing the list of source files. */
-const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 /** Builds the project. */
 task('build:js', () => _exec('tsc'));
@@ -38,9 +41,7 @@ task('fix', () => _exec('tslint', ['--fix', ...sources]));
 /** Performs the static analysis of source code. */
 task('lint', () => _exec('tslint', sources));
 
-/**
- * Starts the development server.
- */
+/** Starts the development server. */
 task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
 
 /** Runs the test suites. */
