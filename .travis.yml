@@ -7,4 +7,4 @@ php: ['7.2', '7.3']
 before_install: nvm install ${NODEJS}
 install: npm install
 script: npm test
-after_success: npm run coverage
+after_success: npm run-script coverage
