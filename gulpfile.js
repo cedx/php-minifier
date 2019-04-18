@@ -30,25 +30,25 @@ task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 /** Builds the documentation. */
 task('doc', async () => {
   for (const path of ['CHANGELOG.md', 'LICENSE.md']) await promises.copyFile(path, `doc/about/${path.toLowerCase()}`);
-  await _exec('typedoc', ['--options', 'doc/typedoc.js']);
-  await _exec('mkdocs', ['build', '--config-file=doc/mkdocs.yml']);
-  return del(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yml', 'web/typedoc.js']);
+  await _exec('typedoc', ['--options', 'etc/typedoc.js']);
+  await _exec('mkdocs', ['build', '--config-file=etc/mkdocs.yaml']);
+  return del(['doc/about/changelog.md', 'doc/about/license.md']);
 });
 
 /** Fixes the coding standards issues. */
-task('fix', () => _exec('tslint', ['--fix', ...sources]));
+task('fix', () => _exec('tslint', ['--config', 'etc/tslint.yaml', '--fix', ...sources]));
 
 /** Performs the static analysis of source code. */
-task('lint', () => _exec('tslint', sources));
+task('lint', () => _exec('tslint', ['--config', 'etc/tslint.yaml', ...sources]));
 
 /** Starts the development server. */
 task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
 
 /** Runs the test suites. */
 task('test', () => _exec('nyc', [
-  '--nycrc-path=test/nycrc.json',
+  '--nycrc-path=etc/nyc.json',
   normalize('node_modules/.bin/mocha'),
-  '--config=test/mocharc.json',
+  '--config=etc/mocha.json',
   '"test/**/*_test.ts"'
 ]));
 
