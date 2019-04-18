@@ -6,5 +6,5 @@ module.exports = {
   gitRevision: 'master',
   mode: 'modules',
   name: 'Gulp-PHP-Minify',
-  out: join(__dirname, 'api')
+  out: join(__dirname, '../doc/api')
 };
