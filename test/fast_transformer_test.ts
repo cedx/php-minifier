@@ -11,6 +11,19 @@ describe('FastTransformer', function() {
   afterEach(async () => await transformer.close());
   beforeEach(() => transformer = new FastTransformer);
 
+  /** Tests the `FastTransformer#listening` property. */
+  describe('#listening', () => {
+    it('should return whether the server is listening', async () => {
+      expect(transformer.listening).to.be.false;
+
+      await transformer.listen();
+      expect(transformer.listening).to.be.true;
+
+      await transformer.close();
+      expect(transformer.listening).to.be.false;
+    });
+  });
+
   /** Tests the `FastTransformer#close()` method. */
   describe('#close()', () => {
     it('should complete without any error', async () => {
@@ -34,19 +47,6 @@ describe('FastTransformer', function() {
     it('should be callable multiple times', async () => {
       await transformer.listen();
       expect(true).to.be.ok;
-    });
-  });
-
-  /** Tests the `FastTransformer#listening` property. */
-  describe('#listening', () => {
-    it('should return whether the server is listening', async () => {
-      expect(transformer.listening).to.be.false;
-
-      await transformer.listen();
-      expect(transformer.listening).to.be.true;
-
-      await transformer.close();
-      expect(transformer.listening).to.be.false;
     });
   });
 
