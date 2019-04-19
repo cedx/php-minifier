@@ -3,5 +3,5 @@
   "recursive": true,
   "reporter": "spec",
   "require": ["source-map-support/register", "ts-node/register"],
-  "ui": "mocha-typescript"
+  "ui": "bdd"
 }
