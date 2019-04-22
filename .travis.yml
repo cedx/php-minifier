@@ -1,5 +1,5 @@
 dist: xenial
-env: [NODEJS=10, NODEJS=11]
+env: [NODEJS=lts/*, NODEJS=node]
 language: php
 notifications: {email: false}
 php: ['7.2', '7.3']
