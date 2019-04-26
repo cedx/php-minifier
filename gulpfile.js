@@ -48,7 +48,7 @@ task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
 task('test', () => _exec('nyc', [
   '--nycrc-path=etc/nyc.yaml',
   normalize('node_modules/.bin/mocha'),
-  '--config=etc/mocha.json',
+  '--config=etc/mocha.yaml',
   '"test/**/*_test.ts"'
 ]));
 
