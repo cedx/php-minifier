@@ -8,6 +8,7 @@
   "repository": "github:cedx/gulp-php-minify",
   "types": "lib/index.d.ts",
   "version": "9.3.0",
+  "version": "10.0.0",
   "author": {
     "email": "cedric@belin.io",
     "name": "Cédric Belin",

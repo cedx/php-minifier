@@ -1,5 +1,7 @@
 # Changelog
 
+## Version [10.0.0](https://github.com/cedx/gulp-php-minify/compare/v9.3.0...v10.0.0)
+
 ## Version [9.3.0](https://github.com/cedx/gulp-php-minify/compare/v9.2.0...v9.3.0)
 - Modified the package layout.
 - Updated the package dependencies.
