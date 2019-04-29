@@ -3,7 +3,6 @@
 /doc/api/
 /etc/
 /share/
-/src/
 /test/
 /var/
 /web/
@@ -11,5 +10,3 @@
 /*.code-workspace
 /*.iml
 /*.js
-/**/tsconfig.json
-/lib/**/*.map
