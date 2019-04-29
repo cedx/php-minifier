@@ -1,36 +1,34 @@
-'use strict';
-const {spawn} = require('child_process');
-const del = require('del');
-const {promises} = require('fs');
-const {dest, parallel, src, task, watch} = require('gulp');
-const {delimiter, normalize, resolve} = require('path');
+import {spawn} from 'child_process';
+import del from 'del';
+import {promises} from 'fs';
+import gulp from 'gulp';
+import {delimiter, normalize, resolve} from 'path';
 
 /**
  * The file patterns providing the list of source files.
  * @type {string[]}
  */
-const sources = ['*.js', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+const sources = ['*.js', 'example/*.js', 'lib/**/*.js', 'test/**/*.js'];
+
+// Shortcuts.
+const {task, watch} = gulp;
+const {copyFile} = promises;
 
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH : '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
-/** Builds the project. */
-task('build:js', () => _exec('tsc'));
-task('build:php', () => src('src/php/server.php').pipe(dest('lib/php')));
-task('build', parallel('build:js', 'build:php'));
-
 /** Deletes all generated files and reset any saved state. */
-task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
+task('clean', () => del(['.nyc_output', 'doc/api', 'var/**/*', 'web']));
 
 /** Uploads the results of the code coverage. */
 task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 
 /** Builds the documentation. */
 task('doc', async () => {
-  for (const path of ['CHANGELOG.md', 'LICENSE.md']) await promises.copyFile(path, `doc/about/${path.toLowerCase()}`);
-  await _exec('typedoc', ['--options', 'etc/typedoc.js']);
+  for (const path of ['CHANGELOG.md', 'LICENSE.md']) await copyFile(path, `doc/about/${path.toLowerCase()}`);
+  await _exec('esdoc', ['-c', 'etc/esdoc.json']);
   await _exec('mkdocs', ['build', '--config-file=etc/mkdocs.yaml']);
   return del(['doc/about/changelog.md', 'doc/about/license.md']);
 });
@@ -42,30 +40,22 @@ task('fix', () => _exec('tslint', ['--config', 'etc/tslint.yaml', '--fix', ...so
 task('lint', () => _exec('tslint', ['--config', 'etc/tslint.yaml', ...sources]));
 
 /** Starts the development server. */
-task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
+task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'lib/php']));
 
 /** Runs the test suites. */
-task('test', () => _exec('nyc', [
-  '--nycrc-path=etc/nyc.yaml',
-  normalize('node_modules/.bin/mocha'),
-  '--config=etc/mocha.yaml',
-  '"test/**/*_test.ts"'
-]));
+task('test', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json']));
 
 /** Upgrades the project to the latest revision. */
 task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
   await _exec('git', ['pull', '--rebase']);
-  await _exec('npm', ['install', '--ignore-scripts']);
+  await _exec('npm', ['install']);
   return _exec('npm', ['update', '--dev']);
 });
 
 /** Watches for file changes. */
-task('watch', () => {
-  watch('src/**/*.ts', {ignoreInitial: false}, task('build'));
-  watch('test/**/*.ts', task('test'));
-});
+task('watch', () => watch('test/**/*.js', task('test')));
 
 /** Runs the default tasks. */
 task('default', task('build'));
@@ -78,7 +68,7 @@ task('default', task('build'));
  * @return {Promise<void>} Completes when the command is finally terminated.
  */
 function _exec(command, args = [], options = {}) {
-  return new Promise((fulfill, reject) => spawn(normalize(command), args, Object.assign({shell: true, stdio: 'inherit'}, options))
+  return new Promise((fulfill, reject) => spawn(normalize(command), args, {shell: true, stdio: 'inherit', ...options})
     .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : fulfill())
   );
 }
