@@ -10,4 +10,7 @@ Install the latest version of **Gulp-PHP-Minify** with [npm](https://www.npmjs.c
 npm install @cedx/gulp-php-minify
 ```
 
+!!! info
+    This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
+
 For detailed instructions, see the [installation guide](installation.md).

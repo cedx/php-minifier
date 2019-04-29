@@ -1,0 +1,18 @@
+{
+  "source": "lib",
+  "destination": "doc/api",
+  "excludes": ["index\\.js$"],
+  "plugins": [
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {"name": "esdoc-standard-plugin", "option": {
+      "accessor": {"access": ["public", "protected"]},
+      "test": {"source": "test"},
+      "brand": {
+        "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
+        "logo": "doc/img/favicon.ico",
+        "repository": "https://github.com/cedx/gulp-php-minify",
+        "title": "Gulp-PHP-Minify"
+      }
+    }}
+  ]
+}

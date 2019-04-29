@@ -30,13 +30,15 @@
     "@types/vinyl": "^2.0.3",
     "chai": "^4.2.0",
     "del": "^4.1.0",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "gulp": "^4.0.1",
     "mocha": "^6.1.4",
     "nyc": "^14.1.0",
     "source-map-support": "^0.5.12",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
-    "typedoc": "^0.14.2",
     "typescript": "^3.4.5"
   },
   "engines": {

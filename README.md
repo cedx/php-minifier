@@ -3,6 +3,8 @@
 
 [Gulp](https://gulpjs.com) plug-in minifying [PHP](https://secure.php.net) source code by removing comments and whitespace.
 
+> This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
+
 ## Documentation
 - [User guide](https://dev.belin.io/gulp-php-minify)
 - [API reference](https://dev.belin.io/gulp-php-minify/api)
