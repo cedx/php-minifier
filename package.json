@@ -6,8 +6,7 @@
   "main": "lib/index.js",
   "name": "@cedx/gulp-php-minify",
   "repository": "github:cedx/gulp-php-minify",
-  "types": "lib/index.d.ts",
-  "version": "9.3.0",
+  "type": "commonjs",
   "version": "10.0.0",
   "author": {
     "email": "cedric@belin.io",
