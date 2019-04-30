@@ -15,7 +15,6 @@
   "rules": {
     "no-async-promise-executor": "error",
     "no-console": "off",
-    "no-extra-parens": "error",
     "no-misleading-character-class": "error",
     "no-prototype-builtins": "error",
     "no-template-curly-in-string": "error",

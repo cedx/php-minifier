@@ -64,7 +64,7 @@ task('default', task('build'));
  * Spawns a new process using the specified command.
  * @param {string} command The command to run.
  * @param {string[]} [args] The command arguments.
- * @param {Partial<SpawnOptions>} [options] The settings to customize how the process is spawned.
+ * @param {SpawnOptions} [options] The settings to customize how the process is spawned.
  * @return {Promise<void>} Completes when the command is finally terminated.
  */
 function _exec(command, args = [], options = {}) {
@@ -72,3 +72,18 @@ function _exec(command, args = [], options = {}) {
     .on('close', code => code ? reject(new Error(`${command}: ${code}`)) : fulfill())
   );
 }
+
+/**
+ * @typedef {object} SpawnOptions
+ * @property {string} [argv0] Explicitly set the value of `argv[0]` sent to the child process.
+ * @property {string} [cwd] Current working directory of the child process.
+ * @property {boolean} [detached] Prepare child to run independently of its parent process.
+ * @property {object} [env] Environment key-value pairs.
+ * @property {number} [gid] Sets the group identity of the process.
+ * @property {boolean|string} [shell] If `true`, runs command inside of a shell. A different shell can be specified as a string.
+ * @property {Array|string} [stdio] Child's stdio configuration.
+ * @property {number} [timeout] In milliseconds the maximum amount of time the process is allowed to run.
+ * @property {number} [uid] Sets the user identity of the process.
+ * @property {boolean} [windowsHide] Hide the subprocess console window that would normally be created on Windows systems.
+ * @property {boolean} [windowsVerbatimArguments] No quoting or escaping of arguments is done on Windows.
+ */
