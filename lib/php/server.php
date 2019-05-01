@@ -15,6 +15,18 @@ class Server {
   }
 
   /**
+   * Sends the specified response body.
+   * @param string $body The response body to send to the client.
+   * @param int $status The status code of the response.
+   */
+  function sendResponse(string $body, int $status = 200): void {
+    http_response_code($status);
+    header('content-length: '.strlen($body));
+    header('content-type: text/plain; charset='.mb_internal_encoding());
+    echo $body;
+  }
+
+  /**
    * Handles the PHP execution errors such as warnings and notices.
    * @param int $severity The level of the error raised.
    * @param string $message The error message.
@@ -41,18 +53,6 @@ class Server {
     $output = php_strip_whitespace($args['file']);
     if (!mb_strlen($output)) throw new \RuntimeException('Internal Server Error', 500);
     return $output;
-  }
-
-  /**
-   * Sends the specified response body.
-   * @param string $body The response body to send to the client.
-   * @param int $status The status code of the response.
-   */
-  private function sendResponse(string $body, int $status = 200): void {
-    http_response_code($status);
-    header('content-length: '.strlen($body));
-    header('content-type: text/plain; charset='.mb_internal_encoding());
-    echo $body;
   }
 }
 
