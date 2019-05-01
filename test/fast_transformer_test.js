@@ -1,17 +1,29 @@
-/* tslint:disable: no-unused-expression */
 import {expect} from 'chai';
-import {SafeTransformer} from '../src';
+import {FastTransformer} from '../lib/index.js';
 
-/** Tests the features of the [[SafeTransformer]] class. */
-describe('SafeTransformer', function() {
+/** Tests the features of the `Finder` class. */
+describe('FastTransformer', function() {
+  /* eslint-disable no-invalid-this */
   this.retries(2);
   this.timeout(30000);
+  /* eslint-enable no-invalid-this */
 
-  let transformer: SafeTransformer = new SafeTransformer;
-  afterEach(async () => await transformer.close());
-  beforeEach(() => transformer = new SafeTransformer);
+  let transformer = new FastTransformer;
+  afterEach(async () => transformer.close());
+  beforeEach(() => transformer = new FastTransformer);
 
-  /** Tests the `SafeTransformer#close()` method. */
+  describe('#listening', () => {
+    it('should return whether the server is listening', async () => {
+      expect(transformer.listening).to.be.false;
+
+      await transformer.listen();
+      expect(transformer.listening).to.be.true;
+
+      await transformer.close();
+      expect(transformer.listening).to.be.false;
+    });
+  });
+
   describe('#close()', () => {
     it('should complete without any error', async () => {
       await transformer.close();
@@ -24,7 +36,18 @@ describe('SafeTransformer', function() {
     });
   });
 
-  /** Tests the `SafeTransformer#transform()` method. */
+  describe('#listen()', () => {
+    it('should complete without any error', async () => {
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+
+    it('should be callable multiple times', async () => {
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+  });
+
   describe('#transform()', () => {
     const script = 'test/fixtures/sample.php';
 

@@ -97,7 +97,6 @@
     "eol-last": "error",
     "func-call-spacing": "error",
     "func-name-matching": "error",
-    "func-names": ["error", "as-needed"],
     "func-style": ["error", "declaration", {"allowArrowFunctions": true}],
     "indent": ["error", 2, {"SwitchCase": 1}],
     "key-spacing": "error",
