@@ -34,10 +34,10 @@ task('doc', async () => {
 });
 
 /** Fixes the coding standards issues. */
-task('fix', () => _exec('tslint', ['--config', 'etc/tslint.yaml', '--fix', ...sources]));
+task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sources]));
 
 /** Performs the static analysis of source code. */
-task('lint', () => _exec('tslint', ['--config', 'etc/tslint.yaml', ...sources]));
+task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Starts the development server. */
 task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'lib/php']));

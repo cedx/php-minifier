@@ -75,7 +75,6 @@
     "no-shadow": "error",
     "no-shadow-restricted-names": "error",
     "no-undef-init": "error",
-    "no-use-before-define": ["error", {"classes": false, "functions": false}],
 
     "handle-callback-err": "error",
     "no-buffer-constructor": "error",
