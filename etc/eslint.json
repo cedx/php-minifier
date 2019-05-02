@@ -5,9 +5,7 @@
     "node": true
   },
   "extends": "eslint:recommended",
-  "parser": "babel-eslint",
   "parserOptions": {
-    "babelOptions": {"requireConfigFile": false},
     "ecmaVersion": 2019,
     "sourceType": "module"
   },
