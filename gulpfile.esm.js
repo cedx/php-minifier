@@ -58,7 +58,7 @@ task('upgrade', async () => {
 task('watch', () => watch('test/**/*.js', task('test')));
 
 /** Runs the default tasks. */
-task('default', task('build'));
+task('default', task('test'));
 
 /**
  * Spawns a new process using the specified command.
