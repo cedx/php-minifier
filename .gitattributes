@@ -6,10 +6,11 @@
 *.json text
 *.md text
 *.php text diff=php
-*.opts text
 *.txt text
 *.yaml text
 *.yml text
 
 *.ico binary
+*.jpg binary
+*.pdf binary
 *.png binary
