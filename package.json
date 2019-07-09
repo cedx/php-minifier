@@ -22,7 +22,7 @@
   "devDependencies": {
     "@cedx/coveralls": "^9.0.0",
     "chai": "^4.2.0",
-    "del": "^4.1.1",
+    "del": "^5.0.0",
     "eslint": "^6.0.1",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
