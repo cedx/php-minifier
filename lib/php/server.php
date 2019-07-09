@@ -5,6 +5,20 @@ namespace Gulp\PhpMinify;
 class Server {
 
   /**
+   * Handles the PHP execution errors such as warnings and notices.
+   * @param int $severity The level of the error raised.
+   * @param string $message The error message.
+   * @param string $file The filename that the error was raised in.
+   * @param int $line The line number the error was raised at.
+   * @return bool Whether the error was handled.
+   * @throws \ErrorException When an error occurred.
+   */
+  function handleError(int $severity, string $message, string $file = __FILE__, int $line = __LINE__): bool {
+    if (error_reporting() & $severity) throw new \ErrorException($message, 0, $severity, $file, $line);
+    return false;
+  }
+
+  /**
    * Runs the application.
    * @param array $args The request parameters.
    */
@@ -24,20 +38,6 @@ class Server {
     header('content-length: '.strlen($body));
     header('content-type: text/plain; charset='.mb_internal_encoding());
     echo $body;
-  }
-
-  /**
-   * Handles the PHP execution errors such as warnings and notices.
-   * @param int $severity The level of the error raised.
-   * @param string $message The error message.
-   * @param string $file The filename that the error was raised in.
-   * @param int $line The line number the error was raised at.
-   * @return bool Whether the error was handled.
-   * @throws \ErrorException When an error occurred.
-   */
-  private function handleError(int $severity, string $message, string $file = __FILE__, int $line = __LINE__): bool {
-    if (error_reporting() & $severity) throw new \ErrorException($message, 0, $severity, $file, $line);
-    return false;
   }
 
   /**

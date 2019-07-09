@@ -1,8 +1,10 @@
-import {expect} from 'chai';
+import chai from 'chai';
 import {SafeTransformer} from '../lib/index.js';
 
-/** Tests the features of the `Finder` class. */
+/** Tests the features of the {@link Finder} class. */
 describe('SafeTransformer', function() {
+  const {expect} = chai;
+
   /* eslint-disable no-invalid-this */
   this.retries(2);
   this.timeout(30000);
