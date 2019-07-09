@@ -63,7 +63,6 @@
     "no-warning-comments": "warn",
     "no-with": "error",
     "prefer-promise-reject-errors": "error",
-    "radix": ["error", "as-needed"],
     "wrap-iife": ["error", "inside"],
     "yoda": ["error", "never"],
 

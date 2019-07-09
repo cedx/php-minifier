@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "name": "@cedx/gulp-php-minify",
   "repository": "github:cedx/gulp-php-minify",
-  "type": "commonjs",
+  "type": "module",
   "version": "10.0.0",
   "author": {
     "email": "cedric@belin.io",
@@ -24,7 +24,6 @@
     "chai": "^4.2.0",
     "del": "^4.1.1",
     "eslint": "^6.0.1",
-    "eslint": "^5.16.0",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "jsdoc": "^3.6.2",
