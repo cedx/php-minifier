@@ -22,13 +22,12 @@
   "devDependencies": {
     "@cedx/coveralls": "^9.0.0",
     "chai": "^4.2.0",
-    "del": "^5.0.0",
-    "esdoc": "^1.1.0",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-standard-plugin": "^1.0.0",
+    "del": "^4.1.1",
     "eslint": "^6.0.1",
+    "eslint": "^5.16.0",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
+    "jsdoc": "^3.6.2",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1"
   },

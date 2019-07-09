@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "checkJs": true,
-    "module": "esnext",
+    "module": "es2015",
     "moduleResolution": "node",
-    "target": "esnext"
+    "resolveJsonModule": true,
+    "target": "es2018"
   },
   "exclude": [
     "node_modules"
