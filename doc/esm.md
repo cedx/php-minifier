@@ -1,3 +1,6 @@
+path: blob/master
+source: example/gulpfile.esm.js
+
 # ESM Upgrade Path
 As of version 10, this plug-in uses the syntax of [ECMAScript modules](https://nodejs.org/api/esm.html). This is a major change: your [Gulp](https://gulpjs.com) script will not work as usual.
  
