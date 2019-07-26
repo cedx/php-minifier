@@ -7,6 +7,7 @@
   "name": "@cedx/gulp-php-minify",
   "repository": "github:cedx/gulp-php-minify",
   "type": "module",
+  "types": "lib/index.d.ts",
   "version": "10.0.0",
   "author": {
     "email": "cedric@belin.io",
@@ -23,7 +24,7 @@
     "@cedx/coveralls": "^9.0.0",
     "chai": "^4.2.0",
     "del": "^5.0.0",
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "jsdoc": "^3.6.3",
@@ -31,8 +32,8 @@
     "nyc": "^14.1.1"
   },
   "engines": {
-    "node": ">=12.6.0",
-    "npm": ">=6.9.0"
+    "node": ">=12.7.0",
+    "npm": ">=6.10.0"
   },
   "keywords": [
     "compress",
