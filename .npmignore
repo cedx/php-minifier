@@ -11,4 +11,4 @@
 /*.code-workspace
 /*.iml
 /*.ts
-/**/*.tsconfig.json
+/**/tsconfig.json
