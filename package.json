@@ -15,13 +15,15 @@
     "url": "https://belin.io"
   },
   "dependencies": {
-    "@cedx/which": "^6.0.0",
+    "@cedx/which": "^6.1.0",
     "fancy-log": "^1.3.3",
     "node-fetch": "^2.6.0",
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
-    "@cedx/coveralls": "^9.0.0",
+    "@cedx/coveralls": "^9.1.0",
+    "@types/gulp": "^4.0.6",
+    "@types/node": "^12.6.8",
     "chai": "^4.2.0",
     "del": "^5.0.0",
     "eslint": "^6.1.0",
