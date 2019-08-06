@@ -1,7 +1,7 @@
-import chai from 'chai';
+import * as chai from 'chai';
 import {SafeTransformer} from '../lib/index.js';
 
-/** Tests the features of the {@link Finder} class. */
+/** Tests the features of the [[Finder]] class. */
 describe('SafeTransformer', function() {
   const {expect} = chai;
 

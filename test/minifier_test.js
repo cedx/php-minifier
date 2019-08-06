@@ -1,8 +1,8 @@
-import chai from 'chai';
+import * as chai from 'chai';
 import File from 'vinyl';
 import {Minifier} from '../lib/index.js';
 
-/** Tests the features of the {@link Minifier} class. */
+/** Tests the features of the [[Minifier]] class. */
 describe('Minifier', function() {
   const {expect} = chai;
 
