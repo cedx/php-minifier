@@ -4,8 +4,8 @@
 - Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
-- Replaced [TypeDoc](https://typedoc.org) documentation generator by [JSDoc](https://jsdoc.app).
-- Replaced [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
+- Replaced the [TypeDoc](https://typedoc.org) documentation generator by [JSDoc](https://jsdoc.app).
+- Replaced the [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
 - Updated the package dependencies.
 
 ## Version [9.3.0](https://github.com/cedx/gulp-php-minify/compare/v9.2.0...v9.3.0)
@@ -29,8 +29,8 @@
 - Breaking change: removed the `Minifier.factory()` method.
 - Breaking change: reshaped the `Transformer` abstract class into an interface.
 - Ported the unit tests to classes with experimental decorators.
-- Replaced [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
-- Replaced [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
+- Replaced the [ESDoc](https://esdoc.org) documentation generator by [TypeDoc](https://typedoc.org).
+- Replaced the [ESLint](https://eslint.org) static analyzer by [TSLint](https://palantir.github.io/tslint).
 - Updated the package dependencies.
 
 ## Version [8.0.0](https://github.com/cedx/gulp-php-minify/compare/v7.1.1...v8.0.0)
@@ -116,7 +116,7 @@
 - Updated the package dependencies.
 
 ## Version [1.0.1](https://github.com/cedx/gulp-php-minify/compare/v1.0.0...v1.0.1)
-- Fixed [GitHub issue #1](https://github.com/cedx/gulp-php-minify/issues/1).
+- Fixed the [issue #1](https://github.com/cedx/gulp-php-minify/issues/1).
 
 ## Version [1.0.0](https://github.com/cedx/gulp-php-minify/compare/v0.3.1...v1.0.0)
 - Breaking change: the plug-in is not anymore a default export. The use of destructuring assignment is advised to access it.
@@ -126,8 +126,8 @@
 - Breaking change: replaced the test classes by plain tests.
 - Added the `listening` property.
 - Added a build task for fixing the coding standards issues.
-- Replaced [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
-- Replaced [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
+- Replaced the [JSDoc](http://usejsdoc.org) documentation generator by [ESDoc](https://esdoc.org).
+- Replaced the [JSHint](http://jshint.com) linter by [ESLint](http://eslint.org).
 - Updated the package dependencies.
 
 ## Version [0.3.1](https://github.com/cedx/gulp-php-minify/compare/v0.3.0...v0.3.1)
