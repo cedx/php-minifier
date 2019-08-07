@@ -1,20 +1,26 @@
 import {spawn, SpawnOptions} from 'child_process';
-import del from 'del';
+import * as del from 'del';
 import {promises} from 'fs';
-import gulp from 'gulp';
+import * as gulp from 'gulp';
+import * as replace from 'gulp-replace';
 import {delimiter, normalize, resolve} from 'path';
 
 /** The file patterns providing the list of source files. */
 const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
 
 // Shortcuts.
-const {task, watch} = gulp;
+const {dest, series, src, task, watch} = gulp;
 const {copyFile} = promises;
 
 // Initialize the build system.
 const _path = 'PATH' in process.env ? process.env.PATH! : '';
 const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
+
+/** Builds the project. */
+task('build:fix', () => src('lib/**/*.js').pipe(replace(/(export|import)\s+(.+)\s+from\s+'(\.[^']+)'/g, "$1 $2 from '$3.js'")).pipe(dest('lib')));
+task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
+task('build', series('build:js', 'build:fix'));
 
 /** Deletes all generated files and reset any saved state. */
 task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
@@ -40,7 +46,10 @@ task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'lib/php']));
 
 /** Runs the test suites. */
-task('test', () => _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json', '"test/**/*.ts"']));
+task('test', () => {
+  process.env.TS_NODE_PROJECT = 'test/tsconfig.json';
+  return _exec('nyc', ['--nycrc-path=etc/nyc.json', 'node_modules/.bin/mocha', '--config=etc/mocha.json', '"test/**/*.ts"']);
+});
 
 /** Upgrades the project to the latest revision. */
 task('upgrade', async () => {
@@ -52,10 +61,13 @@ task('upgrade', async () => {
 });
 
 /** Watches for file changes. */
-task('watch', () => watch('test/**/*.ts', task('test')));
+task('watch', () => {
+  watch('src/**/*.ts', {ignoreInitial: false}, task('build'));
+  watch('test/**/*.ts', task('test'));
+});
 
 /** Runs the default tasks. */
-task('default', task('test'));
+task('default', task('build'));
 
 /**
  * Spawns a new process using the specified command.
