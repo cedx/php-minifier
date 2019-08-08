@@ -20,7 +20,7 @@ if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}
 /** Builds the project. */
 task('build:fix', () => src('lib/**/*.js')
   .pipe(replace(/(export|import)\s+(.+)\s+from\s+'(\.[^']+)'/g, "$1 $2 from '$3.js'"))
-  .pipe(replace('// const __dirname', 'const __dirname'))
+  .pipe(replace('// const {__dirname}', 'const {__dirname}'))
   .pipe(dest('lib')));
 
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
