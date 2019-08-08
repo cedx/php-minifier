@@ -6,10 +6,10 @@ import * as replace from 'gulp-replace';
 import {delimiter, normalize, resolve} from 'path';
 
 /** The file patterns providing the list of source files. */
-const sources: string[] = ['*.ts', 'example/*.ts', 'src/**/*.ts', 'test/**/*.ts'];
+const sources: string[] = ['*.ts', 'example/*.js', 'src/**/*.ts', 'test/**/*.ts'];
 
 // Shortcuts.
-const {dest, series, src, task, watch} = gulp;
+const {dest, parallel, series, src, task, watch} = gulp;
 const {copyFile} = promises;
 
 // Initialize the build system.
@@ -20,7 +20,8 @@ if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}
 /** Builds the project. */
 task('build:fix', () => src('lib/**/*.js').pipe(replace(/(export|import)\s+(.+)\s+from\s+'(\.[^']+)'/g, "$1 $2 from '$3.js'")).pipe(dest('lib')));
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
-task('build', series('build:js', 'build:fix'));
+task('build:php', () => src('src/php/*.php').pipe(dest('lib/php')));
+task('build', parallel(series('build:js', 'build:fix'), 'build:php'));
 
 /** Deletes all generated files and reset any saved state. */
 task('clean', () => del(['.nyc_output', 'doc/api', 'lib', 'var/**/*', 'web']));
@@ -43,7 +44,7 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sourc
 task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Starts the development server. */
-task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'lib/php']));
+task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
 
 /** Runs the test suites. */
 task('test', () => {
