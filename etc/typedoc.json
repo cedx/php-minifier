@@ -1,0 +1,8 @@
+{
+  "excludePrivate": true,
+  "gaSite": "auto",
+  "gitRevision": "master",
+  "mode": "file",
+  "name": "Gulp-PHP-Minify",
+  "out": "doc/api"
+}
