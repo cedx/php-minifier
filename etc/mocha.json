@@ -2,6 +2,6 @@
   "check-leaks": true,
   "recursive": true,
   "reporter": "spec",
-  "require": ["source-map-support/register", "ts-node/register"],
+  "require": ["esm", "source-map-support/register", "ts-node/register"],
   "ui": "bdd"
 }
