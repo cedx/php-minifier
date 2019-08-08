@@ -169,7 +169,9 @@
     "@typescript-eslint/func-call-spacing": "error",
     "@typescript-eslint/indent": ["error", 2, {"SwitchCase": 1}],
     "@typescript-eslint/member-naming": ["error", {"private": "^_", "protected": "^_"}],
-    "@typescript-eslint/member-ordering": ["error", {"default": ["public-field", "protected-field", "private-field", "constructor", "public-method", "protected-method", "private-method"]}],
+    "@typescript-eslint/member-ordering": ["error", {"default": [
+      "public-field", "protected-field", "private-field", "constructor", "public-method", "protected-method", "private-method"
+    ]}],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-for-in-array": "error",
     "@typescript-eslint/no-inferrable-types": "off",

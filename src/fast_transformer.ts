@@ -45,6 +45,8 @@ export class FastTransformer implements Transformer {
     if (this.listening) return this._port;
     this._port = await this._getPort();
 
+    // eslint-disable-next-line capitalized-comments
+    // const __dirname = await import('./dirname.js');
     const args = ['-S', `${FastTransformer.address}:${this._port}`, '-t', join(__dirname, 'php')];
     return new Promise((fulfill, reject) => {
       this._process = spawn(normalize(this._executable), args);
