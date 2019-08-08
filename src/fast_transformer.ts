@@ -1,5 +1,5 @@
-import {spawn, SpawnOptions} from 'child_process';
-import {createServer} from 'net';
+import {ChildProcess, spawn} from 'child_process';
+import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
 import {join, normalize, resolve} from 'path';
 import {Transformer} from './transformer';
@@ -10,61 +10,42 @@ export class FastTransformer implements Transformer {
   /** The address that the server is listening on. */
   static address: string = '127.0.0.1';
 
+  /** The port that the PHP process is listening on. */
+  private _port: number = -1;
+
+  /** The underlying PHP process. */
+  private _process?: ChildProcess;
+
   /**
    * Creates a new fast transformer.
-   * @param {string} [executable] The path to the PHP executable.
+   * @param _executable The path to the PHP executable.
    */
-  constructor(executable = 'php') {
+  constructor(private readonly _executable: string = 'php') {}
 
-    /**
-     * The path to the PHP executable.
-     * @type {string}
-     * @private
-     */
-    this._executable = executable;
-
-    /**
-     * The port that the PHP process is listening on.
-     * @type {number}
-     * @private
-     */
-    this._port = -1;
-
-    /**
-     * The underlying PHP process.
-     * @type {?module:child_process.ChildProcess}
-     * @private
-     */
-    this._process = null;
-  }
-
-  /**
-   * Value indicating whether the PHP process is currently listening.
-   * @type {boolean}
-   */
-  get listening() {
-    return this._process != null;
+  /** Value indicating whether the PHP process is currently listening. */
+  get listening(): boolean {
+    return Boolean(this._process);
   }
 
   /**
    * Closes this transformer and releases any resources associated with it.
-   * @return {Promise} Completes when the transformer is finally disposed.
+   * @return Completes when the transformer is finally disposed.
    */
-  async close() {
+  async close(): Promise<void> {
     if (!this.listening) return;
-    this._process.kill();
-    this._process = null;
+    this._process!.kill();
+    this._process = undefined;
   }
 
   /**
    * Starts the underlying PHP process: begins accepting connections. It does nothing if the server is already started.
-   * @return {Promise<number>} The port used by the PHP process.
+   * @return The port used by the PHP process.
    */
-  async listen() {
+  async listen(): Promise<number> {
     if (this.listening) return this._port;
     this._port = await this._getPort();
 
-    const args = ['-S', `${FastTransformer.defaultAddress}:${this._port}`, '-t', join(__dirname, 'php')];
+    const args = ['-S', `${FastTransformer.address}:${this._port}`, '-t', join(__dirname, 'php')];
     return new Promise((fulfill, reject) => {
       this._process = spawn(normalize(this._executable), args);
       this._process.on('error', err => reject(err));
@@ -74,12 +55,12 @@ export class FastTransformer implements Transformer {
 
   /**
    * Processes a PHP script.
-   * @param {string} script The path to the PHP script.
-   * @return {Promise<string>} The transformed script.
+   * @param script The path to the PHP script.
+   * @return The transformed script.
    */
-  async transform(script) {
+  async transform(script: string): Promise<string> {
     const port = await this.listen();
-    const endPoint = new URL(`http://${FastTransformer.defaultAddress}:${port}/server.php`);
+    const endPoint = new URL(`http://${FastTransformer.address}:${port}/server.php`);
     endPoint.searchParams.set('file', resolve(script));
 
     const res = await fetch(endPoint.href);
@@ -89,16 +70,14 @@ export class FastTransformer implements Transformer {
 
   /**
    * Gets an ephemeral port chosen by the system.
-   * @return {Promise<number>} A port that the server can listen on.
-   * @private
+   * @return A port that the server can listen on.
    */
-  _getPort() {
+  private _getPort(): Promise<number> {
     return new Promise((fulfill, reject) => {
-      /** @type {module:net.Server} */
       const server = createServer().unref();
       server.on('error', err => reject(err));
-      server.listen(0, FastTransformer.defaultAddress, () => {
-        const {port} = server.address();
+      server.listen(0, FastTransformer.address, () => {
+        const {port} = server.address() as AddressInfo;
         server.close(() => fulfill(port));
       });
     });

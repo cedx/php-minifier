@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "include": ["**/*.ts"],
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "module": "esnext",
     "outDir": "../lib"

@@ -1,34 +1,16 @@
-/** Interface providing a mechanism for transforming input and producing output. */
-import {FastTransformer} from './fast_transformer';
-import {TransformMode} from './minifier';
-import {SafeTransformer} from './safe_transformer';
-
 /** Removes comments and whitespace from a PHP script. */
-export class Transformer {
-
-  /**
-   * Creates a new transformer.
-   * @param {string} mode The operational mode.
-   * @param {string} [executable] The path to the PHP executable.
-   */
-  constructor(mode, executable = 'php') {
-    return mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
-  }
+export interface Transformer {
 
   /**
    * Closes this transformer and releases any resources associated with it.
-   * @return {Promise} Completes when the transformer is finally disposed.
+   * @return Completes when the transformer is finally disposed.
    */
-  close() {
-    throw new Error('Missing concrete implementation.');
-  }
+  close(): Promise<void>;
 
   /**
    * Processes a PHP script.
-   * @param {string} script The path to the PHP script.
-   * @return {Promise<string>} The transformed script.
+   * @param script The path to the PHP script.
+   * @return The transformed script.
    */
-  transform(script) { // eslint-disable-line no-unused-vars
-    throw new Error('Missing concrete implementation.');
-  }
+  transform(script: string): Promise<string>;
 }
