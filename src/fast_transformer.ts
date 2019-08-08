@@ -2,20 +2,13 @@ import {spawn, SpawnOptions} from 'child_process';
 import {createServer} from 'net';
 import fetch from 'node-fetch';
 import {join, normalize, resolve} from 'path';
+import {Transformer} from './transformer';
 
-/**
- * Removes comments and whitespace from a PHP script, by calling a Web service.
- * @implements {Transformer}
- */
-export class FastTransformer {
+/** Removes comments and whitespace from a PHP script, by calling a Web service. */
+export class FastTransformer implements Transformer {
 
-  /**
-   * The default address that the server is listening on.
-   * @type {string}
-   */
-  static get defaultAddress() {
-    return '127.0.0.1';
-  }
+  /** The address that the server is listening on. */
+  static address: string = '127.0.0.1';
 
   /**
    * Creates a new fast transformer.
