@@ -1,7 +1,7 @@
 /** Interface providing a mechanism for transforming input and producing output. */
-import {FastTransformer} from './fast_transformer.js';
-import {TransformMode} from './minifier.js';
-import {SafeTransformer} from './safe_transformer.js';
+import {FastTransformer} from './fast_transformer';
+import {TransformMode} from './minifier';
+import {SafeTransformer} from './safe_transformer';
 
 /** Removes comments and whitespace from a PHP script. */
 export class Transformer {

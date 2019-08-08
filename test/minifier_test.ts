@@ -1,6 +1,6 @@
 import * as chai from 'chai';
-import File from 'vinyl';
-import {Minifier} from '../lib/index.js';
+import * as File from 'vinyl';
+import {Minifier} from '../src/index';
 
 /** Tests the features of the [[Minifier]] class. */
 describe('Minifier', function() {
@@ -19,7 +19,7 @@ describe('Minifier', function() {
     it('should remove the comments and whitespace', async () => {
       const file = new File({path: 'test/fixtures/sample.php'});
       await minifier._transform(file);
-      expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>")
+      expect(file.contents!.toString()).to.contain("<?= 'Hello World!' ?>")
         .and.contain('namespace dummy; class Dummy')
         .and.contain('$className = get_class($this); return $className;')
         .and.contain('__construct() { }');

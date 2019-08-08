@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import {SafeTransformer} from '../lib/index.js';
+import {SafeTransformer} from '../src/index';
 
 /** Tests the features of the [[Finder]] class. */
 describe('SafeTransformer', function() {

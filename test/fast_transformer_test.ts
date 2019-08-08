@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import {FastTransformer} from '../lib/index.js';
+import {FastTransformer} from '../src/index';
 
 /** Tests the features of the [[Finder]] class. */
 describe('FastTransformer', function() {

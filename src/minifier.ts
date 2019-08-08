@@ -1,7 +1,7 @@
 import {which} from '@cedx/which';
 import log from 'fancy-log';
 import {Transform} from 'stream';
-import {Transformer} from './transformer.js';
+import {Transformer} from './transformer';
 
 /**
  * Defines the options of a {@link Minifier} instance.
