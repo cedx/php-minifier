@@ -1,5 +1,11 @@
 # Changelog
 
+## Version [10.1.0](https://github.com/cedx/gulp-php-minify/compare/v10.0.0...v10.1.0)
+- Due to strong user demand, restored the [TypeScript](https://www.typescriptlang.org) source code.
+- Raised the [Node.js](https://nodejs.org) constraint.
+- Renamed the `FastTransformer.defaultAdress` static property to `address`.
+- Replaced the [JSDoc](https://jsdoc.app) documentation generator by [TypeDoc](https://typedoc.org).
+
 ## Version [10.0.0](https://github.com/cedx/gulp-php-minify/compare/v9.3.0...v10.0.0)
 - Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
