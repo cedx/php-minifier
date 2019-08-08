@@ -2,6 +2,7 @@
 
 ## Version [10.1.0](https://github.com/cedx/gulp-php-minify/compare/v10.0.0...v10.1.0)
 - Due to strong user demand, restored the [TypeScript](https://www.typescriptlang.org) source code.
+- Fixed the [issue #15](https://github.com/cedx/gulp-php-minify/issues/15): replaced the usage of the `__dirname` variable by `import.meta.url`.
 - Raised the [Node.js](https://nodejs.org) constraint.
 - Renamed the `FastTransformer.defaultAdress` static property to `address`.
 - Replaced the [JSDoc](https://jsdoc.app) documentation generator by [TypeDoc](https://typedoc.org).
