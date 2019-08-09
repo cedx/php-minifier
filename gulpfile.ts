@@ -6,7 +6,7 @@ import * as replace from 'gulp-replace';
 import {delimiter, normalize, resolve} from 'path';
 
 /** The file patterns providing the list of source files. */
-const sources: string[] = ['*.ts', 'example/*.js', 'src/**/*.ts', 'test/**/*.ts'];
+const sources: string[] = ['*.ts', 'example/*.{js,ts}', 'src/**/*.ts', 'test/**/*.ts'];
 
 // Shortcuts.
 const {dest, parallel, series, src, task, watch} = gulp;
