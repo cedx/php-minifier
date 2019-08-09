@@ -30,7 +30,9 @@ nav:
   - Overview: index.md
   - Installation: installation.md
   - Usage: usage.md
-  - ESM upgrade path: esm.md
+  - ESM upgrade path:
+      - For JavaScript: esm/javascript.md
+      - For TypeScript: esm/typescript.md
   - About:
       - Changelog: about/changelog.md
       - License: about/license.md
