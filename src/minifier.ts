@@ -45,7 +45,7 @@ export class Minifier extends Transform {
     this.silent = silent;
 
     const handler = async (): Promise<void> => { if (this._transformer) await this._transformer.close(); };
-    this.on('end', handler).on('error', handler);
+    this.on('end', handler).on('error', handler); // eslint-disable-line @typescript-eslint/no-misused-promises
   }
 
   /**

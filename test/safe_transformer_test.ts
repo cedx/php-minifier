@@ -11,7 +11,7 @@ describe('SafeTransformer', function() {
   /* eslint-enable no-invalid-this */
 
   let transformer = new SafeTransformer;
-  afterEach(async () => transformer.close());
+  afterEach(() => transformer.close());
   beforeEach(() => transformer = new SafeTransformer);
 
   describe('#close()', () => {

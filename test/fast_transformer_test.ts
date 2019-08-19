@@ -11,7 +11,7 @@ describe('FastTransformer', function() {
   /* eslint-enable no-invalid-this */
 
   let transformer = new FastTransformer;
-  afterEach(async () => transformer.close());
+  afterEach(() => transformer.close());
   beforeEach(() => transformer = new FastTransformer);
 
   describe('#listening', () => {

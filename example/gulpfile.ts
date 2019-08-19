@@ -1,4 +1,3 @@
-// @ts-ignore
 import {phpMinify, TransformMode} from '@cedx/gulp-php-minify';
 import * as gulp from 'gulp';
 

@@ -31,10 +31,13 @@ export class FastTransformer implements Transformer {
    * Closes this transformer and releases any resources associated with it.
    * @return Completes when the transformer is finally disposed.
    */
-  async close(): Promise<void> {
-    if (!this.listening) return;
-    this._process!.kill();
-    this._process = undefined;
+  close(): Promise<void> {
+    if (this.listening) {
+      this._process!.kill();
+      this._process = undefined;
+    }
+
+    return Promise.resolve();
   }
 
   /**

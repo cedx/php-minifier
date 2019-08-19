@@ -7,12 +7,14 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2019,
-    "project": "src/tsconfig.json",
+    "project": "etc/tsconfig.json",
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
@@ -162,7 +164,7 @@
     "template-curly-spacing": "error",
     "yield-star-spacing": "error",
 
-    "@typescript-eslint/array-type": ["error", "array-simple"],
+    "@typescript-eslint/array-type": ["error", {"default": "array-simple"}],
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/explicit-function-return-type": ["error", {"allowExpressions": true}],
     "@typescript-eslint/explicit-member-accessibility": ["error", {"accessibility": "no-public", "overrides": {"parameterProperties": "explicit"}}],
@@ -191,6 +193,7 @@
     "@typescript-eslint/restrict-plus-operands": "error",
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/prefer-regexp-exec": "error",
+    "@typescript-eslint/unbound-method": ["error", {"ignoreStatic":  true}],
     "@typescript-eslint/unified-signatures": "error"
   }
 }
