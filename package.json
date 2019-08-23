@@ -32,7 +32,7 @@
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
     "chai": "^4.2.0",
-    "del": "^5.0.0",
+    "del": "^5.1.0",
     "eslint": "^6.2.1",
     "esm": "^3.2.25",
     "gulp": "^4.0.2",
