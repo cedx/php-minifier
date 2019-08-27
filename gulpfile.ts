@@ -37,8 +37,8 @@ task('coverage', () => _exec('coveralls', ['var/lcov.info']));
 task('doc', async () => {
   for (const path of ['CHANGELOG.md', 'LICENSE.md']) await copyFile(path, `doc/about/${path.toLowerCase()}`);
   await _exec('typedoc', ['--gaID', process.env.GOOGLE_ANALYTICS_ID!, '--options', 'etc/typedoc.json', '--tsconfig', 'src/tsconfig.json']);
-  await _exec('mkdocs', ['build', '--config-file=etc/mkdocs.yaml']);
-  return del(['doc/about/changelog.md', 'doc/about/license.md']);
+  await _exec('mkdocs', ['build', '--config-file=doc/mkdocs.yaml']);
+  return del(['doc/about/changelog.md', 'doc/about/license.md', 'web/mkdocs.yaml']);
 });
 
 /** Fixes the coding standards issues. */
