@@ -31,7 +31,7 @@ For example, you can use a [JSON](https://www.json.org) file, named `.gulp.json`
 
 If you prefer to keep the [TypeScript](https://www.typescriptlang.org) syntax, you can use a file named `.gulp.ts` with this contents:
 
-```ts
+```typescript
 module.exports = {
   flags: {
     nodeFlags: ['--require=esm']
