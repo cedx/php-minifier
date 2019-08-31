@@ -27,7 +27,7 @@
     "@types/gulp": "^4.0.6",
     "@types/gulp-replace": "^0.0.31",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.7.2",
+    "@types/node": "^12.7.3",
     "@types/node-fetch": "^2.5.0",
     "@typescript-eslint/eslint-plugin": "^2.0.0",
     "@typescript-eslint/parser": "^2.0.0",
