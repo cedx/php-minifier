@@ -21,7 +21,7 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "no-async-promise-executor": "error",
-    "no-console": "off",
+    "no-console": ["error", {"allow": ["error", "warn"]}],
     "no-misleading-character-class": "error",
     "no-prototype-builtins": "error",
     "no-template-curly-in-string": "error",
