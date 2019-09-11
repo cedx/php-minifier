@@ -194,7 +194,7 @@
     "@typescript-eslint/restrict-plus-operands": "error",
     "@typescript-eslint/semi": "error",
     "@typescript-eslint/prefer-regexp-exec": "error",
-    "@typescript-eslint/unbound-method": ["error", {"ignoreStatic":  true}],
+    "@typescript-eslint/unbound-method": ["error", {"ignoreStatic": true}],
     "@typescript-eslint/unified-signatures": "error"
   }
 }
