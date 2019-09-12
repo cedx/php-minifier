@@ -62,9 +62,6 @@
   "peerDependencies": {
     "gulp": ">=4.0.0"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/cedx"
-  },
   "scripts": {
     "coverage": "gulp coverage",
     "prepack": "gulp",
