@@ -47,6 +47,11 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sourc
 /** Performs the static analysis of source code. */
 task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
+/** Publishes the package to the registry. */
+task('publish:github', () => _exec('npm', ['publish', '--registry=https://npm.pkg.github.com/@cedx']));
+task('publish:npm', () => _exec('npm', ['publish', '--registry=https://registry.npmjs.org']));
+task('publish', () => series('clean', 'publish:github', 'publish:npm'));
+
 /** Starts the development server. */
 task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
 
