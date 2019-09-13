@@ -48,7 +48,7 @@ task('fix', () => _exec('eslint', ['--config=etc/eslint.json', '--fix', ...sourc
 task('lint', () => _exec('eslint', ['--config=etc/eslint.json', ...sources]));
 
 /** Publishes the package to the registry. */
-task('publish:github', () => _exec('npm', ['publish', '--registry=https://npm.pkg.github.com/@cedx']));
+task('publish:github', () => _exec('npm', ['publish', '--registry=https://npm.pkg.github.com']));
 task('publish:npm', () => _exec('npm', ['publish', '--registry=https://registry.npmjs.org']));
 task('publish', () => series('clean', 'publish:github', 'publish:npm'));
 
