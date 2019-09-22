@@ -6,7 +6,7 @@
 - [Gulp API docs](https://gulpjs.com/docs/en/api/concepts)
 
 ## Testing
-- [Continuous integration](https://travis-ci.com/cedx/gulp-php-minify)
+- [Continuous integration](https://github.com/cedx/gulp-php-minify/actions)
 - [Code coverage](https://coveralls.io/github/cedx/gulp-php-minify)
 
 ## Other implementations
