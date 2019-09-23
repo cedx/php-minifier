@@ -25,7 +25,7 @@
 - Updated the package dependencies.
 
 ## Version [9.1.1](https://github.com/cedx/gulp-php-minify/compare/v9.1.0...v9.1.1)
-- Fixed the [issue #8](https://github.com/cedx/gulp-php-minify/issues/8): unable to spawn a custom [PHP](https://secure.php.net) executable.
+- Fixed the [issue #8](https://github.com/cedx/gulp-php-minify/issues/8): unable to spawn a custom [PHP](https://www.php.net) executable.
 
 ## Version [9.1.0](https://github.com/cedx/gulp-php-minify/compare/v9.0.0...v9.1.0)
 - Fixed the [issue #10](https://github.com/cedx/gulp-php-minify/issues/10): the [Gulp](https://gulpjs.com) task does not complete.
@@ -43,7 +43,7 @@
 
 ## Version [8.0.0](https://github.com/cedx/gulp-php-minify/compare/v7.1.1...v8.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
-- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: raised the required [PHP](https://www.php.net) version.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Using PHP 7.1 features, like void functions.
 - Using the global `URL` class.
@@ -110,7 +110,7 @@
 ## Version [2.0.0](https://github.com/cedx/gulp-php-minify/compare/v1.1.0...v2.0.0)
 - Breaking change: dropped the dependency on [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
-- Breaking change: raised the required [PHP](https://secure.php.net) version.
+- Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: using ES2017 features, like async/await functions.
 - Added a `mode` option allowing to select the underlying transformer.
 - Improved the build system.

@@ -22,7 +22,7 @@ If you choose the second option, read the dedicated instructions:
 - For [TypeScript](esm/typescript.md) (i.e. `gulpfile.ts`).
 
 ## Programming interface
-The plug-in takes a list of [PHP](https://secure.php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](https://secure.php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
+The plug-in takes a list of [PHP](https://www.php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](https://www.php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
 
 ```js
 import {phpMinify} from '@cedx/gulp-php-minify';
@@ -42,7 +42,7 @@ gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
 ## Options
 
 ### **binary**: string = `"php"`
-The plug-in relies on the availability of the [PHP](https://secure.php.net) executable on the target system. By default, the plug-in will use the `php` binary found on the system path.
+The plug-in relies on the availability of the [PHP](https://www.php.net) executable on the target system. By default, the plug-in will use the `php` binary found on the system path.
 
 If the plug-in cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable by using the `binary` option:
 
@@ -60,7 +60,7 @@ gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
 The plug-in can work in two manners, which can be selected using the `mode` option:
 
 - the `safe` mode: as its name implies, this mode is very reliable. But it is also very slow as it spawns a new PHP process for every file to be processed. This is the default mode.
-- the `fast` mode: as its name implies, this mode is very fast, but it is not very reliable. It spawns a PHP web server that processes the input files, but on some systems this fails. This mode requires a [PHP](https://secure.php.net) runtime version **7.2 or later**.
+- the `fast` mode: as its name implies, this mode is very fast, but it is not very reliable. It spawns a PHP web server that processes the input files, but on some systems this fails. This mode requires a [PHP](https://www.php.net) runtime version **7.2 or later**.
 
 ```js
 import {phpMinify, TransformMode} from '@cedx/gulp-php-minify';
