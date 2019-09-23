@@ -64,10 +64,10 @@ export class FastTransformer implements Transformer {
    * @return The transformed script.
    */
   async transform(script: string): Promise<string> {
-    await this.listen();
-    
     const file = encodeURIComponent(resolve(script));
-    const res = await fetch(`http://${FastTransformer.address}:${this._port}/server.php?file=${file}`);
+    const port = await this.listen();
+
+    const res = await fetch(`http://${FastTransformer.address}:${port}/server.php?file=${file}`);
     if (!res.ok) throw new Error('An error occurred while transforming the script.');
     return res.text();
   }
