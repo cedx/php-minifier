@@ -1,7 +1,7 @@
 import * as chai from 'chai';
 import {SafeTransformer} from '../src/index';
 
-/** Tests the features of the [[Finder]] class. */
+/** Tests the features of the [[SafeTransformer]] class. */
 describe('SafeTransformer', function() {
   const {expect} = chai;
 
@@ -10,11 +10,9 @@ describe('SafeTransformer', function() {
   this.timeout(30000);
   /* eslint-enable no-invalid-this */
 
-  let transformer = new SafeTransformer;
-  afterEach(() => transformer.close());
-  beforeEach(() => transformer = new SafeTransformer);
-
   describe('#close()', () => {
+    const transformer = new SafeTransformer;
+
     it('should complete without any error', async () => {
       await transformer.close();
       expect(true).to.be.ok;
@@ -22,12 +20,15 @@ describe('SafeTransformer', function() {
 
     it('should be callable multiple times', async () => {
       await transformer.close();
+      await transformer.close();
       expect(true).to.be.ok;
     });
   });
 
   describe('#transform()', () => {
     const script = 'test/fixtures/sample.php';
+    const transformer = new SafeTransformer;
+    after(() => transformer.close());
 
     it('should remove the inline comments', async () => {
       expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");

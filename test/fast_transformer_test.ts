@@ -1,7 +1,7 @@
 import * as chai from 'chai';
 import {FastTransformer} from '../src/index';
 
-/** Tests the features of the [[Finder]] class. */
+/** Tests the features of the [[FastTransformer]] class. */
 describe('FastTransformer', function() {
   const {expect} = chai;
 
@@ -10,11 +10,9 @@ describe('FastTransformer', function() {
   this.timeout(30000);
   /* eslint-enable no-invalid-this */
 
-  let transformer = new FastTransformer;
-  afterEach(() => transformer.close());
-  beforeEach(() => transformer = new FastTransformer);
-
   describe('#listening', () => {
+    const transformer = new FastTransformer;
+
     it('should return whether the server is listening', async () => {
       expect(transformer.listening).to.be.false;
 
@@ -27,24 +25,31 @@ describe('FastTransformer', function() {
   });
 
   describe('#close()', () => {
+    const transformer = new FastTransformer;
+
     it('should complete without any error', async () => {
       await transformer.close();
       expect(true).to.be.ok;
     });
 
     it('should be callable multiple times', async () => {
+      await transformer.close();
       await transformer.close();
       expect(true).to.be.ok;
     });
   });
 
   describe('#listen()', () => {
+    const transformer = new FastTransformer;
+    after(() => transformer.close());
+
     it('should complete without any error', async () => {
       await transformer.listen();
       expect(true).to.be.ok;
     });
 
     it('should be callable multiple times', async () => {
+      await transformer.listen();
       await transformer.listen();
       expect(true).to.be.ok;
     });
@@ -52,6 +57,8 @@ describe('FastTransformer', function() {
 
   describe('#transform()', () => {
     const script = 'test/fixtures/sample.php';
+    const transformer = new FastTransformer;
+    after(() => transformer.close());
 
     it('should remove the inline comments', async () => {
       expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
