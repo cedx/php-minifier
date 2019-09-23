@@ -28,6 +28,7 @@ describe('FastTransformer', function() {
     const transformer = new FastTransformer;
 
     it('should complete without any error', async () => {
+      await transformer.listen();
       await transformer.close();
       expect(true).to.be.ok;
     });
