@@ -1,5 +1,6 @@
 import {which} from '@cedx/which';
 import log from 'fancy-log';
+import {normalize} from 'path';
 import {Transform, TransformCallback} from 'stream';
 import File from 'vinyl';
 
@@ -58,7 +59,7 @@ export class Minifier extends Transform {
   async _transform(file: File, encoding: string = 'utf8', callback?: TransformCallback): Promise<File> {
     try {
       if (!this._transformer) {
-        const executable = this.binary.length ? this.binary : await which('php', {onError: () => 'php'}) as string;
+        const executable = this.binary.length ? normalize(this.binary) : await which('php', {onError: () => 'php'}) as string;
         this._transformer = this.mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
       }
 
