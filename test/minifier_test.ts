@@ -17,7 +17,7 @@ describe('Minifier', function() {
       const minifier = new Minifier({mode: TransformMode.fast, silent: true});
       await minifier._transform(file);
       minifier.emit('end');
-      
+
       expect(file.contents!.toString()).to.contain("<?= 'Hello World!' ?>")
         .and.contain('namespace dummy; class Dummy')
         .and.contain('$className = get_class($this); return $className;')

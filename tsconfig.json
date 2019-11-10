@@ -3,6 +3,6 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "strict": true,
-    "target": "esnext"
+    "target": "es2020"
   }
 }
