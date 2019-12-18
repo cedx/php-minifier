@@ -13,7 +13,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2019,
+    "ecmaVersion": 2020,
     "project": "etc/tsconfig.json",
     "sourceType": "module",
     "warnOnUnsupportedTypeScriptVersion": false
