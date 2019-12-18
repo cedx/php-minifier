@@ -4,7 +4,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "module": "esnext",
+    "module": "es2015",
     "outDir": "../lib"
   }
 }
