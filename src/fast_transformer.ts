@@ -2,7 +2,7 @@ import {ChildProcess, spawn} from 'child_process';
 import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
 import {join, normalize, resolve} from 'path';
-import {libDir} from './path';
+import {packageDir} from './package';
 import {Transformer} from './transformer';
 
 /** Removes comments and whitespace from a PHP script, by calling a Web service. */
@@ -49,7 +49,7 @@ export class FastTransformer implements Transformer {
     if (this.listening) return this._port;
     this._port = await this._getPort();
 
-    const args = ['-S', `${FastTransformer.address}:${this._port}`, '-t', join(libDir, 'php')];
+    const args = ['-S', `${FastTransformer.address}:${this._port}`, '-t', join(packageDir, 'php')];
     return new Promise((fulfill, reject) => {
       this._process = spawn(normalize(this._executable), args);
       this._process.on('error', err => reject(err));
