@@ -27,7 +27,7 @@ export class Minifier extends Transform {
   /** The operational mode. */
   readonly mode: TransformMode;
 
-  /** Value indicating whether to silent the minifier output. */
+  /** Value indicating whether to silence the minifier output. */
   silent: boolean;
 
   /** The instance used to process the PHP code. */
@@ -86,6 +86,6 @@ export interface MinifierOptions {
   /** The operation mode of the minifier. */
   mode: TransformMode;
 
-  /** Value indicating whether to silent the minifier output. */
+  /** Value indicating whether to silence the minifier output. */
   silent: boolean;
 }
