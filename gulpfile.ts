@@ -18,7 +18,7 @@ const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
 /** Builds the project. */
-task('build:copy', () => src('src/path.js').pipe(dest('lib')));
+task('build:copy', () => src('src/package.js').pipe(dest('lib')));
 task('build:fix', () => src('lib/**/*.js').pipe(replace(/(export|import)\s+(.+)\s+from\s+'(\.[^']+)'/g, "$1 $2 from '$3.js'")).pipe(dest('lib')));
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
 task('build:php', () => src('src/php/*.php').pipe(dest('lib/php')));
