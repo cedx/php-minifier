@@ -63,7 +63,7 @@ task('upgrade', async () => {
   await _exec('git', ['reset', '--hard']);
   await _exec('git', ['fetch', '--all', '--prune']);
   await _exec('git', ['pull', '--rebase']);
-  await _exec('npm', ['install', '--ignore-scripts']);
+  await _exec('npm', ['install', '--ignore-scripts', '--production=false']);
   return _exec('npm', ['update', '--dev']);
 });
 
