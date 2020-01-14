@@ -4,5 +4,7 @@
   "gitRevision": "master",
   "mode": "file",
   "name": "Gulp-PHP-Minify",
-  "out": "doc/api"
+  "out": "doc/api",
+  "readme": "none",
+  "tsconfig": "src/tsconfig.json"
 }
