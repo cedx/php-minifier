@@ -1,5 +1,5 @@
 # Usage
-If you haven't used [Gulp](https://gulpjs.com) before, be sure to check out the [related documentation](https://gulpjs.com/docs/en/getting-started/quick-start), as it explains how to create a `gulpfile.esm.js` or `gulpfile.ts`, as well as install and use plug-ins.
+If you haven't used [Gulp](https://gulpjs.com) before, be sure to check out the [related documentation](https://gulpjs.com/docs/en/getting-started/quick-start), as it explains how to create a `gulpfile.js`, as well as install and use plug-ins.
 Once you're familiar with that process, you may install the plug-in.
 
 ## Requirements
@@ -16,10 +16,16 @@ You have two possibles choices:
 - Continue to use version 9: as long as ES modules are marked as experimental, this is the recommended solution.
 - Upgrade your Gulp script to use ES modules.
 
-If you choose the second option, read the dedicated instructions:
+If you choose the second option, as long as Gulp does not natively support ES modules, you must load this package using an [`import` expression](https://nodejs.org/api/esm.html#esm_import_expressions):
 
-- For [JavaScript](esm/javascript.md) (i.e. `gulpfile.js`).
-- For [TypeScript](esm/typescript.md) (i.e. `gulpfile.ts`).
+```js
+const {dest, series, src, task} = require('gulp');
+
+let phpMinify;
+task('phpMinify:import', () => import('@cedx/gulp-php-minify').then(mod => phpMinify = mod.phpMinify));
+task('phpMinify:run', () => src('*.php').pipe(phpMinify()).pipe(dest('out')));
+task('compressPhp', series('phpMinify:import', 'phpMinify:run'));
+```
 
 ## Programming interface
 The plug-in takes a list of [PHP](https://www.php.net) scripts as input, and removes the comments and whitespace in these files by applying the [`php_strip_whitespace()`](https://www.php.net/manual/en/function.php-strip-whitespace.php) function on their contents:
@@ -28,7 +34,7 @@ The plug-in takes a list of [PHP](https://www.php.net) scripts as input, and rem
 import {phpMinify} from '@cedx/gulp-php-minify';
 import gulp from 'gulp';
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+gulp.task('compressPhp', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify())
   .pipe(gulp.dest('path/to/out'))
 );
@@ -50,7 +56,7 @@ If the plug-in cannot find the default `php` binary, or if you want to use a dif
 import {phpMinify} from '@cedx/gulp-php-minify';
 import gulp from 'gulp';
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+gulp.task('compressPhp', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({binary: 'C:\\Program Files\\PHP\\php.exe'}))
   .pipe(gulp.dest('path/to/out'))
 );
@@ -66,7 +72,7 @@ The plug-in can work in two manners, which can be selected using the `mode` opti
 import {phpMinify, TransformMode} from '@cedx/gulp-php-minify';
 import gulp from 'gulp';
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+gulp.task('compressPhp', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({mode: TransformMode.fast}))
   .pipe(gulp.dest('path/to/out'))
 );
@@ -79,7 +85,7 @@ By default, the plug-in prints to the standard output the paths of the minified 
 import {phpMinify} from '@cedx/gulp-php-minify';
 import gulp from 'gulp';
 
-gulp.task('compress:php', () => gulp.src('path/to/**/*.php', {read: false})
+gulp.task('compressPhp', () => gulp.src('path/to/**/*.php', {read: false})
   .pipe(phpMinify({silent: true}))
   .pipe(gulp.dest('path/to/out'))
 );

@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [10.2.0](https://github.com/cedx/gulp-php-minify/compare/v10.1.0...v10.2.0)
+- Updated the package dependencies.
+
 ## Version [10.1.0](https://github.com/cedx/gulp-php-minify/compare/v10.0.0...v10.1.0)
 - Due to strong user demand, restored the [TypeScript](https://www.typescriptlang.org) source code.
 - Fixed the [issue #15](https://github.com/cedx/gulp-php-minify/issues/15): replaced the usage of the `__dirname` variable by `import.meta.url`.
