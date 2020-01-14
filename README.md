@@ -11,6 +11,7 @@
 
 ## Development
 - [Git repository](https://github.com/cedx/gulp-php-minify)
+- [GitHub package](https://github.com/cedx/gulp-php-minify/packages)
 - [npm package](https://www.npmjs.com/package/@cedx/gulp-php-minify)
 - [Submit an issue](https://github.com/cedx/gulp-php-minify/issues)
 
