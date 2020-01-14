@@ -1,10 +1,12 @@
 {
-  "extends": "../tsconfig.json",
   "include": ["**/*.ts"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "module": "es2015",
-    "outDir": "../lib"
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "../lib",
+    "strict": true,
+    "target": "es2020"
   }
 }
