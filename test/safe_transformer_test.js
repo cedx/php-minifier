@@ -1,34 +1,16 @@
-import * as chai from 'chai';
-import {FastTransformer} from '../src/index';
+import chai from 'chai';
+import {SafeTransformer} from '../lib/index.js';
 
-/** Tests the features of the [[FastTransformer]] class. */
-describe('FastTransformer', function() {
+/** Tests the features of the {@link SafeTransformer} class. */
+describe('SafeTransformer', function() {
   const {expect} = chai;
-
-  /* eslint-disable no-invalid-this */
   this.retries(2);
   this.timeout(30000);
-  /* eslint-enable no-invalid-this */
-
-  describe('#listening', () => {
-    const transformer = new FastTransformer;
-
-    it('should return whether the server is listening', async () => {
-      expect(transformer.listening).to.be.false;
-
-      await transformer.listen();
-      expect(transformer.listening).to.be.true;
-
-      await transformer.close();
-      expect(transformer.listening).to.be.false;
-    });
-  });
 
   describe('#close()', () => {
-    const transformer = new FastTransformer;
+    const transformer = new SafeTransformer;
 
     it('should complete without any error', async () => {
-      await transformer.listen();
       await transformer.close();
       expect(true).to.be.ok;
     });
@@ -36,29 +18,13 @@ describe('FastTransformer', function() {
     it('should be callable multiple times', async () => {
       await transformer.close();
       await transformer.close();
-      expect(true).to.be.ok;
-    });
-  });
-
-  describe('#listen()', () => {
-    const transformer = new FastTransformer;
-    after(() => transformer.close());
-
-    it('should complete without any error', async () => {
-      await transformer.listen();
-      expect(true).to.be.ok;
-    });
-
-    it('should be callable multiple times', async () => {
-      await transformer.listen();
-      await transformer.listen();
       expect(true).to.be.ok;
     });
   });
 
   describe('#transform()', () => {
     const script = 'test/fixtures/sample.php';
-    const transformer = new FastTransformer;
+    const transformer = new SafeTransformer;
     after(() => transformer.close());
 
     it('should remove the inline comments', async () => {

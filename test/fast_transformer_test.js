@@ -1,19 +1,31 @@
-import * as chai from 'chai';
-import {SafeTransformer} from '../src/index';
+import chai from 'chai';
+import {FastTransformer} from '../lib/index.js';
 
-/** Tests the features of the [[SafeTransformer]] class. */
-describe('SafeTransformer', function() {
+/** Tests the features of the {@link FastTransformer} class. */
+describe('FastTransformer', function() {
   const {expect} = chai;
-
-  /* eslint-disable no-invalid-this */
   this.retries(2);
   this.timeout(30000);
-  /* eslint-enable no-invalid-this */
+
+  describe('#listening', () => {
+    const transformer = new FastTransformer;
+
+    it('should return whether the server is listening', async () => {
+      expect(transformer.listening).to.be.false;
+
+      await transformer.listen();
+      expect(transformer.listening).to.be.true;
+
+      await transformer.close();
+      expect(transformer.listening).to.be.false;
+    });
+  });
 
   describe('#close()', () => {
-    const transformer = new SafeTransformer;
+    const transformer = new FastTransformer;
 
     it('should complete without any error', async () => {
+      await transformer.listen();
       await transformer.close();
       expect(true).to.be.ok;
     });
@@ -25,9 +37,25 @@ describe('SafeTransformer', function() {
     });
   });
 
+  describe('#listen()', () => {
+    const transformer = new FastTransformer;
+    after(() => transformer.close());
+
+    it('should complete without any error', async () => {
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+
+    it('should be callable multiple times', async () => {
+      await transformer.listen();
+      await transformer.listen();
+      expect(true).to.be.ok;
+    });
+  });
+
   describe('#transform()', () => {
     const script = 'test/fixtures/sample.php';
-    const transformer = new SafeTransformer;
+    const transformer = new FastTransformer;
     after(() => transformer.close());
 
     it('should remove the inline comments', async () => {
