@@ -2,6 +2,7 @@
   "excludePrivate": true,
   "gaSite": "auto",
   "gitRevision": "master",
+  "hideGenerator": true,
   "mode": "file",
   "name": "Gulp-PHP-Minify",
   "out": "doc/api",
