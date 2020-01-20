@@ -35,8 +35,8 @@ class Server {
    */
   function sendResponse(string $body, int $status = 200): void {
     http_response_code($status);
-    header('content-length: '.strlen($body));
-    header('content-type: text/plain; charset='.mb_internal_encoding());
+    header('Content-Length: '.strlen($body));
+    header('Content-Type: text/plain; charset='.mb_internal_encoding());
     echo $body;
   }
 
