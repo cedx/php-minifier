@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node.js
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v1
         with:
           node-version: 13
       - name: Set up PHP
-        uses: shivammathur/setup-php@master
+        uses: shivammathur/setup-php@v1
         with:
           php-version: 7.4
           extensions: mbstring
@@ -22,7 +22,7 @@ jobs:
           npm --version
           php --version
       - name: Fetch sources
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install --ignore-scripts
       - name: Run tests
