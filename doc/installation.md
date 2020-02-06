@@ -5,16 +5,16 @@ Before installing **Gulp-PHP-Minify**, you need to make sure you have [Node.js](
 You also need the [Command Line Utility for Gulp](https://www.npmjs.com/package/gulp-cli).
 
 !!! warning
-    Gulp-PHP-Minify requires Node.js >= **12.14.0** and Gulp >= **4.0.0**.
+    Gulp-PHP-Minify requires Node.js >= **12.15.0** and Gulp >= **4.0.0**.
     
 You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v13.6.0
+# v13.8.0
 
 npm --version
-# 6.13.4
+# 6.13.6
 
 gulp --version
 # CLI version: 2.2.0
