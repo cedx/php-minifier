@@ -11,10 +11,10 @@ You can verify if you're already good to go with the following commands:
 
 ```shell
 node --version
-# v13.8.0
+# v13.9.0
 
 npm --version
-# 6.13.6
+# 6.13.7
 
 gulp --version
 # CLI version: 2.2.0
