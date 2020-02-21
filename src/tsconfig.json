@@ -7,6 +7,6 @@
     "moduleResolution": "node",
     "outDir": "../lib",
     "strict": true,
-    "target": "es2020"
+    "target": "esnext"
   }
 }
