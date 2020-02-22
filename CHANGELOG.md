@@ -74,7 +74,7 @@
 
 ## Version [6.0.0](https://github.com/cedx/gulp-php-minify/compare/v5.1.0...v6.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.
-- Added the [`#[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version [5.1.0](https://github.com/cedx/gulp-php-minify/compare/v5.0.0...v5.1.0)
@@ -82,7 +82,7 @@
 - Updated the package dependencies.
 
 ## Version [5.0.0](https://github.com/cedx/gulp-php-minify/compare/v4.2.0...v5.0.0)
-- Breaking change: changed the `factory()` function to the `Minifier.factory` method.
+- Breaking change: changed the `factory()` function to the `Minifier.factory()` method.
 - Updated the package dependencies.
 
 ## Version [4.2.0](https://github.com/cedx/gulp-php-minify/compare/v4.1.0...v4.2.0)
