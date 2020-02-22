@@ -1,18 +1,14 @@
 import { Transformer } from './transformer';
 /** Removes comments and whitespace from a PHP script, by calling a Web service. */
 export declare class FastTransformer implements Transformer {
-    private readonly _executable;
+    #private;
     /** The address that the server is listening on. */
     static address: string;
-    /** The port that the PHP process is listening on. */
-    private _port;
-    /** The underlying PHP process. */
-    private _process?;
     /**
      * Creates a new fast transformer.
-     * @param _executable The path to the PHP executable.
+     * @param executable The path to the PHP executable.
      */
-    constructor(_executable?: string);
+    constructor(executable?: string);
     /** Value indicating whether the PHP process is currently listening. */
     get listening(): boolean;
     /**

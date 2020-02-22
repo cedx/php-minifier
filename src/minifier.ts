@@ -31,7 +31,7 @@ export class Minifier extends Transform {
   silent: boolean;
 
   /** The instance used to process the PHP code. */
-  private _transformer?: Transformer;
+  #transformer?: Transformer;
 
   /**
    * Creates a new minifier.
@@ -45,7 +45,7 @@ export class Minifier extends Transform {
     this.mode = mode;
     this.silent = silent;
 
-    const handler = async (): Promise<void> => { if (this._transformer) await this._transformer.close(); };
+    const handler = async (): Promise<void> => { if (this.#transformer) await this.#transformer.close(); };
     this.on('end', handler).on('error', handler); // eslint-disable-line @typescript-eslint/no-misused-promises
   }
 
@@ -58,13 +58,13 @@ export class Minifier extends Transform {
    */
   async _transform(file: File, encoding: string = 'utf8', callback?: TransformCallback): Promise<File> {
     try {
-      if (!this._transformer) {
+      if (!this.#transformer) {
         const executable = this.binary.length ? normalize(this.binary) : await which('php', {onError: () => 'php'}) as string;
-        this._transformer = this.mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
+        this.#transformer = this.mode == TransformMode.fast ? new FastTransformer(executable) : new SafeTransformer(executable);
       }
 
       if (!this.silent) log(`Minifying: ${file.path}`);
-      file.contents = Buffer.from(await this._transformer.transform(file.path), encoding as BufferEncoding); // eslint-disable-line require-atomic-updates
+      file.contents = Buffer.from(await this.#transformer.transform(file.path), encoding as BufferEncoding); // eslint-disable-line require-atomic-updates
       if (callback) callback(null, file);
     }
 

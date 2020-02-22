@@ -11,21 +11,26 @@ export class FastTransformer implements Transformer {
   /** The address that the server is listening on. */
   static address: string = '127.0.0.1';
 
+  /** The path to the PHP executable. */
+  readonly #executable: string;
+
   /** The port that the PHP process is listening on. */
-  private _port: number = -1;
+  #port: number = -1;
 
   /** The underlying PHP process. */
-  private _process?: ChildProcess;
+  #process?: ChildProcess;
 
   /**
    * Creates a new fast transformer.
-   * @param _executable The path to the PHP executable.
+   * @param executable The path to the PHP executable.
    */
-  constructor(private readonly _executable: string = 'php') {}
+  constructor(executable: string = 'php') {
+    this.#executable = executable;
+  }
 
   /** Value indicating whether the PHP process is currently listening. */
   get listening(): boolean {
-    return Boolean(this._process);
+    return Boolean(this.#process);
   }
 
   /**
@@ -34,8 +39,8 @@ export class FastTransformer implements Transformer {
    */
   close(): Promise<void> {
     if (this.listening) {
-      this._process!.kill();
-      this._process = undefined;
+      this.#process!.kill();
+      this.#process = undefined;
     }
 
     return Promise.resolve();
@@ -46,15 +51,15 @@ export class FastTransformer implements Transformer {
    * @return The port used by the PHP process.
    */
   async listen(): Promise<number> {
-    if (this.listening) return this._port;
-    this._port = await this._getPort();
+    if (this.listening) return this.#port;
+    this.#port = await this._getPort();
 
     const serverDir = join(dirname(fileURLToPath(import.meta.url)), 'php');
-    const args = ['-S', `${FastTransformer.address}:${this._port}`, '-t', serverDir];
+    const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', serverDir];
     return new Promise((fulfill, reject) => {
-      this._process = spawn(normalize(this._executable), args);
-      this._process.on('error', err => reject(err));
-      setTimeout(() => fulfill(this._port), 1000);
+      this.#process = spawn(normalize(this.#executable), args);
+      this.#process.on('error', err => reject(err));
+      setTimeout(() => fulfill(this.#port), 1000);
     });
   }
 

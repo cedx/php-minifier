@@ -1,14 +1,14 @@
 import { Transformer } from './transformer';
 /** Removes comments and whitespace from a PHP script, by calling a PHP process. */
 export declare class SafeTransformer implements Transformer {
-    private readonly _executable;
+    #private;
     /** The largest amount of data in bytes allowed on `stdout` or `stderr`. */
     static bufferSize: number;
     /**
      * Creates a new safe transformer.
-     * @param _executable The path to the PHP executable.
+     * @param executable The path to the PHP executable.
      */
-    constructor(_executable?: string);
+    constructor(executable?: string);
     /**
      * Closes this transformer and releases any resources associated with it.
      * @return Completes when the transformer is finally disposed.

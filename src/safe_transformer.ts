@@ -9,11 +9,16 @@ export class SafeTransformer implements Transformer {
   /** The largest amount of data in bytes allowed on `stdout` or `stderr`. */
   static bufferSize: number = 10 * 1024 * 1024;
 
+  /** The path to the PHP executable. */
+  readonly #executable: string;
+
   /**
    * Creates a new safe transformer.
-   * @param _executable The path to the PHP executable.
+   * @param executable The path to the PHP executable.
    */
-  constructor(private readonly _executable: string = 'php') {}
+  constructor(executable: string = 'php') {
+    this.#executable = executable;
+  }
 
   /**
    * Closes this transformer and releases any resources associated with it.
@@ -30,7 +35,7 @@ export class SafeTransformer implements Transformer {
    */
   async transform(script: string): Promise<string> {
     const spawn = promisify(execFile);
-    const {stdout} = await spawn(normalize(this._executable), ['-w', resolve(script)], {maxBuffer: SafeTransformer.bufferSize});
+    const {stdout} = await spawn(normalize(this.#executable), ['-w', resolve(script)], {maxBuffer: SafeTransformer.bufferSize});
     return stdout;
   }
 }

@@ -10,14 +10,13 @@ export declare enum TransformMode {
 }
 /** Removes PHP comments and whitespace by applying the `php_strip_whitespace()` function. */
 export declare class Minifier extends Transform {
+    #private;
     /** The path to the PHP executable. */
     readonly binary: string;
     /** The operational mode. */
     readonly mode: TransformMode;
     /** Value indicating whether to silence the minifier output. */
     silent: boolean;
-    /** The instance used to process the PHP code. */
-    private _transformer?;
     /**
      * Creates a new minifier.
      * @param options An object specifying values used to initialize this instance.
