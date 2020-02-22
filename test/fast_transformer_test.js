@@ -7,7 +7,7 @@ describe('FastTransformer', function() {
   this.retries(2);
   this.timeout(30000);
 
-  describe('#listening', () => {
+  describe('.listening', () => {
     const transformer = new FastTransformer;
 
     it('should return whether the server is listening', async () => {
@@ -21,7 +21,7 @@ describe('FastTransformer', function() {
     });
   });
 
-  describe('#close()', () => {
+  describe('.close()', () => {
     const transformer = new FastTransformer;
 
     it('should complete without any error', async () => {
@@ -37,7 +37,7 @@ describe('FastTransformer', function() {
     });
   });
 
-  describe('#listen()', () => {
+  describe('.listen()', () => {
     const transformer = new FastTransformer;
     after(() => transformer.close());
 
@@ -53,7 +53,7 @@ describe('FastTransformer', function() {
     });
   });
 
-  describe('#transform()', () => {
+  describe('.transform()', () => {
     const script = 'test/fixtures/sample.php';
     const transformer = new FastTransformer;
     after(() => transformer.close());

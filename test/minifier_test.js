@@ -8,7 +8,7 @@ describe('Minifier', function() {
   this.retries(3);
   this.timeout(60000);
 
-  describe('#_transform()', () => {
+  describe('._transform()', () => {
     it('should remove the comments and whitespace using the fast transformer', async () => {
       const file = new File({path: 'test/fixtures/sample.php'});
       const minifier = new Minifier({mode: TransformMode.fast, silent: true});

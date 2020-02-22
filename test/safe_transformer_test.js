@@ -7,7 +7,7 @@ describe('SafeTransformer', function() {
   this.retries(2);
   this.timeout(30000);
 
-  describe('#close()', () => {
+  describe('.close()', () => {
     const transformer = new SafeTransformer;
 
     it('should complete without any error', async () => {
@@ -22,7 +22,7 @@ describe('SafeTransformer', function() {
     });
   });
 
-  describe('#transform()', () => {
+  describe('.transform()', () => {
     const script = 'test/fixtures/sample.php';
     const transformer = new SafeTransformer;
     after(() => transformer.close());
