@@ -3,10 +3,12 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "incremental": true,
     "module": "esnext",
     "moduleResolution": "node",
     "outDir": "../lib",
     "strict": true,
-    "target": "es2019"
+    "target": "es2019",
+    "tsBuildInfoFile": "../var/tsbuild.json"
   }
 }
