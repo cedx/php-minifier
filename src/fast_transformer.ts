@@ -52,11 +52,10 @@ export class FastTransformer implements Transformer {
    */
   async listen(): Promise<number> {
     if (this.listening) return this.#port;
-    this.#port = await this._getPort();
 
-    const serverDir = join(dirname(fileURLToPath(import.meta.url)), 'php');
-    const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', serverDir];
+    this.#port = await this._getPort();
     return new Promise((fulfill, reject) => {
+      const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', join(dirname(fileURLToPath(import.meta.url)))];
       this.#process = spawn(normalize(this.#executable), args);
       this.#process.on('error', err => reject(err));
       setTimeout(() => fulfill(this.#port), 1000);

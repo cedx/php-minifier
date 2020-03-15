@@ -1,7 +1,7 @@
 const {spawn} = require('child_process');
 const del = require('del');
 const {promises} = require('fs');
-const {dest, parallel, series, src, task, watch} = require('gulp');
+const {dest, series, src, task, watch} = require('gulp');
 const replace = require('gulp-replace');
 const {delimiter, normalize, resolve} = require('path');
 
@@ -11,11 +11,13 @@ const _vendor = resolve('node_modules/.bin');
 if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}`;
 
 /** Builds the project. */
-const esmRegex = /(export|import)\s+(.+)\s+from\s+'(\.[^']+)'/g;
+const esmRegex = /(export|import)\s+(.+)\s+from\s+'(\.((?!.*\.js)[^']+))'/g;
+let phpMinify;
 task('build:fix', () => src('lib/**/*.js').pipe(replace(esmRegex, "$1 $2 from '$3.js'")).pipe(dest('lib')));
+task('build:import', () => import('./lib/index.js').then(mod => phpMinify = mod.phpMinify));
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
-task('build:php', () => src('src/php/*.php').pipe(dest('lib/php')));
-task('build', parallel(series('build:js', 'build:fix'), 'build:php'));
+task('build:php', () => src('src/*.php').pipe(phpMinify()).pipe(dest('lib')));
+task('build', series('build:js', 'build:fix', 'build:import', 'build:php'));
 
 /** Deletes all generated files and reset any saved state. */
 task('clean', () => del(['doc/api', 'lib', 'var/**/*', 'web']));
