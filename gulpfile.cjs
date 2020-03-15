@@ -45,7 +45,7 @@ task('publish:npm', () => _exec('npm', ['publish', '--registry=https://registry.
 task('publish', series('clean', 'publish:github', 'publish:npm'));
 
 /** Starts the development server. */
-task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src/php']));
+task('serve', () => _exec('php', ['-S', '127.0.0.1:8000', '-t', 'src']));
 
 /** Runs the test suites. */
 const mocha = ['node_modules/.bin/mocha', '--recursive'];
