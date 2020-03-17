@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [10.3.0](https://github.com/cedx/gulp-php-minify/compare/v10.2.0...v10.3.0)
+- Using private class fields.
+- Updated the package dependencies.
+
 ## Version [10.2.0](https://github.com/cedx/gulp-php-minify/compare/v10.1.0...v10.2.0)
 - Updated the package dependencies.
 
