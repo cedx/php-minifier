@@ -11,14 +11,19 @@ describe('SafeTransformer', function() {
     const transformer = new SafeTransformer;
 
     it('should complete without any error', async () => {
-      await transformer.close();
-      expect(true).to.be.ok;
+      try { await transformer.close(); }
+      catch (err) { expect.fail(err.message); }
     });
 
     it('should be callable multiple times', async () => {
-      await transformer.close();
-      await transformer.close();
-      expect(true).to.be.ok;
+      try {
+        await transformer.close();
+        await transformer.close();
+      }
+
+      catch (err) {
+        expect.fail(err.message);
+      }
     });
   });
 

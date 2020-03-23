@@ -25,15 +25,25 @@ describe('FastTransformer', function() {
     const transformer = new FastTransformer;
 
     it('should complete without any error', async () => {
-      await transformer.listen();
-      await transformer.close();
-      expect(true).to.be.ok;
+      try {
+        await transformer.listen();
+        await transformer.close();
+      }
+
+      catch (err) {
+        expect.fail(err.message);
+      }
     });
 
     it('should be callable multiple times', async () => {
-      await transformer.close();
-      await transformer.close();
-      expect(true).to.be.ok;
+      try {
+        await transformer.close();
+        await transformer.close();
+      }
+
+      catch (err) {
+        expect.fail(err.message);
+      }
     });
   });
 
@@ -42,14 +52,19 @@ describe('FastTransformer', function() {
     after(() => transformer.close());
 
     it('should complete without any error', async () => {
-      await transformer.listen();
-      expect(true).to.be.ok;
+      try { await transformer.listen(); }
+      catch (err) { expect.fail(err.message); }
     });
 
     it('should be callable multiple times', async () => {
-      await transformer.listen();
-      await transformer.listen();
-      expect(true).to.be.ok;
+      try {
+        await transformer.listen();
+        await transformer.listen();
+      }
+
+      catch (err) {
+        expect.fail(err.message);
+      }
     });
   });
 
