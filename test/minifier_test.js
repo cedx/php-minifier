@@ -1,10 +1,9 @@
-import chai from 'chai';
+import {strict as assert} from 'assert';
 import File from 'vinyl';
 import {Minifier, TransformMode} from '../lib/index.js';
 
 /** Tests the features of the {@link Minifier} class. */
 describe('Minifier', function() {
-  const {expect} = chai;
   this.retries(3);
   this.timeout(60000);
 
@@ -15,10 +14,11 @@ describe('Minifier', function() {
       await minifier._transform(file);
       minifier.emit('end');
 
-      expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>")
-        .and.contain('namespace dummy; class Dummy')
-        .and.contain('$className = get_class($this); return $className;')
-        .and.contain('__construct() { }');
+      const contents = file.contents.toString();
+      assert(contents.includes("<?= 'Hello World!' ?>"));
+      assert(contents.includes('namespace dummy; class Dummy'));
+      assert(contents.includes('$className = get_class($this); return $className;'));
+      assert(contents.includes('__construct() { }'));
     });
 
     it('should remove the comments and whitespace using the safe transformer', async () => {
@@ -27,10 +27,11 @@ describe('Minifier', function() {
       await minifier._transform(file);
       minifier.emit('end');
 
-      expect(file.contents.toString()).to.contain("<?= 'Hello World!' ?>")
-        .and.contain('namespace dummy; class Dummy')
-        .and.contain('$className = get_class($this); return $className;')
-        .and.contain('__construct() { }');
+      const contents = file.contents.toString();
+      assert(contents.includes("<?= 'Hello World!' ?>"));
+      assert(contents.includes('namespace dummy; class Dummy'));
+      assert(contents.includes('$className = get_class($this); return $className;'));
+      assert(contents.includes('__construct() { }'));
     });
   });
 });

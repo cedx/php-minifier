@@ -1,29 +1,21 @@
-import chai from 'chai';
+import {strict as assert} from 'assert';
 import {SafeTransformer} from '../lib/index.js';
 
 /** Tests the features of the {@link SafeTransformer} class. */
 describe('SafeTransformer', function() {
-  const {expect} = chai;
   this.retries(2);
   this.timeout(30000);
 
   describe('.close()', () => {
     const transformer = new SafeTransformer;
 
-    it('should complete without any error', async () => {
-      try { await transformer.close(); }
-      catch (err) { expect.fail(err.message); }
+    it('should complete without any error', () => {
+      assert.doesNotReject(transformer.close());
     });
 
-    it('should be callable multiple times', async () => {
-      try {
-        await transformer.close();
-        await transformer.close();
-      }
-
-      catch (err) {
-        expect.fail(err.message);
-      }
+    it('should be callable multiple times', () => {
+      assert.doesNotReject(transformer.close());
+      assert.doesNotReject(transformer.close());
     });
   });
 
@@ -33,19 +25,19 @@ describe('SafeTransformer', function() {
     after(() => transformer.close());
 
     it('should remove the inline comments', async () => {
-      expect(await transformer.transform(script)).to.contain("<?= 'Hello World!' ?>");
+      assert((await transformer.transform(script)).includes("<?= 'Hello World!' ?>"));
     });
 
     it('should remove the multi-line comments', async () => {
-      expect(await transformer.transform(script)).to.contain('namespace dummy; class Dummy');
+      assert((await transformer.transform(script)).includes('namespace dummy; class Dummy'));
     });
 
     it('should remove the single-line comments', async () => {
-      expect(await transformer.transform(script)).to.contain('$className = get_class($this); return $className;');
+      assert((await transformer.transform(script)).includes('$className = get_class($this); return $className;'));
     });
 
     it('should remove the whitespace', async () => {
-      expect(await transformer.transform(script)).to.contain('__construct() { }');
+      assert((await transformer.transform(script)).includes('__construct() { }'));
     });
   });
 });
