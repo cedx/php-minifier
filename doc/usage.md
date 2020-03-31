@@ -57,7 +57,7 @@ import {phpMinify} from '@cedx/gulp-php-minify';
 import gulp from 'gulp';
 
 gulp.task('compressPhp', () => gulp.src('path/to/**/*.php', {read: false})
-  .pipe(phpMinify({binary: 'C:\\Program Files\\PHP\\php.exe'}))
+  .pipe(phpMinify({binary: String.raw`C:\Program Files\PHP\php.exe`}))
   .pipe(gulp.dest('path/to/out'))
 );
 ```
