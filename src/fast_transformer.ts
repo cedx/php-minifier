@@ -1,7 +1,7 @@
 import {ChildProcess, spawn} from 'child_process';
 import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
-import {dirname, join, normalize, resolve} from 'path';
+import {dirname, normalize, resolve} from 'path';
 import {fileURLToPath} from 'url';
 import {Transformer} from './transformer';
 
@@ -55,7 +55,7 @@ export class FastTransformer implements Transformer {
 
     this.#port = await this._getPort();
     return new Promise((fulfill, reject) => {
-      const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', join(dirname(fileURLToPath(import.meta.url)))];
+      const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', dirname(fileURLToPath(import.meta.url))];
       this.#process = spawn(normalize(this.#executable), args);
       this.#process.on('error', err => reject(err));
       setTimeout(() => fulfill(this.#port), 1000);
