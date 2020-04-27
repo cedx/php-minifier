@@ -3,7 +3,7 @@ import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
 import {dirname, normalize, resolve} from 'path';
 import {fileURLToPath} from 'url';
-import {Transformer} from './transformer';
+import {Transformer} from './transformer.js';
 
 /** Removes comments and whitespace from a PHP script, by calling a Web service. */
 export class FastTransformer implements Transformer {

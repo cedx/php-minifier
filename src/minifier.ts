@@ -3,10 +3,9 @@ import log from 'fancy-log';
 import {normalize} from 'path';
 import {Transform, TransformCallback} from 'stream';
 import File from 'vinyl';
-
-import {FastTransformer} from './fast_transformer';
-import {SafeTransformer} from './safe_transformer';
-import {Transformer} from './transformer';
+import {FastTransformer} from './fast_transformer.js';
+import {SafeTransformer} from './safe_transformer.js';
+import {Transformer} from './transformer.js';
 
 /** Defines the type of transformation applied by a minifier. */
 export enum TransformMode {
