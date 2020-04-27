@@ -58,6 +58,10 @@
   "peerDependencies": {
     "gulp": ">=4.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://git.belin.io/cedx/gulp-php-minify.git"
+  },
   "scripts": {
     "coverage": "gulp coverage",
     "prepack": "gulp",
