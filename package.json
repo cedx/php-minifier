@@ -7,7 +7,7 @@
   "name": "@cedx/gulp-php-minify",
   "type": "module",
   "types": "lib/index.d.ts",
-  "version": "10.3.0",
+  "version": "11.0.0",
   "author": {
     "email": "cedric@belin.io",
     "name": "Cédric Belin",
