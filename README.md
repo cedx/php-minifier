@@ -6,14 +6,13 @@
 > This library is packaged as [ECMAScript modules](https://nodejs.org/api/esm.html).
 
 ## Documentation
-- [User guide](https://dev.belin.io/gulp-php-minify)
-- [API reference](https://dev.belin.io/gulp-php-minify/api)
+- [User guide](https://docs.belin.io/gulp-php-minify)
+- [API reference](https://api.belin.io/gulp-php-minify)
 
 ## Development
-- [Git repository](https://github.com/cedx/gulp-php-minify)
-- [GitHub package](https://github.com/cedx/gulp-php-minify/packages)
+- [Git repository](https://git.belin.io/cedx/gulp-php-minify)
 - [npm package](https://www.npmjs.com/package/@cedx/gulp-php-minify)
-- [Submit an issue](https://github.com/cedx/gulp-php-minify/issues)
+- [Submit an issue](https://git.belin.io/cedx/gulp-php-minify/issues)
 
 ## License
-[Gulp-PHP-Minify](https://dev.belin.io/gulp-php-minify) is distributed under the MIT License.
+[Gulp-PHP-Minify](https://docs.belin.io/gulp-php-minify) is distributed under the MIT License.

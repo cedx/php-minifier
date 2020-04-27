@@ -1,10 +1,9 @@
 # See also
 
 ## Development
-- [API reference](https://dev.belin.io/gulp-php-minify/api)
-- [GitHub package](https://github.com/cedx/gulp-php-minify/packages)
+- [API reference](https://api.belin.io/gulp-php-minify)
 - [npm package](https://www.npmjs.com/package/@cedx/gulp-php-minify)
-- [Submit an issue](https://github.com/cedx/gulp-php-minify/issues)
+- [Submit an issue](https://git.belin.io/cedx/gulp-php-minify/issues)
 - [Gulp API docs](https://gulpjs.com/docs/en/api/concepts)
 
 ## Testing
@@ -12,5 +11,5 @@
 - [Code coverage](https://coveralls.io/github/cedx/gulp-php-minify)
 
 ## Other implementations
-- Dart: [Grinder-PHP-Minify](https://dev.belin.io/grinder-php-minify)
-- PHP: [Robo-PHP-Minify](https://dev.belin.io/robo-php-minify)
+- Dart: [Grinder-PHP-Minify](https://docs.belin.io/grinder-php-minify)
+- PHP: [Robo-PHP-Minify](https://docs.belin.io/robo-php-minify)
