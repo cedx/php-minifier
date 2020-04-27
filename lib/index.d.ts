@@ -1,8 +1,8 @@
-import { Minifier, MinifierOptions } from './minifier';
-export * from './fast_transformer';
-export * from './minifier';
-export * from './safe_transformer';
-export * from './transformer';
+import { Minifier, MinifierOptions } from './minifier.js';
+export * from './fast_transformer.js';
+export * from './minifier.js';
+export * from './safe_transformer.js';
+export * from './transformer.js';
 /**
  * Creates a new minifier.
  * @param options The minifier options.
