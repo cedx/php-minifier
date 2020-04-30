@@ -51,9 +51,11 @@ class Server {
    */
   private function processRequest(array $args): string {
     if (!isset($args['file']) || !mb_strlen($args['file'])) throw new \LogicException('Bad Request', 400);
-    if (!is_file($args['file'])) throw new \RuntimeException('Not Found', 404);
 
-    $output = php_strip_whitespace($args['file']);
+    $file = new \SplFileInfo($args['file']);
+    if (!$file->isReadable()) throw new \RuntimeException('Not Found', 404);
+
+    $output = php_strip_whitespace($file->getPathname());
     if (!mb_strlen($output)) throw new \RuntimeException('Internal Server Error', 500);
     return $output;
   }
