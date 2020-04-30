@@ -27,7 +27,7 @@
     "@types/vinyl": "^2.0.4",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
-    "c8": "^7.1.0",
+    "c8": "^7.1.1",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "gulp": "^4.0.2",
