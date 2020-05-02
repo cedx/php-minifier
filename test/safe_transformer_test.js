@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {SafeTransformer} from '../lib/index.js';
 
-/** Tests the features of the {@link SafeTransformer} class. */
+/** Tests the features of the `SafeTransformer` class. */
 describe('SafeTransformer', function() {
   this.retries(2);
   this.timeout(30000);

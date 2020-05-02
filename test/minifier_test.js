@@ -2,7 +2,7 @@ import {strict as assert} from 'assert';
 import File from 'vinyl';
 import {Minifier, TransformMode} from '../lib/index.js';
 
-/** Tests the features of the {@link Minifier} class. */
+/** Tests the features of the `Minifier` class. */
 describe('Minifier', function() {
   this.retries(3);
   this.timeout(60000);

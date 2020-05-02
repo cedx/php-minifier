@@ -1,7 +1,7 @@
 import {strict as assert} from 'assert';
 import {FastTransformer} from '../lib/index.js';
 
-/** Tests the features of the {@link FastTransformer} class. */
+/** Tests the features of the `FastTransformer` class. */
 describe('FastTransformer', function() {
   this.retries(2);
   this.timeout(30000);
