@@ -10,7 +10,7 @@ if (!_path.includes(_vendor)) process.env.PATH = `${_vendor}${delimiter}${_path}
 
 /** Builds the project. */
 let phpMinify;
-task('build:import', () => import('./lib/index.js').then(mod => phpMinify = mod.phpMinify));
+task('build:import', () => import('../lib/index.js').then(mod => phpMinify = mod.phpMinify));
 task('build:js', () => _exec('tsc', ['--project', 'src/tsconfig.json']));
 task('build:php', () => src('src/*.php').pipe(phpMinify()).pipe(dest('lib')));
 task('build', series('build:js', 'build:import', 'build:php'));
