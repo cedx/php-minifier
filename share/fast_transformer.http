@@ -1,4 +1,6 @@
-// Minifies the PHP code of the specified document.
-GET {{baseUrl}}/server.php?file=server.php
+@baseUrl = http://localhost:8000
 
 ###
+
+// Minifies the PHP code of the specified document.
+GET {{baseUrl}}/server.php?file=server.php
