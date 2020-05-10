@@ -1,7 +1,7 @@
 import {ChildProcess, spawn} from 'child_process';
 import {AddressInfo, createServer} from 'net';
 import fetch from 'node-fetch';
-import {dirname, normalize, resolve} from 'path';
+import {dirname, normalize, join, resolve} from 'path';
 import {fileURLToPath} from 'url';
 import {Transformer} from './transformer.js';
 
@@ -55,7 +55,8 @@ export class FastTransformer implements Transformer {
 
     this.#port = await this._getPort();
     return new Promise((fulfill, reject) => {
-      const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', dirname(fileURLToPath(import.meta.url))];
+      const libDir = dirname(fileURLToPath(import.meta.url));
+      const args = ['-S', `${FastTransformer.address}:${this.#port}`, '-t', join(libDir, 'php')];
       this.#process = spawn(normalize(this.#executable), args);
       this.#process.on('error', err => reject(err));
       setTimeout(() => fulfill(this.#port), 1000);
@@ -71,7 +72,7 @@ export class FastTransformer implements Transformer {
     const file = encodeURIComponent(resolve(script));
     const port = await this.listen();
 
-    const res = await fetch(`http://${FastTransformer.address}:${port}/server.php?file=${file}`);
+    const res = await fetch(`http://${FastTransformer.address}:${port}/?file=${file}`);
     if (!res.ok) throw new Error('An error occurred while transforming the script.');
     return res.text();
   }
