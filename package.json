@@ -1,67 +1,71 @@
 {
-  "bugs": "https://git.belin.io/cedx/gulp-php-minify/issues",
-  "description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
-  "homepage": "https://docs.belin.io/gulp-php-minify",
-  "license": "MIT",
-  "main": "./lib/index.js",
-  "name": "@cedx/gulp-php-minify",
-  "type": "module",
-  "types": "./lib/index.d.ts",
-  "version": "11.0.0",
-  "author": {
-    "email": "cedric@belin.io",
-    "name": "Cédric Belin",
-    "url": "https://belin.io"
-  },
-  "dependencies": {
-    "@cedx/which": "^7.0.1",
-    "fancy-log": "^1.3.3",
-    "node-fetch": "^2.6.0",
-    "vinyl": "^2.2.0"
-  },
-  "devDependencies": {
-    "@cedx/coveralls": "^10.1.0",
-    "@types/fancy-log": "^1.3.1",
-    "@types/node": "^14.0.19",
-    "@types/node-fetch": "^2.5.7",
-    "@types/vinyl": "^2.0.4",
-    "@typescript-eslint/eslint-plugin": "^3.6.0",
-    "@typescript-eslint/parser": "^3.6.0",
-    "c8": "^7.1.2",
-    "eslint": "^7.4.0",
-    "gulp": "^4.0.2",
-    "mocha": "^8.0.1",
-    "typedoc": "^0.17.7",
-    "typescript": "^3.9.6"
-  },
-  "engines": {
-    "node": ">=14.3.0"
-  },
-  "files": [
-    "lib/"
-  ],
-  "funding": {
-    "type": "patreon",
-    "url": "https://www.patreon.com/cedx"
-  },
-  "keywords": [
-    "compress",
-    "esm",
-    "gulp",
-    "gulpplugin",
-    "minify",
-    "php"
-  ],
-  "peerDependencies": {
-    "gulp": ">=4.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://git.belin.io/cedx/gulp-php-minify.git"
-  },
-  "scripts": {
-    "coverage": "coveralls var/lcov.info",
-    "prepack": "pwsh tool/build.ps1",
-    "test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
-  }
+	"bugs": "https://git.belin.io/cedx/gulp-php-minify/issues",
+	"description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
+	"homepage": "https://docs.belin.io/gulp-php-minify",
+	"license": "MIT",
+	"main": "./lib/index.js",
+	"name": "@cedx/gulp-php-minify",
+	"type": "module",
+	"types": "./lib/index.d.ts",
+	"version": "11.0.0",
+	"author": {
+		"email": "cedric@belin.io",
+		"name": "Cédric Belin",
+		"url": "https://belin.io"
+	},
+	"dependencies": {
+		"@cedx/which.hx": "^1.0.0",
+		"fancy-log": "^1.3.3",
+		"node-fetch": "^2.6.0",
+		"vinyl": "^2.2.0"
+	},
+	"devDependencies": {
+		"@cedx/coveralls": "^10.1.0",
+		"@types/fancy-log": "^1.3.1",
+		"@types/node": "^14.0.14",
+		"@types/node-fetch": "^2.5.7",
+		"@types/vinyl": "^2.0.4",
+		"@typescript-eslint/eslint-plugin": "^4.6.0",
+		"@typescript-eslint/parser": "^4.6.0",
+		"c8": "^7.2.0",
+		"eslint": "^7.3.1",
+		"gulp": "^4.0.2",
+		"mocha": "^8.2.0",
+		"typedoc": "^0.19.2",
+		"typescript": "^4.0.5"
+	},
+	"engines": {
+		"node": ">=14.4.0"
+	},
+	"files": [
+		"lib/"
+	],
+	"funding": {
+		"type": "patreon",
+		"url": "https://www.patreon.com/cedx"
+	},
+	"keywords": [
+		"compress",
+		"gulp",
+		"gulpplugin",
+		"minify",
+		"php"
+	],
+	"peerDependencies": {
+		"gulp": ">=4.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://git.belin.io/cedx/gulp-php-minify.git"
+	},
+	"scripts": {
+		"build": "tsc --project src/tsconfig.json",
+		"coverage": "coveralls var/lcov.info",
+		"doc": "typedoc --options etc/typedoc.json",
+		"lint": "eslint --config=etc/eslint.yaml src/**/*.ts",
+		"minify": "gulp --gulpfile=tool/gulp.cjs",
+		"prepack": "pwsh tool/build.ps1",
+		"prepublishOnly": "npm run clean",
+		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node_modules/.bin/mocha --recursive"
+	}
 }
