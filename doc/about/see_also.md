@@ -9,7 +9,3 @@
 ## Testing
 - [Continuous integration](https://github.com/cedx/gulp-php-minify/actions)
 - [Code coverage](https://coveralls.io/github/cedx/gulp-php-minify)
-
-## Other implementations
-- Dart: [Grinder-PHP-Minify](https://docs.belin.io/grinder-php-minify)
-- PHP: [Robo-PHP-Minify](https://docs.belin.io/robo-php-minify)
