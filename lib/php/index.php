@@ -4,7 +4,8 @@
  * Processes the specified request body.
  * @param string[] $args The request sent by a client.
  * @return string The stripped source code corresponding to the provided file.
- * @throws \Exception The requirements are not met, or an error occurred.
+ * @throws \LogicException No PHP script was provided.
+ * @throws \RuntimeException The PHP script was not found, or an error occurred while processing it.
  */
 function processRequest(array $args): string {
 	if (empty($args["file"])) throw new \LogicException("Bad Request", 400);

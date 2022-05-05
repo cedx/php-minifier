@@ -1,0 +1,11 @@
+{
+	"extends": "../jsconfig",
+	"include": ["**/*.js"],
+	"compilerOptions": {
+		"declaration": true,
+		"declarationMap": true,
+		"emitDeclarationOnly": true,
+		"noEmit": false,
+		"outDir": "../share"
+	}
+}

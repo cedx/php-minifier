@@ -10,36 +10,42 @@ namespace dummy;
  */
 class Dummy {
 
-  /**
-   * Creates a new instance.
-   */
-  public function __construct() {
+	/**
+	 * A dummy property.
+	 * @var int
+	 */
+	public readonly int $property;
 
-  }
+	/**
+	 * Creates a new instance.
+	 */
+	public function __construct() {
+		$this->property = 123;
+	}
 
-  /**
-   * A dummy method.
-   * @return string The class name.
-   */
-  public function __toString(): string {
-    // A comment.
-    $className = get_class($this);
+	/**
+	 * A dummy method.
+	 * @return string The class name.
+	 */
+	public function __toString(): string {
+		// A comment.
+		$className = get_class($this);
 
-    // Another one.
-    return $className;
-  }
+		// Another comment.
+		return $className;
+	}
 }
 ?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Tests</title>
-  </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Tests</title>
+	</head>
 
-  <body>
-    <h1>
-      <?= /* An inline coment. */ 'Hello World!' ?>
-    </h1>
-  </body>
+	<body>
+		<h1>
+			<?= /* An inline comment. */ 'Hello World!' ?>
+		</h1>
+	</body>
 </html>
