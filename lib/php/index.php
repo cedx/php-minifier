@@ -33,7 +33,9 @@ function sendResponse(string $body, int $status = 200): void {
 }
 
 // Start the application.
-try { sendResponse(processRequest($_GET)); }
+try {
+	sendResponse(processRequest($_GET));
+}
 catch (\Throwable $e) {
 	$code = $e->getCode();
 	sendResponse($e->getMessage(), $code >= 400 && $code < 600 ? $code : 500);
