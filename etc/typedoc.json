@@ -1,10 +1,11 @@
 {
-  "excludePrivate": true,
-  "gitRevision": "main",
-  "hideGenerator": true,
-  "mode": "file",
-  "name": "Gulp-PHP-Minify",
-  "out": "doc/api",
-  "readme": "none",
-  "tsconfig": "src/tsconfig.json"
+	"$schema": "https://typedoc.org/schema.json",
+	"entryPoints": ["../lib/index.js"],
+	"excludePrivate": true,
+	"gitRevision": "main",
+	"hideGenerator": true,
+	"name": "Gulp-PHP-Minify",
+	"out": "../docs",
+	"readme": "none",
+	"tsconfig": "../lib/jsconfig.json"
 }
