@@ -3,4 +3,4 @@
 ###
 
 // Minifies the PHP code of the specified document.
-GET {{baseUrl}}/?file=server.php
+GET {{baseUrl}}/?file=index.php
