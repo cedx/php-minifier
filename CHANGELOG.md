@@ -1,5 +1,11 @@
 # Changelog
 
+## Version [12.0.0](https://github.com/cedx/gulp-php-minify/compare/v11.0.0...v12.0.0)
+- Breaking change: raised the required [Node.js](https://nodejs.org) version.
+- Breaking change: removed the `FastTransformer.listening` property.
+- Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Updated the package dependencies.
+
 ## Version [11.0.0](https://github.com/cedx/gulp-php-minify/compare/v10.3.0...v11.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Dropped support for [GitHub Packages](https://github.com/features/packages).
