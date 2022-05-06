@@ -3,6 +3,7 @@
 ## Version [12.0.0](https://github.com/cedx/gulp-php-minify/compare/v11.0.0...v12.0.0)
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `FastTransformer.listening` property.
+- Breaking change: the `phpMinify()` function is now exposed as a default export.
 - Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
 - Updated the package dependencies.
 
