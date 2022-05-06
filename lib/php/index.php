@@ -1,24 +1,6 @@
 <?php declare(strict_types=1);
 
 /**
- * Processes the specified request body.
- * @param string[] $args The request sent by a client.
- * @return string The stripped source code corresponding to the provided file.
- * @throws \LogicException No PHP script was provided.
- * @throws \RuntimeException The PHP script was not found, or an error occurred while processing it.
- */
-function processRequest(array $args): string {
-	if (empty($args["file"])) throw new \LogicException("Bad Request", 400);
-
-	$file = $args["file"];
-	if (!is_readable($file)) throw new \RuntimeException("Not Found", 404);
-
-	$output = php_strip_whitespace($file);
-	if (!$output) throw new \RuntimeException("Internal Server Error", 500);
-	return $output;
-}
-
-/**
  * Sends the specified response body.
  * @param string $body The response body to send to the client.
  * @param int $status The status code of the response.
@@ -35,9 +17,17 @@ function sendResponse(string $body, int $status = 200): void {
 
 // Start the application.
 try {
-	sendResponse(processRequest($_GET));
+	if (empty($_GET["file"])) throw new LogicException("Bad Request", 400);
+
+	$file = $_GET["file"];
+	if (!is_readable($file)) throw new RuntimeException("Not Found", 404);
+
+	$output = php_strip_whitespace($file);
+	if (!$output) throw new RuntimeException("Internal Server Error", 500);
+	sendResponse($output);
 }
-catch (\Throwable $e) {
+
+catch (Throwable $e) {
 	$code = $e->getCode();
 	sendResponse($e->getMessage(), $code >= 400 && $code < 600 ? $code : 500);
 }
