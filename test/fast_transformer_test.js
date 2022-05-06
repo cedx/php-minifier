@@ -54,7 +54,7 @@ describe("FastTransformer", /** @this {Mocha.Suite} */ function() {
 		});
 
 		it("should remove the whitespace", async () => {
-			assert((await transformer.transform(script)).includes("__construct() { }"));
+			assert((await transformer.transform(script)).includes("__construct() { $this->property"));
 		});
 	});
 });
