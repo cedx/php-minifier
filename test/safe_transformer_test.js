@@ -22,7 +22,7 @@ describe("SafeTransformer", /** @this {Mocha.Suite} */ function() {
 	});
 
 	describe(".transform()", () => {
-		const script = "test/fixtures/sample.php";
+		const script = "test/fixture/sample.php";
 		const transformer = new SafeTransformer;
 		after(() => transformer.close());
 

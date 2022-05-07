@@ -37,7 +37,7 @@ describe("FastTransformer", /** @this {Mocha.Suite} */ function() {
 	});
 
 	describe(".transform()", () => {
-		const script = "test/fixtures/sample.php";
+		const script = "test/fixture/sample.php";
 		const transformer = new FastTransformer;
 		after(() => transformer.close());
 

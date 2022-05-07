@@ -11,7 +11,7 @@ describe("Minifier", /** @this {Mocha.Suite} */ function() {
 
 	describe("._transform()", () => {
 		it("should remove the comments and whitespace using the fast transformer", async () => {
-			const file = new File({path: "test/fixtures/sample.php"});
+			const file = new File({path: "test/fixture/sample.php"});
 			const minifier = new Minifier({mode: TransformMode.fast, silent: true});
 			await minifier._transform(file);
 			minifier.emit("end");
@@ -24,7 +24,7 @@ describe("Minifier", /** @this {Mocha.Suite} */ function() {
 		});
 
 		it("should remove the comments and whitespace using the safe transformer", async () => {
-			const file = new File({path: "test/fixtures/sample.php"});
+			const file = new File({path: "test/fixture/sample.php"});
 			const minifier = new Minifier({mode: TransformMode.safe, silent: true});
 			await minifier._transform(file);
 			minifier.emit("end");
