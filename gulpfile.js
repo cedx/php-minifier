@@ -28,8 +28,8 @@ export async function lint() {
 
 /** Publishes the package in the registry. */
 export async function publish() {
-	await exec("npm", ["publish"]);
 	const {version} = JSON.parse(await readFile("package.json", "utf8"));
+	for (const registry of ["https://registry.npmjs.org", "https://npm.pkg.github.com"]) await exec("npm", ["publish", `--registry=${registry}`]);
 	for (const command of [["tag"], ["push", "origin"]]) await exec("git", [...command, `v${version}`]);
 }
 
