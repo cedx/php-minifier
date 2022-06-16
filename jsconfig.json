@@ -5,7 +5,7 @@
 		"checkJs": true,
 		"esModuleInterop": true,
 		"module": "es2022",
-		"moduleResolution": "node16",
+		"moduleResolution": "node",
 		"paths": {"@cedx/gulp-php-minify": ["lib"]},
 		"strict": true,
 		"target": "es2022"
