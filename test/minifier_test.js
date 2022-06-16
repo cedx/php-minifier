@@ -13,7 +13,7 @@ describe("Minifier", /** @this {Mocha.Suite} */ function() {
 		it("should remove the comments and whitespace using the fast transformer", async () => {
 			const file = new File({path: "test/fixture/sample.php"});
 			const minifier = new Minifier({mode: TransformMode.fast, silent: true});
-			await minifier._transform(file);
+			await minifier._transform(file); // eslint-disable-line no-underscore-dangle
 			minifier.emit("end");
 
 			const contents = file.contents?.toString() ?? "";
@@ -26,7 +26,7 @@ describe("Minifier", /** @this {Mocha.Suite} */ function() {
 		it("should remove the comments and whitespace using the safe transformer", async () => {
 			const file = new File({path: "test/fixture/sample.php"});
 			const minifier = new Minifier({mode: TransformMode.safe, silent: true});
-			await minifier._transform(file);
+			await minifier._transform(file); // eslint-disable-line no-underscore-dangle
 			minifier.emit("end");
 
 			const contents = file.contents?.toString() ?? "";
