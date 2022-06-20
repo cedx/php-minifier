@@ -1,45 +1,41 @@
 import assert from "node:assert/strict";
+import test from "node:test";
 import {SafeTransformer} from "../lib/index.js";
 
-/**
- * Tests the features of the {@link SafeTransformer} class.
- */
-describe("SafeTransformer", /** @this {Mocha.Suite} */ function() {
-	this.retries(2);
-	this.timeout(30_000);
+test("SafeTransformer.close()", async ctx => {
+	const transformer = new SafeTransformer;
 
-	describe(".close()", () => {
-		const transformer = new SafeTransformer;
-
-		it("should complete without any error", () => {
-			assert.doesNotReject(transformer.close());
-		});
-
-		it("should be callable multiple times", () => {
-			assert.doesNotReject(transformer.close());
-			assert.doesNotReject(transformer.close());
-		});
+	await ctx.test("should complete without any error", () => {
+		return assert.doesNotReject(transformer.close());
 	});
 
-	describe(".transform()", () => {
-		const script = "test/fixture/sample.php";
-		const transformer = new SafeTransformer;
-		after(() => transformer.close());
+	await ctx.test("should be callable multiple times", async () => {
+		await assert.doesNotReject(transformer.close());
+		return assert.doesNotReject(transformer.close());
+	});
+});
 
-		it("should remove the inline comments", async () => {
-			assert((await transformer.transform(script)).includes("<?= 'Hello World!' ?>"));
-		});
+test("SafeTransformer.transform()", async ctx => {
+	const script = "test/fixture/sample.php";
+	const transformer = new SafeTransformer;
 
-		it("should remove the multi-line comments", async () => {
-			assert((await transformer.transform(script)).includes("namespace dummy; class Dummy"));
-		});
+	await ctx.test("should remove the inline comments", async () => {
+		assert((await transformer.transform(script)).includes("<?= 'Hello World!' ?>"));
+		return transformer.close();
+	});
 
-		it("should remove the single-line comments", async () => {
-			assert((await transformer.transform(script)).includes("$className = get_class($this); return $className;"));
-		});
+	await ctx.test("should remove the multi-line comments", async () => {
+		assert((await transformer.transform(script)).includes("namespace dummy; class Dummy"));
+		return transformer.close();
+	});
 
-		it("should remove the whitespace", async () => {
-			assert((await transformer.transform(script)).includes("__construct() { $this->property"));
-		});
+	await ctx.test("should remove the single-line comments", async () => {
+		assert((await transformer.transform(script)).includes("$className = get_class($this); return $className;"));
+		return transformer.close();
+	});
+
+	await ctx.test("should remove the whitespace", async () => {
+		assert((await transformer.transform(script)).includes("__construct() { $this->property"));
+		return transformer.close();
 	});
 });
