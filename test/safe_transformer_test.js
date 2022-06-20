@@ -20,22 +20,22 @@ test("SafeTransformer.transform()", async ctx => {
 	const transformer = new SafeTransformer;
 
 	await ctx.test("should remove the inline comments", async () => {
-		assert((await transformer.transform(script)).includes("<?= 'Hello World!' ?>"));
+		assert.ok((await transformer.transform(script)).includes("<?= 'Hello World!' ?>"));
 		return transformer.close();
 	});
 
 	await ctx.test("should remove the multi-line comments", async () => {
-		assert((await transformer.transform(script)).includes("namespace dummy; class Dummy"));
+		assert.ok((await transformer.transform(script)).includes("namespace dummy; class Dummy"));
 		return transformer.close();
 	});
 
 	await ctx.test("should remove the single-line comments", async () => {
-		assert((await transformer.transform(script)).includes("$className = get_class($this); return $className;"));
+		assert.ok((await transformer.transform(script)).includes("$className = get_class($this); return $className;"));
 		return transformer.close();
 	});
 
 	await ctx.test("should remove the whitespace", async () => {
-		assert((await transformer.transform(script)).includes("__construct() { $this->property"));
+		assert.ok((await transformer.transform(script)).includes("__construct() { $this->property"));
 		return transformer.close();
 	});
 });

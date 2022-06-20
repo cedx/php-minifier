@@ -11,10 +11,10 @@ test("Minifier._transform()", async ctx => {
 		minifier.emit("end");
 
 		const contents = file.contents?.toString() ?? "";
-		assert(contents.includes("<?= 'Hello World!' ?>"));
-		assert(contents.includes("namespace dummy; class Dummy"));
-		assert(contents.includes("$className = get_class($this); return $className;"));
-		assert(contents.includes("__construct() { $this->property"));
+		assert.ok(contents.includes("<?= 'Hello World!' ?>"));
+		assert.ok(contents.includes("namespace dummy; class Dummy"));
+		assert.ok(contents.includes("$className = get_class($this); return $className;"));
+		assert.ok(contents.includes("__construct() { $this->property"));
 	});
 
 	await ctx.test("should remove the comments and whitespace using the safe transformer", async () => {
@@ -24,9 +24,9 @@ test("Minifier._transform()", async ctx => {
 		minifier.emit("end");
 
 		const contents = file.contents?.toString() ?? "";
-		assert(contents.includes("<?= 'Hello World!' ?>"));
-		assert(contents.includes("namespace dummy; class Dummy"));
-		assert(contents.includes("$className = get_class($this); return $className;"));
-		assert(contents.includes("__construct() { $this->property"));
+		assert.ok(contents.includes("<?= 'Hello World!' ?>"));
+		assert.ok(contents.includes("namespace dummy; class Dummy"));
+		assert.ok(contents.includes("$className = get_class($this); return $className;"));
+		assert.ok(contents.includes("__construct() { $this->property"));
 	});
 });
