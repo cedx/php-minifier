@@ -1,7 +1,6 @@
 {
 	"env": {
 		"es2022": true,
-		"mocha": true,
 		"node": true
 	},
 	"extends": "eslint:recommended",
