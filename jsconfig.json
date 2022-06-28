@@ -4,8 +4,9 @@
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
-		"module": "es2022",
-		"moduleResolution": "node",
+		"module": "esnext",
+		"moduleResolution": "nodenext",
+		"resolveJsonModule": true,
 		"paths": {"@cedx/gulp-php-minify": ["lib"]},
 		"strict": true,
 		"target": "es2022"

@@ -21,8 +21,8 @@ export async function doc() {
 
 /** Performs the static analysis of source code. */
 export async function lint() {
-	const sources = JSON.parse(await readFile("jsconfig.json", "utf8")).include;
-	await exec("eslint", ["--config=etc/eslint.json", ...sources]);
+	const {include} = JSON.parse(await readFile("jsconfig.json", "utf8"));
+	await exec("eslint", ["--config=etc/eslint.json", ...include]);
 	return exec("tsc", ["--project", "jsconfig.json"]);
 }
 
