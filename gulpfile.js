@@ -1,7 +1,9 @@
-import {cp, readFile} from "node:fs/promises";
+import {cp} from "node:fs/promises";
 import del from "del";
 import {execa} from "execa";
 import gulp from "gulp";
+import config from "./jsconfig.json" assert {type: "json"};
+import pkg from "./package.json" assert {type: "json"};
 
 /** Builds the project. */
 export function build() {
@@ -21,16 +23,14 @@ export async function doc() {
 
 /** Performs the static analysis of source code. */
 export async function lint() {
-	const {include} = JSON.parse(await readFile("jsconfig.json", "utf8"));
-	await exec("eslint", ["--config=etc/eslint.json", ...include]);
+	await exec("eslint", ["--config=etc/eslint.json", ...config.include]);
 	return exec("tsc", ["--project", "jsconfig.json"]);
 }
 
 /** Publishes the package in the registry. */
 export async function publish() {
-	const {version} = JSON.parse(await readFile("package.json", "utf8"));
 	for (const registry of ["https://registry.npmjs.org", "https://npm.pkg.github.com"]) await exec("npm", ["publish", `--registry=${registry}`]);
-	for (const command of [["tag"], ["push", "origin"]]) await exec("git", [...command, `v${version}`]);
+	for (const command of [["tag"], ["push", "origin"]]) await exec("git", [...command, `v${pkg.version}`]);
 }
 
 /** Starts the development web server. */

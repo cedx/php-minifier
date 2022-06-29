@@ -4,10 +4,7 @@ import {SafeTransformer} from "../lib/index.js";
 
 test("SafeTransformer.close()", async ctx => {
 	const transformer = new SafeTransformer;
-
-	await ctx.test("should complete without any error", () => {
-		return assert.doesNotReject(transformer.close());
-	});
+	await ctx.test("should complete without any error", () => assert.doesNotReject(transformer.close()));
 
 	await ctx.test("should be callable multiple times", async () => {
 		await assert.doesNotReject(transformer.close());

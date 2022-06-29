@@ -21,6 +21,8 @@
 		"plugin-error": "^1.0.1"
 	},
 	"devDependencies": {
+		"@babel/eslint-parser": "^7.18.2",
+		"@babel/plugin-syntax-import-assertions": "^7.18.6",
 		"@types/fancy-log": "^2.0.0",
 		"@types/gulp": "^4.0.9",
 		"@types/mocha": "^9.1.1",
