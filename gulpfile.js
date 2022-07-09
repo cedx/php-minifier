@@ -7,12 +7,12 @@ import pkg from "./package.json" assert {type: "json"};
 
 /** Builds the project. */
 export function build() {
-	return exec("tsc", ["--project", "lib/jsconfig.json"]);
+	return exec("tsc", ["--project", "src/jsconfig.json"]);
 }
 
 /** Deletes all generated files and reset any saved state. */
 export function clean() {
-	return del(["share", "var/**/*"]);
+	return del(["lib", "var/**/*"]);
 }
 
 /** Builds the documentation. */
@@ -40,7 +40,7 @@ export function serve() {
 
 /** Runs the test suite. */
 export function test() {
-	return exec("c8", ["--all", "--include=lib/**/*.js", "--report-dir=var", "--reporter=lcovonly", "node", "--test"]);
+	return exec("c8", ["--all", "--include=src/**/*.js", "--report-dir=var", "--reporter=lcovonly", "node", "--test"]);
 }
 
 /** Watches for file changes. */

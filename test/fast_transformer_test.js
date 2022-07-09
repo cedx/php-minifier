@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {FastTransformer} from "../lib/index.js";
+import {FastTransformer} from "../src/index.js";
 
 test("FastTransformer.close()", async ctx => {
 	const transformer = new FastTransformer;

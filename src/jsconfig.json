@@ -6,6 +6,6 @@
 		"declarationMap": true,
 		"emitDeclarationOnly": true,
 		"noEmit": false,
-		"outDir": "../share"
+		"outDir": "../lib"
 	}
 }

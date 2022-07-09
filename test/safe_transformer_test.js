@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {SafeTransformer} from "../lib/index.js";
+import {SafeTransformer} from "../src/index.js";
 
 test("SafeTransformer.close()", async ctx => {
 	const transformer = new SafeTransformer;

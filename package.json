@@ -1,13 +1,13 @@
 {
 	"bugs": "https://github.com/cedx/gulp-php-minify/issues",
 	"description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
-	"exports": "./lib/index.js",
+	"exports": "./src/index.js",
 	"homepage": "https://github.com/cedx/gulp-php-minify",
 	"license": "MIT",
 	"name": "@cedx/gulp-php-minify",
 	"repository": "github:cedx/gulp-php-minify",
 	"type": "module",
-	"types": "./share/index.d.ts",
+	"types": "./lib/index.d.ts",
 	"version": "12.0.0",
 	"author": {
 		"email": "cedric@belin.io",
@@ -40,7 +40,7 @@
 	},
 	"files": [
 		"lib/",
-		"share/"
+		"src/"
 	],
 	"funding": {
 		"type": "github",
@@ -58,6 +58,6 @@
 	},
 	"scripts": {
 		"prepack": "gulp",
-		"test": "c8 --all --include=lib/**/*.js --report-dir=var --reporter=lcovonly node --test"
+		"test": "c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test"
 	}
 }

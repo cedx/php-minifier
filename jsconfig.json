@@ -1,13 +1,13 @@
 {
-	"include": ["*.js", "example/*.js", "lib/**/*.js", "test/**/*.js"],
+	"include": ["*.js", "example/*.js", "src/**/*.js", "test/**/*.js"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
 		"module": "esnext",
-		"moduleResolution": "nodenext",
+		"moduleResolution": "node",
 		"resolveJsonModule": true,
-		"paths": {"@cedx/gulp-php-minify": ["lib"]},
+		"paths": {"@cedx/gulp-php-minify": ["src"]},
 		"strict": true,
 		"target": "es2022"
 	}

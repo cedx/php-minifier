@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import File from "vinyl";
-import {Minifier, TransformMode} from "../lib/index.js";
+import {Minifier, TransformMode} from "../src/index.js";
 
 test("Minifier._transform()", async ctx => {
 	await ctx.test("should remove the comments and whitespace using the fast transformer", async () => {
