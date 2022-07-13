@@ -22,6 +22,6 @@ jobs:
         run: npm test
       - name: Collect code coverage
         if: success()
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           files: var/lcov.info
