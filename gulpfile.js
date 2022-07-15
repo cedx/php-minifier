@@ -43,11 +43,6 @@ export function test() {
 	return exec("c8", ["--all", "--include=src/**/*.js", "--report-dir=var", "--reporter=lcovonly", "node", "--test"]);
 }
 
-/** Watches for file changes. */
-export function watch() {
-	return exec("tsc", ["--project", "jsconfig.json", "--watch"]);
-}
-
 /** Runs the default task. */
 export default gulp.series(
 	clean,
