@@ -1,4 +1,4 @@
-import {normalize, resolve} from "node:path";
+import {resolve} from "node:path";
 import {execa} from "execa";
 import {Transformer} from "./transformer.js";
 
@@ -8,18 +8,11 @@ import {Transformer} from "./transformer.js";
 export class SafeTransformer extends Transformer {
 
 	/**
-	 * The path to the PHP executable.
-	 * @type {string}
-	 */
-	#executable;
-
-	/**
 	 * Creates a new safe transformer.
-	 * @param {string} executable The path to the PHP executable.
+	 * @param {string} [executable] The path to the PHP executable.
 	 */
 	constructor(executable = "php") {
-		super();
-		this.#executable = normalize(executable);
+		super(executable);
 	}
 
 	/**
@@ -36,6 +29,6 @@ export class SafeTransformer extends Transformer {
 	 * @returns {Promise<string>} The transformed script.
 	 */
 	async transform(file) {
-		return (await execa(this.#executable, ["-w", resolve(file)])).stdout;
+		return (await execa(this._executable, ["-w", resolve(file)])).stdout;
 	}
 }

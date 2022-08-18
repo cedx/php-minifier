@@ -1,4 +1,4 @@
-import {normalize, resolve} from "node:path";
+import {resolve} from "node:path";
 import {fileURLToPath} from "node:url";
 import {execa} from "execa";
 import getPort from "get-port";
@@ -16,12 +16,6 @@ export class FastTransformer extends Transformer {
 	static address = "127.0.0.1";
 
 	/**
-	 * The path to the PHP executable.
-	 * @type {string}
-	 */
-	#executable;
-
-	/**
 	 * The port that the PHP process is listening on.
 	 * @type {number}
 	 */
@@ -35,11 +29,10 @@ export class FastTransformer extends Transformer {
 
 	/**
 	 * Creates a new fast transformer.
-	 * @param {string} executable The path to the PHP executable.
+	 * @param {string} [executable] The path to the PHP executable.
 	 */
 	constructor(executable = "php") {
-		super();
-		this.#executable = normalize(executable);
+		super(executable);
 	}
 
 	/**
@@ -65,7 +58,7 @@ export class FastTransformer extends Transformer {
 		this.#port = await getPort();
 		return new Promise((fulfill, reject) => {
 			const args = ["-S", `${FastTransformer.address}:${this.#port}`, "-t", fileURLToPath(new URL("php", import.meta.url))];
-			this.#process = execa(this.#executable, args);
+			this.#process = execa(this._executable, args);
 			this.#process.on("error", reject);
 			setTimeout(() => fulfill(this.#port), 1_000);
 		});

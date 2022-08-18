@@ -1,3 +1,5 @@
+import {normalize} from "node:path";
+
 /**
  * Removes comments and whitespace from a PHP script.
  * @abstract
@@ -5,11 +7,20 @@
 export class Transformer {
 
 	/**
-	 * Creates a new transformer.
+	 * The path to the PHP executable.
+	 * @type {string}
 	 * @protected
 	 */
-	constructor() {
+	_executable;
+
+	/**
+	 * Creates a new transformer.
+	 * @param {string} executable The path to the PHP executable.
+	 * @protected
+	 */
+	constructor(executable) {
 		if (this.constructor == Transformer) throw new TypeError("The Transformer class is abstract.");
+		this._executable = normalize(executable);
 	}
 
 	/**
