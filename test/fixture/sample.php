@@ -39,7 +39,7 @@ class Dummy {
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<title>Tests</title>
 	</head>
 
