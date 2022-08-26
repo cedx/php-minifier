@@ -4,11 +4,11 @@
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "nodenext",
+		"module": "ESNext",
+		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
 		"paths": {"@cedx/gulp-php-minify": ["src"]},
 		"strict": true,
-		"target": "esnext"
+		"target": "ESNext"
 	}
 }
