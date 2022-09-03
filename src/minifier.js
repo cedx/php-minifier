@@ -65,7 +65,6 @@ export class Minifier extends Transform {
 			if (callback) callback(null, file);
 		}
 		catch (error) {
-			// eslint-disable-next-line no-extra-parens
 			if (callback) callback(new PluginError("@cedx/gulp-php-minify", /** @type {Error} */ (error)), {fileName: file.path});
 			else throw error;
 		}
