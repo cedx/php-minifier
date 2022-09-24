@@ -49,6 +49,7 @@
 		"id-denylist": "off",
 		"id-length": ["error", {"exceptions": ["_"]}],
 		"init-declarations": "error",
+		"logical-assignment-operators": ["error", "always", {"enforceForIfStatements": true}],
 		"max-depth": "error",
 		"max-lines": ["error", {"max": 500}],
 		"max-lines-per-function": ["error", {"max": 100}],
