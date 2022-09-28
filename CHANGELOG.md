@@ -4,7 +4,7 @@
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: removed the `FastTransformer.listening` property.
 - Breaking change: the `phpMinify()` function is now exposed as a default export.
-- Ported the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Ported the source code to [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - Updated the package dependencies.
 
 ## Version [11.0.0](https://github.com/cedx/gulp-php-minify/compare/v10.3.0...v11.0.0)
@@ -30,7 +30,7 @@
 ## Version [10.0.0](https://github.com/cedx/gulp-php-minify/compare/v9.3.0...v10.0.0)
 - Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
-- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript).
+- Breaking change: reverted the source code to [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript).
 - Added support for [ECMAScript modules](https://nodejs.org/api/esm.html).
 - Replaced the [TypeDoc](https://typedoc.org) documentation generator by [JSDoc](https://jsdoc.app).
 - Replaced the [TSLint](https://palantir.github.io/tslint) static analyzer by [ESLint](https://eslint.org).
@@ -91,7 +91,7 @@
 
 ## Version [6.0.0](https://github.com/cedx/gulp-php-minify/compare/v5.1.0...v6.0.0)
 - Breaking change: converted the [`Observable`](http://reactivex.io/intro.html)-based API to an `async/await`-based one.
-- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
+- Added the [`[Symbol.toStringTag]`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag) property to all classes.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Version [5.1.0](https://github.com/cedx/gulp-php-minify/compare/v5.0.0...v5.1.0)
@@ -149,7 +149,7 @@
 ## Version [1.0.0](https://github.com/cedx/gulp-php-minify/compare/v0.3.1...v1.0.0)
 - Breaking change: the plug-in is not anymore a default export. The use of destructuring assignment is advised to access it.
 - Breaking change: ported the [CommonJS modules](https://nodejs.org/api/modules.html) to ES2015 format.
-- Breaking change: ported the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
+- Breaking change: ported the [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)-based APIs to [Observables](http://reactivex.io/intro.html).
 - Breaking change: raised the required [Node.js](https://nodejs.org) version.
 - Breaking change: replaced the test classes by plain tests.
 - Added the `listening` property.
