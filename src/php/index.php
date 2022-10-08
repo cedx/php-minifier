@@ -26,7 +26,6 @@ try {
 	if (!$output) throw new RuntimeException("Internal Server Error", 500);
 	sendResponse($output);
 }
-
 catch (Throwable $e) {
 	$code = $e->getCode();
 	sendResponse($e->getMessage(), $code >= 400 && $code < 600 ? $code : 500);
