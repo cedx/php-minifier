@@ -10,7 +10,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: 18
+          node-version: 19
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
