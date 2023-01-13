@@ -75,7 +75,7 @@ export class FastTransformer extends Transformer {
 		url.searchParams.set("file", resolve(file));
 
 		const response = await fetch(url);
-		if (!response.ok) throw new Error(`An error occurred while processing the script: ${file}`);
+		if (!response.ok) throw Error(`An error occurred while processing the script: ${file}`);
 		return response.text();
 	}
 }
