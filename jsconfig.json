@@ -8,6 +8,7 @@
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
 		"paths": {"@cedx/gulp-php-minify": ["src"]},
+		"rootDir": "./src",
 		"strict": true,
 		"target": "ESNext"
 	}
