@@ -57,7 +57,7 @@
 		"max-params": ["error", 4],
 		"max-statements": ["error", {"max": 25}],
 		"multiline-comment-style": ["error", "separate-lines"],
-		"new-cap": "error",
+		"new-cap": ["error", {"capIsNewExceptions": ["RangeError", "SyntaxError", "TypeError"]}],
 		"no-alert": "error",
 		"no-array-constructor": "error",
 		"no-caller": "error",

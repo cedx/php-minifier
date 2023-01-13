@@ -19,7 +19,7 @@ export class Transformer {
 	 * @protected
 	 */
 	constructor(executable) {
-		if (this.constructor == Transformer) throw new TypeError("The Transformer class is abstract.");
+		if (this.constructor == Transformer) throw TypeError("The Transformer class is abstract.");
 		this._executable = normalize(executable);
 	}
 
@@ -29,7 +29,7 @@ export class Transformer {
 	 * @abstract
 	 */
 	async close() {
-		throw new TypeError("Not implemented.");
+		throw TypeError("Not implemented.");
 	}
 
 	/**
@@ -39,6 +39,6 @@ export class Transformer {
 	 * @abstract
 	 */
 	async transform(file) { // eslint-disable-line no-unused-vars
-		throw new TypeError("Not implemented.");
+		throw TypeError("Not implemented.");
 	}
 }
