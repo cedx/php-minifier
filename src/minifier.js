@@ -61,7 +61,7 @@ export class Minifier extends Transform {
 		try {
 			this.#transformer ??= this.mode == TransformMode.fast ? new FastTransformer(this.binary) : new SafeTransformer(this.binary);
 			if (!this.silent) log(`Minifying: ${file.relative}`);
-			file.contents = Buffer.from(await this.#transformer.transform(file.path), encoding); // eslint-disable-line require-atomic-updates
+			file.contents = Buffer.from(await this.#transformer.transform(file.path), encoding);
 			if (callback) callback(null, file);
 		}
 		catch (error) {
