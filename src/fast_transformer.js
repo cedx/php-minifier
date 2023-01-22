@@ -40,11 +40,8 @@ export class FastTransformer extends Transformer {
 	 * @returns {Promise<void>} Resolves when the transformer is finally disposed.
 	 */
 	close() {
-		if (this.#process) {
-			this.#process.kill();
-			this.#process = null;
-		}
-
+		this.#process?.kill();
+		this.#process = null;
 		return Promise.resolve();
 	}
 
@@ -60,7 +57,7 @@ export class FastTransformer extends Transformer {
 			const args = ["-S", `${FastTransformer.address}:${this.#port}`, "-t", fileURLToPath(new URL("php", import.meta.url))];
 			this.#process = execa(this._executable, args);
 			this.#process.on("error", reject);
-			setTimeout(() => fulfill(this.#port), 1_000);
+			this.#process.on("spawn", () => setTimeout(fulfill, 1_000, this.#port));
 		});
 	}
 
