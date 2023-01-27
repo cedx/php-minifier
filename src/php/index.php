@@ -1,5 +1,4 @@
-<?php declare(strict_types=1);
-
+<?php
 /**
  * Sends the specified response body.
  * @param string $body The response body to send to the client.
