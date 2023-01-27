@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {SafeTransformer} from "../src/index.js";
+import {SafeTransformer} from "#php_minify";
 
 /**
  * Tests the features of the {@link SafeTransformer} class.

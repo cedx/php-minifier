@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
 import File from "vinyl";
-import {Minifier, TransformMode} from "../src/index.js";
+import {Minifier, TransformMode} from "#php_minify";
 
 /**
  * Tests the features of the {@link Minifier} class.

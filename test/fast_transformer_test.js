@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {describe, it} from "node:test";
-import {FastTransformer} from "../src/index.js";
+import {FastTransformer} from "#php_minify";
 
 /**
  * Tests the features of the {@link FastTransformer} class.

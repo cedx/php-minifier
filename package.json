@@ -44,6 +44,12 @@
 		"lib/",
 		"src/"
 	],
+	"imports": {
+		"#php_minify": {
+			"types": "./lib/index.d.ts",
+			"import": "./src/index.js"
+		}
+	},
 	"keywords": [
 		"compress",
 		"gulp",
