@@ -26,9 +26,7 @@
 		"@types/node": "^18.14.0",
 		"@types/vinyl": "^2.0.7",
 		"c8": "^7.13.0",
-		"del": "^7.0.0",
 		"eslint": "^8.34.0",
-		"gulp": "^4.0.2",
 		"typedoc": "^0.23.25",
 		"typescript": "^4.9.5",
 		"vinyl": "^3.0.0"
@@ -61,7 +59,7 @@
 		"gulp": ">=4.0.0"
 	},
 	"scripts": {
-		"prepack": "gulp",
+		"prepack": "lix Dist",
 		"test": "node --test"
 	}
 }
