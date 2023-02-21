@@ -1,0 +1,94 @@
+{
+	"defaultSeverity": "ERROR",
+	"exclude": {
+		"path": "RELATIVE_TO_PROJECT",
+		"ArrowFunction": [
+			"src/akismet/Author",
+			"src/akismet/Blog",
+			"src/akismet/Comment"
+		],
+		"MemberName": [
+			"src/akismet/Author",
+			"src/akismet/Blog",
+			"src/akismet/Comment"
+		]
+	},
+	"checks": [
+		{"type": "BlockBreakingConditional"},
+		{"type": "ConditionalCompilation"},
+		{"type": "EmptyBlock"},
+
+		{"type": "ArrowFunction", "props": {"allowCurlyBody": true}},
+		{"type": "DefaultComesLast"},
+		{"type": "HiddenField"},
+		{"type": "MultipleVariableDeclarations"},
+		{"type": "NestedControlFlow"},
+		{"type": "NestedForDepth"},
+		{"type": "NestedIfDepth"},
+		{"type": "NestedTryDepth"},
+		{"type": "NullableParameter"},
+		{"type": "ReturnCount"},
+		{"type": "SimplifyBooleanExpression"},
+		{"type": "SimplifyBooleanReturn"},
+		{"type": "Trace", "props": {"severity": "WARNING"}},
+		{"type": "UnusedLocalVar"},
+
+		{"type": "DocCommentStyle"},
+		{"type": "TODOComment", "props": {"severity": "INFO"}},
+
+		{"type": "EmptyPackage"},
+		{"type": "Interface", "props": {"allowProperties": true}},
+		{"type": "UnnecessaryConstructor"},
+
+		{"type": "AvoidStarImport"},
+		{"type": "UnusedImport"},
+
+		{"type": "ArrayLiteral"},
+		{"type": "ERegLiteral"},
+		{"type": "HexadecimalLiteral"},
+		{"type": "StringLiteral"},
+
+		{"type": "RedundantAccessMeta"},
+		{"type": "RedundantAllowMeta"},
+
+		{"type": "CyclomaticComplexity"},
+
+		{"type": "Final"},
+		{"type": "ModifierOrder"},
+		{"type": "PublicAccessor"},
+		{"type": "RedundantModifier"},
+
+		{"type": "CatchParameterName"},
+		{"type": "ConstantName", "props": {"format": "^[a-z][a-zA-Z0-9]*$"}},
+		{"type": "ListenerName"},
+		{"type": "LocalVariableName"},
+		{"type": "MemberName", "props": {"format": "^[a-z][a-zA-Z0-9]*$", "tokens": ["CLASS", "TYPEDEF"]}},
+		{"type": "MemberName", "props": {"format": "^[A-Z][a-zA-Z0-9]*$", "tokens": ["ENUM"]}},
+		{"type": "MethodName"},
+		{"type": "ParameterName"},
+		{"type": "TypeName"},
+
+		{"type": "FileLength"},
+		{"type": "LineLength"},
+		{"type": "MethodCount"},
+		{"type": "MethodLength"},
+		{"type": "ParameterNumber"},
+
+		{"type": "AvoidIdentifier"},
+		{"type": "Dynamic"},
+
+		{"type": "ArrayAccess"},
+		{"type": "EmptyLines"},
+		{"type": "ExtendedEmptyLines"},
+		{"type": "IndentationCharacter"},
+		{"type": "OperatorWhitespace"},
+		{"type": "OperatorWrap"},
+		{"type": "SeparatorWhitespace"},
+		{"type": "SeparatorWrap"},
+		{"type": "Spacing"},
+		{"type": "TabForAligning"},
+		{"type": "TrailingWhitespace"},
+		{"type": "WhitespaceAfter"},
+		{"type": "WhitespaceAround"}
+	]
+}
