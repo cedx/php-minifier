@@ -1,17 +1,7 @@
 {
 	"defaultSeverity": "ERROR",
 	"exclude": {
-		"path": "RELATIVE_TO_PROJECT",
-		"ArrowFunction": [
-			"src/akismet/Author",
-			"src/akismet/Blog",
-			"src/akismet/Comment"
-		],
-		"MemberName": [
-			"src/akismet/Author",
-			"src/akismet/Blog",
-			"src/akismet/Comment"
-		]
+		"path": "RELATIVE_TO_PROJECT"
 	},
 	"checks": [
 		{"type": "BlockBreakingConditional"},
