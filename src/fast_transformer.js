@@ -46,7 +46,7 @@ export class FastTransformer extends Transformer {
 	}
 
 	/**
-	 * Starts the underlying PHP process: begins accepting connections. It does nothing if the server is already started.
+	 * Starts the underlying PHP process and begins accepting connections. It does nothing if the server is already started.
 	 * @returns {Promise<number>} The port used by the PHP process.
 	 */
 	async listen() {
