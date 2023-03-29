@@ -21,10 +21,10 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.0",
 		"@types/gulp": "^4.0.10",
-		"@types/node": "^18.15.10",
+		"@types/node": "^18.15.11",
 		"@types/vinyl": "^2.0.7",
 		"c8": "^7.13.0",
-		"eslint": "^8.36.0",
+		"eslint": "^8.37.0",
 		"typedoc": "^0.23.28",
 		"typescript": "^5.0.2",
 		"vinyl": "^3.0.0"
