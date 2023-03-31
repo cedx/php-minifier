@@ -26,7 +26,7 @@
 		"c8": "^7.13.0",
 		"eslint": "^8.37.0",
 		"typedoc": "^0.23.28",
-		"typescript": "^5.0.2",
+		"typescript": "^5.0.3",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
