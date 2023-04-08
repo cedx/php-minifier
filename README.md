@@ -5,7 +5,7 @@
 
 ## Documentation
 - [User guide](https://github.com/cedx/gulp-php-minify/wiki)
-- [API reference](https://cedx.github.io/gulp-php-minify)
+- [API reference](https://docs.belin.io/gulp-php-minify)
 
 ## Development
 - [Git repository](https://github.com/cedx/gulp-php-minify)
