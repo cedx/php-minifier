@@ -9,7 +9,7 @@ class FastTransformer implements Transformer {
 	final executable: String;
 
 	/** Creates a new transformer. **/
-	function new(executable: String) this.executable = executable.normalize();
+	function new(executable = "php") this.executable = executable.normalize();
 
 	/** Closes this transformer and releases any resources associated with it. **/
 	public function close() {
