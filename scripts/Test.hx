@@ -1,3 +1,5 @@
 /** Runs the test suite. **/
-function main()
-	Sys.command("npx c8 --all --include=src/**/*.js --report-dir=var --reporter=lcovonly node --test");
+function main() for (file in ["hl", "java", "js", "php"]) {
+	Sys.println('> Testing the "$file" target...');
+	Sys.command('haxe test_$file.hxml');
+}
