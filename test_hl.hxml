@@ -1,0 +1,4 @@
+--define hl-ver=1.13.0
+--hl var/tests.hl
+share/test.hxml
+--cmd hl var/tests.hl
