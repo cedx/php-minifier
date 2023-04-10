@@ -1,0 +1,11 @@
+--class-path src
+--class-path test
+--dce full
+--define analyzer-optimize
+--define coverage-lcov-reporter=var/lcov.info
+--define no-deprecation-warnings
+--library asys
+--library instrument
+--library tink_unittest
+--macro instrument.Instrumentation.coverage(["php_minify"], ["src"])
+--main RunTests

@@ -2,26 +2,51 @@ name: main
 on: push
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.target == 'hl' && 'windows-latest' || 'ubuntu-latest'}}
+    strategy:
+      matrix:
+        target: [hl, java, js, php]
     steps:
       - name: Fetch sources
         uses: actions/checkout@v3
+      - name: Set up Lix
+        uses: lix-pm/setup-lix@master
+      - name: Set up GraalVM
+        if: matrix.target == 'java'
+        uses: graalvm/setup-graalvm@v1
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          java-version: 17
+          version: latest
+      - name: Set up HashLink
+        if: matrix.target == 'hl'
+        uses: cedx/setup-hashlink@v3
       - name: Set up Node.js
+        if: matrix.target == 'js'
         uses: actions/setup-node@v3
         with:
-          cache: npm
           node-version: 18
       - name: Set up PHP
+        if: matrix.target == 'php'
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-          extensions: mbstring
+          extensions: curl, intl, mbstring, simplexml
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/haxe
+            ~/AppData/Roaming/haxe
+          key: haxe-${{runner.os}}-lix-${{hashFiles('.haxerc', 'haxe_libraries/*.hxml')}}
+          restore-keys: haxe-${{runner.os}}-lix-
       - name: Install dependencies
-        run: npm ci
+        run: lix download
       - name: Run tests
-        run: npm test
+        run: haxe test_${{matrix.target}}.hxml
       - name: Collect code coverage
         if: success()
         uses: codecov/codecov-action@v3
         with:
           files: var/lcov.info
+          flags: ${{matrix.target}}

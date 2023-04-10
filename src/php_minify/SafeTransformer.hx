@@ -3,6 +3,7 @@ package php_minify;
 import asys.FileSystem;
 import asys.io.Process;
 using haxe.io.Path;
+using tink.io.Source;
 
 /** Removes comments and whitespace from a PHP script, by calling a PHP process. **/
 class SafeTransformer implements Transformer {
@@ -11,7 +12,7 @@ class SafeTransformer implements Transformer {
 	final executable: String;
 
 	/** Creates a new transformer. **/
-	function new(executable = "php") this.executable = executable.normalize();
+	public function new(executable = "php") this.executable = executable.normalize();
 
 	/** Closes this transformer and releases any resources associated with it. **/
 	public function close() return Promise.NOISE;
