@@ -1,5 +1,6 @@
 package php_minify;
 
+import asys.FileSystem;
 import asys.io.Process;
 using haxe.io.Path;
 
@@ -17,6 +18,9 @@ class SafeTransformer implements Transformer {
 
 	/** Processes a PHP script. **/
 	public function transform(file: String) {
-		return Promise.resolve("TODO");
+		final process = new Process(executable, ["-w", FileSystem.absolutePath(file)]);
+		return process.exitCode()
+			.next(exitCode -> exitCode == 0 ? process.stdout.all() : new Error('Process exited with a $exitCode code.'))
+			.next(stdout -> { process.close(); stdout.toString(); });
 	}
 }
