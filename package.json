@@ -1,10 +1,10 @@
 {
-	"bugs": "https://github.com/cedx/gulp-php-minify/issues",
+	"bugs": "https://github.com/cedx/php-minify/issues",
 	"description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
-	"homepage": "https://github.com/cedx/gulp-php-minify",
+	"homepage": "https://docs.belin.io/php-minify",
 	"license": "MIT",
-	"name": "@cedx/gulp-php-minify",
-	"repository": "github:cedx/gulp-php-minify",
+	"name": "@cedx/php-minify",
+	"repository": "github:cedx/php-minify",
 	"type": "module",
 	"version": "12.0.0",
 	"author": {

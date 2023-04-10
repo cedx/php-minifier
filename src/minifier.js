@@ -65,7 +65,7 @@ export class Minifier extends Transform {
 			if (callback) callback(null, file);
 		}
 		catch (error) {
-			if (callback) callback(new PluginError("@cedx/gulp-php-minify", /** @type {Error} */ (error)), {fileName: file.path});
+			if (callback) callback(new PluginError("@cedx/php-minify", /** @type {Error} */ (error)), {fileName: file.path});
 			else throw error;
 		}
 
