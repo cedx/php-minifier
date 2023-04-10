@@ -1,6 +1,5 @@
---define php-front=test/index.php
---define php-lib=var/lib
+--define php-front=tests.php
 --define real-position
---php .
+--php var
 share/test.hxml
---cmd php test/index.php
+--cmd php var/tests.php
