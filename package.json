@@ -1,16 +1,19 @@
 {
 	"bugs": "https://github.com/cedx/php-minify/issues",
-	"description": "Gulp plug-in minifying PHP source code by removing comments and whitespace.",
+	"description": "TODO Gulp plug-in minifying PHP source code by removing comments and whitespace.",
 	"homepage": "https://docs.belin.io/php-minify",
 	"license": "MIT",
 	"name": "@cedx/php-minify",
 	"repository": "github:cedx/php-minify",
-	"type": "module",
-	"version": "12.0.0",
+	"type": "commonjs",
+	"version": "1.0.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
 		"url": "https://belin.io"
+	},
+	"bin": {
+		"php_minify": "./bin/php_minify.js"
 	},
 	"dependencies": {
 		"execa": "^7.1.1",
@@ -19,14 +22,7 @@
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
-		"@types/fancy-log": "^2.0.0",
-		"@types/gulp": "^4.0.10",
-		"@types/node": "^18.15.11",
-		"@types/vinyl": "^2.0.7",
-		"c8": "^7.13.0",
-		"eslint": "^8.38.0",
-		"typedoc": "^0.24.1",
-		"typescript": "^5.0.4",
+		"esbuild": "^0.17.16",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
@@ -34,18 +30,12 @@
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"import": "./src/index.js"
+		"default": "./lib/index.js"
 	},
 	"files": [
 		"lib/",
-		"src/"
+		"www/"
 	],
-	"imports": {
-		"#php_minify": {
-			"types": "./lib/index.d.ts",
-			"import": "./src/index.js"
-		}
-	},
 	"keywords": [
 		"compress",
 		"gulp",
@@ -55,9 +45,5 @@
 	],
 	"peerDependencies": {
 		"gulp": ">=4.0.0"
-	},
-	"scripts": {
-		"prepack": "lix Dist",
-		"test": "node --test"
 	}
 }

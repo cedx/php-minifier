@@ -1,0 +1,12 @@
+{
+	"classPath": "src/",
+	"contributors": ["cedx"],
+	"dependencies": {"tink_core": ""},
+	"description": "TODO",
+	"license": "MIT",
+	"name": "php_minify",
+	"releasenote": "Initial release.",
+	"tags": ["compress", "gulp", "minify", "nodejs", "php"],
+	"url": "https://docs.belin.io/php-minify",
+	"version": "1.0.0"
+}
