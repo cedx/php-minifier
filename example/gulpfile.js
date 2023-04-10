@@ -1,6 +1,6 @@
 import process from "node:process";
 import gulp from "gulp";
-import phpMinify from "@cedx/gulp-php-minify";
+import phpMinify from "@cedx/php-minify";
 
 /**
  * Compresses a given set of PHP scripts.
