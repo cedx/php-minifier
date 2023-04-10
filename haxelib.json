@@ -1,7 +1,7 @@
 {
 	"classPath": "src/",
 	"contributors": ["cedx"],
-	"dependencies": {"tink_core": ""},
+	"dependencies": {"asys": "", "tink_core": ""},
 	"description": "TODO",
 	"license": "MIT",
 	"name": "php_minify",
