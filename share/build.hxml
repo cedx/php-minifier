@@ -1,0 +1,5 @@
+--class-path src
+--dce full
+--define analyzer-optimize
+--define no-deprecation-warnings
+--library tink_cli

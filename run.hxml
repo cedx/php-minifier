@@ -1,0 +1,12 @@
+--main php_minify.cli.Program
+share/build.hxml
+
+--each
+--neko run.n
+
+--next
+--define js-es=6
+--define js-global=global
+--js bin/php_minify.js
+--library hxnodejs
+--macro php_minify.Macro.shebang("node")
