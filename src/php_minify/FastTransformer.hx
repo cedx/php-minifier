@@ -9,6 +9,7 @@ using haxe.io.Path;
 #if java
 import java.net.ServerSocket as Socket;
 #elseif js
+import js.Node;
 import js.node.Net;
 #else
 import sys.net.Host;
@@ -76,8 +77,9 @@ class FastTransformer implements Transformer {
 
 	/** Starts the underlying PHP process and begins accepting connections. **/
 	function listen() return process != null ? Promise.NOISE : getPort().next(tcpPort -> {
+		final webRoot = Path.join([#if js Node.__dirname, "../www" #else Sys.programPath().directory(), "www" #end]);
 		port = tcpPort;
-		process = new Process(executable, ["-S", '$address:$port', "-t", "www"]); // TODO location of "www" folder
-		Future.delay(1_000, Noise);
+		process = new Process(executable, ["-S", '$address:$port', "-t", webRoot]);
+		Future.delay(1_000, Lazy.NOISE);
 	});
 }
