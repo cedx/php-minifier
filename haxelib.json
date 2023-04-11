@@ -1,8 +1,8 @@
 {
 	"classPath": "src/",
 	"contributors": ["cedx"],
-	"dependencies": {"asys": "", "tink_http": ""},
-	"description": "TODO",
+	"dependencies": {"asys": "", "tink_http": "", "tink_querystring": ""},
+	"description": "Minify PHP source code by removing comments and whitespace.",
 	"license": "MIT",
 	"name": "php_minify",
 	"releasenote": "Initial release.",

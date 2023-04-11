@@ -1,6 +1,6 @@
 {
 	"bugs": "https://github.com/cedx/php-minify/issues",
-	"description": "TODO Gulp plug-in minifying PHP source code by removing comments and whitespace.",
+	"description": "Minify PHP source code by removing comments and whitespace.",
 	"homepage": "https://docs.belin.io/php-minify",
 	"license": "MIT",
 	"name": "@cedx/php-minify",
