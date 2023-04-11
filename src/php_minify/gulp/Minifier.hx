@@ -8,6 +8,7 @@ import js.plugin_error.PluginError;
 import js.vinyl.File;
 
 /** Removes PHP comments and whitespace by applying the `php_strip_whitespace()` function. **/
+@:expose("Minifier")
 @:require(nodejs)
 final class Minifier extends Transform<Minifier> {
 
