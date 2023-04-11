@@ -31,8 +31,8 @@ using StringTools;
 	@:variant("__construct() { $this->property")
 	public function testTransform(output: String) {
 		final transformer = new FastTransformer();
-		transformer.transform("test/fixture/sample.php").next(stdout -> {
-			asserts.assert(stdout.contains(output));
+		transformer.transform("test/fixture/sample.php").next(script -> {
+			asserts.assert(script.contains(output));
 			transformer.close();
 		}).handle(asserts.handle);
 
