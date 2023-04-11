@@ -8,17 +8,17 @@ export class Minifier extends Transform {
 	/**
 	 * The path to the PHP executable.
 	 */
-	binary: string;
+	readonly binary: string;
 
 	/**
 	 * The operation mode.
 	 */
-	mode: TransformMode;
+	readonly mode: TransformMode;
 
 	/**
 	 * Value indicating whether to silence the minifier output.
 	 */
-	silent: boolean;
+	readonly silent: boolean;
 
 	/**
 	 * Creates a new minifier.

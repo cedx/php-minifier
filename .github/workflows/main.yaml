@@ -25,6 +25,7 @@ jobs:
         if: matrix.target == 'js'
         uses: actions/setup-node@v3
         with:
+          cache: npm
           node-version: 18
       - name: Set up PHP
         if: matrix.target == 'php'
@@ -41,7 +42,9 @@ jobs:
           key: haxe-${{runner.os}}-lix-${{hashFiles('.haxerc', 'haxe_libraries/*.hxml')}}
           restore-keys: haxe-${{runner.os}}-lix-
       - name: Install dependencies
-        run: lix download
+        run: |
+          lix download
+          npm ci
       - name: Run tests
         run: haxe test_${{matrix.target}}.hxml
       - name: Collect code coverage

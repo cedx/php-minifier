@@ -1,5 +1,5 @@
 --define js-es=6
 --define js-global=global
---js lib/index.js
+--js lib/bundle.js
 --library hxnodejs
 share/build.hxml
