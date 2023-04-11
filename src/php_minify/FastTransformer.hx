@@ -43,7 +43,7 @@ class FastTransformer implements Transformer {
 
 	/** Processes a PHP script. **/
 	public function transform(file: String) return listen()
-		.next(port -> {
+		.next(_ -> {
 			final query = QueryString.build({file: FileSystem.absolutePath(file)});
 			Client.fetch('http://$address:$port/index.php?$query').all();
 		})
@@ -74,11 +74,10 @@ class FastTransformer implements Transformer {
 		#end
 	}
 
-	/** Starts the PHP process and begins accepting connections. Returns the port that the process is listening on. **/
-	function listen(): Promise<Int>
-		return process != null ? Promise.resolve(port) : getPort().next(tcpPort -> {
-			port = tcpPort;
-			process = new Process(executable, ["-S", '$address:$port', "-t", "www"]); // TODO location of "www" folder
-			return Future.delay(1_000, () -> port);
-		});
+	/** Starts the underlying PHP process and begins accepting connections. **/
+	function listen() return process != null ? Promise.NOISE : getPort().next(tcpPort -> {
+		port = tcpPort;
+		process = new Process(executable, ["-S", '$address:$port', "-t", "www"]); // TODO location of "www" folder
+		Future.delay(1_000, Noise);
+	});
 }
