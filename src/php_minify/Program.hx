@@ -4,7 +4,7 @@ import tink.Cli;
 import tink.cli.Rest;
 using Lambda;
 
-/** Remove PHP comments and whitespace by applying the `php_strip_whitespace()` function. **/
+/** Minify PHP source code by removing comments and whitespace. **/
 @:noDoc final class Program {
 
 	/** Display this help. **/
