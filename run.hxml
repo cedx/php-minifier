@@ -1,4 +1,4 @@
---main php_minify.cli.Program
+--main php_minify.Program
 share/build.hxml
 
 --each
