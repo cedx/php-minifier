@@ -41,17 +41,6 @@ class FastTransformer implements Transformer {
 		return Promise.NOISE;
 	}
 
-	/**
-		Starts the underlying PHP process and begins accepting connections.
-		Returns the port that the PHP process is listening on.
-	**/
-	public function listen(): Promise<Int>
-		return process != null ? Promise.resolve(port) : getPort().next(tcpPort -> {
-			port = tcpPort;
-			process = new Process(executable, ["-S", '$address:$port', "-t", "www"]); // TODO location of "www" folder
-			return Future.delay(1_000, () -> port);
-		});
-
 	/** Processes a PHP script. **/
 	public function transform(file: String) return listen()
 		.next(port -> {
@@ -60,14 +49,14 @@ class FastTransformer implements Transformer {
 		})
 		.next(response -> response.body.toString());
 
-	/** Gets an ephemeral port chosen by the system. **/
+	/** Gets an ephemeral TCP port chosen by the system. **/
 	function getPort(): Promise<Int> {
 		#if js
 			final socket = Net.createServer();
 			socket.unref();
 
 			final trigger = Promise.trigger();
-			socket.on("error", e -> trigger.reject(Error.withData(ServiceUnavailable, "Unable to find an ephemeral port.", e)));
+			socket.on("error", e -> trigger.reject(Error.withData(ServiceUnavailable, "Unable to find an ephemeral TCP port.", e)));
 			socket.listen(0, address, () -> {
 				final port = socket.address().port;
 				socket.close(() -> trigger.resolve(port));
@@ -81,7 +70,15 @@ class FastTransformer implements Transformer {
 				final port = #if java socket.getLocalPort() #else socket.host().port #end;
 				socket.close();
 				port;
-			}, e -> Error.withData(ServiceUnavailable, "Unable to find an ephemeral port.", e));
+			}, e -> Error.withData(ServiceUnavailable, "Unable to find an ephemeral TCP port.", e));
 		#end
 	}
+
+	/** Starts the PHP process and begins accepting connections. Returns the port that the process is listening on. **/
+	function listen(): Promise<Int>
+		return process != null ? Promise.resolve(port) : getPort().next(tcpPort -> {
+			port = tcpPort;
+			process = new Process(executable, ["-S", '$address:$port', "-t", "www"]); // TODO location of "www" folder
+			return Future.delay(1_000, () -> port);
+		});
 }
