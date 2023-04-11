@@ -1,4 +1,4 @@
-package php_minify;
+package php_minify.gulp;
 
 /** Defines the type of transformation applied by the minifier. **/
 enum abstract TransformMode(String) {

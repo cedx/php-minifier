@@ -8,7 +8,8 @@ import tink.unit.TestBatch;
 function main() {
 	final tests = TestBatch.make([
 		new php_minify.FastTransformerTest(),
-		new php_minify.SafeTransformerTest()
+		new php_minify.SafeTransformerTest(),
+		#if js new php_minify.gulp.MinifierTest() #end
 	]);
 
 	ANSI.stripIfUnavailable = false;
