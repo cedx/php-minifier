@@ -5,7 +5,22 @@ import js.lib.Error;
 
 /** Represents a plugin error. **/
 @:jsRequire("plugin-error")
-extern class PluginError {
+extern class PluginError extends Error {
+
+	/** The file name where the error occurred. **/
+	final fileName: Null<String>;
+
+	/** The line number where the error occurred. **/
+	final lineNumber: Null<Int>;
+
+	/** The plugin name. **/
+	final plugin: String;
+
+	/** Value indicating whether to the error properties. **/
+	final showProperties: Bool;
+
+	/** Value indicating whether to the stack. **/
+	final showStack: Bool;
 
 	/** Creates a new plugin error. **/
 	function new(plugin: String, message: EitherType<Error, String>, ?options: PluginErrorOptions);
