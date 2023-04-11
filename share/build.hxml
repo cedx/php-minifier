@@ -4,3 +4,5 @@
 --define no-deprecation-warnings
 --library asys
 --library tink_cli
+--library tink_http
+--library tink_querystring

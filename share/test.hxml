@@ -6,6 +6,8 @@
 --define no-deprecation-warnings
 --library asys
 --library instrument
+--library tink_http
+--library tink_querystring
 --library tink_unittest
 --macro instrument.Instrumentation.coverage(["php_minify"], ["src"])
 --main RunTests

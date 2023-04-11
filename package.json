@@ -16,9 +16,7 @@
 		"php_minify": "./bin/php_minify.js"
 	},
 	"dependencies": {
-		"execa": "^7.1.1",
 		"fancy-log": "^2.0.0",
-		"get-port": "^6.1.2",
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
