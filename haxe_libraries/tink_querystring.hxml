@@ -1,0 +1,5 @@
+# @install: lix --silent download "haxelib:/tink_querystring#0.7.0" into tink_querystring/0.7.0/haxelib
+-lib tink_typecrawler
+-lib tink_url
+-cp ${HAXE_LIBCACHE}/tink_querystring/0.7.0/haxelib/src
+-D tink_querystring=0.7.0
