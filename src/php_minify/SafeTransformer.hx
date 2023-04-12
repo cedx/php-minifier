@@ -11,7 +11,7 @@ class SafeTransformer implements Transformer {
 	/** The path to the PHP executable. **/
 	final executable: String;
 
-	/** Creates a new transformer. **/
+	/** Creates a new safe transformer. **/
 	public function new(executable = "php") this.executable = executable.normalize();
 
 	/** Closes this transformer and releases any resources associated with it. **/
