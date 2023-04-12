@@ -1,5 +1,0 @@
---define php-front=tests.php
---define real-position
---php var
-share/test.hxml
---cmd php var/tests.php
