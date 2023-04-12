@@ -1,0 +1,11 @@
+--class-path src
+--class-path test
+--dce full
+--define analyzer-optimize
+--define coverage-lcov-reporter=var/lcov.info
+--define js-es=6
+--define js-global=global
+--js var/tests.js
+--library hxnodejs
+share/test.hxml
+--cmd node var/tests.js

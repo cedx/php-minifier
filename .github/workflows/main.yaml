@@ -2,33 +2,18 @@ name: main
 on: push
 jobs:
   test:
-    runs-on: ${{matrix.target == 'hl' && 'windows-latest' || 'ubuntu-latest'}}
-    strategy:
-      matrix:
-        target: [js] # [hl, java, js, php]
+    runs-on: ubuntu-latest
     steps:
       - name: Fetch sources
         uses: actions/checkout@v3
       - name: Set up Lix
         uses: lix-pm/setup-lix@master
-      - name: Set up GraalVM
-        if: matrix.target == 'java'
-        uses: graalvm/setup-graalvm@v1
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          java-version: 17
-          version: latest
-      - name: Set up HashLink
-        if: matrix.target == 'hl'
-        uses: cedx/setup-hashlink@v3
       - name: Set up Node.js
-        if: matrix.target == 'js'
         uses: actions/setup-node@v3
         with:
           cache: npm
           node-version: 18
       - name: Set up PHP
-        if: matrix.target == 'php'
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
@@ -46,10 +31,9 @@ jobs:
           lix download
           npm ci
       - name: Run tests
-        run: haxe test_${{matrix.target}}.hxml
+        run: haxe test.hxml
       - name: Collect code coverage
         if: success()
         uses: codecov/codecov-action@v3
         with:
           files: var/lcov.info
-          flags: ${{matrix.target}}
