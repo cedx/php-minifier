@@ -5,7 +5,15 @@
 --define coverage-lcov-reporter=var/lcov.info
 --define js-es=6
 --define js-global=global
+--define no-deprecation-warnings
 --js var/tests.js
+--library asys
 --library hxnodejs
-share/test.hxml
+--library instrument
+--library tink_cli
+--library tink_http
+--library tink_querystring
+--library tink_unittest
+--macro instrument.Instrumentation.coverage(["php_minify"], ["src"])
+--main RunTests
 --cmd node var/tests.js
