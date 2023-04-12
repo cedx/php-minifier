@@ -31,7 +31,7 @@ class FastTransformer implements Transformer {
 	/** The underlying PHP process. **/
 	var process: Null<Process> = null;
 
-	/** Creates a new transformer. **/
+	/** Creates a new fast transformer. **/
 	public function new(executable = "php") this.executable = executable.normalize();
 
 	/** Closes this transformer and releases any resources associated with it. **/

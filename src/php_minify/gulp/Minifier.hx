@@ -9,7 +9,6 @@ import js.vinyl.File;
 
 /** Minify PHP source code by removing comments and whitespace. **/
 @:expose("Minifier")
-@:require(nodejs)
 final class Minifier extends Transform<Minifier> {
 
 	/** The path to the PHP executable. **/

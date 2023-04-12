@@ -11,7 +11,7 @@ function main() {
 	Sys.command("lix", ["run", "dox",
 		"--define", "description", "Minify PHP source code by removing comments and whitespace.",
 		"--define", "source-path", "https://github.com/cedx/php-minify/blob/main/src",
-		"--define", "themeColor", "0x617cbe",
+		"--define", "themeColor", "0x4f5b93",
 		"--define", "version", Version.packageVersion,
 		"--define", "website", "https://docs.belin.io/php-minify",
 		"--input-path", "var",
