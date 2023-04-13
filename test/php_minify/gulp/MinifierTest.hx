@@ -1,8 +1,8 @@
 package php_minify.gulp;
 
+import asys.FileSystem;
 import js.node.Buffer;
 import js.vinyl.File;
-import sys.FileSystem;
 using StringTools;
 
 /** Tests the features of the `Minifier` class. **/

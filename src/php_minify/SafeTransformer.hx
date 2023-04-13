@@ -21,7 +21,7 @@ class SafeTransformer implements Transformer {
 	public function transform(file: String) {
 		final process = new Process(executable, ["-w", FileSystem.absolutePath(file)]);
 		return process.exitCode()
-			.next(exitCode -> exitCode == 0 ? process.stdout.all() : new Error('Process exited with a $exitCode code.'))
+			.next(exitCode -> exitCode == 0 ? process.stdout.all() : new Error('The PHP process exited with a $exitCode code.'))
 			.next(stdout -> { process.close(); stdout.toString(); });
 	}
 }
