@@ -1,9 +1,11 @@
 package php_minify;
 
 import sys.FileSystem;
+import sys.io.File;
 import tink.Cli;
 import tink.cli.Rest;
 using Lambda;
+using StringTools;
 using haxe.io.Path;
 
 /**
@@ -13,8 +15,17 @@ using haxe.io.Path;
 **/
 @:noDoc final class Program {
 
+	/** The path to the PHP executable. **/
+	public var binary = "php";
+
 	/** The extension of the PHP files to process. Defaults to "php". **/
 	public var extension = "php";
+
+	/** The operation mode of the minifier. Defaults to "safe". **/
+	public var mode = TransformMode.Safe;
+
+	/** Value indicating whether to silence the minifier output. **/
+	public var silent = false;
 
 	/** Display this help. **/
 	public var help = false;
@@ -46,15 +57,44 @@ using haxe.io.Path;
 		final cwd = haxelibRun ? rest.pop() : Sys.getCwd();
 		final input = resolvePath(rest.shift(), cwd);
 		if (!FileSystem.exists(input)) return new Error(NotFound, "The input directory was not found.");
-		trace(input);
 
+		final length = input.addTrailingSlash().length;
 		final output = rest.length > 0 ? resolvePath(rest.shift(), cwd) : input;
-		// TODO ??? FileSystem.createDirectory(output);
-		trace(output);
+		return processFiles(input, output, listDirectory(input).map(path -> path.substring(length)));
+	}
 
-		return Noise;
+	/** Processes the specified PHP `files`. **/
+	function processFiles(input: String, output: String, files: Array<String>) {
+		final isWindows = Sys.systemName() == "Windows";
+		final transformer: Transformer = mode == Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
+		return Promise.inSequence(files.map(file -> {
+			if (!silent) {
+				final normalizedPath = isWindows ? file.replace("/", "\\") : file;
+				Sys.println('Minifying: $normalizedPath');
+			}
+
+			transformer.transform(Path.join([input, file])).next(script -> Error.catchExceptions(() -> {
+				final path = Path.join([output, file]);
+				FileSystem.createDirectory(path.directory());
+				File.saveContent(path, script);
+				Noise;
+			}));
+		})).noise();
+	}
+
+	/** Returns the paths of all PHP files in the specified `directory`. **/
+	function listDirectory(directory: String) {
+		var paths = [];
+		for (entry in FileSystem.readDirectory(directory)) {
+			final path = Path.join([directory, entry]);
+			if (FileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
+			else if (entry.extension() == extension) paths.push(path);
+		}
+
+		return paths;
 	}
 
 	/** Resolves the specified `path` into an absolute path. **/
-	function resolvePath(path: String, cwd: String) return path.isAbsolute() ? path : Path.join([cwd, path]);
+	function resolvePath(path: String, cwd: String)
+		return path.isAbsolute() ? path.normalize() : Path.join([cwd, path]);
 }
