@@ -31,7 +31,7 @@ final class Minifier extends Transform<Minifier> {
 		binary = options?.binary ?? "php";
 		mode = options?.mode ?? Safe;
 		silent = options?.silent ?? false;
-		transformer = null;
+		transformer = mode == Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 
 		final handler = () -> transformer?.close()?.eager();
 		on("end", handler).on("error", handler);
@@ -41,8 +41,6 @@ final class Minifier extends Transform<Minifier> {
 	override function _transform(chunk: Dynamic, encoding: String, callback: (Null<Error>, Any) -> Void): Void {
 		final file: File = chunk;
 		if (!silent) Logger.log('Minifying: ${file.relative}');
-
-		if (transformer == null) transformer = mode == Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 		transformer.transform(file.path).handle(outcome -> switch outcome {
 			case Failure(error):
 				callback(new PluginError("@cedx/php-minify", error.message, {fileName: file.path, lineNumber: 0}), null);

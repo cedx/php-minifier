@@ -2,19 +2,11 @@ package php_minify;
 
 import asys.FileSystem;
 import asys.io.Process;
+import js.Node;
+import js.node.Net;
 import tink.QueryString;
 import tink.http.Client;
 using haxe.io.Path;
-
-#if java
-import java.net.ServerSocket as Socket;
-#elseif js
-import js.Node;
-import js.node.Net;
-#else
-import sys.net.Host;
-import sys.net.Socket;
-#end
 
 /** Removes comments and whitespace from a PHP script, by calling a Web service. **/
 class FastTransformer implements Transformer {
@@ -52,34 +44,23 @@ class FastTransformer implements Transformer {
 
 	/** Gets an ephemeral TCP port chosen by the system. **/
 	function getPort(): Promise<Int> {
-		#if js
-			final socket = Net.createServer();
-			socket.unref();
+		final socket = Net.createServer();
+		socket.unref();
 
-			final trigger = Promise.trigger();
-			socket.on("error", e -> trigger.reject(Error.withData(ServiceUnavailable, "Unable to find an ephemeral TCP port.", e)));
-			socket.listen(0, address, () -> {
-				final port = socket.address().port;
-				socket.close(() -> trigger.resolve(port));
-			});
+		final trigger = Promise.trigger();
+		socket.on("error", e -> trigger.reject(Error.withData(ServiceUnavailable, "Unable to find an ephemeral TCP port.", e)));
+		socket.listen(0, address, () -> {
+			final port = socket.address().port;
+			socket.close(() -> trigger.resolve(port));
+		});
 
-			return trigger.asPromise();
-		#else
-			return Error.catchExceptions(() -> {
-				final socket = new Socket(#if java 0 #end);
-				#if java socket.setReuseAddress(true) #else socket.bind(new Host(address), 0) #end;
-				final port = #if java socket.getLocalPort() #else socket.host().port #end;
-				socket.close();
-				port;
-			}, e -> Error.withData(ServiceUnavailable, "Unable to find an ephemeral TCP port.", e));
-		#end
+		return trigger.asPromise();
 	}
 
 	/** Starts the underlying PHP process and begins accepting connections. **/
 	function listen() return process != null ? Promise.NOISE : getPort().next(tcpPort -> {
-		final webRoot = Path.join([#if js Node.__dirname, "../www" #else Sys.programPath().directory(), "www" #end]);
 		port = tcpPort;
-		process = new Process(executable, ["-S", '$address:$port', "-t", webRoot]);
+		process = new Process(executable, ["-S", '$address:$port', "-t", Path.join([Node.__dirname, "../www"])]);
 		Future.delay(1_000, Lazy.NOISE);
 	});
 }
