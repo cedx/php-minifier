@@ -22,10 +22,10 @@ using haxe.io.Path;
 	/** The extension of the PHP files to process. Defaults to "php". **/
 	public var extension = "php";
 
-	/** The operation mode of the minifier. Defaults to "safe". **/
+	/** The operation mode of the plugin. Defaults to "safe". **/
 	public var mode = TransformMode.Safe;
 
-	/** Value indicating whether to silence the minifier output. **/
+	/** Value indicating whether to silence the plugin output. **/
 	public var silent = false;
 
 	/** Display this help. **/

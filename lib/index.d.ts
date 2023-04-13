@@ -1,7 +1,7 @@
 import {Transform} from "node:stream";
 
 /**
- * Removes PHP comments and whitespace by applying the `php_strip_whitespace()` function.
+ * Minifies PHP source code by removing comments and whitespace.
  */
 export class Plugin extends Transform {
 
@@ -16,12 +16,12 @@ export class Plugin extends Transform {
 	readonly mode: TransformMode;
 
 	/**
-	 * Value indicating whether to silence the minifier output.
+	 * Value indicating whether to silence the plugin output.
 	 */
 	readonly silent: boolean;
 
 	/**
-	 * Creates a new minifier.
+	 * Creates a new plugin.
 	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(options?: PluginOptions);
@@ -38,24 +38,24 @@ export type PluginOptions = {
 	binary?: string;
 
 	/**
-	 * The operation mode of the minifier.
+	 * The operation mode of the plugin.
 	 */
 	mode?: TransformMode;
 
 	/**
-	 * Value indicating whether to silence the minifier output.
+	 * Value indicating whether to silence the plugin output.
 	 */
 	silent?: boolean;
 };
 
 /**
- * Defines the type of transformation applied by the minifier.
+ * The operation mode of the minifier.
  */
 export type TransformMode = "fast" | "safe";
 
 /**
- * Creates a new minifier.
- * @param options The minifier options.
+ * Creates a new plugin.
+ * @param options The plugin options.
  * @returns The newly created instance.
  */
 export default function phpMinify(options?: PluginOptions): Plugin;
