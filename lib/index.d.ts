@@ -3,7 +3,7 @@ import {Transform} from "node:stream";
 /**
  * Removes PHP comments and whitespace by applying the `php_strip_whitespace()` function.
  */
-export class Minifier extends Transform {
+export class Plugin extends Transform {
 
 	/**
 	 * The path to the PHP executable.
@@ -24,13 +24,13 @@ export class Minifier extends Transform {
 	 * Creates a new minifier.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options?: MinifierOptions);
+	constructor(options?: PluginOptions);
 }
 
 /**
- * Defines the options of a {@link Minifier} instance.
+ * Defines the options of a {@link Plugin} instance.
  */
-export type MinifierOptions = {
+export type PluginOptions = {
 
 	/**
 	 * The path to the PHP executable.
@@ -58,4 +58,4 @@ export type TransformMode = "fast" | "safe";
  * @param options The minifier options.
  * @returns The newly created instance.
  */
-export default function phpMinify(options?: MinifierOptions): Minifier;
+export default function phpMinify(options?: PluginOptions): Plugin;
