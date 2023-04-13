@@ -16,9 +16,9 @@ using StringTools;
 	@:variant(Safe)
 	public function testTransform(input: TransformMode) {
 		final file = new File({path: FileSystem.absolutePath("test/fixture/sample.php")});
-		final minifier = new Plugin({mode: input, silent: true});
-		@:privateAccess minifier._transform(file, "utf8", (error, chunk) -> {
-			minifier.emit("end");
+		final plugin = new Plugin({mode: input, silent: true});
+		@:privateAccess plugin._transform(file, "utf8", (error, chunk) -> {
+			plugin.emit("end");
 
 			final script = ((chunk: File).contents: Buffer).toString();
 			asserts.assert(script.contains("<?= 'Hello World!' ?>"));
