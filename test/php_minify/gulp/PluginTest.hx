@@ -5,8 +5,8 @@ import js.node.Buffer;
 import js.vinyl.File;
 using StringTools;
 
-/** Tests the features of the `Minifier` class. **/
-@:asserts final class MinifierTest {
+/** Tests the features of the `Plugin` class. **/
+@:asserts final class PluginTest {
 
 	/** Creates a new test. **/
 	public function new() {}
@@ -16,7 +16,7 @@ using StringTools;
 	@:variant(Safe)
 	public function testTransform(input: TransformMode) {
 		final file = new File({path: FileSystem.absolutePath("test/fixture/sample.php")});
-		final minifier = new Minifier({mode: input, silent: true});
+		final minifier = new Plugin({mode: input, silent: true});
 		@:privateAccess minifier._transform(file, "utf8", (error, chunk) -> {
 			minifier.emit("end");
 

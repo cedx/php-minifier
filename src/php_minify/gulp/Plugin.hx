@@ -8,8 +8,8 @@ import js.plugin_error.PluginError;
 import js.vinyl.File;
 
 /** Minify PHP source code by removing comments and whitespace. **/
-@:expose("Minifier")
-final class Minifier extends Transform<Minifier> {
+@:expose("Plugin")
+final class Plugin extends Transform<Plugin> {
 
 	/** The path to the PHP executable. **/
 	public final binary: String;
@@ -21,11 +21,11 @@ final class Minifier extends Transform<Minifier> {
 	public final silent: Bool;
 
 	/** The instance used to process the PHP code. **/
-	var transformer: Null<Transformer>;
+	final transformer: Transformer;
 
 	/** Creates a new minifier. **/
 	@:ignoreInstrument
-	public function new(?options: MinifierOptions) {
+	public function new(?options: PluginOptions) {
 		super({objectMode: true});
 
 		binary = options?.binary ?? "php";
@@ -43,7 +43,7 @@ final class Minifier extends Transform<Minifier> {
 		if (!silent) Logger.log('Minifying: ${file.relative}');
 		transformer.transform(file.path).handle(outcome -> switch outcome {
 			case Failure(error):
-				callback(new PluginError("@cedx/php-minify", error.message, {fileName: file.path, lineNumber: 0}), null);
+				callback(new PluginError("@cedx/php-minify", error.message, {fileName: file.path}), null);
 			case Success(output):
 				file.contents = Buffer.from(output, encoding);
 				callback(null, file);
@@ -51,8 +51,8 @@ final class Minifier extends Transform<Minifier> {
 	}
 }
 
-/** Defines the options of a `Minifier` instance. **/
-typedef MinifierOptions = {
+/** Defines the options of a `Plugin` instance. **/
+typedef PluginOptions = {
 
 	/** The path to the PHP executable. **/
 	var ?binary: String;

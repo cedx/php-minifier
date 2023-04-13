@@ -5,4 +5,4 @@ php_minify.FastTransformer
 php_minify.SafeTransformer
 php_minify.Transformer
 php_minify.TransformMode
-php_minify.gulp.Minifier
+php_minify.gulp.Plugin

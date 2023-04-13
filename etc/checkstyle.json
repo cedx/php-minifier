@@ -1,7 +1,10 @@
 {
 	"defaultSeverity": "ERROR",
 	"exclude": {
-		"path": "RELATIVE_TO_PROJECT"
+		"path": "RELATIVE_TO_PROJECT",
+		"Dynamic": ["src/php_minify/gulp/Plugin:_transform"],
+		"MethodName": ["src/php_minify/gulp/Plugin:_transform"],
+		"ReturnCount": ["src/php_minify/Program:run"]
 	},
 	"checks": [
 		{"type": "BlockBreakingConditional"},
