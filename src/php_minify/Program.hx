@@ -1,7 +1,8 @@
 package php_minify;
 
+import asys.FileSystem as AsysFileSystem;
+import asys.io.File;
 import sys.FileSystem;
-import sys.io.File;
 import tink.Cli;
 import tink.cli.Rest;
 using Lambda;
@@ -67,19 +68,17 @@ using haxe.io.Path;
 	function processFiles(input: String, output: String, files: Array<String>) {
 		final isWindows = Sys.systemName() == "Windows";
 		final transformer: Transformer = mode == Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
-		return Promise.inSequence(files.map(file -> {
-			if (!silent) {
+		final promises = files.map(file -> Promise.NOISE
+			.withSideEffect(_ -> if (!silent) {
 				final normalizedPath = isWindows ? file.replace("/", "\\") : file;
 				Sys.println('Minifying: $normalizedPath');
-			}
-
-			transformer.transform(Path.join([input, file])).next(script -> Error.catchExceptions(() -> {
+			})
+			.next(_ -> transformer.transform(Path.join([input, file])).next(script -> {
 				final path = Path.join([output, file]);
-				FileSystem.createDirectory(path.directory());
-				File.saveContent(path, script);
-				Noise;
-			}));
-		})).noise();
+				AsysFileSystem.createDirectory(path.directory()).next(_ -> File.saveContent(path, script));
+			})));
+
+		return Promise.inSequence(promises).next(_ -> transformer.close());
 	}
 
 	/** Returns the paths of all PHP files in the specified `directory`. **/
