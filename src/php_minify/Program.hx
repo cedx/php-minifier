@@ -1,8 +1,8 @@
 package php_minify;
 
-import asys.FileSystem as AsysFileSystem;
+import asys.FileSystem;
 import asys.io.File;
-import sys.FileSystem;
+import sys.FileSystem as SysFileSystem;
 import tink.Cli;
 import tink.cli.Rest;
 using Lambda;
@@ -57,7 +57,7 @@ using haxe.io.Path;
 
 		final cwd = haxelibRun ? rest.pop() : Sys.getCwd();
 		final input = resolvePath(rest.shift(), cwd);
-		if (!FileSystem.exists(input)) return new Error(NotFound, "The input directory was not found.");
+		if (!SysFileSystem.exists(input)) return new Error(NotFound, "The input directory was not found.");
 
 		final length = input.addTrailingSlash().length;
 		final output = rest.length > 0 ? resolvePath(rest.shift(), cwd) : input;
@@ -75,7 +75,7 @@ using haxe.io.Path;
 			})
 			.next(_ -> transformer.transform(Path.join([input, file])).next(script -> {
 				final path = Path.join([output, file]);
-				AsysFileSystem.createDirectory(path.directory()).next(_ -> File.saveContent(path, script));
+				FileSystem.createDirectory(path.directory()).next(_ -> File.saveContent(path, script));
 			})));
 
 		return Promise.inSequence(promises).next(_ -> transformer.close());
@@ -84,9 +84,9 @@ using haxe.io.Path;
 	/** Returns the paths of all PHP files in the specified `directory`. **/
 	function listDirectory(directory: String) {
 		var paths = [];
-		for (entry in FileSystem.readDirectory(directory)) {
+		for (entry in SysFileSystem.readDirectory(directory)) {
 			final path = Path.join([directory, entry]);
-			if (FileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
+			if (SysFileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
 			else if (entry.extension() == extension) paths.push(path);
 		}
 
