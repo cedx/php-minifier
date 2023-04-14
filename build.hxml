@@ -1,8 +1,8 @@
 --js lib/bundle.js
 share/build.hxml
 
-php_minify.FastTransformer
-php_minify.SafeTransformer
-php_minify.Transformer
-php_minify.TransformMode
-php_minify.gulp.Plugin
+php_minifier.FastTransformer
+php_minifier.SafeTransformer
+php_minifier.Transformer
+php_minifier.TransformMode
+php_minifier.gulp.Plugin

@@ -1,4 +1,4 @@
-package php_minify;
+package php_minifier;
 
 #if macro
 import haxe.Json;

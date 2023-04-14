@@ -1,4 +1,4 @@
-package php_minify.gulp;
+package php_minifier.gulp;
 
 import asys.FileSystem;
 import js.node.Buffer;

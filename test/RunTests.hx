@@ -7,9 +7,9 @@ import tink.unit.TestBatch;
 /** Runs the test suite. **/
 function main() {
 	final tests = TestBatch.make([
-		new php_minify.FastTransformerTest(),
-		new php_minify.SafeTransformerTest(),
-		new php_minify.gulp.PluginTest()
+		new php_minifier.FastTransformerTest(),
+		new php_minifier.SafeTransformerTest(),
+		new php_minifier.gulp.PluginTest()
 	]);
 
 	ANSI.stripIfUnavailable = false;

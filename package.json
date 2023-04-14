@@ -1,10 +1,10 @@
 {
-	"bugs": "https://github.com/cedx/php-minify/issues",
+	"bugs": "https://github.com/cedx/php-minifier/issues",
 	"description": "Minify PHP source code by removing comments and whitespace.",
-	"homepage": "https://docs.belin.io/php-minify",
+	"homepage": "https://docs.belin.io/php-minifier",
 	"license": "MIT",
-	"name": "@cedx/php-minify",
-	"repository": "github:cedx/php-minify",
+	"name": "@cedx/php-minifier",
+	"repository": "github:cedx/php-minifier",
 	"type": "commonjs",
 	"version": "1.0.0",
 	"author": {
@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"bin": {
-		"php_minify": "./bin/php_minify.js"
+		"php_minifier": "./bin/php_minifier.js"
 	},
 	"dependencies": {
 		"fancy-log": "^2.0.0",

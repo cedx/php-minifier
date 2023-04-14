@@ -1,4 +1,4 @@
-package php_minify;
+package php_minifier;
 
 /** Removes comments and whitespace from a PHP script. **/
 interface Transformer {

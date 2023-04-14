@@ -4,9 +4,9 @@
 	"dependencies": {"asys": "", "tink_http": "", "tink_querystring": ""},
 	"description": "Minify PHP source code by removing comments and whitespace.",
 	"license": "MIT",
-	"name": "php_minify",
+	"name": "php_minifier",
 	"releasenote": "Initial release.",
 	"tags": ["compress", "gulp", "minify", "nodejs", "php"],
-	"url": "https://docs.belin.io/php-minify",
+	"url": "https://docs.belin.io/php-minifier",
 	"version": "1.0.0"
 }

@@ -1,5 +1,5 @@
 //! --class-path src --library tink_core
-import php_minify.Version;
+import php_minifier.Version;
 
 /** Publishes the package. **/
 function main() {

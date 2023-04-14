@@ -1,4 +1,4 @@
-package php_minify;
+package php_minifier;
 
 using StringTools;
 
@@ -9,7 +9,7 @@ using StringTools;
 	public function new() {}
 
 	/** Tests the `close()` method. **/
-	@:access(php_minify.FastTransformer.listen)
+	@:access(php_minifier.FastTransformer.listen)
 	public function testClose() {
 		final transformer = new FastTransformer();
 		Promise.inSequence([transformer.listen().noise(), transformer.close(), transformer.close()]).handle(asserts.handle);
@@ -17,7 +17,7 @@ using StringTools;
 	}
 
 	/** Tests the `listen()` method. **/
-	@:access(php_minify.FastTransformer.listen)
+	@:access(php_minifier.FastTransformer.listen)
 	public function testListen() {
 		final transformer = new FastTransformer();
 		Promise.inSequence([transformer.listen().noise(), transformer.listen().noise(), transformer.close()]).handle(asserts.handle);

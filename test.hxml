@@ -14,6 +14,6 @@
 --library tink_http
 --library tink_querystring
 --library tink_unittest
---macro instrument.Instrumentation.coverage(["php_minify"], ["src"])
+--macro instrument.Instrumentation.coverage(["php_minifier"], ["src"])
 --main RunTests
 --cmd node var/tests.js

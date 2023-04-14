@@ -1,4 +1,4 @@
-package php_minify;
+package php_minifier;
 
 /** The operation mode of the minifier. **/
 enum abstract TransformMode(String) from String to String {

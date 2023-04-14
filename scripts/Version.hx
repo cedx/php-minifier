@@ -1,5 +1,5 @@
 //! --class-path src --library tink_core
-import php_minify.Version;
+import php_minifier.Version;
 
 /** Updates the version number in the sources. **/
 function main()

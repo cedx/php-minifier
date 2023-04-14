@@ -16,12 +16,12 @@ export class Plugin extends Transform {
 	readonly mode: TransformMode;
 
 	/**
-	 * Value indicating whether to silence the plug-in output.
+	 * Value indicating whether to silence the plugin output.
 	 */
 	readonly silent: boolean;
 
 	/**
-	 * Creates a new plug-in.
+	 * Creates a new plugin.
 	 * @param options An object providing values to initialize this instance.
 	 */
 	constructor(options?: PluginOptions);
@@ -38,12 +38,12 @@ export type PluginOptions = {
 	binary?: string;
 
 	/**
-	 * The operation mode of the plug-in.
+	 * The operation mode of the plugin.
 	 */
 	mode?: TransformMode;
 
 	/**
-	 * Value indicating whether to silence the plug-in output.
+	 * Value indicating whether to silence the plugin output.
 	 */
 	silent?: boolean;
 };
@@ -54,8 +54,8 @@ export type PluginOptions = {
 export type TransformMode = "fast" | "safe";
 
 /**
- * Creates a new plug-in.
- * @param options The plug-in options.
+ * Creates a new plugin.
+ * @param options The plugin options.
  * @returns The newly created instance.
  */
 export default function phpMinify(options?: PluginOptions): Plugin;

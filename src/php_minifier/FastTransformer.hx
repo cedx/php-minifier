@@ -1,4 +1,4 @@
-package php_minify;
+package php_minifier;
 
 import asys.FileSystem;
 import asys.io.Process;

@@ -1,4 +1,4 @@
-package php_minify;
+package php_minifier;
 
 import asys.FileSystem;
 import asys.io.File;
@@ -12,7 +12,7 @@ using haxe.io.Path;
 /**
 	Minify PHP source code by removing comments and whitespace.
 
-	> php_minify [flags] <input> [output]
+	> php_minifier [flags] <input> [output]
 **/
 @:noDoc final class Program {
 
@@ -22,10 +22,10 @@ using haxe.io.Path;
 	/** The extension of the PHP files to process. Defaults to "php". **/
 	public var extension = "php";
 
-	/** The operation mode of the plug-in. Defaults to "safe". **/
+	/** The operation mode of the minifier. Defaults to "safe". **/
 	public var mode = TransformMode.Safe;
 
-	/** Value indicating whether to silence the plug-in output. **/
+	/** Value indicating whether to silence the minifier output. **/
 	public var silent = false;
 
 	/** Display this help. **/

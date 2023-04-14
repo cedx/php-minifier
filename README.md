@@ -1,16 +1,17 @@
 # PHP Minify
-![Node.js](https://badgen.net/npm/node/@cedx/php-minify) ![npm](https://badgen.net/npm/v/@cedx/php-minify) ![License](https://badgen.net/npm/license/@cedx/php-minify) ![Downloads](https://badgen.net/npm/dt/@cedx/php-minify) ![Coverage](https://badgen.net/codecov/c/github/cedx/php-minify)
+![Node.js](https://badgen.net/npm/node/@cedx/php-minifier) ![npm](https://badgen.net/npm/v/@cedx/php-minifier) ![License](https://badgen.net/npm/license/@cedx/php-minifier) ![Downloads](https://badgen.net/npm/dt/@cedx/php-minifier) ![Coverage](https://badgen.net/codecov/c/github/cedx/php-minifier)
 
-Minify [PHP](https://www.php.net) source code by removing comments and whitespace.
+Minify [PHP](https://www.php.net) source code by removing comments and whitespace.  
+This package allows you to apply the [`php_strip_whitespace()`](https://www.php.net/manual/en/function.php-strip-whitespace.php) function to compress the code, either using the command line or through a Gulp plugin.
 
 ## Documentation
-- [User guide](https://docs.belin.io/php-minify)
-- [API reference](https://docs.belin.io/php-minify/api)
+- [User guide](https://docs.belin.io/php-minifier)
+- [API reference](https://docs.belin.io/php-minifier/api)
 
 ## Development
-- [Git repository](https://github.com/cedx/php-minify)
-- [npm package](https://www.npmjs.com/package/@cedx/php-minify)
-- [Submit an issue](https://github.com/cedx/php-minify/issues)
+- [Git repository](https://github.com/cedx/php-minifier)
+- [npm package](https://www.npmjs.com/package/@cedx/php-minifier)
+- [Submit an issue](https://github.com/cedx/php-minifier/issues)
 
 ## License
-[PHP Minify](https://docs.belin.io/php-minify) is distributed under the MIT License.
+[PHP Minify](https://docs.belin.io/php-minifier) is distributed under the MIT License.

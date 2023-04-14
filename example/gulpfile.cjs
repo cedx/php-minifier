@@ -1,6 +1,6 @@
 const process = require("node:process");
 const gulp = require("gulp");
-const phpMinify = require("@cedx/php-minify");
+const phpMinify = require("@cedx/php-minifier");
 
 /**
  * Compresses a given set of PHP scripts.
