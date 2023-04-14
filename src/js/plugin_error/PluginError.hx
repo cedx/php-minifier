@@ -13,7 +13,7 @@ extern class PluginError extends Error {
 	/** The line number where the error occurred. **/
 	final lineNumber: Null<Int>;
 
-	/** The plugin name. **/
+	/** The plug-in name. **/
 	final plugin: String;
 
 	/** Value indicating whether to the error properties. **/
@@ -22,7 +22,7 @@ extern class PluginError extends Error {
 	/** Value indicating whether to the stack. **/
 	final showStack: Bool;
 
-	/** Creates a new plugin error. **/
+	/** Creates a new plug-in error. **/
 	function new(plugin: String, message: EitherType<Error, String>, ?options: PluginErrorOptions);
 }
 

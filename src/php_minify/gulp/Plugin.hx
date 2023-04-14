@@ -14,16 +14,16 @@ final class Plugin extends Transform<Plugin> {
 	/** The path to the PHP executable. **/
 	public final binary: String;
 
-	/** The operation mode of the plugin. **/
+	/** The operation mode of the plug-in. **/
 	public final mode: TransformMode;
 
-	/** Value indicating whether to silence the plugin output. **/
+	/** Value indicating whether to silence the plug-in output. **/
 	public final silent: Bool;
 
 	/** The instance used to process the PHP code. **/
 	final transformer: Transformer;
 
-	/** Creates a new plugin. **/
+	/** Creates a new plug-in. **/
 	@:ignoreInstrument
 	public function new(?options: PluginOptions) {
 		super({objectMode: true});
@@ -57,9 +57,9 @@ typedef PluginOptions = {
 	/** The path to the PHP executable. **/
 	var ?binary: String;
 
-	/** The operation mode of the plugin. **/
+	/** The operation mode of the plug-in. **/
 	var ?mode: TransformMode;
 
-	/** Value indicating whether to silence the plugin output. **/
+	/** Value indicating whether to silence the plug-in output. **/
 	var ?silent: Bool;
 }

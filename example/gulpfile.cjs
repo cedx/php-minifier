@@ -5,7 +5,7 @@ const phpMinify = require("@cedx/php-minify");
 /**
  * Compresses a given set of PHP scripts.
  */
-exports.default = function() {
+exports.compressPhp = function compressPhp() {
 	const isWindows = process.platform == "win32";
 	const options = {
 		binary: isWindows ? "C:\\Program Files\\PHP\\php.exe" : "/usr/bin/php",
