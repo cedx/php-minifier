@@ -16,7 +16,7 @@ function main() {
 		"--define", "website", "https://docs.belin.io/php-minifier",
 		"--input-path", "var",
 		"--output-path", "docs/api",
-		"--title", "PHP Minify",
+		"--title", "PHP Minifier",
 		"--toplevel-package", "php_minifier"
 	]);
 
