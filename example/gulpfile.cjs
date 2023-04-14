@@ -1,6 +1,6 @@
 const process = require("node:process");
 const gulp = require("gulp");
-const phpMinify = require("@cedx/php-minifier");
+const phpMinifier = require("@cedx/php-minifier");
 
 /**
  * Compresses a given set of PHP scripts.
@@ -14,6 +14,6 @@ exports.compressPhp = function compressPhp() {
 	};
 
 	return gulp.src("path/to/**/*.php", {read: false})
-		.pipe(phpMinify(options))
+		.pipe(phpMinifier(options))
 		.pipe(gulp.dest("path/to/out"));
 }

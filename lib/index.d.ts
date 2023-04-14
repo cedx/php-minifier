@@ -58,4 +58,4 @@ export type TransformMode = "fast" | "safe";
  * @param options The plugin options.
  * @returns The newly created instance.
  */
-export default function phpMinify(options?: PluginOptions): Plugin;
+export default function phpMinifier(options?: PluginOptions): Plugin;

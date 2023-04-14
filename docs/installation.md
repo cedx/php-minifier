@@ -27,5 +27,5 @@ npm install @cedx/php-minifier
 Now in your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) code, you can use:
 
 ``` js
-import phpMinify from "@cedx/php-minifier";
+import phpMinifier from "@cedx/php-minifier";
 ```
