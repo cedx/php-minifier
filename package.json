@@ -44,5 +44,8 @@
 	],
 	"peerDependencies": {
 		"gulp": ">=4.0.0"
+	},
+	"scripts": {
+		"prepack": "lix Dist"
 	}
 }
