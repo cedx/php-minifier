@@ -7,11 +7,11 @@ The plugin takes a list of [PHP](https://www.php.net) scripts as input, and remo
 
 ```js
 import gulp from "gulp";
-import phpMinify from "@cedx/php-minifier";
+import phpMinifier from "@cedx/php-minifier";
 
 export function compressPhp() {
   return gulp.src("path/to/**/*.php", {read: false})
-    .pipe(phpMinify())
+    .pipe(phpMinifier())
     .pipe(gulp.dest("path/to/out"));
 }
 ```
@@ -26,11 +26,11 @@ If the plugin cannot find the default `php` binary, or if you want to use a diff
 
 ```js
 import gulp from "gulp";
-import phpMinify from "@cedx/php-minifier";
+import phpMinifier from "@cedx/php-minifier";
 
 export function compressPhp() {
   return gulp.src("path/to/**/*.php", {read: false})
-    .pipe(phpMinify({binary: "C:\\Program Files\\PHP\\php.exe"}))
+    .pipe(phpMinifier({binary: "C:\\Program Files\\PHP\\php.exe"}))
     .pipe(gulp.dest("path/to/out"));
 }
 ```
@@ -43,11 +43,11 @@ The plugin can work in two manners, which can be selected using the `mode` optio
 
 ```js
 import gulp from "gulp";
-import phpMinify from "@cedx/php-minifier";
+import phpMinifier from "@cedx/php-minifier";
 
 export function compressPhp() {
   return gulp.src("path/to/**/*.php", {read: false})
-    .pipe(phpMinify({mode: "fast"}))
+    .pipe(phpMinifier({mode: "fast"}))
     .pipe(gulp.dest("path/to/out"));
 }
 ```
@@ -59,11 +59,11 @@ By default, the plugin prints to the standard output the paths of the minified s
 
 ```js
 import gulp from "gulp";
-import phpMinify from "@cedx/php-minifier";
+import phpMinifier from "@cedx/php-minifier";
 
 export function compressPhp() {
   return gulp.src("path/to/**/*.php", {read: false})
-    .pipe(phpMinify({silent: true}))
+    .pipe(phpMinifier({silent: true}))
     .pipe(gulp.dest("path/to/out"));
 }
 ```
