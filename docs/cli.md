@@ -31,7 +31,7 @@ Minify PHP source code by removing comments and whitespace.
 For example:
 
 ```shell
-$ php_minifier path/to/source/folder path/to/destination/folder
+php_minifier path/to/source/folder path/to/destination/folder
 # Minifying: MyClass1.php
 # Minifying: subfolder/MyClass2.php
 # ...
@@ -44,14 +44,14 @@ The minifier relies on the availability of the [PHP](https://www.php.net) execut
 If the minifier cannot find the default `php` binary, or if you want to use a different one, you can provide the path to the `php` executable by using the `binary` flag:
 
 ```shell
-$ php_minifier "--binary=C:\Program Files\PHP\php.exe" path/to/source/folder
+php_minifier "--binary=C:\Program Files\PHP\php.exe" path/to/source/folder
 ```
 
 ### --extension
 By default, the minifier will process all files with the `.php` extension. If your [PHP](https://www.php.net) scripts use a different file extension, you can specify another extension to process by using the `extension` flag:
 
 ```shell
-$ php_minifier --extension=php8 path/to/source/folder
+php_minifier --extension=php8 path/to/source/folder
 ```
 
 ### --mode
@@ -61,7 +61,7 @@ The minifier can work in two manners, which can be selected using the `mode` fla
 - the `fast` mode: as its name implies, this mode is very fast, but it is not always reliable. It spawns a PHP web server that processes the input files, but on some systems this fails.
 
 ```shell
-$ php_minifier --mode=fast path/to/source/folder
+php_minifier --mode=fast path/to/source/folder
 ```
 
 > The minifier defaults to the `safe` mode, but you should really give a try to the `fast` one. The difference is very noticeable.
@@ -70,5 +70,5 @@ $ php_minifier --mode=fast path/to/source/folder
 By default, the minifier prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` flag.
 
 ```shell
-$ php_minifier --silent path/to/source/folder
+php_minifier --silent path/to/source/folder
 ```
