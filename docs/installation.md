@@ -6,7 +6,7 @@ and [npm](https://www.npmjs.com), the Node.js package manager, up and running.
 
 You can verify if you're already good to go with the following commands:
 
-``` shell
+```shell
 node --version
 # v19.9.0
 
@@ -19,13 +19,13 @@ npm --version
 ### 1. Install it
 From a command prompt, run:
 
-``` shell
+```shell
 npm install @cedx/php-minifier
 ```
 
 ### 2. Import it
 Now in your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) code, you can use:
 
-``` js
+```js
 import phpMinifier from "@cedx/php-minifier";
 ```
