@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8"/>
 		<title>PHP Minifier</title>
 
-		<meta name="application-name" content="PHP Minifier">
-		<meta name="author" content="Cédric Belin - cedric@belin.io">
+		<meta name="application-name" content="PHP Minifier"/>
+		<meta name="author" content="Cédric Belin - cedric@belin.io"/>
 		<meta name="color-scheme" content="light"/>
-		<meta name="description" content="Minify PHP source code by removing comments and whitespace.">
-		<meta name="format-detection" content="telephone=no">
-		<meta name="referrer" content="same-origin">
-		<meta name="theme-color" content="#617cbe">
+		<meta name="description" content="Minify PHP source code by removing comments and whitespace."/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="referrer" content="same-origin"/>
+		<meta name="theme-color" content="#617cbe"/>
 		<meta name="viewport" content="initial-scale=1, width=device-width"/>
 
 		<link rel="icon" href="favicon.svg"/>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"/>
+
+		<script defer src="https://cdn.jsdelivr.net/npm/docsify"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
 
 		<script>
 			window.$docsify = {
@@ -24,13 +27,15 @@
 				name: "PHP Minifier",
 				noCompileLinks: ["api/.*"],
 				repo: "cedx/php-minifier",
+				tabs: {theme: "material"},
 				themeColor: "#617cbe"
 			};
 		</script>
 
-		<script defer src="https://cdn.jsdelivr.net/npm/docsify"></script>
-		<script defer src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
-		<script defer src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-php.min.js"></script>
+		<style>
+			body { font-family: ui-sans-serif, sans-serif; }
+			button { font-family: inherit; }
+		</style>
 	</head>
 
 	<body>
