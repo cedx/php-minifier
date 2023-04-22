@@ -24,7 +24,6 @@ final class Plugin extends Transform<Plugin> {
 	final transformer: Transformer;
 
 	/** Creates a new plugin. **/
-	@:ignoreInstrument
 	public function new(?options: PluginOptions) {
 		super({objectMode: true});
 
