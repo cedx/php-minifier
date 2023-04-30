@@ -70,7 +70,7 @@ using haxe.io.Path;
 		for (entry in SysFileSystem.readDirectory(directory)) {
 			final path = Path.join([directory, entry]);
 			if (SysFileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
-			else if (entry.extension() == extension) paths.push(path);
+			else if (entry.extension().toLowerCase() == extension) paths.push(path);
 		}
 
 		return paths;
