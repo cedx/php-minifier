@@ -64,6 +64,18 @@ using haxe.io.Path;
 		return processFiles(input, output, listDirectory(input).map(path -> path.substring(length)));
 	}
 
+	/** Returns the paths of all PHP files in the specified `directory`. **/
+	function listDirectory(directory: String) {
+		var paths = [];
+		for (entry in SysFileSystem.readDirectory(directory)) {
+			final path = Path.join([directory, entry]);
+			if (SysFileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
+			else if (entry.extension() == extension) paths.push(path);
+		}
+
+		return paths;
+	}
+
 	/** Processes the specified PHP `files`. **/
 	function processFiles(input: String, output: String, files: Array<String>) {
 		final isWindows = Sys.systemName() == "Windows";
@@ -79,18 +91,6 @@ using haxe.io.Path;
 			})));
 
 		return Promise.inSequence(promises).next(_ -> transformer.close());
-	}
-
-	/** Returns the paths of all PHP files in the specified `directory`. **/
-	function listDirectory(directory: String) {
-		var paths = [];
-		for (entry in SysFileSystem.readDirectory(directory)) {
-			final path = Path.join([directory, entry]);
-			if (SysFileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
-			else if (entry.extension() == extension) paths.push(path);
-		}
-
-		return paths;
 	}
 
 	/** Resolves the specified `path` into an absolute path. **/
