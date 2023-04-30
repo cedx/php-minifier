@@ -2,9 +2,11 @@
 import php_minifier.Version;
 import sys.FileSystem;
 import sys.io.File;
+using Lambda;
 
 /** Builds the documentation. **/
 function main() {
+	["CHANGELOG.md", "LICENSE.md"].iter(file -> File.copy(file, 'docs/${file.toLowerCase()}'));
 	if (FileSystem.exists("docs/api")) Tools.removeDirectory("docs/api");
 
 	Sys.command("haxe --define doc-gen --no-output --xml var/api.xml build.hxml");

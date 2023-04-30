@@ -3,4 +3,5 @@
 	- [Command line interface](cli.md)
 	- [Gulp plugin](gulp.md)
 - [API reference](api/)
+- [Changelog](changelog.md)
 - [License](license.md)
