@@ -16,6 +16,6 @@ For detailed instructions, see the [installation guide](installation.md).
 - [Gulp plugin](gulp.md)
 
 ## See also
-- [Git repository](https://github.com/cedx/php-index)
+- [Git repository](https://github.com/cedx/php-minifier)
 - [npm package](https://www.npmjs.com/package/@cedx/php-minifier)
-- [Submit an issue](https://github.com/cedx/php-index/issues)
+- [Submit an issue](https://github.com/cedx/php-minifier/issues)
