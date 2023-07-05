@@ -2,13 +2,9 @@ using Lambda;
 
 /** Packages the project. **/
 function main() {
-	for (script in ["Clean", "Build", "Version"]) Sys.command('lix $script');
-
 	final cli = "bin/php_minifier.js";
+	for (script in ["Clean", "Build", "Version"]) Sys.command('lix $script');
 	[cli, "lib/bundle.js"].iter(file -> minifyFile(file));
-
-	Sys.command('git update-index --chmod=+x $cli');
-	if (Sys.systemName() != "Windows") Sys.command('chmod +x $cli');
 }
 
 /** Minifies the specified `source` file. **/
