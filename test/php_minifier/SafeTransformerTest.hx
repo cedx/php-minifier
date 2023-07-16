@@ -22,7 +22,7 @@ using StringTools;
 	@:variant("__construct() { $this->property")
 	public function testTransform(output: String) {
 		final transformer = new SafeTransformer();
-		transformer.transform("test/fixture/sample.php")
+		transformer.transform("share/fixture/sample.php")
 			.next(script -> transformer.close().next(_ -> asserts.assert(script.contains(output))))
 			.handle(asserts.handle);
 

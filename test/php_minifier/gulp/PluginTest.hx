@@ -15,7 +15,7 @@ using StringTools;
 	@:variant(Fast)
 	@:variant(Safe)
 	public function testTransform(input: TransformMode) {
-		final file = new File({path: FileSystem.absolutePath("test/fixture/sample.php")});
+		final file = new File({path: FileSystem.absolutePath("share/fixture/sample.php")});
 		final plugin = new Plugin({mode: input, silent: true});
 		@:privateAccess plugin._transform(file, "utf8", (error, chunk) -> {
 			plugin.emit("end");
