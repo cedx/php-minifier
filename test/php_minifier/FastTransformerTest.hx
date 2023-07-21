@@ -10,7 +10,7 @@ using StringTools;
 
 	/** Tests the `close()` method. **/
 	@:access(php_minifier.FastTransformer.listen)
-	public function testClose() {
+	public function close() {
 		final transformer = new FastTransformer();
 		Promise.inSequence([transformer.listen().noise(), transformer.close(), transformer.close()]).handle(asserts.handle);
 		return asserts;
@@ -18,7 +18,7 @@ using StringTools;
 
 	/** Tests the `listen()` method. **/
 	@:access(php_minifier.FastTransformer.listen)
-	public function testListen() {
+	public function listen() {
 		final transformer = new FastTransformer();
 		Promise.inSequence([transformer.listen().noise(), transformer.listen().noise(), transformer.close()]).handle(asserts.handle);
 		return asserts;
@@ -29,7 +29,7 @@ using StringTools;
 	@:variant("namespace dummy; class Dummy")
 	@:variant("$className = get_class($this); return $className;")
 	@:variant("__construct() { $this->property")
-	public function testTransform(output: String) {
+	public function transform(output: String) {
 		final transformer = new FastTransformer();
 		transformer.transform("share/fixture/sample.php")
 			.next(script -> transformer.close().next(_ -> asserts.assert(script.contains(output))))

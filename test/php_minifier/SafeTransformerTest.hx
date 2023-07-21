@@ -9,7 +9,7 @@ using StringTools;
 	public function new() {}
 
 	/** Tests the `close()` method. **/
-	public function testClose() {
+	public function close() {
 		final transformer = new SafeTransformer();
 		Promise.inSequence([transformer.close(), transformer.close()]).handle(asserts.handle);
 		return asserts;
@@ -20,7 +20,7 @@ using StringTools;
 	@:variant("namespace dummy; class Dummy")
 	@:variant("$className = get_class($this); return $className;")
 	@:variant("__construct() { $this->property")
-	public function testTransform(output: String) {
+	public function transform(output: String) {
 		final transformer = new SafeTransformer();
 		transformer.transform("share/fixture/sample.php")
 			.next(script -> transformer.close().next(_ -> asserts.assert(script.contains(output))))
