@@ -8,5 +8,5 @@
 	"releasenote": "Initial release.",
 	"tags": ["compress", "gulp", "minify", "nodejs", "php"],
 	"url": "https://docs.belin.io/php-minifier",
-	"version": "1.0.0"
+	"version": "1.0.1"
 }

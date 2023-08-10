@@ -6,7 +6,7 @@
 	"name": "@cedx/php-minifier",
 	"repository": "github:cedx/php-minifier",
 	"type": "commonjs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
