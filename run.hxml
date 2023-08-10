@@ -1,3 +1,4 @@
 --js bin/php_minifier.js
+--macro php_minifier.Macro.shebang("node")
 --main php_minifier.Program
 share/build.hxml
