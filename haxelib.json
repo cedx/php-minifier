@@ -5,7 +5,7 @@
 	"description": "Minify PHP source code by removing comments and whitespace.",
 	"license": "MIT",
 	"name": "php_minifier",
-	"releasenote": "Initial release.",
+	"releasenote": "Improved compatibility with PHP 7.",
 	"tags": ["compress", "gulp", "minify", "nodejs", "php"],
 	"url": "https://docs.belin.io/php-minifier",
 	"version": "1.0.1"

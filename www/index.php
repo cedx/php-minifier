@@ -5,7 +5,7 @@
  * @param string $mediaType The response media type.
  * @param int $status The status code of the response.
  */
-function sendResponse($body, $mediaType = "text/plain", $status = 200) {
+function sendResponse(string $body, string $mediaType = "text/plain", int $status = 200): void {
 	http_response_code($status);
 	header("Content-Length: ".strlen($body));
 	header("Content-Type: $mediaType");
