@@ -8,5 +8,5 @@
 	"releasenote": "Improved compatibility with PHP 7.",
 	"tags": ["compress", "gulp", "minify", "nodejs", "php"],
 	"url": "https://docs.belin.io/php-minifier",
-	"version": "1.0.1"
+	"version": "1.0.2"
 }
