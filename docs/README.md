@@ -12,8 +12,8 @@ npm install @cedx/php-minifier
 For detailed instructions, see the [installation guide](installation.md).
 
 ## Usage
-- [Command line interface](cli.md)
-- [Gulp plugin](gulp.md)
+- [Command line interface](usage/cli.md)
+- [Gulp plugin](usage/gulp.md)
 
 ## See also
 - [Git repository](https://github.com/cedx/php-minifier)
