@@ -1,6 +1,6 @@
 - [Installation](installation.md)
 - Usage
-	- [Command line interface](usage/cli.md)
+	- [Command line](usage/cli.md)
 	- [Gulp plugin](usage/gulp.md)
 - [API reference](api/)
 - [Changelog](changelog.md)

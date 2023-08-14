@@ -1,6 +1,7 @@
 # PHP Minifier
 Minify [PHP](https://www.php.net) source code by removing comments and whitespace.  
-This package allows you to apply the [`php_strip_whitespace()`](https://www.php.net/manual/en/function.php-strip-whitespace.php) function to compress the code, either using the command line or through a Gulp plugin.
+This package allows you to apply the [`php_strip_whitespace()`](https://www.php.net/manual/en/function.php-strip-whitespace.php) function to compress the code,
+either using the command line or through a [Gulp](https://gulpjs.com) plugin.
 
 ## Quick start
 Install the latest version of **PHP Minifier** with [npm](https://www.npmjs.com) package manager:
