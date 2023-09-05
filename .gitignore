@@ -1,5 +1,5 @@
 /**/.DS_Store
-/bin/*.js
+/bin/*.map
 /lib/*.js
 /lib/*.map
 /node_modules/
