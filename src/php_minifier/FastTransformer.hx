@@ -6,7 +6,6 @@ import js.Node;
 import js.node.Net;
 import tink.QueryString;
 import tink.http.Client;
-import tink.http.clients.JsFetchClient;
 using haxe.io.Path;
 
 /** Removes comments and whitespace from a PHP script, by calling a Web service. **/
@@ -39,7 +38,7 @@ class FastTransformer implements Transformer {
 	public function transform(file: String) return listen()
 		.next(_ -> {
 			final query = QueryString.build({file: FileSystem.absolutePath(file)});
-			Client.fetch('http://$address:$port/index.php?$query', {client: Custom(new JsFetchClient())}).all();
+			Client.fetch('http://$address:$port/index.php?$query').all();
 		})
 		.next(response -> response.body.toString());
 
