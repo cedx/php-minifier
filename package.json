@@ -4,7 +4,7 @@
 	"homepage": "https://docs.belin.io/php-minifier",
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
-	"repository": "github:cedx/php-minifier",
+	"repository": "cedx/php-minifier",
 	"type": "commonjs",
 	"version": "1.0.2",
 	"author": {
