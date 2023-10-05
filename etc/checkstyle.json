@@ -20,7 +20,7 @@
 		{"type": "NestedIfDepth"},
 		{"type": "NestedTryDepth"},
 		{"type": "NullableParameter"},
-		{"type": "ReturnCount"},
+		{"type": "ReturnCount", "props": {"max": 3}},
 		{"type": "SimplifyBooleanExpression"},
 		{"type": "SimplifyBooleanReturn"},
 		{"type": "Trace", "props": {"severity": "WARNING"}},
