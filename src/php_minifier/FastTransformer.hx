@@ -61,6 +61,6 @@ class FastTransformer implements Transformer {
 	function listen() return process != null ? Promise.NOISE : getPort().next(tcpPort -> {
 		port = tcpPort;
 		process = new Process(executable, ["-S", '$address:$port', "-t", Path.join([Node.__dirname, "../www"])]);
-		Future.delay(1_000, Lazy.NOISE);
+		Future.delay(1_000, Noise);
 	});
 }
