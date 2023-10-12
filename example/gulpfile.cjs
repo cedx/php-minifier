@@ -1,3 +1,4 @@
+"use strict";
 const process = require("node:process");
 const {dest, src} = require("gulp");
 const phpMinifier = require("@cedx/php-minifier");
