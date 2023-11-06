@@ -61,7 +61,7 @@ using haxe.io.Path;
 
 		final length = input.addTrailingSlash().length;
 		final output = rest.length > 0 ? resolvePath(rest.shift(), cwd) : input;
-		return processFiles(input, output, listDirectory(input).map(path -> path.substring(length)));
+		return processFiles(input, output, listDirectory(input).map(path -> path.substr(length)));
 	}
 
 	/** Returns the paths of all PHP files in the specified `directory`. **/
