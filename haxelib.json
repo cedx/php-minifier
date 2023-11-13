@@ -7,6 +7,6 @@
 	"name": "php_minifier",
 	"releasenote": "Fixed a packaging issue.",
 	"tags": ["compress", "gulp", "minify", "nodejs", "php"],
-	"url": "https://docs.belin.io/php-minifier",
+	"url": "https://cedx.github.io/php-minifier",
 	"version": "1.0.2"
 }
