@@ -1,7 +1,7 @@
 {
 	"bugs": "https://github.com/cedx/php-minifier/issues",
 	"description": "Minify PHP source code by removing comments and whitespace.",
-	"homepage": "https://cedx.github.io/php-minifier",
+	"homepage": "https://github.com/cedx/php-minifier",
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier",

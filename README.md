@@ -15,4 +15,4 @@ either using the command line or through a [Gulp](https://gulpjs.com) plugin.
 - [Submit an issue](https://github.com/cedx/php-minifier/issues)
 
 ## License
-[PHP Minifier](https://cedx.github.io/php-minifier) is distributed under the MIT License.
+[PHP Minifier](https://github.com/cedx/php-minifier) is distributed under the MIT License.

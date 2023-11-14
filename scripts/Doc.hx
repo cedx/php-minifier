@@ -15,7 +15,7 @@ function main() {
 		"--define", "source-path", "https://github.com/cedx/php-minifier/blob/main/src",
 		"--define", "themeColor", "0x4f5b93",
 		"--define", "version", Platform.packageVersion,
-		"--define", "website", "https://cedx.github.io/php-minifier",
+		"--define", "website", "https://github.com/cedx/php-minifier",
 		"--input-path", "var",
 		"--output-path", "docs/api",
 		"--title", "PHP Minifier",
