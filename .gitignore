@@ -1,10 +1,7 @@
 /**/.DS_Store
 /.idea/
-/bin/*.map
-/lib/*.js
-/lib/*.map
+/etc/http-client.private.env.json
+/lib/
 /node_modules/
 /npm-debug.log
-/res/
-/run.n
 /var/
