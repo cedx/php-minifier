@@ -20,7 +20,15 @@
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
+		"@types/fancy-log": "^2.0.2",
+		"@types/node": "^20.11.6",
+		"@types/vinyl": "^2.0.11",
+		"@typescript-eslint/eslint-plugin": "^6.19.1",
+		"@typescript-eslint/parser": "^6.19.1",
 		"esbuild": "^0.19.12",
+		"eslint": "^8.56.0",
+		"typedoc": "^0.25.7",
+		"typescript": "^5.3.3",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
@@ -28,13 +36,19 @@
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"import": "./lib/index.mjs",
-		"default": "./lib/index.cjs"
+		"import": "./lib/index.js"
 	},
 	"files": [
 		"lib/",
+		"src/",
 		"www/"
 	],
+	"imports": {
+		"#phpMinifier": {
+			"types": "./lib/index.d.ts",
+			"import": "./lib/index.js"
+		}
+	},
 	"keywords": [
 		"compress",
 		"gulp",
@@ -46,6 +60,14 @@
 		"gulp": ">=4.0.0"
 	},
 	"scripts": {
-		"prepack": "lix Dist"
+		"build": "tsc --project src/tsconfig.json && esbuild --allow-overwrite --bundle --format=esm --legal-comments=none --log-level=warning --minify --outfile=bin/which.js --platform=node src/cli.ts",
+		"clean": "node tool/clean.js",
+		"dist": "npm run clean && npm run build && node tool/dist.js && git update-index --chmod=+x bin/which.js",
+		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
+		"lint": "tsc --project tsconfig.json && eslint --config=etc/eslint.cjs example src test tool",
+		"postpublish": "node tool/publish.js",
+		"prepack": "npm run dist",
+		"start": "npm run build && node bin/which.js --help",
+		"test": "npm run build && node --test --test-reporter=spec"
 	}
 }
