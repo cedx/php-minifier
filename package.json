@@ -5,8 +5,8 @@
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier",
-	"type": "commonjs",
-	"version": "1.0.2",
+	"type": "module",
+	"version": "2.0.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
