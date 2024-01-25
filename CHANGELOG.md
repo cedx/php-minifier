@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [2.0.0](https://github.com/cedx/php-minifier/compare/v1.0.2...v2.0.0)
+- Ported the source code to [TypeScript](https://www.typescriptlang.org).
+
 ## Version [1.0.2](https://github.com/cedx/php-minifier/compare/v1.0.1...v1.0.2)
 - Fixed a packaging issue.
 
