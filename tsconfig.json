@@ -1,0 +1,16 @@
+{
+	"include": ["etc/*.js", "example/*.js", "src/**/*.ts", "test/**/*.js", "tool/*.js"],
+	"compilerOptions": {
+		"allowJs": true,
+		"baseUrl": ".",
+		"checkJs": true,
+		"esModuleInterop": true,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"noEmit": true,
+		"resolveJsonModule": true,
+		"paths": {"@cedx/php-minifier": ["src"]},
+		"strict": true,
+		"target": "ESNext"
+	}
+}
