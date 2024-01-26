@@ -63,11 +63,11 @@
 		"gulp": ">=4.0.0"
 	},
 	"scripts": {
-		"build": "tsc --project src/tsconfig.json && esbuild --allow-overwrite --bundle --format=esm --legal-comments=none --log-level=warning --minify --outfile=bin/php_minifier.js --platform=node src/cli.ts",
+		"build": "tsc --project src/tsconfig.json && esbuild --allow-overwrite --bundle --format=esm --legal-comments=none --log-level=warning --minify --outfile=bin/php_minifier.js --platform=node src/cli/main.ts",
 		"clean": "node tool/clean.js",
 		"dist": "npm run clean && npm run build && node tool/dist.js && git update-index --chmod=+x bin/php_minifier.js",
 		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
-		"lint": "tsc --project tsconfig.json && eslint --config=etc/eslint.cjs example src test tool",
+		"lint": "tsc --project tsconfig.json && eslint --config=etc/eslint.cjs src test tool",
 		"postpublish": "node tool/publish.js",
 		"prepack": "npm run dist",
 		"start": "npm run build && node bin/php_minifier.js --help",
