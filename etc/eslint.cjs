@@ -61,7 +61,7 @@ module.exports = {
 		"grouped-accessor-pairs": "error",
 		"guard-for-in": "error",
 		"id-denylist": "off",
-		"id-length": ["error", {exceptions: ["_"]}],
+		"id-length": ["error", {exceptions: ["_", "x", "y"]}],
 		"id-match": "error",
 		"init-declarations": "error",
 		"max-classes-per-file": "off",
