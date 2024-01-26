@@ -1,8 +1,4 @@
-import {rmSync} from "node:fs";
-import {cleanDirectory} from "./tools.js";
+import {deleteSync} from "del";
 
-/**
- * Deletes all generated files.
- */
-rmSync("lib", {force: true, recursive: true});
-cleanDirectory("var");
+// Deletes all generated files.
+deleteSync(["lib", "var/**/*"]);

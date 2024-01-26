@@ -29,6 +29,7 @@
 		"@types/vinyl": "^2.0.11",
 		"@typescript-eslint/eslint-plugin": "^6.19.1",
 		"@typescript-eslint/parser": "^6.19.1",
+		"del": "^7.1.0",
 		"esbuild": "^0.19.12",
 		"eslint": "^8.56.0",
 		"typedoc": "^0.25.7",

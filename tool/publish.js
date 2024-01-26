@@ -1,8 +1,5 @@
-import {execSync} from "node:child_process";
-import {parseJson} from "./tools.js";
+import {$} from "execa";
+import pkg from "../package.json" with {type: "json"};
 
-/**
- * Publishes the package.
- */
-const {version} = await parseJson("../package.json");
-["tag", "push origin"].forEach(action => execSync(`git ${action} v${version}`));
+// Publishes the package.
+for (const action of [["tag"], ["push", "origin"]]) await $`git ${action} v${pkg.version}`;
