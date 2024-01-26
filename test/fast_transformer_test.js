@@ -25,28 +25,20 @@ describe("FastTransformer", () => {
 	});
 
 	describe("transform()", () => {
+		const map = new Map([
+			["should remove the inline comments", "<?= 'Hello World!' ?>"],
+			["should remove the multi-line comments", "namespace dummy; class Dummy"],
+			["should remove the single-line comments", "$className = get_class($this); return $className;"],
+			["should remove the whitespace", "__construct() { $this->property"]
+		]);
+
 		const script = "res/sample.php";
 		const transformer = new FastTransformer;
 		after(() => transformer.close());
 
-		it("should remove the inline comments", async () => {
+		for (const [key, value] of map) it(key, async () => {
       const output = await transformer.transform(script);
-			ok(output.includes("<?= 'Hello World!' ?>"));
-    });
-
-    it("should remove the multi-line comments", async () => {
-      const output = await transformer.transform(script);
-			ok(output.includes("namespace dummy; class Dummy"));
-    });
-
-    it("should remove the single-line comments", async () => {
-      const output = await transformer.transform(script);
-			ok(output.includes("$className = get_class($this); return $className;"));
-    });
-
-    it("should remove the whitespace", async () => {
-      const output = await transformer.transform(script);
-			ok(output.includes("__construct() { $this->property"));
+			ok(output.includes(value));
     });
 	});
 });
