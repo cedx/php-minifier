@@ -8,7 +8,7 @@ You can verify if you're already good to go with the following command:
 
 ```shell
 node --version
-# v20.5.0
+# v21.6.1
 ```
 
 ## Installing with npm package manager
@@ -23,18 +23,6 @@ npm install @cedx/php-minifier
 ### 2. Import it
 Now in your [JavaScript](https://developer.mozilla.org/docs/Web/JavaScript) code, you can use:
 
-<!-- tabs:start -->
-
-#### **CommonJS module**
-
-```js
-const phpMinifier = require("@cedx/php-minifier");
-```
-
-#### **ECMAScript module**
-
 ```js
 import phpMinifier from "@cedx/php-minifier";
 ```
-
-<!-- tabs:end -->
