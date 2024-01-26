@@ -41,10 +41,10 @@ interface CliOptions {
 async function main(): Promise<number> {
 	// Parse the command line arguments.
 	const {positionals, values} = parseArgs({allowPositionals: true, options: {
-		binary: {short: "b", type: "string", default: false},
-		extension: {short: "e", type: "string", default: false},
+		binary: {short: "b", type: "string", default: "php"},
+		extension: {short: "e", type: "string", default: "php"},
 		help: {short: "h", type: "boolean", default: false},
-		mode: {short: "m", type: "string", default: false},
+		mode: {short: "m", type: "string", default: TransformMode.safe},
 		silent: {short: "s", type: "boolean", default: false},
 		version: {short: "v", type: "boolean", default: false}
 	}});
@@ -87,17 +87,15 @@ async function processFiles(input: string, output: string, options: Partial<CliO
 	const mode = (options.mode ?? "safe") as TransformMode;
 	const silent = options.silent ?? false;
 
-	const files = await readdirp.promise(input, {fileFilter: `*.${extension}`});
 	const transformer = mode == TransformMode.fast ? new FastTransformer(binary) : new SafeTransformer(binary);
-	const promises = files.map(async file => {
+	for await (const file of readdirp(input, {fileFilter: `*.${extension}`})) {
 		if (!silent) console.log(`Minifying: ${file.path}`);
 		const script = await transformer.transform(file.fullPath);
 		const path = join(output, file.path);
 		await mkdir(dirname(path), {recursive: true});
-		return writeFile(path, script);
-	});
+		await writeFile(path, script);
+	}
 
-	for (const promise of promises) await promise;
 	return transformer.close();
 }
 

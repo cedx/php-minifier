@@ -1,4 +1,4 @@
-import {normalize, resolve} from "node:path";
+import {join, normalize, resolve} from "node:path";
 import {fileURLToPath} from "node:url";
 import {execa, type ExecaChildProcess} from "execa";
 import getPort from "get-port";
@@ -55,7 +55,8 @@ export class FastTransformer implements Transformer {
 
 		this.#port = await getPort();
 		return new Promise((fulfill, reject) => {
-			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", fileURLToPath(new URL("../www", import.meta.url))];
+			const root = typeof module == "undefined" ? fileURLToPath(new URL("../www", import.meta.url)) : join(__dirname, "../www");
+			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", root];
 			this.#process = execa(this.#executable, args);
 			this.#process.on("error", reject);
 			setTimeout(() => fulfill(this.#port), 1_000);
