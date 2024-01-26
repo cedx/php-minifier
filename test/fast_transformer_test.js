@@ -1,5 +1,5 @@
 import {doesNotReject, ok} from "node:assert/strict";
-import {describe, it} from "node:test";
+import {after, describe, it} from "node:test";
 import {FastTransformer} from "#phpMinifier";
 
 /**
@@ -7,7 +7,7 @@ import {FastTransformer} from "#phpMinifier";
  */
 describe("FastTransformer", () => {
 	describe("close()", () => {
-		it("should TODO", async () => {
+		it("should not reject, even if called several times", async () => {
 			const transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
 			await doesNotReject(transformer.close());
@@ -16,7 +16,7 @@ describe("FastTransformer", () => {
 	});
 
 	describe("listen()", () => {
-		it("should TODO", async () => {
+		it("should not reject, even if called several times", async () => {
 			const transformer = new FastTransformer;
 			await doesNotReject(transformer.listen());
 			await doesNotReject(transformer.listen());
@@ -25,17 +25,28 @@ describe("FastTransformer", () => {
 	});
 
 	describe("transform()", () => {
-		it("should TODO", async () => {
-			const transformer = new FastTransformer;
-			const transform = transformer.transform("res/sample.php");
-			await doesNotReject(transform);
+		const script = "res/sample.php";
+		const transformer = new FastTransformer;
+		after(() => transformer.close());
 
-			const script = await transform;
-			ok(script.includes("<?= 'Hello World!' ?>"));
-			ok(script.includes("namespace dummy; class Dummy"));
-			ok(script.includes("$className = get_class($this); return $className;"));
-			ok(script.includes("__construct() { $this->property"));
-			return doesNotReject(transformer.close());
-		});
+		it("should remove the inline comments", async () => {
+      const output = await transformer.transform(script);
+			ok(output.includes("<?= 'Hello World!' ?>"));
+    });
+
+    it("should remove the multi-line comments", async () => {
+      const output = await transformer.transform(script);
+			ok(output.includes("namespace dummy; class Dummy"));
+    });
+
+    it("should remove the single-line comments", async () => {
+      const output = await transformer.transform(script);
+			ok(output.includes("$className = get_class($this); return $className;"));
+    });
+
+    it("should remove the whitespace", async () => {
+      const output = await transformer.transform(script);
+			ok(output.includes("__construct() { $this->property"));
+    });
 	});
 });

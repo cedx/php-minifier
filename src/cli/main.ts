@@ -6,9 +6,7 @@ import {parseArgs} from "node:util";
 import readdirp from "readdirp";
 import pkg from "../../package.json" with {type: "json"};
 import usage from "./usage.js";
-import {FastTransformer} from "../fast_transformer.js";
-import {SafeTransformer} from "../safe_transformer.js";
-import {TransformMode} from "../transform_mode.js";
+import {FastTransformer, SafeTransformer, TransformMode} from "../index.js";
 
 /**
  * Defines the command line options.
