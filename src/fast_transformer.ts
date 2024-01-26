@@ -57,7 +57,7 @@ export class FastTransformer implements Transformer {
 		return new Promise((fulfill, reject) => {
 			const root = typeof module == "undefined" ? fileURLToPath(new URL("../www", import.meta.url)) : join(__dirname, "../www");
 			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", root];
-			this.#process = execa(this.#executable, args, {stdio: "ignore"});
+			this.#process = execa(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
 			this.#process.on("error", reject);
 			setTimeout(() => fulfill(this.#port), 1_000);
 		});
