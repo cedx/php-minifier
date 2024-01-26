@@ -16,12 +16,15 @@
 		"php_minifier": "./bin/php_minifier.js"
 	},
 	"dependencies": {
+		"execa": "^8.0.1",
 		"fancy-log": "^2.0.0",
-		"plugin-error": "^2.0.1"
+		"get-port": "^7.0.0",
+		"plugin-error": "^2.0.1",
+		"readdirp": "^3.6.0"
 	},
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
-		"@types/node": "^20.11.6",
+		"@types/node": "^20.11.7",
 		"@types/vinyl": "^2.0.11",
 		"@typescript-eslint/eslint-plugin": "^6.19.1",
 		"@typescript-eslint/parser": "^6.19.1",
