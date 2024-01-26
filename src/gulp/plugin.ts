@@ -13,19 +13,9 @@ import type {Transformer} from "../transformer.js";
 export class Plugin extends Transform {
 
 	/**
-	 * The path to the PHP executable.
-	 */
-	readonly binary: string;
-
-	/**
-	 * The operation mode of the plugin.
-	 */
-	readonly mode: TransformMode;
-
-	/**
 	 * Value indicating whether to silence the plugin output.
 	 */
-	readonly silent: boolean;
+	readonly #silent: boolean;
 
 	/**
 	 * The instance used to process the PHP code.
@@ -39,10 +29,9 @@ export class Plugin extends Transform {
 	constructor(options: Partial<PluginOptions> = {}) {
 		super({objectMode: true});
 
-		this.binary = options.binary ?? "php";
-		this.mode = options.mode ?? TransformMode.safe;
-		this.silent = options.silent ?? false;
-		this.#transformer = this.mode == TransformMode.fast ? new FastTransformer(this.binary) : new SafeTransformer(this.binary);
+		const binary = options.binary ?? "php";
+		this.#silent = options.silent ?? false;
+		this.#transformer = (options.mode ?? TransformMode.safe) == TransformMode.fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 
 		const handler = async (): Promise<void> => { await this.#transformer.close(); };
 		this.on("end", handler).on("error", handler);
@@ -57,7 +46,7 @@ export class Plugin extends Transform {
 	 */
 	async _transform(chunk: Vinyl, encoding: NodeJS.BufferEncoding, callback: TransformCallback): Promise<Vinyl> {
 		try {
-			if (!this.silent) log(`Minifying: ${chunk.relative}`);
+			if (!this.#silent) log(`Minifying: ${chunk.relative}`);
 			chunk.contents = Buffer.from(await this.#transformer.transform(chunk.path), encoding);
 			callback(null, chunk);
 		}
@@ -82,7 +71,7 @@ export interface PluginOptions {
 	/**
 	 * The operation mode of the plugin.
 	 */
-	mode: TransformMode;
+	mode: TransformMode|string;
 
 	/**
 	 * Value indicating whether to silence the plugin output.
