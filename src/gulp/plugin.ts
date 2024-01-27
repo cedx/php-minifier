@@ -44,7 +44,7 @@ export class Plugin extends Transform {
 	 * @param callback The function to invoke when the supplied chunk has been processed.
 	 * @returns The transformed chunk.
 	 */
-	async _transform(chunk: Vinyl, encoding: NodeJS.BufferEncoding, callback: TransformCallback): Promise<Vinyl> {
+	override async _transform(chunk: Vinyl, encoding: NodeJS.BufferEncoding, callback: TransformCallback): Promise<Vinyl> {
 		try {
 			if (!this.#silent) log(`Minifying: ${chunk.relative}`);
 			chunk.contents = Buffer.from(await this.#transformer.transform(chunk.path), encoding);
