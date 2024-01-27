@@ -16,7 +16,7 @@ function main(array $query): void {
  * @param string $mediaType The response media type.
  * @param int $status The status code of the response.
  */
-function sendResponse(string $body, string $mediaType = "text/plain", int $status = 200): void {
+function sendResponse(string $body, string $mediaType = "application/octet-stream", int $status = 200): void {
 	http_response_code($status);
 	header("Content-Length: ".strlen($body));
 	header("Content-Type: $mediaType");
