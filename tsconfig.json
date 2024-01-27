@@ -5,6 +5,7 @@
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
+		"isolatedModules": true,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"noEmit": true,
