@@ -11,6 +11,6 @@ export * from "./gulp/plugin.js";
  * @param options The plugin options.
  * @returns The newly created instance.
  */
-export default function phpMinifier(options: Partial<PluginOptions>): Plugin {
+export default function phpMinifier(options: Partial<PluginOptions> = {}): Plugin {
 	return new Plugin(options);
 }
