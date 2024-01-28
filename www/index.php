@@ -7,7 +7,7 @@ function main(array $query): void {
 	if (empty($query["file"])) throw new LogicException("Bad Request", 400);
 	$output = @php_strip_whitespace($query["file"]);
 	if (!$output) throw new RuntimeException("Not Found", 404);
-	sendResponse($output, "application/x-php", 200);
+	sendResponse($output, "application/x-php");
 }
 
 /**
