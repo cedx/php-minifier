@@ -71,7 +71,7 @@ export interface PluginOptions {
 	/**
 	 * The operation mode of the plugin.
 	 */
-	mode: TransformMode|string;
+	mode: TransformMode|"fast"|"safe";
 
 	/**
 	 * Value indicating whether to silence the plugin output.
