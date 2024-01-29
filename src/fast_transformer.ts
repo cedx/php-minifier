@@ -58,7 +58,7 @@ export class FastTransformer implements Transformer {
 			const root = typeof module == "undefined" ? fileURLToPath(new URL("../www", import.meta.url)) : join(__dirname, "../www");
 			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", root];
 			this.#process = execa(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
-			this.#process.on("error", reject);
+			this.#process.on("error", reject); // eslint-disable-line @typescript-eslint/no-floating-promises
 			setTimeout(() => fulfill(this.#port), 1_000);
 		});
 	}
@@ -74,7 +74,7 @@ export class FastTransformer implements Transformer {
 		url.searchParams.set("file", resolve(file));
 
 		const response = await fetch(url);
-		if (!response.ok) throw new Error(`An error occurred while processing the script: ${file}`);
-		return response.text();
+		if (response.ok) return response.text(); // eslint-disable-line @typescript-eslint/no-unsafe-return
+		throw Error(`An error occurred while processing the script: ${file}`);
 	}
 }

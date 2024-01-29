@@ -34,7 +34,7 @@ export class Plugin extends Transform {
 		this.#transformer = (options.mode ?? TransformMode.safe) == TransformMode.fast ? new FastTransformer(binary) : new SafeTransformer(binary);
 
 		const handler = async (): Promise<void> => { await this.#transformer.close(); };
-		this.on("end", handler).on("error", handler);
+		this.on("end", handler).on("error", handler); // eslint-disable-line @typescript-eslint/no-misused-promises
 	}
 
 	/**
@@ -51,7 +51,7 @@ export class Plugin extends Transform {
 			callback(null, chunk);
 		}
 		catch (error) {
-			callback(new PluginError("@cedx/php-minifier", error instanceof Error ? error : String(error), {fileName: chunk.path}), null);
+			callback(new PluginError("@cedx/php-minifier", error instanceof Error ? error : String(error), {fileName: chunk.path}));
 		}
 
 		return chunk;

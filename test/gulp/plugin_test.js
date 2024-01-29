@@ -21,18 +21,18 @@ describe("Plugin", () => {
 		describe("TransformMode.fast", () => {
 			const plugin = new Plugin({mode: TransformMode.fast, silent: true});
 			after(() => plugin.emit("end"));
-			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, chunk) => {
+			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, /** @type {Vinyl} */ chunk) => {
 				ifError(error);
-				ok(chunk.contents.toString().includes(value));
+				ok(chunk.contents?.toString().includes(value));
 			})));
 		});
 
 		describe("TransformMode.safe", () => {
 			const plugin = new Plugin({mode: TransformMode.safe, silent: true});
 			after(() => plugin.emit("end"));
-			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, chunk) => {
+			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, /** @type {Vinyl} */ chunk) => {
 				ifError(error);
-				ok(chunk.contents.toString().includes(value));
+				ok(chunk.contents?.toString().includes(value));
 			})));
 		});
 	});

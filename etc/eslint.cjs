@@ -6,15 +6,19 @@ module.exports = {
 	},
 	extends: [
 		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended"
+		"plugin:@typescript-eslint/recommended-type-checked"
 	],
 	overrides: [
 		{
-			files: ["*.cjs", "*.js", "*.mjs"],
+			files: ["*.{cjs,js,mjs}"],
 			rules: {
 				"@typescript-eslint/explicit-function-return-type": "off",
 				"@typescript-eslint/explicit-module-boundary-types": "off"
 			}
+		},
+		{
+			files: ["test/**/*.js"],
+			rules: {"@typescript-eslint/no-floating-promises": "off"}
 		}
 	],
 	parser: "@typescript-eslint/parser",
@@ -135,7 +139,7 @@ module.exports = {
 		"no-useless-rename": "error",
 		"no-useless-return": "error",
 		"no-var": "error",
-		"no-void": "error",
+		"no-void": ["error", {allowAsStatement: true}],
 		"no-warning-comments": "warn",
 		"object-shorthand": "error",
 		"one-var": ["error", "never"],
@@ -190,7 +194,7 @@ module.exports = {
 		"@typescript-eslint/naming-convention": "off",
 		"@typescript-eslint/no-array-delete": "error",
 		"@typescript-eslint/no-confusing-non-null-assertion": "error",
-		"@typescript-eslint/no-confusing-void-expression": ["error", {ignoreArrowShorthand: true}],
+		"@typescript-eslint/no-confusing-void-expression": "off",
 		"@typescript-eslint/no-dupe-class-members": "error",
 		"@typescript-eslint/no-dynamic-delete": "error",
 		"@typescript-eslint/no-empty-function": "error",
@@ -243,6 +247,7 @@ module.exports = {
 		"@typescript-eslint/prefer-ts-expect-error": "error",
 		"@typescript-eslint/promise-function-async": "off",
 		"@typescript-eslint/require-array-sort-compare": "error",
+		"@typescript-eslint/restrict-template-expressions": "off",
 		"@typescript-eslint/return-await": "error",
 		"@typescript-eslint/sort-type-constituents": "error",
 		"@typescript-eslint/strict-boolean-expressions": "off",
