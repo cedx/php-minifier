@@ -36,9 +36,9 @@ interface CliOptions {
 
 /**
  * Application entry point.
- * @returns The application exit code.
+ * @returns Resolves when the application is terminated.
  */
-async function main(): Promise<number> {
+async function main(): Promise<void> {
 	// Parse the command line arguments.
 	const {positionals, values} = parseArgs({allowPositionals: true, options: {
 		binary: {short: "b", type: "string", default: "php"},
@@ -50,28 +50,19 @@ async function main(): Promise<number> {
 	}});
 
 	// Print the usage.
-	if (values.help || values.version) { // eslint-disable-line @typescript-eslint/prefer-nullish-coalescing
-		console.log(values.version ? pkg.version : usage.trim());
-		return 0;
-	}
+	if (values.help || values.version) // eslint-disable-line @typescript-eslint/prefer-nullish-coalescing
+		return console.log(values.version ? pkg.version : usage.trim());
 
 	// Check the requirements.
-	if (!positionals.length) {
-		console.error("You must provide the path to the input directory.");
-		return 1;
-	}
+	if (!positionals.length) throw Error("You must provide the path to the input directory.");
 
 	const input = resolve(positionals[0]);
 	try { await access(input); }
-	catch {
-		console.error("The input directory was not found.");
-		return 2;
-	}
+	catch { throw Error("The input directory was not found."); }
 
 	// Process the PHP files.
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
 	await processFiles(input, output, values);
-	return 0;
 }
 
 /**
@@ -100,7 +91,7 @@ async function processFiles(input: string, output: string, options: Partial<CliO
 }
 
 // Start the application.
-main().then(exitCode => process.exitCode = exitCode, error => {
+main().catch(error => {
 	console.error(error instanceof Error ? error.message : error);
 	process.exitCode = 1;
 });
