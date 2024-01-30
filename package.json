@@ -61,7 +61,7 @@
 		"minify",
 		"php"
 	],
-	"peerDependencies": {
+	"optionalDependencies": {
 		"gulp": ">=4.0.0"
 	},
 	"scripts": {
