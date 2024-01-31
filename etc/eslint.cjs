@@ -188,7 +188,7 @@ module.exports = {
 		"@typescript-eslint/explicit-member-accessibility": ["error", {accessibility: "no-public"}],
 		"@typescript-eslint/explicit-module-boundary-types": "error",
 		"@typescript-eslint/init-declarations": "error",
-		"@typescript-eslint/max-params": ["error", 4],
+		"@typescript-eslint/max-params": ["error", {max: 4}],
 		"@typescript-eslint/member-ordering": "error",
 		"@typescript-eslint/method-signature-style": "error",
 		"@typescript-eslint/naming-convention": "off",
