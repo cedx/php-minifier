@@ -61,9 +61,6 @@
 		"minify",
 		"php"
 	],
-	"optionalDependencies": {
-		"gulp": ">=4.0.0"
-	},
 	"scripts": {
 		"build": "tsc --project src/tsconfig.json && esbuild \"--banner:js=#!/usr/bin/env node\" --bundle --legal-comments=none --log-level=warning --log-override:empty-import-meta=info --minify --outfile=bin/php_minifier.cjs --platform=node src/cli.ts",
 		"clean": "node tool/clean.js",
