@@ -2,15 +2,15 @@ import {Transform, type TransformCallback} from "node:stream";
 import log from "fancy-log";
 import PluginError from "plugin-error";
 import type Vinyl from "vinyl";
-import {FastTransformer} from "../fast_transformer.js";
-import {SafeTransformer} from "../safe_transformer.js";
-import {TransformMode} from "../transform_mode.js";
-import type {Transformer} from "../transformer.js";
+import {FastTransformer} from "./fast_transformer.js";
+import {SafeTransformer} from "./safe_transformer.js";
+import {TransformMode} from "./transform_mode.js";
+import type {Transformer} from "./transformer.js";
 
 /**
  * Minifies PHP source code by removing comments and whitespace.
  */
-export class Plugin extends Transform {
+export class GulpPlugin extends Transform {
 
 	/**
 	 * Value indicating whether to silence the plugin output.
@@ -26,7 +26,7 @@ export class Plugin extends Transform {
 	 * Creates a new plugin.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options: Partial<PluginOptions> = {}) {
+	constructor(options: Partial<GulpPluginOptions> = {}) {
 		super({objectMode: true});
 
 		const binary = options.binary ?? "php";
@@ -59,9 +59,9 @@ export class Plugin extends Transform {
 }
 
 /**
- * Defines the options of a {@link Plugin} instance.
+ * Defines the options of a {@link GulpPlugin} instance.
  */
-export interface PluginOptions {
+export interface GulpPluginOptions {
 
 	/**
 	 * The path to the PHP executable.

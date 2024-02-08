@@ -3,12 +3,12 @@ import {doesNotReject, ifError, ok} from "node:assert/strict";
 import {resolve} from "node:path";
 import {after, describe, it} from "node:test";
 import Vinyl from "vinyl";
-import {Plugin, TransformMode} from "#phpMinifier";
+import {GulpPlugin, TransformMode} from "#phpMinifier";
 
 /**
- * Tests the features of the {@link Plugin} class.
+ * Tests the features of the {@link GulpPlugin} class.
  */
-describe("Plugin", () => {
+describe("GulpPlugin", () => {
 	describe("_transform()", () => {
 		const script = {path: resolve("res/sample.php")};
 		const map = new Map([
@@ -19,7 +19,7 @@ describe("Plugin", () => {
 		]);
 
 		describe("TransformMode.fast", () => {
-			const plugin = new Plugin({mode: TransformMode.fast, silent: true});
+			const plugin = new GulpPlugin({mode: TransformMode.fast, silent: true});
 			after(() => plugin.emit("end"));
 			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, /** @type {Vinyl} */ chunk) => {
 				ifError(error);
@@ -28,7 +28,7 @@ describe("Plugin", () => {
 		});
 
 		describe("TransformMode.safe", () => {
-			const plugin = new Plugin({mode: TransformMode.safe, silent: true});
+			const plugin = new GulpPlugin({mode: TransformMode.safe, silent: true});
 			after(() => plugin.emit("end"));
 			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, /** @type {Vinyl} */ chunk) => {
 				ifError(error);

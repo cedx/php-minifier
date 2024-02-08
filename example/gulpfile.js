@@ -6,7 +6,7 @@ import phpMinifier from "@cedx/php-minifier";
 export function compressPhp() {
 	const isWindows = process.platform == "win32";
 
-	/** @type {import("@cedx/php-minifier").PluginOptions} */
+	/** @type {import("@cedx/php-minifier").GulpPluginOptions} */
 	const options = {
 		binary: isWindows ? "C:\\Program Files\\PHP\\php.exe" : "/usr/bin/php",
 		mode: isWindows ? "safe" : "fast",
