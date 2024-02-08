@@ -1,7 +1,6 @@
 {
 	"extends": "../tsconfig",
-	"exclude": ["cli.ts"],
-	"include": ["**/*.ts"],
+	"include": ["index.ts"],
 	"compilerOptions": {
 		"declaration": true,
 		"declarationMap": true,
