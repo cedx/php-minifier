@@ -32,7 +32,6 @@
 		"del": "^7.1.0",
 		"esbuild": "^0.20.0",
 		"eslint": "^8.56.0",
-		"gulp": "^4.0.2",
 		"typedoc": "^0.25.8",
 		"typescript": "^5.3.3",
 		"vinyl": "^3.0.0"
@@ -62,6 +61,9 @@
 		"minify",
 		"php"
 	],
+	"optionalDependencies": {
+		"gulp": ">=4.0.0"
+	},
 	"scripts": {
 		"build": "tsc --project src/tsconfig.json && esbuild \"--banner:js=#!/usr/bin/env node\" --bundle --legal-comments=none --log-level=warning --log-override:empty-import-meta=info --minify --outfile=bin/php_minifier.cjs --platform=node src/cli.ts",
 		"clean": "node tool/clean.js",
