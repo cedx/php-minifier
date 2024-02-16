@@ -20,6 +20,10 @@ module.exports = {
 		{
 			files: ["test/**/*.js"],
 			rules: {"@typescript-eslint/no-floating-promises": "off"}
+		},
+		{
+			files: ["tool/*.js"],
+			rules: {"@typescript-eslint/no-unused-expressions": "off"}
 		}
 	],
 	parser: "@typescript-eslint/parser",
