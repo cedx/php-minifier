@@ -25,7 +25,7 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^20.11.17",
+		"@types/node": "^20.11.19",
 		"@types/vinyl": "^2.0.11",
 		"@typescript-eslint/eslint-plugin": "^7.0.1",
 		"@typescript-eslint/parser": "^7.0.1",
@@ -65,7 +65,7 @@
 		"gulp": ">=4.0.0"
 	},
 	"scripts": {
-		"build": "tsc --project src/tsconfig.json && esbuild \"--banner:js=#!/usr/bin/env node\" --bundle --legal-comments=none --log-level=warning --log-override:empty-import-meta=info --minify --outfile=bin/php_minifier.cjs --platform=node src/cli.ts",
+		"build": "tsc --project src/tsconfig.json && esbuild \"--banner:js=#!/usr/bin/env node\" --bundle --legal-comments=none --log-override:empty-import-meta=debug --minify --outfile=bin/php_minifier.cjs --platform=node src/cli.ts",
 		"clean": "node tool/clean.js",
 		"dist": "npm run clean && npm run build && git update-index --chmod=+x bin/php_minifier.cjs",
 		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
@@ -73,6 +73,7 @@
 		"postpublish": "node tool/publish.js",
 		"prepack": "npm run dist",
 		"start": "npm run build && node bin/php_minifier.cjs --help",
-		"test": "npm run build && node --test --test-reporter=spec"
+		"test": "npm run build && node --test --test-reporter=spec",
+		"watch": "esbuild --bundle --legal-comments=none --log-override:empty-import-meta=debug --outfile=bin/php_minifier.cjs --platform=node --watch src/cli.ts"
 	}
 }
