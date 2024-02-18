@@ -20,10 +20,6 @@ module.exports = {
 		{
 			files: ["test/**/*.js"],
 			rules: {"@typescript-eslint/no-floating-promises": "off"}
-		},
-		{
-			files: ["tool/*.js"],
-			rules: {"@typescript-eslint/no-unused-expressions": "off"}
 		}
 	],
 	parser: "@typescript-eslint/parser",
@@ -199,7 +195,7 @@ module.exports = {
 		"@typescript-eslint/no-shadow": "error",
 		"@typescript-eslint/no-unnecessary-qualifier": "error",
 		"@typescript-eslint/no-unsafe-unary-minus": "error",
-		"@typescript-eslint/no-unused-expressions": "error",
+		"@typescript-eslint/no-unused-expressions": ["error", {allowTaggedTemplates: true, allowTernary: true}],
 		"@typescript-eslint/no-use-before-define": ["error", {functions: false}],
 		"@typescript-eslint/no-useless-empty-export": "error",
 		"@typescript-eslint/parameter-properties": "error",
