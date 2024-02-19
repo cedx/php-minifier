@@ -68,7 +68,7 @@ module.exports = {
 		"id-denylist": "off",
 		"id-length": ["error", {exceptions: ["_", "x", "y"]}],
 		"id-match": "error",
-		"init-declarations": "error",
+		"init-declarations": "off",
 		"max-classes-per-file": "off",
 		"max-depth": "error",
 		"max-lines": ["error", {max: 500}],
