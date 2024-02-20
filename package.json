@@ -69,7 +69,7 @@
 		"clean": "node tool/clean.js",
 		"dist": "npm run clean && npm run build && git update-index --chmod=+x bin/php_minifier.cjs",
 		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
-		"lint": "npm run build && tsc --project tsconfig.json && eslint --config=etc/eslint.config.js src test tool",
+		"lint": "npm run build && tsc --project tsconfig.json && eslint --config=etc/eslint.config.js etc src test tool",
 		"postpublish": "node tool/publish.js",
 		"prepack": "npm run dist",
 		"start": "npm run build && node bin/php_minifier.cjs --help",
