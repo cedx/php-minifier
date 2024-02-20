@@ -23,17 +23,17 @@
 		"readdirp": "^3.6.0"
 	},
 	"devDependencies": {
+		"@types/eslint__js": "^8.42.3",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^20.11.19",
 		"@types/vinyl": "^2.0.11",
-		"@typescript-eslint/eslint-plugin": "^7.0.2",
-		"@typescript-eslint/parser": "^7.0.2",
 		"del": "^7.1.0",
 		"esbuild": "^0.20.1",
 		"eslint": "^8.56.0",
 		"typedoc": "^0.25.8",
 		"typescript": "^5.3.3",
+		"typescript-eslint": "^7.0.2",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
@@ -69,7 +69,7 @@
 		"clean": "node tool/clean.js",
 		"dist": "npm run clean && npm run build && git update-index --chmod=+x bin/php_minifier.cjs",
 		"doc": "typedoc --options etc/typedoc.js && node tool/doc.js",
-		"lint": "npm run build && tsc --project tsconfig.json && eslint --config=etc/eslint.cjs src test tool",
+		"lint": "npm run build && tsc --project tsconfig.json && eslint --config=etc/eslint.config.js src test tool",
 		"postpublish": "node tool/publish.js",
 		"prepack": "npm run dist",
 		"start": "npm run build && node bin/php_minifier.cjs --help",
