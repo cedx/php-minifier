@@ -80,7 +80,7 @@ export default tsEslint.config(
 			"no-implicit-globals": "error",
 			"no-implied-eval": "error",
 			"no-inline-comments": "off",
-			"no-invalid-this": "error",
+			"no-invalid-this": "off",
 			"no-iterator": "error",
 			"no-label-var": "error",
 			"no-labels": "error",
