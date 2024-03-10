@@ -1,6 +1,6 @@
 import {doesNotReject, ok} from "node:assert/strict";
 import {after, describe, it} from "node:test";
-import {SafeTransformer} from "#phpMinifier";
+import {SafeTransformer} from "@cedx/php-minifier";
 
 /**
  * Tests the features of the {@link SafeTransformer} class.

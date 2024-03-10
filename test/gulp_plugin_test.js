@@ -3,7 +3,7 @@ import {doesNotReject, ifError, ok} from "node:assert/strict";
 import {resolve} from "node:path";
 import {after, describe, it} from "node:test";
 import Vinyl from "vinyl";
-import {GulpPlugin, TransformMode} from "#phpMinifier";
+import {GulpPlugin, TransformMode} from "@cedx/php-minifier";
 
 /**
  * Tests the features of the {@link GulpPlugin} class.

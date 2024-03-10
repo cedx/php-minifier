@@ -48,12 +48,6 @@
 		"src/",
 		"www/"
 	],
-	"imports": {
-		"#phpMinifier": {
-			"types": "./lib/index.d.ts",
-			"import": "./lib/index.js"
-		}
-	},
 	"keywords": [
 		"compress",
 		"gulp",
