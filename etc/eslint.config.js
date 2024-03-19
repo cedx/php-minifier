@@ -167,6 +167,7 @@ export default tsEslint.config(
 			"@typescript-eslint/no-confusing-void-expression": "off",
 			"@typescript-eslint/no-dupe-class-members": "error",
 			"@typescript-eslint/no-explicit-any": "off",
+			"@typescript-eslint/no-floating-promises": ["error", {ignoreVoid: true}],
 			"@typescript-eslint/no-import-type-side-effects": "error",
 			"@typescript-eslint/no-invalid-this": "error",
 			"@typescript-eslint/no-loop-func": "error",
