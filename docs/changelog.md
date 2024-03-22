@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [2.1.0](https://github.com/cedx/php-minifier/compare/v2.0.0...v2.1.0)
+- Removed the dependency on [execa](https://www.npmjs.com/package/execa) package.
+
 ## Version [2.0.0](https://github.com/cedx/php-minifier/compare/v1.0.2...v2.0.0)
 - Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
 - Ported the source code to [TypeScript](https://www.typescriptlang.org).
