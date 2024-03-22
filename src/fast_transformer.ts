@@ -59,7 +59,7 @@ export class FastTransformer implements Transformer {
 			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", root];
 			this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
 			this.#process.on("error", reject);
-			setTimeout(() => fulfill(this.#port), 1_000);
+			this.#process.on("spawn", () => setTimeout(() => fulfill(this.#port), 1_000));
 		});
 	}
 
