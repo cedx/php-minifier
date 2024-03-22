@@ -33,7 +33,8 @@ export class SafeTransformer implements Transformer {
 	 * @returns The transformed script.
 	 */
 	async transform(file: string): Promise<string> {
-		return new Promise((fulfill, reject) => execFile(this.#executable, ["-w", resolve(file)], (error, stdout) => {
+		const maxBuffer = 20 * 1_024 * 1_024;
+		return new Promise((fulfill, reject) => execFile(this.#executable, ["-w", resolve(file)], {maxBuffer}, (error, stdout) => {
 			if (error) reject(error); // eslint-disable-line @typescript-eslint/prefer-promise-reject-errors
 			else fulfill(stdout);
 		}));
