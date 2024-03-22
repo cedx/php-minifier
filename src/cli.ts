@@ -85,7 +85,7 @@ async function main(): Promise<void> {
 
 	// Process the PHP files.
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
-	await processFiles(input, output, values);
+	return processFiles(input, output, values);
 }
 
 /**
