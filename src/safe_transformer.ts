@@ -1,5 +1,5 @@
+import {execFile} from "node:child_process";
 import {normalize, resolve} from "node:path";
-import {execa} from "execa"
 import type {Transformer} from "./transformer.js";
 
 /**
@@ -33,6 +33,9 @@ export class SafeTransformer implements Transformer {
 	 * @returns The transformed script.
 	 */
 	async transform(file: string): Promise<string> {
-		return (await execa(this.#executable, ["-w", resolve(file)])).stdout;
+		return new Promise((fulfill, reject) => execFile(this.#executable, ["-w", resolve(file)], (error, stdout) => {
+			if (error) reject(error); // eslint-disable-line @typescript-eslint/prefer-promise-reject-errors
+			else fulfill(stdout);
+		}));
 	}
 }

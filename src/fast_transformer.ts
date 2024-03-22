@@ -1,6 +1,6 @@
+import {type ChildProcess, spawn} from "node:child_process";
 import {join, normalize, resolve} from "node:path";
 import {fileURLToPath} from "node:url";
-import {execa, type ExecaChildProcess} from "execa";
 import getPort from "get-port";
 import type {Transformer} from "./transformer.js";
 
@@ -27,7 +27,7 @@ export class FastTransformer implements Transformer {
 	/**
 	 * The underlying PHP process.
 	 */
-	#process: ExecaChildProcess|null = null;
+	#process: ChildProcess|null = null;
 
 	/**
 	 * Creates a new fast transformer.
@@ -57,8 +57,8 @@ export class FastTransformer implements Transformer {
 		return new Promise((fulfill, reject) => {
 			const root = typeof module == "undefined" ? fileURLToPath(new URL("../www", import.meta.url)) : join(__dirname, "../www");
 			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", root];
-			this.#process = execa(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
-			this.#process.on("error", reject); // eslint-disable-line @typescript-eslint/no-floating-promises
+			this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
+			this.#process.on("error", reject);
 			setTimeout(() => fulfill(this.#port), 1_000);
 		});
 	}

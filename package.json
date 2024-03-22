@@ -16,7 +16,6 @@
 		"php_minifier": "./bin/php_minifier.cjs"
 	},
 	"dependencies": {
-		"execa": "^8.0.1",
 		"fancy-log": "^2.0.0",
 		"get-port": "^7.1.0",
 		"plugin-error": "^2.0.1",
@@ -31,6 +30,7 @@
 		"del": "^7.1.0",
 		"esbuild": "^0.20.2",
 		"eslint": "^8.57.0",
+		"execa": "^8.0.1",
 		"typedoc": "^0.25.12",
 		"typescript": "^5.4.3",
 		"typescript-eslint": "^7.3.1",
