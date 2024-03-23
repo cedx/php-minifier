@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [2.1.1](https://github.com/cedx/php-minifier/compare/v2.1.0...v2.1.1)
+- Fixed a buffer overflow with large [PHP](https://www.php.net) files when using the `safe` transform mode. 
+
 ## Version [2.1.0](https://github.com/cedx/php-minifier/compare/v2.0.0...v2.1.0)
 - Removed the dependency on [execa](https://www.npmjs.com/package/execa) package.
 
