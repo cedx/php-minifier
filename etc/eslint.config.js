@@ -198,8 +198,9 @@ export default tsEslint.config(
 		}
 	},
 	{
-		files: ["test/**/*.js"],
+		files: ["gulpfile.js", "etc/*.js", "example/*.js", "test/**/*.js"],
 		rules: {
+			"prefer-arrow-callback": "off",
 			"@typescript-eslint/explicit-function-return-type": "off",
 			"@typescript-eslint/explicit-module-boundary-types": "off",
 			"@typescript-eslint/no-floating-promises": "off"
