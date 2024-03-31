@@ -4,7 +4,9 @@
 	"compilerOptions": {
 		"declaration": true,
 		"declarationMap": true,
+		"incremental": true,
 		"noEmit": false,
-		"outDir": "../lib"
+		"outDir": "../lib",
+		"tsBuildInfoFile": "../var/tsbuildinfo.json"
 	}
 }
