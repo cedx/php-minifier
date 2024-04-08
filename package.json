@@ -32,7 +32,7 @@
 		"eslint": "^8.57.0",
 		"execa": "^8.0.1",
 		"gulp": "^5.0.0",
-		"typedoc": "^0.25.12",
+		"typedoc": "^0.25.13",
 		"typescript": "^5.4.4",
 		"typescript-eslint": "^7.5.0",
 		"vinyl": "^3.0.0"
