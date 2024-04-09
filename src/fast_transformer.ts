@@ -55,7 +55,7 @@ export class FastTransformer implements Transformer {
 
 		this.#port = await getPort();
 		return new Promise((fulfill, reject) => {
-			const root = typeof module == "undefined" ? fileURLToPath(new URL("../www", import.meta.url)) : join(__dirname, "../www");
+			const root = typeof module == "undefined" ? fileURLToPath(new URL("../src", import.meta.url)) : join(__dirname, "../src");
 			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", root];
 			this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
 			this.#process.on("error", reject);

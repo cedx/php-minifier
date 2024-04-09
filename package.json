@@ -46,8 +46,7 @@
 	},
 	"files": [
 		"lib/",
-		"src/",
-		"www/"
+		"src/"
 	],
 	"keywords": [
 		"compress",
