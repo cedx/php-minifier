@@ -59,7 +59,9 @@ The minifier can work in two manners, which can be selected using the `mode` fla
 npx @cedx/php-minifier --mode=fast path/to/source/folder
 ```
 
-> The minifier defaults to the `safe` mode, but you should really give a try to the `fast` one. The difference is very noticeable.
+!!! tip
+    The plugin defaults to the `safe` mode, but you should really give a try to the `fast` one.  
+    The difference is very noticeable.
 
 ### --silent
 By default, the minifier prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` flag.

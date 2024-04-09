@@ -16,7 +16,9 @@ export function compressPhp() {
 }
 ```
 
-> **Caution:** the plugin only needs the file paths, so you should specify the `read` option to `false` when providing the file list, and you should not have any other plugin before it.
+!!! warning
+    The plugin only needs the file paths, so you should specify the `read` option to `false`
+    when providing the file list, and you should not have any other plugin before it.
 
 ## Options
 
@@ -52,8 +54,9 @@ export function compressPhp() {
 }
 ```
 
-
-> The plugin defaults to the `safe` mode, but you should really give a try to the `fast` one. The difference is very noticeable.
+!!! tip
+    The plugin defaults to the `safe` mode, but you should really give a try to the `fast` one.  
+    The difference is very noticeable.
 
 ### **silent**: boolean = `false`
 By default, the plugin prints to the standard output the paths of the minified scripts. You can disable this output by setting the `silent` option to `true`.

@@ -1,7 +1,0 @@
-- [Installation](installation.md)
-- Usage
-	- [Command line](usage/cli.md)
-	- [Gulp plugin](usage/gulp.md)
-- [API reference](api/)
-- [Changelog](changelog.md)
-- [License](license.md)
