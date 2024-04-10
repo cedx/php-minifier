@@ -33,7 +33,7 @@
 		"execa": "^8.0.1",
 		"gulp": "^5.0.0",
 		"typedoc": "^0.25.13",
-		"typescript": "^5.4.4",
+		"typescript": "^5.4.5",
 		"typescript-eslint": "^7.6.0",
 		"vinyl": "^3.0.0"
 	},
