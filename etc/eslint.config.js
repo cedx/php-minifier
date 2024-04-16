@@ -1,11 +1,11 @@
 import {join} from "node:path";
-import eslint from "@eslint/js";
-import tsEslint from "typescript-eslint";
+import js from "@eslint/js";
+import ts from "typescript-eslint";
 
-export default tsEslint.config(
-	eslint.configs.recommended,
-	...tsEslint.configs.strictTypeChecked,
-	...tsEslint.configs.stylisticTypeChecked,
+export default ts.config(
+	js.configs.recommended,
+	...ts.configs.strictTypeChecked,
+	...ts.configs.stylisticTypeChecked,
 	{
 		languageOptions: {
 			parserOptions: {

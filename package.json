@@ -26,7 +26,7 @@
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^20.12.7",
-		"@types/vinyl": "^2.0.11",
+		"@types/vinyl": "^2.0.12",
 		"del": "^7.1.0",
 		"esbuild": "^0.20.2",
 		"eslint": "^8.57.0",
@@ -34,7 +34,7 @@
 		"gulp": "^5.0.0",
 		"typedoc": "^0.25.13",
 		"typescript": "^5.4.5",
-		"typescript-eslint": "^7.6.0",
+		"typescript-eslint": "^7.7.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
