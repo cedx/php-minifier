@@ -1,7 +1,7 @@
 import console from "node:console";
 import {access, mkdir, writeFile} from "node:fs/promises";
 import {dirname, join, resolve} from "node:path";
-import process from "node:process";
+import {exit} from "node:process";
 import {parseArgs} from "node:util";
 import readdirp from "readdirp";
 import pkg from "../package.json" with {type: "json"};
@@ -116,5 +116,5 @@ async function processFiles(input: string, output: string, options: Partial<CliO
 // Start the application.
 main().catch((error: unknown) => {
 	console.error(error instanceof Error ? error.message : error);
-	process.exitCode = 1;
+	exit(1);
 });
