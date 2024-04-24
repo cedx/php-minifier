@@ -19,6 +19,7 @@ export default function buildOptions() {
 		platform: "node",
 		sourceRoot: new URL("../bin/", import.meta.url).href,
 		sourcemap: !production,
+		sourcesContent: false,
 		treeShaking: production
 	};
 }
