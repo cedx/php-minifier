@@ -8,7 +8,7 @@ You can verify if you're already good to go with the following command:
 
 ```shell
 node --version
-# v21.7.2
+# v22.0.0
 ```
 
 ## Installing with npm package manager

@@ -13,7 +13,7 @@
 		"url": "https://belin.io"
 	},
 	"bin": {
-		"php_minifier": "./bin/php_minifier.cjs"
+		"php_minifier": "./bin/php_minifier.js"
 	},
 	"dependencies": {
 		"fancy-log": "^2.0.0",
@@ -22,27 +22,27 @@
 		"readdirp": "^3.6.0"
 	},
 	"devDependencies": {
-		"@types/eslint__js": "^8.42.3",
+		"@babel/eslint-parser": "^7.24.1",
+		"@babel/plugin-syntax-import-attributes": "^7.24.1",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^20.12.7",
 		"@types/vinyl": "^2.0.12",
 		"del": "^7.1.0",
-		"esbuild": "^0.20.2",
 		"eslint": "^8.57.0",
 		"execa": "^8.0.1",
+		"globals": "^15.1.0",
 		"gulp": "^5.0.0",
 		"typedoc": "^0.25.13",
 		"typescript": "^5.4.5",
-		"typescript-eslint": "^7.7.1",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
-		"node": ">=20.0.0"
+		"node": ">=22.0.0"
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"import": "./lib/index.js"
+		"import": "./src/index.js"
 	},
 	"files": [
 		"lib/",
@@ -60,7 +60,7 @@
 	},
 	"scripts": {
 		"prepack": "gulp",
-		"start": "gulp build && node bin/php_minifier.cjs --help",
-		"test": "gulp build && node --test --test-reporter=spec"
+		"start": "node bin/php_minifier.js --help",
+		"test": "node --test --test-reporter=spec"
 	}
 }

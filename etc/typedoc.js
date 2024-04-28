@@ -8,5 +8,6 @@ export default {
 	hideGenerator: true,
 	name: "PHP Minifier",
 	out: "../docs/api",
-	readme: "none"
+	readme: "none",
+	tsconfig: "../src/tsconfig.json"
 };
