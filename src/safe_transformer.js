@@ -35,11 +35,12 @@ export class SafeTransformer {
 	 * @returns {Promise<string>} The transformed script.
 	 */
 	transform(file) {
-		const maxBuffer = 20 * 1_024 * 1_024;
-		// eslint-disable-next-line no-promise-executor-return
-		return new Promise((fulfill, reject) => execFile(this.#executable, ["-w", resolve(file)], {maxBuffer}, (error, stdout) => {
+		const {promise, reject, resolve: fulfill} = Promise.withResolvers();
+		execFile(this.#executable, ["-w", resolve(file)], {maxBuffer: 20 * 1_024 * 1_024}, (error, stdout) => {
 			if (error) reject(error);
 			else fulfill(stdout);
-		}));
+		});
+
+		return promise;
 	}
 }

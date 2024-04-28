@@ -58,14 +58,14 @@ export class FastTransformer {
 	 */
 	async listen() {
 		if (this.#process) return this.#port;
-
 		this.#port = await getPort();
-		return new Promise((fulfill, reject) => {
-			const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", import.meta.dirname];
-			this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
-			this.#process.on("error", reject);
-			this.#process.on("spawn", () => setTimeout(() => fulfill(this.#port), 1_000));
-		});
+
+		const {promise, reject, resolve: fulfill} = Promise.withResolvers();
+		const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", import.meta.dirname];
+		this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
+		this.#process.on("error", reject);
+		this.#process.on("spawn", () => setTimeout(() => fulfill(this.#port), 1_000));
+		return promise;
 	}
 
 	/**
