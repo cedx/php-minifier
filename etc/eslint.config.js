@@ -101,7 +101,7 @@ export default [
 			"no-new-wrappers": "error",
 			"no-object-constructor": "error",
 			"no-octal-escape": "error",
-			"no-param-reassign": "error",
+			"no-param-reassign": "off",
 			"no-plusplus": "off",
 			"no-proto": "error",
 			"no-restricted-exports": "error",
