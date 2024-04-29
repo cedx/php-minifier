@@ -62,7 +62,7 @@ export default [
 			"max-lines": ["error", {max: 500}],
 			"max-lines-per-function": ["error", {max: 100}],
 			"max-nested-callbacks": "error",
-			"max-params": "error",
+			"max-params": "off",
 			"max-statements": ["error", {max: 25}],
 			"multiline-comment-style": ["error", "separate-lines"],
 			"new-cap": ["error", {capIsNewExceptions: ["RangeError", "SyntaxError", "TypeError"]}],
