@@ -29,7 +29,7 @@ export default [
 			"no-unmodified-loop-condition": "error",
 			"no-unreachable-loop": "error",
 			"no-use-before-define": ["error", {functions: false}],
-			// "no-useless-assignment": "error",
+			"no-useless-assignment": "error",
 			"require-atomic-updates": ["error", {allowProperties: true}],
 
 			"accessor-pairs": "error",
@@ -109,7 +109,7 @@ export default [
 			"no-restricted-imports": "error",
 			"no-restricted-properties": "error",
 			"no-restricted-syntax": "error",
-			"no-return-assign": "error",
+			"no-return-assign": "off",
 			"no-script-url": "error",
 			"no-sequences": "error",
 			"no-shadow": "error",
