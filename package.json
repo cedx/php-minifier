@@ -22,8 +22,8 @@
 		"readdirp": "^3.6.0"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^7.24.5",
-		"@babel/plugin-syntax-import-attributes": "^7.24.1",
+		"@babel/eslint-parser": "^7.24.6",
+		"@babel/plugin-syntax-import-attributes": "^7.24.6",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^20.12.12",
