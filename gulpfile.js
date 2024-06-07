@@ -23,7 +23,7 @@ export async function doc() {
 // Performs the static analysis of source code.
 export async function lint() {
 	await $`tsc --project tsconfig.json`;
-	return $`eslint --config=etc/eslint.config.js gulpfile.js bin etc example src test`;
+	return $`eslint --config=etc/eslint.config.js gulpfile.js bin example src test`;
 }
 
 // Publishes the package.

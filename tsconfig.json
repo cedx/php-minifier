@@ -1,6 +1,5 @@
 {
-	"exclude": ["etc/eslint.config.js"],
-	"include": ["*.js", "bin/*.js", "etc/*.js", "example/*.js", "src/**/*.js", "test/**/*.js"],
+	"include": ["*.js", "bin/*.js", "example/*.js", "src/**/*.js", "test/**/*.js"],
 	"compilerOptions": {
 		"allowJs": true,
 		"baseUrl": ".",
