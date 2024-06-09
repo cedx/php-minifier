@@ -55,6 +55,9 @@
 		"minify",
 		"php"
 	],
+	"peerDependencies": {
+		"gulp": ">=5.0.0"
+	},
 	"scripts": {
 		"prepack": "gulp",
 		"start": "node bin/php_minifier.js --help",
