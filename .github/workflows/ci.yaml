@@ -24,27 +24,3 @@ jobs:
         run: npm test
         env:
           NODE_ENV: test
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch sources
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          cache: npm
-          node-version: 22
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          cache: pip
-          python-version: 3.12
-      - name: Install dependencies
-        run: |
-          npm ci
-          pip install --requirement=etc/requirements.txt
-      - name: Deploy documentation
-        run: |
-          npx gulp doc
-          mkdocs gh-deploy --config-file=etc/mkdocs.yaml --force

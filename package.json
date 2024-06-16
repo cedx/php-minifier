@@ -1,12 +1,12 @@
 {
 	"bugs": "https://github.com/cedx/php-minifier/issues",
 	"description": "Minify PHP source code by removing comments and whitespace.",
-	"homepage": "https://docs.belin.io/php-minifier",
+	"homepage": "https://github.com/cedx/php-minifier",
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier",
 	"type": "module",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
@@ -33,7 +33,6 @@
 		"execa": "^9.2.0",
 		"globals": "^15.4.0",
 		"gulp": "^5.0.0",
-		"typedoc": "^0.25.13",
 		"typescript": "^5.4.5",
 		"vinyl": "^3.0.0"
 	},

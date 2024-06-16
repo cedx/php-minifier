@@ -6,12 +6,11 @@ This package allows you to apply the [`php_strip_whitespace()`](https://www.php.
 either using the command line or through a [Gulp](https://gulpjs.com) plugin.
 
 ## Documentation
-- [User guide](https://docs.belin.io/php-minifier)
-- [API reference](https://docs.belin.io/php-minifier/api)
+- [User guide](https://github.com/cedx/php-minifier/wiki)
+- [Examples](https://github.com/cedx/php-minifier/tree/main/example)
 
 ## Development
 - [Git repository](https://github.com/cedx/php-minifier)
-- [npm package](https://www.npmjs.com/package/@cedx/php-minifier)
 - [Submit an issue](https://github.com/cedx/php-minifier/issues)
 
 ## License
