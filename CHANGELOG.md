@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [2.1.2](https://github.com/cedx/php-minifier/compare/v2.1.1...v2.1.2)
+- Migrated the documentation to the [GitHub wiki](https://github.com/cedx/php-minifier/wiki).
+
 ## Version [2.1.1](https://github.com/cedx/php-minifier/compare/v2.1.0...v2.1.1)
 - Fixed a buffer overflow with large [PHP](https://www.php.net) files when using the `safe` transform mode. 
 
