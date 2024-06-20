@@ -33,7 +33,7 @@
 		"execa": "^9.2.0",
 		"globals": "^15.6.0",
 		"gulp": "^5.0.0",
-		"typescript": "^5.4.5",
+		"typescript": "^5.5.2",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
