@@ -2,15 +2,16 @@
 import console from "node:console";
 import {access, mkdir, writeFile} from "node:fs/promises";
 import {dirname, join, resolve} from "node:path";
-import {exit} from "node:process";
+import process from "node:process";
 import {parseArgs} from "node:util";
 import readdirp from "readdirp";
 import pkg from "../package.json" with {type: "json"};
 import {FastTransformer, SafeTransformer, TransformMode} from "../src/index.js";
 
-/**
- * The usage information.
- */
+// Give the process a friendly name.
+process.title = "PHP Minifier";
+
+// The usage information.
 const usage = `
 Minify PHP source code by removing comments and whitespace.
 
@@ -30,20 +31,8 @@ Options:
   -v, --version    Output the version number.
 `;
 
-/**
- * Defines the command line options.
- * @typedef {object} CliOptions
- * @property {string} binary The path to the PHP executable.
- * @property {string} extension The extension of the PHP files to process.
- * @property {string} mode The operation mode of the minifier.
- * @property {boolean} silent Value indicating whether to silence the minifier output.
- */
-
-/**
- * Application entry point.
- * @returns {Promise<void>} Resolves when the application is terminated.
- */
-async function main() {
+// Start the application.
+try {
 	// Parse the command line arguments.
 	const {positionals, values} = parseArgs({allowPositionals: true, options: {
 		binary: {short: "b", type: "string", default: "php"},
@@ -55,18 +44,31 @@ async function main() {
 	}});
 
 	// Print the usage.
-	if (values.help || values.version) return console.log(values.version ? pkg.version : usage.trim());
+	if (values.help || values.version) {
+		console.log(values.version ? pkg.version : usage.trim());
+		process.exit();
+	}
 
 	// Check the requirements.
-	if (!positionals.length) throw Error("You must provide the path to the input directory.");
+	if (!positionals.length) {
+		console.error("You must provide the path to the input directory.");
+		process.exit(2);
+	}
 
 	const input = resolve(positionals[0]);
 	try { await access(input); }
-	catch { throw Error("The input directory was not found."); }
+	catch {
+		console.error("The input directory was not found.");
+		process.exit(3);
+	}
 
 	// Process the PHP files.
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
-	return processFiles(input, output, values);
+	await processFiles(input, output, values);
+}
+catch (error) {
+	console.error(error instanceof Error ? error.message : error);
+	process.exit(1);
 }
 
 /**
@@ -92,8 +94,11 @@ async function processFiles(input, output, options = {}) {
 	return transformer.close();
 }
 
-// Start the application.
-main().catch(error => {
-	console.error(error instanceof Error ? error.message : error);
-	exit(1);
-});
+/**
+ * Defines the command line options.
+ * @typedef {object} CliOptions
+ * @property {string} binary The path to the PHP executable.
+ * @property {string} extension The extension of the PHP files to process.
+ * @property {string} mode The operation mode of the minifier.
+ * @property {boolean} silent Value indicating whether to silence the minifier output.
+ */
