@@ -1,6 +1,4 @@
 /**/.DS_Store
-/.idea/
-/etc/http-client.private.env.json
 /lib/
 /node_modules/
 /npm-debug.log
