@@ -6,7 +6,7 @@ import process from "node:process";
 import {parseArgs} from "node:util";
 import readdirp from "readdirp";
 import pkg from "../package.json" with {type: "json"};
-import {FastTransformer, SafeTransformer, TransformMode} from "../src/index.js";
+import {FastTransformer, SafeTransformer, TransformMode} from "../lib/index.js";
 
 // Give the process a friendly name.
 process.title = "PHP Minifier";
