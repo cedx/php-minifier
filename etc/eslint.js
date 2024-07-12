@@ -79,7 +79,7 @@ export default ts.config(
 			"no-implicit-globals": "error",
 			"no-implied-eval": "error",
 			"no-inline-comments": "off",
-			"no-invalid-this": "error",
+			"no-invalid-this": "off",
 			"no-iterator": "error",
 			"no-label-var": "error",
 			"no-labels": "error",
@@ -202,7 +202,7 @@ export default ts.config(
 		}
 	},
 	{
-		files: ["gulpfile.js", "test/**/*.js"],
+		files: ["gulpfile.js", "example/*.js", "test/**/*.js"],
 		rules: {
 			"prefer-arrow-callback": "off",
 			"@typescript-eslint/explicit-function-return-type": "off",

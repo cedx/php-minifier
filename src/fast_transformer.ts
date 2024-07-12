@@ -1,42 +1,37 @@
-import {spawn} from "node:child_process";
+import {spawn, type ChildProcess} from "node:child_process";
 import {normalize, resolve} from "node:path";
 import {setTimeout} from "node:timers";
 import getPort from "get-port";
+import type {Transformer} from "./transformer.js";
 
 /**
  * Removes comments and whitespace from a PHP script, by calling a Web service.
  */
-export class FastTransformer {
+export class FastTransformer implements Transformer {
 
 	/**
 	 * The address that the server is listening on.
-	 * @type {string}
-	 * @readonly
 	 */
-	static #address = "127.0.0.1";
+	static readonly #address = "127.0.0.1";
 
 	/**
 	 * The path to the PHP executable.
-	 * @type {string}
-	 * @readonly
 	 */
-	#executable;
+	readonly #executable: string;
 
 	/**
 	 * The port that the PHP process is listening on.
-	 * @type {number}
 	 */
 	#port = -1;
 
 	/**
 	 * The underlying PHP process.
-	 * @type {import("node:child_process").ChildProcess|null}
 	 */
-	#process = null;
+	#process: ChildProcess|null = null;
 
 	/**
 	 * Creates a new fast transformer.
-	 * @param {string} executable The path to the PHP executable.
+	 * @param executable The path to the PHP executable.
 	 */
 	constructor(executable = "php") {
 		this.#executable = normalize(executable);
@@ -44,9 +39,9 @@ export class FastTransformer {
 
 	/**
 	 * Closes this transformer and releases any resources associated with it.
-	 * @returns {Promise<void>} Resolves when the transformer is finally disposed.
+	 * @returns Resolves when the transformer is finally disposed.
 	 */
-	close() {
+	close(): Promise<void> {
 		this.#process?.kill();
 		this.#process = null;
 		return Promise.resolve();
@@ -54,13 +49,13 @@ export class FastTransformer {
 
 	/**
 	 * Starts the underlying PHP process and begins accepting connections.
-	 * @returns {Promise<number>} The port used by the PHP process.
+	 * @returns The port used by the PHP process.
 	 */
-	async listen() {
+	async listen(): Promise<number> {
 		if (this.#process) return this.#port;
 		this.#port = await getPort();
 
-		const {promise, reject, resolve: fulfill} = Promise.withResolvers();
+		const {promise, reject, resolve: fulfill} = Promise.withResolvers<number>();
 		const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", import.meta.dirname];
 		this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
 		this.#process.on("error", reject);
@@ -70,10 +65,10 @@ export class FastTransformer {
 
 	/**
 	 * Processes a PHP script.
-	 * @param {string} file The path to the PHP script.
-	 * @returns {Promise<string>} The transformed script.
+	 * @param file The path to the PHP script.
+	 * @returns The transformed script.
 	 */
-	async transform(file) {
+	async transform(file: string): Promise<string> {
 		const port = await this.listen();
 		const url = new URL(`http://${FastTransformer.#address}:${port}/index.php`);
 		url.searchParams.set("file", resolve(file));

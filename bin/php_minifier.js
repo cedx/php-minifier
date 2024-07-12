@@ -5,8 +5,8 @@ import {dirname, join, resolve} from "node:path";
 import process from "node:process";
 import {parseArgs} from "node:util";
 import readdirp from "readdirp";
-import pkg from "../package.json" with {type: "json"};
 import {FastTransformer, SafeTransformer, TransformMode} from "../lib/index.js";
+import pkg from "../package.json" with {type: "json"};
 
 // Give the process a friendly name.
 process.title = "PHP Minifier";
@@ -64,41 +64,19 @@ try {
 
 	// Process the PHP files.
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
-	await processFiles(input, output, values);
-}
-catch (error) {
-	console.error(error instanceof Error ? error.message : error);
-	process.exit(1);
-}
+	const transformer = values.mode == TransformMode.fast ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
-/**
- * Processes the PHP files located in the specified input directory.
- * @param {string} input The path to the input directory.
- * @param {string} output The path to the output directory.
- * @param {Partial<CliOptions>} options The command line arguments.
- * @returns {Promise<void>} Resolves when all PHP files have been processed.
- */
-async function processFiles(input, output, options = {}) {
-	const binary = options.binary ?? "php";
-	const silent = options.silent ?? false;
-
-	const transformer = (options.mode ?? "safe") == TransformMode.fast ? new FastTransformer(binary) : new SafeTransformer(binary);
-	for await (const file of readdirp(input, {fileFilter: `*.${options.extension ?? "php"}`})) {
-		if (!silent) console.log(`Minifying: ${file.path}`);
+	for await (const file of readdirp(input, {fileFilter: `*.${values.extension}`})) {
+		if (!values.silent) console.log(`Minifying: ${file.path}`);
 		const script = await transformer.transform(file.fullPath);
 		const path = join(output, file.path);
 		await mkdir(dirname(path), {recursive: true});
 		await writeFile(path, script);
 	}
 
-	return transformer.close();
+	await transformer.close();
 }
-
-/**
- * Defines the command line options.
- * @typedef {object} CliOptions
- * @property {string} binary The path to the PHP executable.
- * @property {string} extension The extension of the PHP files to process.
- * @property {string} mode The operation mode of the minifier.
- * @property {boolean} silent Value indicating whether to silence the minifier output.
- */
+catch (error) {
+	console.error(error instanceof Error ? error.message : error);
+	process.exit(1);
+}

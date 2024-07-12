@@ -2,7 +2,7 @@
 import {doesNotReject, ifError, ok} from "node:assert/strict";
 import {resolve} from "node:path";
 import {after, describe, it} from "node:test";
-import Vinyl from "vinyl";
+import File from "vinyl";
 import {GulpPlugin, TransformMode} from "@cedx/php-minifier";
 
 /**
@@ -21,7 +21,7 @@ describe("GulpPlugin", () => {
 		describe("TransformMode.fast", () => {
 			const plugin = new GulpPlugin({mode: TransformMode.fast, silent: true});
 			after(() => plugin.emit("end"));
-			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, /** @type {Vinyl} */ chunk) => {
+			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new File(script), "utf8", (error, /** @type {File} */ chunk) => {
 				ifError(error);
 				ok(chunk.contents?.toString().includes(value));
 			})));
@@ -30,7 +30,7 @@ describe("GulpPlugin", () => {
 		describe("TransformMode.safe", () => {
 			const plugin = new GulpPlugin({mode: TransformMode.safe, silent: true});
 			after(() => plugin.emit("end"));
-			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new Vinyl(script), "utf8", (error, /** @type {Vinyl} */ chunk) => {
+			for (const [key, value] of map) it(key, () => doesNotReject(plugin._transform(new File(script), "utf8", (error, /** @type {File} */ chunk) => {
 				ifError(error);
 				ok(chunk.contents?.toString().includes(value));
 			})));

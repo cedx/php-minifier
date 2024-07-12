@@ -1,16 +1,15 @@
 /**
  * The operation mode of the minifier.
- * @enum {string}
  */
-export const TransformMode = Object.freeze({
+export enum TransformMode {
 
 	/**
 	 * Applies a fast transformation.
 	 */
-	fast: "fast",
+	fast = "fast",
 
 	/**
 	 * Applies a safe transformation.
 	 */
-	safe: "safe"
-});
+	safe = "safe"
+}
