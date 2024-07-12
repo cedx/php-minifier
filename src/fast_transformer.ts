@@ -1,5 +1,5 @@
 import {spawn, type ChildProcess} from "node:child_process";
-import {normalize, resolve} from "node:path";
+import {join, normalize, resolve} from "node:path";
 import {setTimeout} from "node:timers";
 import getPort from "get-port";
 import type {Transformer} from "./transformer.js";
@@ -56,7 +56,7 @@ export class FastTransformer implements Transformer {
 		this.#port = await getPort();
 
 		const {promise, reject, resolve: fulfill} = Promise.withResolvers<number>();
-		const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", import.meta.dirname];
+		const args = ["-S", `${FastTransformer.#address}:${this.#port}`, "-t", join(import.meta.dirname, "../src")];
 		this.#process = spawn(this.#executable, args, {stdio: ["ignore", "pipe", "ignore"]});
 		this.#process.on("error", reject);
 		this.#process.on("spawn", () => setTimeout(() => fulfill(this.#port), 1_000));
