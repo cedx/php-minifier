@@ -14,7 +14,7 @@ export function build() {
 
 // Deletes all generated files.
 export function clean() {
-	return deleteAsync(["lib", "var/**/*", "www"]);
+	return deleteAsync(["lib", "var/**/*"]);
 }
 
 // Performs the static analysis of source code.
