@@ -51,7 +51,7 @@ export default ts.config(
 			"id-denylist": "error",
 			"id-length": ["error", {exceptions: ["_", "$", "x", "y"]}],
 			"id-match": "error",
-			"init-declarations": "error",
+			"init-declarations": "off",
 			"logical-assignment-operators": "error",
 			"max-classes-per-file": "off",
 			"max-depth": "error",

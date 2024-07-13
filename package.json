@@ -57,7 +57,7 @@
 	},
 	"scripts": {
 		"prepack": "gulp",
-		"start": "node bin/php_minifier.js --help",
+		"start": "gulp build && node bin/php_minifier.js --help",
 		"test": "gulp build && node --test --test-reporter=spec"
 	}
 }
