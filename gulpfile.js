@@ -9,7 +9,7 @@ const $ = execa({preferLocal: true, stdio: "inherit"});
 
 // Builds the project.
 export function build() {
-	return $`tsc --project src/tsconfig.json`;
+	return $`tsc --build src/tsconfig.json`;
 }
 
 // Deletes all generated files.
@@ -20,7 +20,7 @@ export function clean() {
 // Performs the static analysis of source code.
 export async function lint() {
 	await build();
-	await $`tsc --project tsconfig.json`;
+	await $`tsc --build tsconfig.json`;
 	return $`eslint --config=etc/eslint.js gulpfile.js bin example src test`;
 }
 

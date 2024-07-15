@@ -5,13 +5,13 @@
 		"baseUrl": ".",
 		"checkJs": true,
 		"esModuleInterop": true,
-		"isolatedModules": true,
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"noEmit": true,
 		"noImplicitOverride": true,
 		"resolveJsonModule": true,
 		"strict": true,
-		"target": "ESNext"
+		"target": "ESNext",
+		"verbatimModuleSyntax": true
 	}
 }
