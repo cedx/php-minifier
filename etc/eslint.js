@@ -19,7 +19,7 @@ export default ts.config(
 			"arrow-body-style": "error",
 			"block-scoped-var": "error",
 			"camelcase": "off",
-			"capitalized-comments": "error",
+			"capitalized-comments": "warn",
 			"class-methods-use-this": "off",
 			"complexity": ["error", {max: 50}],
 			"consistent-return": "off",
