@@ -1,6 +1,6 @@
+import {FastTransformer} from "@cedx/php-minifier";
 import {doesNotReject, ok} from "node:assert/strict";
 import {after, describe, it} from "node:test";
-import {FastTransformer} from "@cedx/php-minifier";
 
 /**
  * Tests the features of the {@link FastTransformer} class.

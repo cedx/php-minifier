@@ -1,5 +1,5 @@
-import {Transform, type TransformCallback} from "node:stream";
 import log from "fancy-log";
+import {Transform, type TransformCallback} from "node:stream";
 import PluginError from "plugin-error";
 import type File from "vinyl";
 import {FastTransformer} from "./fast_transformer.js";

@@ -1,6 +1,6 @@
-import process from "node:process";
-import gulp from "gulp";
 import phpMinifier from "@cedx/php-minifier";
+import gulp from "gulp";
+import process from "node:process";
 
 // Compresses a given set of PHP scripts.
 export function compressPhp() {

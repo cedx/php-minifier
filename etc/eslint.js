@@ -1,5 +1,5 @@
-import {join} from "node:path";
 import js from "@eslint/js";
+import {join} from "node:path";
 import ts from "typescript-eslint";
 
 export default ts.config(

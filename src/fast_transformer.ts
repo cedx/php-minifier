@@ -1,7 +1,7 @@
+import getPort from "get-port";
 import {spawn, type ChildProcess} from "node:child_process";
 import {join, normalize, resolve} from "node:path";
 import {setTimeout} from "node:timers";
-import getPort from "get-port";
 import type {Transformer} from "./transformer.js";
 
 /**

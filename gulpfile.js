@@ -1,7 +1,7 @@
-import {env} from "node:process";
 import {deleteAsync} from "del";
 import {execa} from "execa";
 import gulp from "gulp";
+import {env} from "node:process";
 import pkg from "./package.json" with {type: "json"};
 
 // Runs a command.

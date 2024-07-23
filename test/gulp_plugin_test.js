@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
+import {GulpPlugin, TransformMode} from "@cedx/php-minifier";
 import {doesNotReject, ifError, ok} from "node:assert/strict";
 import {resolve} from "node:path";
 import {after, describe, it} from "node:test";
 import File from "vinyl";
-import {GulpPlugin, TransformMode} from "@cedx/php-minifier";
 
 /**
  * Tests the features of the {@link GulpPlugin} class.
