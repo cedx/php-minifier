@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [3.1.0](https://github.com/cedx/php-minifier/compare/v3.0.0...v3.1.0)
+- The `TransformMode` enumeration is now implemented as a frozen object.
+
 ## Version [3.0.0](https://github.com/cedx/php-minifier/compare/v2.1.2...v3.0.0)
 - Breaking change: replaced the use of the `Promise` constructor by calls to the `Promise.withResolvers()` method.
 
