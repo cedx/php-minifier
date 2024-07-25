@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [3.0.0](https://github.com/cedx/php-minifier/compare/v2.1.2...v3.0.0)
+- Breaking change: replaced the use of the `Promise` constructor by calls to the `Promise.withResolvers()` method.
+
 ## Version [2.1.2](https://github.com/cedx/php-minifier/compare/v2.1.1...v2.1.2)
 - Migrated the documentation to the [GitHub wiki](https://github.com/cedx/php-minifier/wiki).
 
