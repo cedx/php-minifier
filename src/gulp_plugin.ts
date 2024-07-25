@@ -71,7 +71,7 @@ export interface GulpPluginOptions {
 	/**
 	 * The operation mode of the plugin.
 	 */
-	mode: TransformMode|"fast"|"safe";
+	mode: TransformMode;
 
 	/**
 	 * Value indicating whether to silence the plugin output.

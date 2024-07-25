@@ -1,15 +1,20 @@
 /**
  * The operation mode of the minifier.
  */
-export enum TransformMode {
+export const TransformMode = Object.freeze({
 
 	/**
 	 * Applies a fast transformation.
 	 */
-	fast = "fast",
+	fast: "fast",
 
 	/**
 	 * Applies a safe transformation.
 	 */
-	safe = "safe"
-}
+	safe: "safe"
+});
+
+/**
+ * The operation mode of the minifier.
+ */
+export type TransformMode = typeof TransformMode[keyof typeof TransformMode];
