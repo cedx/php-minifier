@@ -25,13 +25,13 @@
 		"@types/fancy-log": "^2.0.2",
 		"@types/eslint__js": "^8.42.3",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.4.1",
+		"@types/node": "^22.5.0",
 		"@types/vinyl": "^2.0.12",
 		"del": "^7.1.0",
 		"execa": "^9.3.1",
 		"gulp": "^5.0.0",
 		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.1.0",
+		"typescript-eslint": "^8.2.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
