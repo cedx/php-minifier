@@ -19,7 +19,7 @@
 		"fancy-log": "^2.0.0",
 		"get-port": "^7.1.0",
 		"plugin-error": "^2.0.1",
-		"readdirp": "^3.6.0"
+		"readdirp": "^4.0.1"
 	},
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
@@ -31,7 +31,7 @@
 		"execa": "^9.3.1",
 		"gulp": "^5.0.0",
 		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.2.0",
+		"typescript-eslint": "^8.3.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {

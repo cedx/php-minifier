@@ -4,7 +4,7 @@ import {access, mkdir, writeFile} from "node:fs/promises";
 import {dirname, join, resolve} from "node:path";
 import process from "node:process";
 import {parseArgs} from "node:util";
-import readdirp from "readdirp";
+import {readdirp} from "readdirp";
 import {FastTransformer, SafeTransformer, TransformMode} from "../lib/index.js";
 import pkg from "../package.json" with {type: "json"};
 
