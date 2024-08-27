@@ -1,5 +1,7 @@
 {
 	"recommendations": [
-		"bmewburn.vscode-intelephense-client"
+		"bmewburn.vscode-intelephense-client",
+		"lix.lix",
+		"nadako.vshaxe"
 	]
 }
