@@ -7,7 +7,7 @@ import tink.unit.TestBatch;
 function main() {
 	final tests = TestBatch.make([
 		new php_minifier.FastTransformerTest(),
-		//new php_minifier.GulpPluginTest(),
+		new php_minifier.GulpPluginTest(),
 		new php_minifier.SafeTransformerTest()
 	]);
 
