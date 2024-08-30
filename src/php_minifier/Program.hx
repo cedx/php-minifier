@@ -2,8 +2,8 @@ package php_minifier;
 
 import asys.FileSystem;
 import asys.io.File;
-import js.Node;
-import sys.FileSystem as SysFileSystem;
+#if nodejs import js.Node; #end
+import sys.FileSystem as SyncFileSystem;
 import tink.Cli;
 import tink.cli.Rest;
 using Lambda;
@@ -40,7 +40,7 @@ final class Program {
 
 	/** Application entry point. **/
 	static function main() {
-		Node.process.title = "PHP Minifier";
+		#if nodejs Node.process.title = "PHP Minifier"; #end
 		Cli.process(Sys.args(), new Program()).handle(Cli.exit);
 	}
 
@@ -61,41 +61,42 @@ final class Program {
 
 		final cwd = haxelibRun ? rest.pop() : Sys.getCwd();
 		final input = resolvePath(rest.shift(), cwd);
-		if (!SysFileSystem.exists(input)) return new Error(NotFound, "The input directory was not found.");
-
-		final length = input.addTrailingSlash().length;
 		final output = rest.length > 0 ? resolvePath(rest.shift(), cwd) : input;
-		return processFiles(input, output, listDirectory(input).map(path -> path.substr(length)));
+
+		return FileSystem.exists(input).next(exists -> !exists ? new Error(NotFound, "The input directory was not found.") : {
+			final length = input.addTrailingSlash().length;
+			minifyFiles(input, output, listDirectory(input).map(path -> path.substr(length)));
+		});
 	}
 
 	/** Returns the paths of all PHP files in the specified `directory`. **/
 	function listDirectory(directory: String): Array<String> {
 		var paths = [];
-		for (entry in SysFileSystem.readDirectory(directory)) {
+		for (entry in SyncFileSystem.readDirectory(directory)) {
 			final path = Path.join([directory, entry]);
-			if (SysFileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
+			if (SyncFileSystem.isDirectory(path)) paths = paths.concat(listDirectory(path));
 			else if (entry.extension().toLowerCase() == extension) paths.push(path);
 		}
 
 		return paths;
 	}
 
-	/** Processes the specified PHP `files`. **/
-	function processFiles(input: String, output: String, files: Array<String>): Promise<Noise> {
+	/** Minifies the specified PHP `files`. **/
+	function minifyFiles(input: String, output: String, files: Array<String>): Promise<Noise> {
 		final isWindows = Sys.systemName() == "Windows";
 		final transformer: Transformer = mode == Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
-
-		final promises = files.map(file -> Promise.NOISE
+		final minify = (file: String) -> Promise.NOISE
 			.withSideEffect(_ -> if (!silent) {
 				final normalizedPath = isWindows ? file.replace("/", "\\") : file;
 				Sys.println('Minifying: $normalizedPath');
 			})
-			.next(_ -> transformer.transform(Path.join([input, file])).next(script -> {
+			.next(_ -> transformer.transform(Path.join([input, file])))
+			.next(script -> {
 				final path = Path.join([output, file]);
 				FileSystem.createDirectory(path.directory()).next(_ -> File.saveContent(path, script));
-			})));
+			});
 
-		return Promise.inSequence(promises).next(_ -> transformer.close());
+		return Promise.inSequence(files.map(minify)).next(_ -> transformer.close());
 	}
 
 	/** Resolves the specified `path` into an absolute path. **/
