@@ -5,8 +5,8 @@
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier",
-	"type": "module",
-	"version": "3.1.0",
+	"type": "commonjs",
+	"version": "4.0.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
@@ -17,21 +17,10 @@
 	},
 	"dependencies": {
 		"fancy-log": "^2.0.0",
-		"get-port": "^7.1.0",
-		"plugin-error": "^2.0.1",
-		"readdirp": "^4.0.1"
+		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
-		"@types/fancy-log": "^2.0.2",
-		"@types/eslint__js": "^8.42.3",
-		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.5.1",
-		"@types/vinyl": "^2.0.12",
-		"del": "^7.1.0",
-		"execa": "^9.3.1",
-		"gulp": "^5.0.0",
-		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.3.0",
+		"esbuild": "^0.23.1",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
@@ -39,12 +28,12 @@
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"default": "./lib/index.js"
+		"import": "./lib/index.mjs",
+		"default": "./lib/index.cjs"
 	},
 	"files": [
 		"lib/",
-		"src/",
-		"tsconfig.json"
+		"www/"
 	],
 	"keywords": [
 		"compress",
