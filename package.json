@@ -20,6 +20,7 @@
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
+		"@types/node": "^22.5.1",
 		"@types/vinyl": "^2.0.12",
 		"esbuild": "^0.23.1",
 		"vinyl": "^3.0.0"
