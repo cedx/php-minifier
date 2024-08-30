@@ -1,7 +1,9 @@
 {
 	"defaultSeverity": "ERROR",
 	"exclude": {
-		"path": "RELATIVE_TO_PROJECT"
+		"path": "RELATIVE_TO_PROJECT",
+		"Dynamic": ["src/php_minifier/GulpPlugin:_transform"],
+		"MethodName": ["src/php_minifier/GulpPlugin:_transform"]
 	},
 	"checks": [
 		{"type": "ArrayAccess"},
