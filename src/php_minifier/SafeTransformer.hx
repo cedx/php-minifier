@@ -2,7 +2,6 @@ package php_minifier;
 
 import asys.FileSystem;
 import asys.io.Process;
-using StringTools;
 using haxe.io.Path;
 using tink.io.Source;
 
@@ -24,6 +23,6 @@ class SafeTransformer implements Transformer {
 		final process = new Process(executable, ["-w", FileSystem.absolutePath(file)]);
 		return process.exitCode()
 			.next(exitCode -> exitCode == 0 ? process.stdout.all() : new Error(exitCode, 'The PHP process exited with a $exitCode code.'))
-			.next(stdout -> { process.close(); stdout.toString().trim(); });
+			.next(stdout -> { process.close(); stdout.toString(); });
 	}
 }
