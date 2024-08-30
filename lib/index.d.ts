@@ -1,36 +1,31 @@
-import {Transform} from "node:stream";
+import {Transform, type TransformCallback} from "node:stream";
+import type File from "vinyl";
 
 /**
  * Minifies PHP source code by removing comments and whitespace.
  */
-export class Plugin extends Transform {
-
-	/**
-	 * The path to the PHP executable.
-	 */
-	readonly binary: string;
-
-	/**
-	 * The operation mode.
-	 */
-	readonly mode: TransformMode;
-
-	/**
-	 * Value indicating whether to silence the plugin output.
-	 */
-	readonly silent: boolean;
+export declare class GulpPlugin extends Transform {
 
 	/**
 	 * Creates a new plugin.
 	 * @param options An object providing values to initialize this instance.
 	 */
-	constructor(options?: Partial<PluginOptions>);
+	constructor(options?: Partial<GulpPluginOptions>);
+
+	/**
+	 * Transforms input and produces output.
+	 * @param chunk The chunk to transform.
+	 * @param encoding The encoding type if the chunk is a string.
+	 * @param callback The function to invoke when the supplied chunk has been processed.
+	 * @returns The transformed chunk.
+	 */
+	_transform(chunk: File, encoding: NodeJS.BufferEncoding, callback: TransformCallback): Promise<File>;
 }
 
 /**
- * Defines the options of a {@link Plugin} instance.
+ * Defines the options of a {@link GulpPlugin} instance.
  */
-export type PluginOptions = {
+export type GulpPluginOptions = {
 
 	/**
 	 * The path to the PHP executable.
@@ -51,11 +46,11 @@ export type PluginOptions = {
 /**
  * The operation mode of the minifier.
  */
-export type TransformMode = "fast" | "safe";
+export type TransformMode = "fast"|"safe";
 
 /**
  * Creates a new plugin.
  * @param options The plugin options.
  * @returns The newly created instance.
  */
-export default function phpMinifier(options?: Partial<PluginOptions>): Plugin;
+export default function phpMinifier(options?: Partial<GulpPluginOptions>): GulpPlugin;
