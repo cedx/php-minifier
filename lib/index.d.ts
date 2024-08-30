@@ -2,6 +2,13 @@ import {Transform, type TransformCallback} from "node:stream";
 import type File from "vinyl";
 
 /**
+ * Creates a new plugin.
+ * @param options The plugin options.
+ * @returns The newly created instance.
+ */
+export default function phpMinifier(options?: Partial<GulpPluginOptions>): GulpPlugin;
+
+/**
  * Minifies PHP source code by removing comments and whitespace.
  */
 export declare class GulpPlugin extends Transform {
@@ -25,7 +32,7 @@ export declare class GulpPlugin extends Transform {
 /**
  * Defines the options of a {@link GulpPlugin} instance.
  */
-export type GulpPluginOptions = {
+export interface GulpPluginOptions {
 
 	/**
 	 * The path to the PHP executable.
@@ -41,16 +48,9 @@ export type GulpPluginOptions = {
 	 * Value indicating whether to silence the plugin output.
 	 */
 	silent: boolean;
-};
+}
 
 /**
  * The operation mode of the minifier.
  */
 export type TransformMode = "fast"|"safe";
-
-/**
- * Creates a new plugin.
- * @param options The plugin options.
- * @returns The newly created instance.
- */
-export default function phpMinifier(options?: Partial<GulpPluginOptions>): GulpPlugin;
