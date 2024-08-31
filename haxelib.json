@@ -8,5 +8,5 @@
 	"releasenote": "Ported the source code to Haxe, restored support for CommonJS modules.",
 	"tags": ["compress", "gulp", "gulpplugin", "minify", "php"],
 	"url": "https://github.com/cedx/php-minifier",
-	"version": "4.0.0"
+	"version": "4.0.1"
 }
