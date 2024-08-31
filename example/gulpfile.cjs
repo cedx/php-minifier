@@ -1,12 +1,10 @@
-import phpMinifier from "@cedx/php-minifier";
-import gulp from "gulp";
-import process from "node:process";
+const phpMinifier = require("@cedx/php-minifier");
+const gulp = require("gulp");
+const process = require("node:process");
 
 // Compresses a given set of PHP scripts.
-export function compressPhp() {
+exports.compressPhp = function compressPhp() {
 	const isWindows = process.platform == "win32";
-
-	/** @type {import("@cedx/php-minifier").GulpPluginOptions} */
 	const options = {
 		binary: isWindows ? "C:\\Program Files\\PHP\\php.exe" : "/usr/bin/php",
 		mode: isWindows ? "safe" : "fast",
@@ -16,4 +14,4 @@ export function compressPhp() {
 	return gulp.src("path/to/**/*.php", {read: false})
 		.pipe(phpMinifier(options))
 		.pipe(gulp.dest("path/to/out"));
-}
+};
