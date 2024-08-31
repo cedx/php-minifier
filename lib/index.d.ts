@@ -31,4 +31,4 @@ export interface GulpPluginOptions {
  * @param options The plugin options.
  * @returns The newly created instance.
  */
-export default function phpMinifier(options?: Partial<GulpPluginOptions>): GulpPlugin;
+export function phpMinify(options?: Partial<GulpPluginOptions>): GulpPlugin;

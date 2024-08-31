@@ -1,4 +1,4 @@
-import phpMinifier from "@cedx/php-minifier";
+import {phpMinify} from "@cedx/php-minifier";
 import gulp from "gulp";
 import process from "node:process";
 
@@ -12,6 +12,6 @@ export function compressPhp() {
 	};
 
 	return gulp.src("path/to/**/*.php", {read: false})
-		.pipe(phpMinifier(options))
+		.pipe(phpMinify(options))
 		.pipe(gulp.dest("path/to/out"));
 }

@@ -29,7 +29,7 @@ final class GulpPlugin extends Transform<GulpPlugin> {
 	}
 
 	/** Creates a new plugin. **/
-	@:expose("phpMinifier")
+	@:expose("phpMinify")
 	static inline function create(?options: GulpPluginOptions): GulpPlugin
 		return new GulpPlugin(options);
 
