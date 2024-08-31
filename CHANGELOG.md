@@ -1,7 +1,11 @@
 # Changelog
 
+## Version [4.0.1](https://github.com/cedx/php-minifier/compare/v4.0.0...v4.0.1)
+- Fixed the [TypeScript](https://www.typescriptlang.org) typings.
+
 ## Version [4.0.0](https://github.com/cedx/php-minifier/compare/v3.1.0...v4.0.0)
-- Breaking change: ported the source code to [Haxe](https://haxe.org).
+- Breaking change: the `phpMinify()` function now uses a named export instead of a default export.
+- Ported the source code to [Haxe](https://haxe.org).
 - Restored support for [CommonJS modules](https://nodejs.org/api/modules.html).
 
 ## Version [3.1.0](https://github.com/cedx/php-minifier/compare/v3.0.0...v3.1.0)

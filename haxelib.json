@@ -5,7 +5,7 @@
 	"description": "Minify PHP source code by removing comments and whitespace.",
 	"license": "MIT",
 	"name": "php_minifier",
-	"releasenote": "Ported the source code to Haxe, restored support for CommonJS modules.",
+	"releasenote": "Fixed the TypeScript typings.",
 	"tags": ["compress", "gulp", "gulpplugin", "minify", "php"],
 	"url": "https://github.com/cedx/php-minifier",
 	"version": "4.0.1"
