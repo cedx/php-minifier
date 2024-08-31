@@ -8,7 +8,6 @@ import js.plugin_error.PluginError;
 import js.vinyl.File;
 
 /** Minifies PHP source code by removing comments and whitespace. **/
-@:expose("GulpPlugin")
 final class GulpPlugin extends Transform<GulpPlugin> {
 
 	/** Value indicating whether to silence the plugin output. **/
@@ -28,6 +27,11 @@ final class GulpPlugin extends Transform<GulpPlugin> {
 		final close = () -> transformer.close().eager();
 		on("end", close).on("error", close);
 	}
+
+	/** Creates a new plugin. **/
+	@:expose("phpMinifier")
+	static inline function create(?options: GulpPluginOptions): GulpPlugin
+		return new GulpPlugin(options);
 
 	/** Transforms input and produces output. **/
 	override function _transform(chunk: Dynamic, encoding: String, callback: (Null<Error>, Any) -> Void): Void {
