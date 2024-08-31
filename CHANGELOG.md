@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [4.0.0](https://github.com/cedx/php-minifier/compare/v3.1.0...v4.0.0)
+- Breaking change: ported the source code to [Haxe](https://haxe.org).
+- Restored support for [CommonJS modules](https://nodejs.org/api/modules.html).
+
 ## Version [3.1.0](https://github.com/cedx/php-minifier/compare/v3.0.0...v3.1.0)
 - The `TransformMode` enumeration is now implemented as a frozen object.
 

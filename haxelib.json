@@ -5,7 +5,7 @@
 	"description": "Minify PHP source code by removing comments and whitespace.",
 	"license": "MIT",
 	"name": "php_minifier",
-	"releasenote": "Ported the source code to Haxe, fixed the program output when the compilation target is Neko.",
+	"releasenote": "Ported the source code to Haxe, restored support for CommonJS modules.",
 	"tags": ["compress", "gulp", "gulpplugin", "minify", "php"],
 	"url": "https://github.com/cedx/php-minifier",
 	"version": "4.0.0"
