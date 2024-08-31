@@ -1,8 +1,9 @@
 package php_minifier;
 
 import asys.FileSystem;
-import asys.io.Process;
 import js.Node;
+import js.node.ChildProcess;
+import js.node.child_process.ChildProcess as ChildProcessObject;
 import js.node.Net;
 import tink.QueryString;
 import tink.http.Client;
@@ -21,10 +22,11 @@ class FastTransformer implements Transformer {
 	var port = -1;
 
 	/** The underlying PHP process. **/
-	var process: Null<Process> = null;
+	var process: Null<ChildProcessObject> = null;
 
 	/** Creates a new fast transformer. **/
-	public function new(executable = "php") this.executable = executable.normalize();
+	public function new(executable = "php")
+		this.executable = executable.normalize();
 
 	/** Closes this transformer and releases any resources associated with it. **/
 	public function close(): Promise<Noise> {
@@ -41,24 +43,27 @@ class FastTransformer implements Transformer {
 
 	/** Gets an ephemeral TCP port chosen by the system. **/
 	function getPort(): Promise<Int> {
-		final socket = Net.createServer();
-		socket.unref();
-
 		final trigger = Promise.trigger();
-		socket.on("error", e -> trigger.reject(Error.withData(ServiceUnavailable, "Unable to find an ephemeral TCP port.", e)));
+		final socket = Net.createServer().on("error", error -> trigger.reject(Error.ofJsError(error)));
 		socket.listen(0, address, () -> {
 			final port = socket.address().port;
 			socket.close(() -> trigger.resolve(port));
 		});
 
+		socket.unref();
 		return trigger.asPromise();
 	}
 
 	/** Starts the underlying PHP process and begins accepting connections. **/
 	function listen(): Promise<Noise>
 		return process != null ? Noise : getPort().next(tcpPort -> {
+			final trigger: PromiseTrigger<Noise> = Promise.trigger();
 			port = tcpPort;
-			process = new Process(executable, ["-S", '$address:$port', "-t", Path.join([Node.__dirname, "../www"])]);
-			Future.delay(1_000, Lazy.NOISE);
+			process = ChildProcess
+				.spawn(executable, ["-S", '$address:$port', "-t", Path.join([Node.__dirname, "../www"])], {stdio: [Ignore, Pipe, Ignore]})
+				.on("error", error -> trigger.reject(Error.ofJsError(error)))
+				.on("spawn", () -> Future.delay(1_000, Noise).handle(trigger.resolve));
+
+			trigger.asPromise();
 		});
 }

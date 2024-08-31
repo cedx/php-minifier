@@ -85,7 +85,8 @@ final class Program {
 	function minifyFiles(input: String, output: String, files: Array<String>): Promise<Noise> {
 		final isWindows = Sys.systemName() == "Windows";
 		final transformer: Transformer = mode == Fast ? new FastTransformer(binary) : new SafeTransformer(binary);
-		final minify = (file: String) -> Promise.NOISE
+
+		function minifyFile(file: String) return Promise.NOISE
 			.withSideEffect(_ -> if (!silent) {
 				final normalizedPath = isWindows ? file.replace("/", "\\") : file;
 				Sys.println('Minifying: $normalizedPath');
@@ -96,7 +97,7 @@ final class Program {
 				FileSystem.createDirectory(path.directory()).next(_ -> File.saveContent(path, script));
 			});
 
-		return Promise.inSequence(files.map(minify)).next(_ -> transformer.close());
+		return Promise.inSequence(files.map(minifyFile)).next(_ -> transformer.close());
 	}
 
 	/** Resolves the specified `path` into an absolute path. **/
