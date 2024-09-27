@@ -6,7 +6,7 @@ const process = require("node:process");
 exports.compressPhp = function compressPhp() {
 	const isWindows = process.platform == "win32";
 	const options = {
-		binary: isWindows ? "C:\\Program Files\\PHP\\php.exe" : "/usr/bin/php",
+		binary: isWindows ? "C:/Program Files/PHP/php.exe" : "/usr/bin/php",
 		mode: isWindows ? "safe" : "fast",
 		silent: process.stdout.isTTY
 	};
