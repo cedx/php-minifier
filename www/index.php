@@ -6,7 +6,7 @@
  */
 function main(array $query): void {
 	if (empty($query["file"])) throw new LogicException("Bad Request", 400);
-	$output = @php_strip_whitespace($query["file"]);
+	$output = php_strip_whitespace($query["file"]);
 	if (!$output) throw new RuntimeException("Not Found", 404);
 	sendResponse($output, "application/x-php");
 }
@@ -25,7 +25,10 @@ function sendResponse(string $body, string $mediaType = "application/octet-strea
 }
 
 // Start the application.
-try { main($_GET); }
+try {
+	set_error_handler(fn($severity, $message, $file, $line) => throw new ErrorException($message, 500, $severity, $file, $line));
+	main($_GET);
+}
 catch (Throwable $e) {
 	$code = $e->getCode();
 	sendResponse($e->getMessage(), "text/plain", $code >= 400 && $code < 600 ? $code : 500);
