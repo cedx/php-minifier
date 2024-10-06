@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * Application entry point.
  * @param array<string, string> $query The query string.
