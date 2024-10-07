@@ -3,7 +3,7 @@ import {Transform} from "node:stream";
 /**
  * Minifies PHP source code by removing comments and whitespace.
  */
-export declare class GulpPlugin extends Transform {}
+declare class GulpPlugin extends Transform {}
 
 /**
  * Defines the options of a {@link GulpPlugin} instance.
