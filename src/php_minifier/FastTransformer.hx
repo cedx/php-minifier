@@ -3,7 +3,7 @@ package php_minifier;
 import asys.FileSystem;
 import js.Node;
 import js.node.ChildProcess;
-import js.node.child_process.ChildProcess as ChildProcessObject;
+import js.node.child_process.ChildProcess as Process;
 import js.node.Net;
 import tink.QueryString;
 import tink.http.Client;
@@ -22,7 +22,7 @@ class FastTransformer implements Transformer {
 	var port = -1;
 
 	/** The underlying PHP process. **/
-	var process: Null<ChildProcessObject> = null;
+	var process: Null<Process> = null;
 
 	/** Creates a new fast transformer. **/
 	public function new(executable = "php")
