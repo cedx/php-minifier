@@ -1,9 +1,4 @@
-import {Transform} from "node:stream";
-
-/**
- * Minifies PHP source code by removing comments and whitespace.
- */
-declare class GulpPlugin extends Transform {}
+import type {Transform} from "node:stream";
 
 /**
  * Defines the options of a {@link GulpPlugin} instance.
@@ -31,4 +26,4 @@ export interface GulpPluginOptions {
  * @param options The plugin options.
  * @returns The newly created instance.
  */
-export function phpMinify(options?: Partial<GulpPluginOptions>): GulpPlugin;
+export function phpMinify(options?: Partial<GulpPluginOptions>): Transform;
