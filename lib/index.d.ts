@@ -8,17 +8,17 @@ export type GulpPluginOptions = Partial<{
 	/**
 	 * The path to the PHP executable.
 	 */
-	binary: string,
+	binary: string;
 
 	/**
 	 * The operation mode of the plugin.
 	 */
-	mode: "fast"|"safe",
+	mode: "fast"|"safe";
 
 	/**
 	 * Value indicating whether to silence the plugin output.
 	 */
-	silent: boolean
+	silent: boolean;
 }>;
 
 /**
