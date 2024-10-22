@@ -48,6 +48,6 @@
 	},
 	"scripts": {
 		"start": "node bin/php_minifier.js --help",
-		"test": "haxe test.hxml"
+		"test": "lix Test"
 	}
 }
