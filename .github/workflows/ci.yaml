@@ -13,13 +13,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: npm
-          node-version: 22
+          node-version: latest
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
           extensions: curl, intl, mbstring, simplexml
-          php-version: 8.3
+          php-version: latest
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
