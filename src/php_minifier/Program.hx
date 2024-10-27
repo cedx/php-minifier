@@ -2,7 +2,6 @@ package php_minifier;
 
 import asys.FileSystem;
 import asys.io.File;
-#if nodejs import js.Node; #end
 import sys.FileSystem as SyncFileSystem;
 import tink.Cli;
 import tink.cli.Rest;
@@ -40,7 +39,7 @@ final class Program {
 
 	/** Application entry point. **/
 	static function main() {
-		#if nodejs Node.process.title = "PHP Minifier"; #end
+		#if nodejs js.Node.process.title = "PHP Minifier"; #end
 		Cli.process(Sys.args(), new Program()).handle(Cli.exit);
 	}
 
