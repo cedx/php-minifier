@@ -1,11 +1,5 @@
 package php_minifier;
 
-#if macro
-import haxe.Json;
-import haxe.macro.Context;
-import sys.io.File;
-#end
-
 /** Information about the environment in which the current program is running. **/
 abstract class Platform {
 
@@ -26,13 +20,13 @@ abstract class Platform {
 
 	/** Gets the name of the Haxe compilation target. **/
 	macro static function getHaxeTarget()
-		return macro $v{Context.definedValue("target.name")};
+		return macro $v{haxe.macro.Context.definedValue("target.name")};
 
 	/** Gets the version number of the Haxe compiler. **/
 	macro static function getHaxeVersion()
-		return macro $v{Context.definedValue("haxe")};
+		return macro $v{haxe.macro.Context.definedValue("haxe")};
 
 	/** Gets the package version of this program. **/
 	macro static function getPackageVersion()
-		return macro $v{Json.parse(File.getContent("haxelib.json")).version};
+		return macro $v{haxe.Json.parse(sys.io.File.getContent("haxelib.json")).version};
 }
