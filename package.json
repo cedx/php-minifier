@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^22.8.1",
-		"esbuild": "^0.24.0",
+		"terser": "^5.36.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
