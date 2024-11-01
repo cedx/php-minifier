@@ -1,4 +1,5 @@
 /**/.DS_Store
+/.idea/
 /bin/*.map
 /lib/*.js
 /lib/*.map
