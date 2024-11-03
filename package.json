@@ -20,7 +20,7 @@
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
-		"@types/node": "^22.8.6",
+		"@types/node": "^22.8.7",
 		"terser": "^5.36.0",
 		"vinyl": "^3.0.0"
 	},
