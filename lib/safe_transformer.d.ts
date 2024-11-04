@@ -1,9 +1,7 @@
-import {Transformer} from "./transformer.js";
-
 /**
  * Removes comments and whitespace from a PHP script, by calling a PHP process.
  */
-export class SafeTransformer implements Transformer {
+export class SafeTransformer {
 
 	/**
 	 * Creates a new safe transformer.
