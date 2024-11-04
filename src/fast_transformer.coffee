@@ -45,7 +45,7 @@ export class FastTransformer
 
 	# Gets an ephemeral TCP port chosen by the system.
 	_getPort: -> new Promise (fulfill, reject) ->
-		server = createServer().unref().on "error", reject
+		server = createServer().unref().on("error", reject)
 		server.listen host: "127.0.0.1", port: 0, ->
 			{port} = server.address()
 			server.close -> fulfill port
