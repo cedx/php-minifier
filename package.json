@@ -5,8 +5,8 @@
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier",
-	"type": "commonjs",
-	"version": "4.0.1",
+	"type": "module",
+	"version": "5.0.0",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
@@ -20,7 +20,10 @@
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
+		"@coffeelint/cli": "^5.2.11",
+		"@types/gulp": "^4.0.17",
 		"@types/node": "^22.8.7",
+		"coffeescript": "^2.7.0",
 		"terser": "^5.36.0",
 		"vinyl": "^3.0.0"
 	},
@@ -29,11 +32,11 @@
 	},
 	"exports": {
 		"types": "./lib/index.d.ts",
-		"import": "./lib/index.mjs",
-		"default": "./lib/index.cjs"
+		"default": "./lib/index.js"
 	},
 	"files": [
 		"lib/",
+		"src/",
 		"www/"
 	],
 	"keywords": [
@@ -48,6 +51,6 @@
 	},
 	"scripts": {
 		"start": "node bin/php_minifier.js --help",
-		"test": "lix Test"
+		"test": "cake test"
 	}
 }
