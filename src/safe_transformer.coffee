@@ -12,10 +12,10 @@ export class SafeTransformer
 	constructor: (executable = "php") ->
 
 		# The path to the PHP executable.
-		@executable = normalize executable
+		@_executable = normalize executable
 
 	# Closes this transformer and releases any resources associated with it.
 	close: -> Promise.resolve()
 
 	# Processes a PHP script.
-	transform: (file) -> (await run @executable, ["-w", resolve file], maxBuffer: 20 * 1024 * 1024).stdout
+	transform: (file) -> (await run @_executable, ["-w", resolve file], maxBuffer: 20 * 1024 * 1024).stdout

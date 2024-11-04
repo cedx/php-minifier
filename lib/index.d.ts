@@ -1,4 +1,5 @@
 import {Transform} from "node:stream";
+export * from "./fast_transformer.js";
 export * from "./safe_transformer.js";
 export * from "./transformer.js";
 
