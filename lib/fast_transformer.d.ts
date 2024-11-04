@@ -1,12 +1,12 @@
 import {Transformer} from "./transformer.js";
 
 /**
- * Removes comments and whitespace from a PHP script, by calling a PHP process.
+ * Removes comments and whitespace from a PHP script, by calling a Web service.
  */
-export class SafeTransformer implements Transformer {
+export class FastTransformer implements Transformer {
 
 	/**
-	 * Creates a new safe transformer.
+	 * Creates a new fast transformer.
 	 * @param executable The path to the PHP executable.
 	 */
 	constructor(executable?: string);

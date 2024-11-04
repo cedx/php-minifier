@@ -1,13 +1,21 @@
-import {SafeTransformer} from "@cedx/php-minifier"
+import {FastTransformer} from "@cedx/php-minifier"
 import {doesNotReject, ok} from "node:assert/strict"
 import {after, describe, it} from "node:test"
 
-# Tests the features of the `SafeTransformer` class.
-describe "SafeTransformer", ->
+# Tests the features of the `FastTransformer` class.
+describe "FastTransformer", ->
 	describe "close()", ->
 		it "should not reject, even if called several times", ->
-			transformer = new SafeTransformer
+			transformer = new FastTransformer
+			await doesNotReject transformer.listen()
 			await doesNotReject transformer.close()
+			await doesNotReject transformer.close()
+
+	describe "listen()", ->
+		it "should not reject, even if called several times", ->
+			transformer = new FastTransformer
+			await doesNotReject transformer.listen()
+			await doesNotReject transformer.listen()
 			await doesNotReject transformer.close()
 
 	describe "transform()", ->
@@ -18,7 +26,7 @@ describe "SafeTransformer", ->
 			["should remove the whitespace", "__construct() { $this->property"]
 		]
 
-		transformer = new SafeTransformer
+		transformer = new FastTransformer
 		after -> transformer.close()
 
 		for [key, value] from map then it key, ->
