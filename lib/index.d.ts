@@ -1,4 +1,4 @@
-import type {Transform} from "node:stream";
+import {Transform} from "node:stream";
 
 /**
  * Defines the options of a {@link GulpPlugin} instance.
