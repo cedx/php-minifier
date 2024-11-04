@@ -1,4 +1,6 @@
 import {Transform} from "node:stream";
+export * from "./safe_transformer.js";
+export * from "./transformer.js";
 
 /**
  * Defines the options of a {@link GulpPlugin} instance.
