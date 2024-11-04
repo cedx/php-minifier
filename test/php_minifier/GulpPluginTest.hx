@@ -15,7 +15,7 @@ using StringTools;
 	@:variant(Fast)
 	@:variant(Safe)
 	public function transform(input: TransformMode) {
-		final file = new File({path: FileSystem.absolutePath("share/sample.php")});
+		final file = new File({path: FileSystem.absolutePath("res/sample.php")});
 		final plugin = new GulpPlugin({mode: input, silent: true});
 		@:privateAccess plugin._transform(file, "utf8", (error, chunk) -> {
 			plugin.emit("end");
