@@ -27,9 +27,9 @@ export class FastTransformer
 	# Starts the underlying PHP process and begins accepting connections.
 	listen: -> if @_process? then Promise.resolve @_port else
 		@_port = await @_getPort()
-		args = ["-S", "127.0.0.1:#{@_port}", "-t", join(import.meta.dirname, "../www")]
 		new Promise (fulfill, reject) =>
-			spawn @_executable, args, stdio: ["ignore", "pipe", "ignore"]
+			args = ["-S", "127.0.0.1:#{@_port}", "-t", join(import.meta.dirname, "../www")]
+			@_process = spawn @_executable, args, stdio: ["ignore", "pipe", "ignore"]
 				.on "error", reject
 				.on "spawn", => setTimeout (=> fulfill @_port), 1000
 
@@ -45,8 +45,7 @@ export class FastTransformer
 
 	# Gets an ephemeral TCP port chosen by the system.
 	_getPort: -> new Promise (fulfill, reject) ->
-		socket = createServer().on "error", reject
-		socket.unref()
-		socket.listen host: "127.0.0.1", port: 0, ->
-			{port} = socket.address()
-			socket.close -> fulfill port
+		server = createServer().unref().on "error", reject
+		server.listen host: "127.0.0.1", port: 0, ->
+			{port} = server.address()
+			server.close -> fulfill port
