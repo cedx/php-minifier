@@ -17,7 +17,8 @@
 	},
 	"dependencies": {
 		"fancy-log": "^2.0.0",
-		"plugin-error": "^2.0.1"
+		"plugin-error": "^2.0.1",
+		"readdirp": "^4.0.2"
 	},
 	"devDependencies": {
 		"@coffeelint/cli": "^5.2.11",
