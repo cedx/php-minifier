@@ -1,6 +1,0 @@
---class-path test
---js var/tests.js
---library tink_unittest
---main RunTests
-share/build.hxml
---cmd node var/tests.js
