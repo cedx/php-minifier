@@ -20,7 +20,7 @@ task "dist", "Packages the project.", ->
 	rmSync "lib/cakefile.js"
 
 task "lint", "Performs the static analysis of source code.", ->
-	npx "coffeelint", "--file=etc/coffeelint.json", "Cakefile", "example", "src", "test"
+	npx "coffeelint", "--file=etc/coffeelint.json", "example", "src", "test"
 
 task "publish", "Publishes the package.", ->
 	invoke "dist"
