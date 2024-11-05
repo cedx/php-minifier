@@ -1,8 +1,8 @@
 {
 	"editor.insertSpaces": false,
 	"editor.tabSize": 2,
-	"files.associations": {"Cakefile": "coffeescript"},
 	"files.encoding": "utf8",
+	"files.exclude": {"Cakefile": true},
 	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
 	"[markdown]": {"files.trimTrailingWhitespace": false},
