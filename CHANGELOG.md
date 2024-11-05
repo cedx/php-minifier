@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [5.0.0](https://github.com/cedx/php-minifier/compare/v4.0.1...v5.0.0)
+- Breaking change: dropped support for [CommonJS modules](https://nodejs.org/api/modules.html).
+- Ported the source code to [CoffeeScript](https://coffeescript.org).
+
 ## Version [4.0.1](https://github.com/cedx/php-minifier/compare/v4.0.0...v4.0.1)
 - Fixed the [TypeScript](https://www.typescriptlang.org) typings.
 
