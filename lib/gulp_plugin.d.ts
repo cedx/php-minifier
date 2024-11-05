@@ -1,4 +1,5 @@
 import {Transform, TransformCallback} from "node:stream";
+import File from "vinyl"
 
 /**
  * Defines the options of a {@link GulpPlugin} instance.
