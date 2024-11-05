@@ -15,8 +15,7 @@ task "clean", "Deletes all generated files.", ->
 	rmSync join("var", file), recursive: yes for file in readdirSync "var" when file isnt ".gitkeep"
 
 task "dist", "Packages the project.", ->
-	invoke "clean"
-	invoke "build"
+	invoke script for script in ["clean", "build"]
 	rmSync "lib/cakefile.js"
 
 task "lint", "Performs the static analysis of source code.", ->
