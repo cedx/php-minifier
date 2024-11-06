@@ -2,27 +2,6 @@ import {Transform, TransformCallback} from "node:stream";
 import File from "vinyl"
 
 /**
- * Defines the options of a {@link GulpPlugin} instance.
- */
-export type GulpPluginOptions = Partial<{
-
-	/**
-	 * The path to the PHP executable.
-	 */
-	binary: string;
-
-	/**
-	 * The operation mode of the plugin.
-	 */
-	mode: "fast"|"safe";
-
-	/**
-	 * Value indicating whether to silence the plugin output.
-	 */
-	silent: boolean;
-}>;
-
-/**
  * Minifies PHP source code by removing comments and whitespace.
  */
 export class GulpPlugin extends Transform {
@@ -42,3 +21,24 @@ export class GulpPlugin extends Transform {
 	 */
 	_transform(chunk: File, encoding: NodeJS.BufferEncoding, callback: TransformCallback): Promise<void>;
 }
+
+/**
+ * Defines the options of a {@link GulpPlugin} instance.
+ */
+export type GulpPluginOptions = Partial<{
+
+	/**
+	 * The path to the PHP executable.
+	 */
+	binary: string;
+
+	/**
+	 * The operation mode of the plugin.
+	 */
+	mode: "fast"|"safe";
+
+	/**
+	 * Value indicating whether to silence the plugin output.
+	 */
+	silent: boolean;
+}>;
