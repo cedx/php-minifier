@@ -64,7 +64,7 @@ try
 	transformer = if values.mode is "fast" then new FastTransformer values.binary  else new SafeTransformer values.binary
 
 	files = await readdir input, recursive: yes, withFileTypes: yes
-	for file in files.filter (item) -> item.isFile() and item.name.endsWith ".#{values.extension}"
+	for file from files.filter (item) -> item.isFile() and item.name.endsWith ".#{values.extension}"
 		fullPath = join file.parentPath, file.name
 		relativePath = relative input, fullPath
 		console.log "Minifying: #{relativePath}" unless values.silent
