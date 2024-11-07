@@ -10,6 +10,6 @@ export compressPhp = ->
 		mode: if isWindows then "safe" else "fast"
 		silent: process.stdout.isTTY
 
-	gulp.src "path/to/**/*.php", read: false
+	gulp.src "path/to/**/*.php", read: no
 		.pipe phpMinify options
 		.pipe gulp.dest "path/to/out"

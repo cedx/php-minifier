@@ -71,7 +71,7 @@ try
 
 		script = await transformer.transform join fullPath
 		target = join output, relativePath
-		await mkdir dirname(target), recursive: true
+		await mkdir dirname(target), recursive: yes
 		await writeFile target, script
 
 	await transformer.close()

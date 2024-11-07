@@ -9,7 +9,7 @@ export class GulpPlugin extends Transform
 
 	# Creates a new plugin.
 	constructor: (options = {}) ->
-		super objectMode: true
+		super objectMode: on
 
 		binary = options.binary ? "php"
 		transformer = if options.mode ? "safe" is "fast" then new FastTransformer binary else new SafeTransformer binary
