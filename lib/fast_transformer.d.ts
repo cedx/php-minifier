@@ -1,7 +1,9 @@
+import {Transformer} from "./transformer.js";
+
 /**
  * Removes comments and whitespace from a PHP script, by calling a Web service.
  */
-export class FastTransformer {
+export class FastTransformer implements Transformer {
 
 	/**
 	 * Creates a new fast transformer.
