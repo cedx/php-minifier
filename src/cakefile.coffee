@@ -11,11 +11,11 @@ task "build", "Builds the project.", (options) ->
 	run "coffee", "--compile", sourcemaps..., "--no-header", "--output", "lib", "src"
 
 task "clean", "Deletes all generated files.", ->
-	rmSync join("lib", file) for file in readdirSync "lib" when not file.endsWith ".d.ts"
-	rmSync join("var", file), recursive: yes for file in readdirSync "var" when file isnt ".gitkeep"
+	rmSync join("lib", file) for file from readdirSync "lib" when not file.endsWith ".d.ts"
+	rmSync join("var", file), recursive: yes for file from readdirSync "var" when file isnt ".gitkeep"
 
 task "dist", "Packages the project.", ->
-	invoke script for script in ["clean", "build"]
+	invoke script for script from ["clean", "build"]
 	rmSync "lib/cakefile.js"
 
 task "lint", "Performs the static analysis of source code.", ->
@@ -23,8 +23,8 @@ task "lint", "Performs the static analysis of source code.", ->
 
 task "publish", "Publishes the package.", ->
 	invoke "dist"
-	run "npm", "publish", "--registry=#{registry}" for registry in ["https://registry.npmjs.org", "https://npm.pkg.github.com"]
-	run "git", action..., "v#{pkg.version}" for action in [["tag"], ["push", "origin"]]
+	run "npm", "publish", "--registry=#{registry}" for registry from ["https://registry.npmjs.org", "https://npm.pkg.github.com"]
+	run "git", action..., "v#{pkg.version}" for action from [["tag"], ["push", "origin"]]
 
 task "test", "Runs the test suite.", ->
 	env.NODE_ENV = "test"
