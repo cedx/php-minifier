@@ -1,6 +1,7 @@
 import log from "fancy-log"
 import {Buffer} from "node:buffer"
 import {Transform} from "node:stream"
+import PluginError from "plugin-error"
 import {FastTransformer} from "./fast_transformer.js"
 import {SafeTransformer} from "./safe_transformer.js"
 
@@ -12,7 +13,7 @@ export class GulpPlugin extends Transform
 		super objectMode: on
 
 		binary = options.binary ? "php"
-		transformer = if options.mode ? "safe" is "fast" then new FastTransformer binary else new SafeTransformer binary
+		transformer = if (options.mode ? "safe") is "fast" then new FastTransformer binary else new SafeTransformer binary
 		close = -> await transformer.close()
 		@on("end", close).on("error", close)
 
