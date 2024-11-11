@@ -6,7 +6,7 @@
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier",
 	"type": "module",
-	"version": "5.0.1",
+	"version": "5.0.2",
 	"author": {
 		"email": "cedric@belin.io",
 		"name": "Cédric Belin",
@@ -21,6 +21,7 @@
 	},
 	"devDependencies": {
 		"@coffeelint/cli": "^5.2.11",
+		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^22.9.0",
 		"coffeescript": "^2.7.0",
