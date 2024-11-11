@@ -1,7 +1,8 @@
 {spawnSync} = require "node:child_process"
+console = require "node:console"
 {readdirSync, rmSync} = require "node:fs"
 {join} = require "node:path"
-{env} = require "node:process"
+{env, exit} = require "node:process"
 pkg = require "../package.json"
 
 option "-m", "--map", "Whether to generate source maps."
@@ -43,4 +44,4 @@ run = (command, args...) ->
 	{status} = spawnSync command, args, shell: yes, stdio: "inherit"
 	unless status is 0
 		console.error "Command failed:", command, args...
-		process.exit status
+		exit status
