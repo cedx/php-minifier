@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		"allowJs": true,
+		"checkJs": false,
 		"noEmit": true,
 		"module": "NodeNext",
 		"resolveJsonModule": true
