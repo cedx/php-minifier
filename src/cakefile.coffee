@@ -41,7 +41,7 @@ npx = (command, args...) -> run "npm", "exec", "--", command, args...
 
 # Spawns a new process using the specified command.
 run = (command, args...) ->
-	{status} = spawnSync command, args, shell: yes, stdio: "inherit"
+	{status} = spawnSync command, args, shell: on, stdio: "inherit"
 	unless status is 0
 		console.error "Command failed:", command, args...
 		exit status
