@@ -28,7 +28,7 @@ export publish = ->
 export test = ->
 	env.NODE_ENV = "test"
 	await npx "coffee", "--compile", "--map", "--no-header", "--output", "lib", "src", "test"
-	await run "node", "--enable-source-maps", "--test", "lib/**/*_test.js"
+	await run "node", "--enable-source-maps", "--test"
 
 # Watches for file changes.
 export watch = ->
