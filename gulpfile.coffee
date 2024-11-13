@@ -34,7 +34,7 @@ export test = ->
 export watch = ->
 	await npx "coffee", "--compile", "--no-header", "--output", "lib", "--watch", "src", "test"
 
-# Packages the project.
+# The default task.
 export default gulp.series clean, build
 
 # Executes a command from a local package.
