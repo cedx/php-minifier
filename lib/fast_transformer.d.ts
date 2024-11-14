@@ -18,6 +18,12 @@ export class FastTransformer implements Transformer {
 	close(): Promise<void>;
 
 	/**
+	 * Starts the underlying PHP process and begins accepting connections.
+	 * @returns The TCP port used by the PHP process.
+	 */
+	listen(): Promise<number>;
+
+	/**
 	 * Processes a PHP script.
 	 * @param file The path to the PHP script.
 	 * @returns The transformed script.
