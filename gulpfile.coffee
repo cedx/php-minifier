@@ -19,7 +19,7 @@ export lint = ->
 # Publishes the package.
 export publish = ->
 	{default: {version}} = await import("./package.json", with: {type: "json"})
-	await run "gulp"
+	await npx "gulp"
 	await run "npm", "publish", "--registry=#{registry}" for registry from ["https://registry.npmjs.org", "https://npm.pkg.github.com"]
 	await run "git", action..., "v#{version}" for action from [["tag"], ["push", "origin"]]
 
