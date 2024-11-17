@@ -1,7 +1,6 @@
 /**/.DS_Store
 /.idea/
-/lib/**/*.js
-/lib/**/*.js.map
+/lib/
 /node_modules/
 /npm-debug.log
 /var/
