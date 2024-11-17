@@ -11,7 +11,7 @@ usage = """
 Minify PHP source code by removing comments and whitespace.
 
 Usage:
-	php_minifier [options] <input> [output]
+	npx @cedx/php-minifier [options] <input> [output]
 
 Arguments:
 	input            The path to the input directory.
