@@ -24,12 +24,12 @@ export class GulpPlugin extends Transform
 		@_transformer = transformer
 
 	# Transforms input and produces output.
-	_transform: (chunk, encoding, callback) ->
+	_transform: (chunk, encoding, done) ->
 		try
 			log "Minifying: #{chunk.relative}" unless @_silent
 			chunk.contents = Buffer.from await @_transformer.transform(chunk.path), encoding
-			callback null, chunk
+			done null, chunk
 
 		catch error
 			failure = if error instanceof Error then error else String error
-			callback new PluginError "@cedx/php-minifier", failure, fileName: chunk.path
+			done new PluginError "@cedx/php-minifier", failure, fileName: chunk.path
