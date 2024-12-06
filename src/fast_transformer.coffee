@@ -35,13 +35,13 @@ export class FastTransformer
 
 	# Processes a PHP script.
 	transform: (file) ->
-		await @listen()
-		url = new URL "http://127.0.0.1:#{@_port}/index.php"
+		port = await @listen()
+		url = new URL "http://127.0.0.1:#{port}/index.php"
 		url.searchParams.set "file", resolve(file)
 
 		response = await fetch url
 		throw Error("An error occurred while processing the script: #{file}") unless response.ok
-		response.text()
+		await response.text()
 
 	# Gets an ephemeral TCP port chosen by the system.
 	_getPort: -> new Promise (fulfill, reject) ->
