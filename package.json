@@ -25,7 +25,6 @@
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^22.10.1",
 		"coffeescript": "^2.7.0",
-		"gulp": "^5.0.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
@@ -52,6 +51,6 @@
 	},
 	"scripts": {
 		"start": "node bin/php_minifier.js --help",
-		"test": "gulp test"
+		"test": "cake test"
 	}
 }
