@@ -1,1 +1,1 @@
-require "./src/cakefile.coffee"
+require "./build.coffee"
