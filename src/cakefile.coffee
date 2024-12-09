@@ -1,8 +1,6 @@
 {spawnSync} = require "node:child_process"
-console = require "node:console"
 {readdirSync, rmSync} = require "node:fs"
 {join} = require "node:path"
-{exit} = require "node:process"
 pkg = require "../package.json"
 
 task "build", "Builds the project.", ->
@@ -37,6 +35,4 @@ npx = (command, args...) -> run "npm", "exec", "--", command, args...
 # Spawns a new process using the specified command.
 run = (command, args...) ->
 	{status} = spawnSync command, args, shell: on, stdio: "inherit"
-	unless status is 0
-		console.error "Command failed:", command, args...
-		exit status
+	throw Error [command, args...].join " " unless status is 0
