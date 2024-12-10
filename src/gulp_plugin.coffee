@@ -29,7 +29,6 @@ export class GulpPlugin extends Transform
 			log "Minifying: #{file.relative}" unless @_silent
 			file.contents = Buffer.from await @_transformer.transform(file.path), encoding
 			done null, file
-
 		catch error
 			failure = if error instanceof Error then error else String error
 			done new PluginError "@cedx/php-minifier", failure, fileName: file.path
