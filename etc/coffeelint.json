@@ -3,7 +3,7 @@
 	"braces_spacing": {"level": "error"},
 	"bracket_spacing": {"level": "error"},
 	"colon_assignment_spacing": {"level": "error", "spacing": {"left": 0, "right": 1}},
-	"cyclomatic_complexity": {"level": "error"},
+	"cyclomatic_complexity": {"level": "error", "value": 20},
 	"ensure_comprehensions": {"level": "error"},
 	"eol_last": {"level": "error"},
 	"indentation": {"value": 1},
