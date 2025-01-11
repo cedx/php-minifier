@@ -49,8 +49,11 @@
 	"peerDependencies": {
 		"gulp": ">=5.0.0"
 	},
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"start": "node bin/php_minifier.js --help",
-		"test": "cake test"
+		"test": "gulp test"
 	}
 }
