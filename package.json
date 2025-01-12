@@ -25,6 +25,7 @@
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^22.10.5",
 		"coffeescript": "^2.7.0",
+		"gulp": "^5.0.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
