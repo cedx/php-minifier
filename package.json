@@ -23,7 +23,7 @@
 		"@coffeelint/cli": "^5.2.11",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.10.6",
+		"@types/node": "^22.10.7",
 		"coffeescript": "^2.7.0",
 		"gulp": "^5.0.0",
 		"vinyl": "^3.0.0"
