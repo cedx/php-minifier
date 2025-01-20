@@ -3,8 +3,8 @@
 		"allowJs": true,
 		"checkJs": false,
 		"noEmit": true,
-		"module": "nodenext",
+		"module": "NodeNext",
 		"resolveJsonModule": true,
-		"target": "esnext"
+		"target": "ESNext"
 	}
 }
