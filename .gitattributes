@@ -2,7 +2,6 @@
 .* text
 
 *.cjs text
-*.coffee text
 *.css text diff=css
 *.html text diff=html
 *.http text
