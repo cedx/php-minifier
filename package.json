@@ -20,12 +20,13 @@
 		"plugin-error": "^2.0.1"
 	},
 	"devDependencies": {
-		"@coffeelint/cli": "^5.2.11",
+		"@types/eslint__js": "^8.42.3",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.10.10",
-		"coffeescript": "^2.7.0",
+		"@types/node": "^22.12.0",
 		"gulp": "^5.0.0",
+		"typescript": "^5.7.3",
+		"typescript-eslint": "^8.22.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
