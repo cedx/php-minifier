@@ -1,6 +1,5 @@
 {
 	"recommendations": [
-		"bmewburn.vscode-intelephense-client",
-		"phil294.coffeesense"
+		"bmewburn.vscode-intelephense-client"
 	]
 }
