@@ -33,7 +33,7 @@
 		"node": ">=22.0.0"
 	},
 	"exports": {
-		"types": "./src/index.d.ts",
+		"types": "./lib/index.d.ts",
 		"default": "./lib/index.js"
 	},
 	"files": [
