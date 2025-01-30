@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [5.1.0](https://github.com/cedx/php-minifier/compare/v5.0.2...v5.1.0)
+- Ported the source code to [TypeScript](https://www.typescriptlang.org).
+
 ## Version [5.0.2](https://github.com/cedx/php-minifier/compare/v5.0.1...v5.0.2)
 - Fixed the [Gulp](https://gulpjs.com) plugin.
 
