@@ -7,6 +7,7 @@ either using the command line or through a [Gulp](https://gulpjs.com) plugin.
 
 ## Documentation
 - [User guide](https://github.com/cedx/php-minifier/wiki)
+- [API reference](https://cedx.github.io/php-minifier)
 - [Examples](https://github.com/cedx/php-minifier/tree/main/example)
 
 ## Development
