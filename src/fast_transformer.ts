@@ -1,4 +1,4 @@
-import {ChildProcess, spawn} from "node:child_process";
+import {spawn, type ChildProcess} from "node:child_process";
 import {createServer, type AddressInfo} from "node:net";
 import {join, normalize, resolve} from "node:path";
 import {setTimeout} from "node:timers";

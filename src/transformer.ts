@@ -1,7 +1,7 @@
 /**
  * Removes comments and whitespace from a PHP script.
  */
-export interface Transformer {
+export interface Transformer { // eslint-disable-line @typescript-eslint/consistent-type-definitions
 
 	/**
 	 * Closes this transformer and releases any resources associated with it.

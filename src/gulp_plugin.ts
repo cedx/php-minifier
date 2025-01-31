@@ -44,7 +44,7 @@ export class GulpPlugin extends Transform {
 	 * @param done The function to invoke when the supplied chunk has been processed.
 	 * @returns Resolves when the specified chunk has been transformed.
 	 */
-	override async _transform(file: File, encoding: NodeJS.BufferEncoding, done: TransformCallback): Promise<void> {
+	override async _transform(file: File, encoding: NodeJS.BufferEncoding, done: TransformCallback): Promise<void> { // eslint-disable-line @typescript-eslint/no-misused-promises
 		try {
 			if (!this.#silent) log(`Minifying: ${file.relative}`);
 			file.contents = Buffer.from(await this.#transformer.transform(file.path), encoding);
