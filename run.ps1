@@ -1,5 +1,8 @@
 #!/usr/bin/env pwsh
 Set-StrictMode -Version Latest
-$file = "$PSScriptRoot/lib/cli.js"
-if (Test-Path "$file.map") { & node --enable-source-maps $file @args }
-else { & node $file @args }
+$commandPath = Get-Item $PSCommandPath
+$scriptRoot = $commandPath.LinkType ? (Split-Path $commandPath.LinkTarget) : $PSScriptRoot
+
+$entryPoint = "$scriptRoot/lib/cli.js"
+if (Test-Path "$entryPoint.map") { & node --enable-source-maps $entryPoint @args }
+else { & node $entryPoint @args }
