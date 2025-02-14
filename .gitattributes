@@ -10,7 +10,9 @@
 *.json text
 *.md text diff=markdown
 *.mjs text
+*.php text diff=php
 *.ps1 text
+*.slnx text
 *.sql text
 *.svg text
 *.ts text
