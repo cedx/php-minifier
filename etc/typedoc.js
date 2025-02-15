@@ -1,4 +1,6 @@
-/** @type {Partial<import("typedoc").TypeDocOptions>} */
+/**
+ * @type {Partial<import("typedoc").TypeDocOptions>}
+ */
 export default {
 	entryPoints: ["../src/index.ts"],
 	excludePrivate: true,
