@@ -2,14 +2,13 @@
 	<PropertyGroup>
 		<BuildCommand>gulp build</BuildCommand>
 		<CleanCommand>gulp clean</CleanCommand>
-		<OutDir>../var</OutDir>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="php-minifier.slnx" />
 		<None Remove="docs\**" />
 		<None Remove="lib\**" />
 		<None Remove="var\**" />
-		<None Remove="php-minifier.slnx" />
 		<TypeScriptConfiguration Remove="docs\**" />
 		<TypeScriptConfiguration Remove="lib\**" />
 		<TypeScriptConfiguration Remove="var\**" />
