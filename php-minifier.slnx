@@ -1,6 +1,0 @@
-<Solution>
-	<Project Path="php-minifier.esproj">
-		<Build />
-		<Deploy />
-	</Project>
-</Solution>
