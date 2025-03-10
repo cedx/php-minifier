@@ -4,6 +4,7 @@
 		"allowJs": true,
 		"baseUrl": ".",
 		"checkJs": true,
+		"erasableSyntaxOnly": true,
 		"incremental": true,
 		"module": "NodeNext",
 		"noEmit": true,
