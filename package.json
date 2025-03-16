@@ -24,7 +24,7 @@
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^22.13.10",
 		"gulp": "^5.0.0",
-		"typedoc": "^0.27.9",
+		"typedoc": "^0.28.0",
 		"typescript": "^5.8.2",
 		"typescript-eslint": "^8.26.1",
 		"vinyl": "^3.0.0"
