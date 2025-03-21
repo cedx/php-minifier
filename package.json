@@ -22,11 +22,11 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.13.10",
+		"@types/node": "^22.13.11",
 		"gulp": "^5.0.0",
-		"typedoc": "^0.28.0",
+		"typedoc": "^0.28.1",
 		"typescript": "^5.8.2",
-		"typescript-eslint": "^8.26.1",
+		"typescript-eslint": "^8.27.0",
 		"vinyl": "^3.0.0"
 	},
 	"engines": {
