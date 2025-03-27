@@ -22,7 +22,7 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^22.13.13",
+		"@types/node": "^22.13.14",
 		"gulp": "^5.0.0",
 		"typedoc": "^0.28.1",
 		"typescript": "^5.8.2",
