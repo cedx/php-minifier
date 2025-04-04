@@ -3,8 +3,8 @@ import {access, mkdir, readdir, writeFile} from "node:fs/promises";
 import {dirname, join, relative, resolve} from "node:path";
 import process from "node:process";
 import {parseArgs} from "node:util";
-import {FastTransformer} from "./fast_transformer.js";
-import {SafeTransformer} from "./safe_transformer.js";
+import {FastTransformer} from "./FastTransformer.js";
+import {SafeTransformer} from "./SafeTransformer.js";
 import pkg from "../package.json" with {type: "json"};
 
 // The usage information.

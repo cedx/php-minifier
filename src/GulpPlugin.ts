@@ -3,9 +3,9 @@ import {Buffer} from "node:buffer";
 import {Transform, type TransformCallback} from "node:stream";
 import PluginError from "plugin-error";
 import type File from "vinyl";
-import {FastTransformer} from "./fast_transformer.js";
-import {SafeTransformer} from "./safe_transformer.js";
-import type {Transformer} from "./transformer.js";
+import {FastTransformer} from "./FastTransformer.js";
+import {SafeTransformer} from "./SafeTransformer.js";
+import type {Transformer} from "./Transformer.js";
 
 /**
  * Minifies PHP source code by removing comments and whitespace.

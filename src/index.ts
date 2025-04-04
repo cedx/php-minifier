@@ -1,9 +1,9 @@
-import {GulpPlugin, type GulpPluginOptions} from "./gulp_plugin.js";
+import {GulpPlugin, type GulpPluginOptions} from "./GulpPlugin.js";
 
-export * from "./fast_transformer.js";
-export * from "./gulp_plugin.js";
-export * from "./safe_transformer.js";
-export type * from "./transformer.js";
+export * from "./FastTransformer.js";
+export * from "./GulpPlugin.js";
+export * from "./SafeTransformer.js";
+export type * from "./Transformer.js";
 
 /**
  * Creates a new Gulp plugin.

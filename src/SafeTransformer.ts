@@ -1,7 +1,7 @@
 import {execFile} from "node:child_process";
 import {normalize, resolve} from "node:path";
 import {promisify} from "node:util";
-import type {Transformer} from "./transformer.js";
+import type {Transformer} from "./Transformer.js";
 
 /**
  * Spawns a new process using the specified command.
