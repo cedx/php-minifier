@@ -88,7 +88,7 @@ export default ts.config(
 			"no-octal-escape": "error",
 			"no-param-reassign": "off",
 			"no-plusplus": "off",
-			"no-promise-executor-return": "error",
+			"no-promise-executor-return": "off",
 			"no-proto": "error",
 			"no-restricted-exports": "error",
 			"no-restricted-globals": "error",
