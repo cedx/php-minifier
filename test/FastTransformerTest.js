@@ -36,7 +36,7 @@ describe("FastTransformer", () => {
 		after(() => transformer.close());
 
 		for (const [key, value] of map) it(key, async () => {
-      const output = await transformer.transform("res/sample.php");
+      const output = await transformer.transform("res/Sample.php");
 			ok(output.includes(value));
     });
 	});

@@ -18,7 +18,7 @@ describe("GulpPlugin", () => {
 		]);
 
 		describe("fast", () => {
-			const file = new File({path: resolve("res/sample.php")});
+			const file = new File({path: resolve("res/Sample.php")});
 			const plugin = new GulpPlugin({mode: "fast", silent: true});
 			after(() => plugin.emit("end"));
 
@@ -29,7 +29,7 @@ describe("GulpPlugin", () => {
 		});
 
 		describe("safe", () => {
-			const file = new File({path: resolve("res/sample.php")});
+			const file = new File({path: resolve("res/Sample.php")});
 			const plugin = new GulpPlugin({mode: "safe", silent: true});
 			after(() => plugin.emit("end"));
 

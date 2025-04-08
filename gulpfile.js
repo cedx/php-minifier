@@ -17,13 +17,13 @@ export async function clean() {
 
 /** Builds the documentation. */
 export async function doc() {
-	await run("npx", "typedoc", "--options", "etc/typedoc.js");
+	await run("npx", "typedoc", "--options", "etc/TypeDoc.js");
 }
 
 /** Performs the static analysis of source code. */
 export async function lint() {
 	await run("npx", "tsc", "--build", "tsconfig.json", "--noEmit");
-	await run("npx", "eslint", "--config=etc/eslint.js", "gulpfile.js", "example", "src", "test");
+	await run("npx", "eslint", "--config=etc/ESLint.js", "gulpfile.js", "example", "src", "test");
 }
 
 /** Publishes the package. */
