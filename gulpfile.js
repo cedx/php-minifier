@@ -29,8 +29,8 @@ export async function lint() {
 /** Publishes the package. */
 export async function publish() {
 	await run("npx", "gulp");
-	for (const registry of ["https://registry.npmjs.org", "https://npm.pkg.github.com"]) await run("npm", "publish", `--registry=${registry}`);
 	for (const action of [["tag"], ["push", "origin"]]) await run("git", ...action, `v${pkg.version}`);
+	for (const registry of ["https://registry.npmjs.org", "https://npm.pkg.github.com"]) await run("npm", "publish", `--registry=${registry}`);
 }
 
 /** Runs the test suite. */
