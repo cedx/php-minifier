@@ -1,7 +1,7 @@
 import {execFile} from "node:child_process";
 import {normalize, resolve} from "node:path";
 import {promisify} from "node:util";
-import type {Transformer} from "./Transformer.js";
+import type {ITransformer} from "./ITransformer.js";
 
 /**
  * Spawns a new process using the specified command.
@@ -11,7 +11,7 @@ const run = promisify(execFile);
 /**
  * Removes comments and whitespace from a PHP script, by calling a PHP process.
  */
-export class SafeTransformer implements Transformer {
+export class SafeTransformer implements ITransformer {
 
 	/**
 	 * The path to the PHP executable.

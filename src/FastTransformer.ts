@@ -2,12 +2,12 @@ import {spawn, type ChildProcess} from "node:child_process";
 import {createServer, type AddressInfo} from "node:net";
 import {join, normalize, resolve} from "node:path";
 import {setTimeout} from "node:timers";
-import type {Transformer} from "./Transformer.js";
+import type {ITransformer} from "./ITransformer.js";
 
 /**
  * Removes comments and whitespace from a PHP script, by calling a Web service.
  */
-export class FastTransformer implements Transformer {
+export class FastTransformer implements ITransformer {
 
 	/**
 	 * The path to the PHP executable.

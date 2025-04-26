@@ -4,8 +4,8 @@ import {Transform, type TransformCallback} from "node:stream";
 import PluginError from "plugin-error";
 import type File from "vinyl";
 import {FastTransformer} from "./FastTransformer.js";
+import type {ITransformer} from "./ITransformer.js";
 import {SafeTransformer} from "./SafeTransformer.js";
-import type {Transformer} from "./Transformer.js";
 
 /**
  * Minifies PHP source code by removing comments and whitespace.
@@ -20,7 +20,7 @@ export class GulpPlugin extends Transform {
 	/**
 	 * The instance used to process the PHP code.
 	 */
-	readonly #transformer: Transformer;
+	readonly #transformer: ITransformer;
 
 	/**
 	 * Creates a new plugin.

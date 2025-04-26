@@ -152,7 +152,7 @@ export default ts.config(
 			"@typescript-eslint/array-type": ["error", {default: "array-simple"}],
 			"@typescript-eslint/class-methods-use-this": "off",
 			"@typescript-eslint/consistent-return": "error",
-			"@typescript-eslint/consistent-type-definitions": ["error", "type"],
+			"@typescript-eslint/consistent-type-definitions": "error",
 			"@typescript-eslint/consistent-type-exports": "error",
 			"@typescript-eslint/consistent-type-imports": "error",
 			"@typescript-eslint/default-param-last": "error",
