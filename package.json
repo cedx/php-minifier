@@ -22,9 +22,9 @@
 	"devDependencies": {
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^24.0.4",
+		"@types/node": "^24.0.7",
 		"gulp": "^5.0.1",
-		"typedoc": "^0.28.5",
+		"typedoc": "^0.28.7",
 		"typescript": "^5.8.3",
 		"typescript-eslint": "^8.35.0",
 		"vinyl": "^3.0.1"
