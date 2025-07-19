@@ -15,6 +15,11 @@ export async function clean() {
 	for (const file of await readdir("var")) if (file != ".gitkeep") await rm(join("var", file), {recursive: true});
 }
 
+/** Builds the project in debug mode. */
+export async function debug() {
+	await run("npx tsc --build src/tsconfig.json --sourceMap");
+}
+
 /** Builds the documentation. */
 export async function doc() {
 	await run("npx typedoc --options etc/TypeDoc.js");
@@ -35,7 +40,7 @@ export async function publish() {
 
 /** Runs the test suite. */
 export async function test() {
-	await run("npx tsc --build src/tsconfig.json --sourceMap");
+	await debug();
 	await run("node --enable-source-maps --test");
 }
 

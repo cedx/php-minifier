@@ -1,0 +1,27 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Program",
+			"preLaunchTask": "Debug",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/bin/PhpMinifier.js",
+			"args": ["--mode=fast", "${input:input}"]
+		},
+		{
+			"name": "Tests",
+			"request": "launch",
+			"type": "node",
+			"program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
+			"args": ["test"]
+		}
+	],
+	"inputs": [
+		{
+			"description": "The path to the input directory.",
+			"id": "input",
+			"type": "promptString"
+		}
+	]
+}
