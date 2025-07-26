@@ -1,11 +1,11 @@
 {
 	"author": "Cédric Belin <cedx@outlook.com>",
-	"bugs": "https://github.com/cedx/php-minifier/issues",
+	"bugs": "https://github.com/cedx/php-minifier.js/issues",
 	"description": "Minify PHP source code by removing comments and whitespace.",
-	"homepage": "https://github.com/cedx/php-minifier",
+	"homepage": "https://github.com/cedx/php-minifier.js",
 	"license": "MIT",
 	"name": "@cedx/php-minifier",
-	"repository": "cedx/php-minifier",
+	"repository": "cedx/php-minifier.js",
 	"type": "module",
 	"version": "5.1.1",
 	"bin": {
