@@ -33,8 +33,8 @@ export class GulpPlugin extends Transform {
 		this.#silent = options.silent ?? false;
 		this.#transformer = (options.mode ?? "safe") == "fast" ? new FastTransformer(binary) : new SafeTransformer(binary);
 
-		const close = async (): Promise<void> => { await this.#transformer.close(); };
-		this.on("end", close).on("error", close); // eslint-disable-line @typescript-eslint/no-misused-promises
+		const dispose = async (): Promise<void> => { await this.#transformer[Symbol.asyncDispose](); };
+		this.on("end", dispose).on("error", dispose); // eslint-disable-line @typescript-eslint/no-misused-promises
 	}
 
 	/**

@@ -1,13 +1,7 @@
 /**
  * Removes comments and whitespace from a PHP script.
  */
-export interface ITransformer {
-
-	/**
-	 * Closes this transformer and releases any resources associated with it.
-	 * @returns Resolves when the transformer is finally disposed.
-	 */
-	close: () => Promise<void>;
+export interface ITransformer extends AsyncDisposable {
 
 	/**
 	 * Processes a PHP script.

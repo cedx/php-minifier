@@ -30,7 +30,7 @@ export class SafeTransformer implements ITransformer {
 	 * Closes this transformer and releases any resources associated with it.
 	 * @returns Resolves when the transformer is finally disposed.
 	 */
-	close(): Promise<void> {
+	[Symbol.asyncDispose](): Promise<void> {
 		return Promise.resolve();
 	}
 

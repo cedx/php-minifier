@@ -67,7 +67,7 @@ try {
 
 	// Process the PHP scripts.
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
-	const transformer = values.mode == "fast" ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
+	await using transformer = values.mode == "fast" ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
 	const files = await readdir(input, {recursive: true, withFileTypes: true});
 	for (const file of files.filter(item => item.isFile() && item.name.endsWith(`.${values.extension}`))) {
@@ -80,8 +80,6 @@ try {
 		await mkdir(dirname(target), {recursive: true});
 		await writeFile(target, script);
 	}
-
-	await transformer.close();
 }
 catch (error) {
 	console.error(error instanceof Error ? error.message : error);
