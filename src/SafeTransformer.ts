@@ -27,8 +27,7 @@ export class SafeTransformer implements ITransformer {
 	}
 
 	/**
-	 * Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-	 * Calls the {@link close} method.
+	 * Closes this transformer and releases any resources associated with it.
 	 * @returns Resolves when the transformer is finally disposed.
 	 */
 	[Symbol.asyncDispose](): Promise<void> {
