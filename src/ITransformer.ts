@@ -4,8 +4,8 @@
 export interface ITransformer extends AsyncDisposable {
 
 	/**
-	 * Closes this transformer and releases any resources associated with it.
-	 * @returns Resolves when the transformer is finally disposed.
+	 * Closes this transformer.
+	 * @returns Resolves when the transformer has been closed.
 	 */
 	close: () => Promise<void>;
 
