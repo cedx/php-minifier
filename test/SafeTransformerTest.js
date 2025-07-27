@@ -6,11 +6,11 @@ import {after, describe, it} from "node:test";
  * Tests the features of the {@link SafeTransformer} class.
  */
 describe("SafeTransformer", () => {
-	describe("asyncDispose()", () => {
+	describe("close()", () => {
 		it("should not reject, even if called several times", async () => {
 			const transformer = new SafeTransformer;
-			await doesNotReject(transformer[Symbol.asyncDispose]());
-			await doesNotReject(transformer[Symbol.asyncDispose]());
+			await doesNotReject(transformer.close());
+			await doesNotReject(transformer.close());
 		});
 	});
 
@@ -23,7 +23,7 @@ describe("SafeTransformer", () => {
 		]);
 
 		const transformer = new SafeTransformer;
-		after(() => transformer[Symbol.asyncDispose]());
+		after(() => transformer.close());
 
 		for (const [key, value] of map) it(key, async () => {
       const output = await transformer.transform("res/Sample.php");
