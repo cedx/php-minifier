@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [7.1.0](https://github.com/cedx/php-minifier.js/compare/v7.0.0...v7.1.0)
+- Restored the `ITransformer.close()` method.
+
 ## Version [7.0.0](https://github.com/cedx/php-minifier.js/compare/v6.0.0...v7.0.0)
 - Breaking change: removed the `ITransformer.close()` method.
 - Breaking change: the `ITransformer` interface now extends the `AsyncDisposable` interface.
