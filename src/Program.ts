@@ -37,6 +37,7 @@ try {
 		extension: {short: "e", type: "string", default: "php"},
 		help: {short: "h", type: "boolean", default: false},
 		mode: {short: "m", type: "string", default: "safe"},
+		recursive: {short: "r", type: "boolean", default: false},
 		silent: {short: "s", type: "boolean", default: false},
 		version: {short: "v", type: "boolean", default: false}
 	}});
@@ -69,7 +70,7 @@ try {
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
 	await using transformer = values.mode == "fast" ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
-	const files = await readdir(input, {recursive: true, withFileTypes: true});
+	const files = await readdir(input, {recursive: values.recursive, withFileTypes: true});
 	for (const file of files.filter(item => item.isFile() && item.name.endsWith(`.${values.extension}`))) {
 		const fullPath = join(file.parentPath, file.name);
 		const relativePath = relative(input, fullPath);
