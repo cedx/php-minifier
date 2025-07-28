@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [7.2.0](https://github.com/cedx/php-minifier.js/compare/v7.1.0...v7.2.0)
+- Added the `--recursive` option to the command line interface.
+
 ## Version [7.1.0](https://github.com/cedx/php-minifier.js/compare/v7.0.0...v7.1.0)
 - Restored the `ITransformer.close()` method.
 
