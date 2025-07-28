@@ -7,7 +7,7 @@
 	"name": "@cedx/php-minifier",
 	"repository": "cedx/php-minifier.js",
 	"type": "module",
-	"version": "7.1.0",
+	"version": "7.2.0",
 	"bin": {
 		"php_minifier": "bin/PhpMinifier.js"
 	},
@@ -20,7 +20,7 @@
 		"@types/gulp": "^4.0.17",
 		"@types/node": "^24.1.0",
 		"gulp": "^5.0.1",
-		"typedoc": "^0.28.7",
+		"typedoc": "^0.28.8",
 		"typescript": "^5.8.3",
 		"typescript-eslint": "^8.38.0",
 		"vinyl": "^3.0.1"
