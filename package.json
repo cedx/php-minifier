@@ -9,7 +9,7 @@
 	"type": "module",
 	"version": "7.2.0",
 	"bin": {
-		"php_minifier": "bin/PhpMinifier.js"
+		"PhpMinifier": "bin/PhpMinifier.js"
 	},
 	"dependencies": {
 		"fancy-log": "^2.0.0",
