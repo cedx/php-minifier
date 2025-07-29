@@ -2,9 +2,10 @@ import {FastTransformer, SafeTransformer} from "@cedx/php-minifier";
 import console from "node:console";
 import {mkdir, readdir, writeFile} from "node:fs/promises";
 import {dirname, join, relative} from "node:path";
-import {env} from "node:process";
+import {env, loadEnvFile} from "node:process";
 
 // Choose an appropriate transformer.
+loadEnvFile();
 await using transformer = env.PHPMINIFIER_MODE == "fast" ? new FastTransformer : new SafeTransformer;
 
 // Scan the input directory for PHP files.
