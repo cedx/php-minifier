@@ -1,6 +1,6 @@
 import console from "node:console";
 import {access, mkdir, readdir, writeFile} from "node:fs/promises";
-import {dirname, join, relative, resolve} from "node:path";
+import {dirname, extname, join, relative, resolve} from "node:path";
 import process from "node:process";
 import {parseArgs} from "node:util";
 import pkg from "../package.json" with {type: "json"};
@@ -71,8 +71,9 @@ try {
 	const output = positionals.length > 1 ? resolve(positionals[1]) : input;
 	await using transformer = values.mode == "fast" ? new FastTransformer(values.binary) : new SafeTransformer(values.binary);
 
+	const extension = `.${values.extension}`;
 	const files = await readdir(input, {recursive: values.recursive, withFileTypes: true});
-	for (const file of files.filter(item => item.isFile() && item.name.endsWith(`.${values.extension}`))) {
+	for (const file of files.filter(item => item.isFile() && extname(item.name) == extension)) {
 		const fullPath = join(file.parentPath, file.name);
 		const relativePath = relative(input, fullPath);
 		if (!values.silent) console.log(`Minifying: ${relativePath}`);
