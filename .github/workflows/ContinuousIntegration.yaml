@@ -21,4 +21,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
-        run: node --run test
+        run: npx gulp test
