@@ -1,4 +1,4 @@
-name: continuous-integration
+name: ContinuousIntegration
 on: push
 
 defaults:
@@ -6,7 +6,7 @@ defaults:
     shell: pwsh
 
 jobs:
-  test:
+  Test:
     runs-on: windows-latest
     steps:
       - name: Fetch sources
