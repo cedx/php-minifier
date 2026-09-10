@@ -20,7 +20,7 @@
 		"@eslint/js": "^10.0.1",
 		"@types/fancy-log": "^2.0.2",
 		"@types/gulp": "^4.0.17",
-		"@types/node": "^26.5.0",
+		"@types/node": "^26.5.1",
 		"@types/vinyl": "^2.0.12",
 		"@typescript/native": "npm:typescript@^7.0.2",
 		"gulp": "^5.0.1",
